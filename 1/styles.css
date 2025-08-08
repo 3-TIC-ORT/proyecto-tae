@@ -1,0 +1,85 @@
+body{
+    width: 1440px; 
+    height: 1024px;
+}
+h1{
+    color: #000;
+font-family: "Inknut Antiqua";
+font-size: 72px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+display: flex;
+width: 1142px;
+height: 57px;
+flex-direction: column;
+justify-content: center;
+flex-shrink: 0;
+margin: 148px 149px 59px 149px;
+
+}
+h2{
+    color: #000;
+font-family: "Inknut Antiqua";
+font-size: 70px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+display: flex;
+width: 174px;
+height: 53px;
+flex-direction: column;
+justify-content: center;
+flex-shrink: 0;
+margin: 59px 633px 156px 633px;
+}
+
+
+
+
+
+
+
+
+.inknut-antiqua-light {
+    font-family: "Inknut Antiqua", serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .tRegular {
+    font-family: "Inknut Antiqua", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .inknut-antiqua-medium {
+    font-family: "Inknut Antiqua", serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .inknut-antiqua-semibold {
+    font-family: "Inknut Antiqua", serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .inknut-antiqua-bold {
+    font-family: "Inknut Antiqua", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .inknut-antiqua-extrabold {
+    font-family: "Inknut Antiqua", serif;
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  .inknut-antiqua-black {
+    font-family: "Inknut Antiqua", serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  

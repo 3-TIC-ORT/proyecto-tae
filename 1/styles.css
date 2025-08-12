@@ -35,12 +35,10 @@ margin: 59px 633px 156px 633px;
 }
 
 button {
-width: 477px;
-height: 114px;
 flex-shrink: 0;
 color: #000;
 font-family: Inter;
-font-size: 60px;
+
 font-style: normal;
 font-weight: 400;
 line-height: normal;
@@ -53,15 +51,18 @@ border:none;
 transition: transform 0.2s ease;
 }
 #boton1 {
-  margin: 156px 482px 60px 481px;
+  width: 477px;
+height: 114px;
+font-size: 60px;
+  margin: 156px 482px 59px 481px;
 }
 
 #boton2 {
-  margin: 0px 482px 60px 481px;
-}
-
-#boton3 {
-  margin: 0px 482px 95px 481px;
+  margin: 0px 513px 279px 512px;
+  width: 414.237px;
+height: 99px;
+flex-shrink: 0;
+font-size: 50px;
 }
 
 button:hover{

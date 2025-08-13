@@ -31,7 +31,7 @@ height: 53px;
 flex-direction: column;
 justify-content: center;
 flex-shrink: 0;
-margin: 59px 633px 156px 633px;
+margin: 59px 633px 0px 633px;
 }
 
 button {
@@ -54,7 +54,7 @@ transition: transform 0.2s ease;
   width: 477px;
 height: 114px;
 font-size: 60px;
-  margin: 156px 482px 59px 481px;
+  margin: 120px 482px 59px 481px;
 }
 
 #boton2 {

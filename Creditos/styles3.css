@@ -27,9 +27,18 @@ align-items: center;
 text-align: center;
 }
 
+.cuadrado {
+display: grid;
+justify-content: center;
+align-items: center;
+text-align: center;
+width: 1650px;
+background-color: grey;
+}
+
 .inter-hola {
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 200px;
-    font-style: normal;
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
   }
+  

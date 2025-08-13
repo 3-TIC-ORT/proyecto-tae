@@ -1,0 +1,35 @@
+h2 {
+width: 1311px;
+height: 570px;
+flex-shrink: 0;
+color: #000;
+font-family: Inter;
+font-size: 64px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin: 126px 197px 81px 197px;
+}
+
+h1 {  
+width: 549px;
+height: 144px;
+color: #000;
+font-family: Inter;
+font-size: 128px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin: 103px 578px 126px 578px;
+display:flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+
+.inter-hola {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200px;
+    font-style: normal;
+  }

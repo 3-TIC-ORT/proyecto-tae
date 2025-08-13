@@ -20,10 +20,10 @@ padding: 0px;
 
 #fotomago{
     width: 425px;
-height: 622px;
+height: 568px;
 flex-shrink: 0;
+aspect-ratio: 104/139;
 margin: 0px 0px 0px -15px;
-aspect-ratio: 41/60;
 background: url(C:/Users/50416518/Downloads/proyecto-tae/Cosas/db7e7b456822ba8047868b00ed86ffe2dfc33101.png);
 }
 #mago{
@@ -37,18 +37,20 @@ font-size: 50px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
-margin: 0px 0px 193px 48px;
+margin: 10px 0px 20px 48px;
 }
-
+#magician{
+    margin: 14px 0px 29px -15px;
+}
 
 #fotovalk{
-    width: 330px;
-height: 607px;
+    width: 352px;
+height: 494px;
 flex-shrink: 0;
-aspect-ratio: 56/103;
-background: url(C:/Users/50416518/Downloads/proyecto-tae/Cosas/13f5f3e6c9f306a123a43a3a3d95383e05772d4a.png);
-margin: 0px 0px 0px 0px;
+aspect-ratio: 57/80;
+margin: 70px 0px 23px 0px;
 }
+
 #valk{
     width: 282px;
 height: 46px;
@@ -59,9 +61,12 @@ font-size: 50px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
-margin: 0px 0px 193px 62px;
+margin: 0px 0px 20px 62px;
 }
-
-ul{
-    color: white;
-}
+#personajes{
+    display: flex;
+    justify-content: space-evenly;
+ }  
+ ul{
+     color: white;
+ }

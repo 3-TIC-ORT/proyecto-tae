@@ -67,6 +67,18 @@ margin: 0px 0px 20px 62px;
     display: flex;
     justify-content: space-evenly;
  }  
- ul{
-     color: white;
+ .lista{
+    color: #fff;
+    list-style-type: none;
+ }
+ .oro{
+    list-style-image: url("C:/Users/50416518/Downloads/proyecto-tae/Cosas/image 12.png");
+ }
+ .vida{
+    list-style-image: url("C:/Users/50416518/Downloads/proyecto-tae/Cosas/heart_98495.png");
+    
+ }
+ .imgvida{
+    width: 20px;
+    float: left;
  }

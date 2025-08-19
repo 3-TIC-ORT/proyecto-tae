@@ -1,37 +1,47 @@
 body{
-    width: auto; 
-    height: auto;
+    width: 90rem; 
+    height: 64rem;
 }
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
 h1{
     color: #000;
 font-family: "Inknut Antiqua";
-font-size: 72px;
+font-size: 4,5rem;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 display: flex;
-width: 1142px;
-height: 57px;
+width: 100%;
+height: 3,5625rem;
 flex-direction: column;
 justify-content: center;
 flex-shrink: 0;
-margin: 148px 149px 59px 149px;
-
+/*margin: 148px 149px 59px 149px;*/
+text-align: center;
 }
 h2{
     color: #000;
 font-family: "Inknut Antiqua";
-font-size: 70px;
+font-size: 4,375rem;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 display: flex;
-width: 174px;
-height: 53px;
+width: 100%;
+height: 3,3125rem;
 flex-direction: column;
 justify-content: center;
 flex-shrink: 0;
-margin: 59px 633px 0px 633px;
+text-align: center;
+/*margin: 59px 633px 0px 633px;*/
 }
 
 button {
@@ -51,18 +61,19 @@ border:none;
 transition: transform 0.2s ease;
 }
 #boton1 {
-  width: 477px;
-height: 114px;
-font-size: 60px;
-  margin: 120px 482px 59px 481px;
+height: 7,125rem;
+font-size: 3,75rem;
+
+  width: 29.8125rem;
 }
 
 #boton2 {
-  margin: 0px 513px 279px 512px;
-  width: 414.237px;
-height: 99px;
+  /*margin: 0px 513px 279px 512px;*/
+ 
 flex-shrink: 0;
-font-size: 50px;
+font-size: 3,125rerm;
+width: 25,8898125rem;
+height: 6,1875rem;
 }
 
 button:hover{

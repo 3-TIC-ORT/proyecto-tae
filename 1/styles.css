@@ -48,7 +48,7 @@ font-family: Inter;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
-border-radius: 20px;
+border-radius: 1.25rem;
 background: #D9D9D9;
 display:flex;
 justify-content: center;
@@ -61,8 +61,9 @@ transition: transform 0.2s ease;
 #boton1 {
 height: 6.125rem;
 font-size: 3.15rem;
-  width: 28.8125rem;
-  margin-bottom: 1rem;
+width: 28.8125rem;
+margin-bottom: 1rem;
+
 }
 
 #boton2 {

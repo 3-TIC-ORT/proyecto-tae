@@ -1,42 +1,38 @@
-body{
-    width: 90rem; 
-    height: 64rem;
-}
-
 .container{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
 
+}
 
 h1{
     color: #000;
 font-family: "Inknut Antiqua";
-font-size: 4,5rem;
+font-size: 3.5rem;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 display: flex;
 width: 100%;
-height: 3,5625rem;
+height: 2.5625rem;
 flex-direction: column;
 justify-content: center;
 flex-shrink: 0;
+margin-top: 5rem;
 /*margin: 148px 149px 59px 149px;*/
 text-align: center;
 }
 h2{
     color: #000;
 font-family: "Inknut Antiqua";
-font-size: 4,375rem;
+font-size: 3.375rem;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 display: flex;
 width: 100%;
-height: 3,3125rem;
+height: 2.3125rem;
 flex-direction: column;
 justify-content: center;
 flex-shrink: 0;
@@ -59,21 +55,22 @@ justify-content: center;
 align-items: center;
 border:none;
 transition: transform 0.2s ease;
-}
-#boton1 {
-height: 7,125rem;
-font-size: 3,75rem;
 
-  width: 29.8125rem;
+}
+
+#boton1 {
+height: 6.125rem;
+font-size: 3.15rem;
+  width: 28.8125rem;
+  margin-bottom: 1rem;
 }
 
 #boton2 {
   /*margin: 0px 513px 279px 512px;*/
- 
 flex-shrink: 0;
-font-size: 3,125rerm;
-width: 25,8898125rem;
-height: 6,1875rem;
+font-size: 2.625rem;
+width: 24.8898125rem;
+height: 5.1875rem;
 }
 
 button:hover{

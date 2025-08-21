@@ -1,0 +1,11 @@
+{
+    "name": "proyecto-tae",
+    "version": "1.0.0",
+    "description": "Juego",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "author": "Julian G, Joaquin S, Ivan R y lorenzo L",
+    "license": "ISC"
+  }

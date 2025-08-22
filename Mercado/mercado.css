@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+#mercader{
+    border: dashed black 0.5vh;
+    width: 30rem;
+    aspect-ratio: 3/3.5;
+}
+.skip{
+    display: flex;
+    border: 1rem black;
+    width: 2rem;
+    aspect-ratio: 1/2;
+}

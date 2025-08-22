@@ -2,7 +2,9 @@ let personaje = "";
 let reliquia = "";
 let vidamaxima = 0;
 let oroinicial = 0;
-let mazo = ["ataque","ataque","escudo","escudo","porrazo"];
+let cartas = ["ataque","ataque","escudo","escudo","porrazo"];
+let cantidadescudo = 0
+let reliquias = ["armadura de cobre","black star","sombrero magico"]
 /**
  * Configura las propiedades del personaje según el número proporcionado.
  *
@@ -57,9 +59,76 @@ function quepersonaje(numpersonaje){
 
     }
 }
-function analizarmazo(){
-    
+ /**
+  * Gestiona un mazo de cartas, permitiendo mostrar, robar, agregar y contar las cartas.
+  *
+  * @param {string} accion - La acción a realizar en el mazo. Puede ser:
+  * - "mostrar": Muestra todas las cartas del mazo.
+  * - "robas": Roba la primera carta del mazo (elimina y devuelve el primer elemento del array).
+  * - "agregar": Agrega una carta al final del mazo.
+  * - "cantidad": Muestra la cantidad total de cartas en el mazo.
+  * @param {* | null} [carta=null] - (Opcional) La carta a agregar. Solo se utiliza con la acción "agregar".
+  * @returns {void} Esta función no devuelve ningún valor, solo imprime mensajes en la consola.
+  */
+function mazo(accion, carta = null){
+    switch (accion){
+        case "mostrar":
+        console.log("las cartas en tu mazo son: " + cartas);
+        break
+        case "robas":
+        let cartarobada = cartas.shift();
+        console.log("la proxima carta a robar es: " + cartarobada);
+        break
+        case "agregar":
+        if(carta){
+            cartas.push(carta);
+            console.log("agregaste la carta " + carta + " a tu mazo");
+        }
+        break
+        case "cantidad":
+        console.log(cartas.length);
+        break
+        default:
+        console.log("no se reconocio la accion")
+    }
+}
+function sumaescudo(escudoagregado){
+    cantidadescudo = cantidadescudo + escudoagregado;
+    console.log("cantidad de escudo del jugador es: " + cantidadescudo);
+}
+function reliquia(accion, indice = null){
+    switch(accion){
+        case "moastrar":
+            console.log("las reliquias que tenes son: " + reliquias)
+            break
+        case "descripcion":
+            switch(indice){
+                case 1:
+                console.log("tu reliquia es la armadura de cobre. Al inicio de cada combate contra élites o jefes, obtienes 10 de escudo que bloquea un daño fijo durante 3 turnos.");
+                break
+                case 2:
+                console.log("tu reliquia es black star. Hace que los élites suelten dos reliquias en lugar de solo una.");
+                break
+                case 3:
+                console.log("tu reliquia es el sombrero magico. 50% de descuento en todos los productos de la tienda");
+            }
+
+    }
+}
+function agregarreliquia(reliquiaagregada){
+    reliquias.push(reliquiaagregada)
+    console.log("se agrego la reliquia: " + reliquiaagregada)
 }
 quepersonaje(1);
 console.log(personaje + " " + reliquia);
 console.log("tu vida maxima e inicial es: " + vidamaxima + " y tu oro inicial es: " + oroinicial);
+mazo("mostrar");
+mazo("robas");
+mazo("agregar", "ataque");
+mazo("mostrar");
+mazo("cantidad");
+sumaescudo(45);
+reliquia("mostrar")
+reliquia("descripcion",1)
+agregarreliquia("arveja")
+reliquia("mostrar")

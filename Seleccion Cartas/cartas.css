@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    gap: 5rem;
+    padding: 1rem ;
+}
+.cartas{
+    border: 0.5vh black dashed;
+    width: 33%;
+    aspect-ratio: 1/1;
+    transition:   0.2s ease-out;
+    
+}
+.arriba{
+    text-align: center;
+    font-size: 2rem;
+}
+.cartas:hover{
+    transform: scale(1.05);
+    transition:   1s ease;
+    
+}
+
+.cartas:active{
+    transform: scale(0.95);
+    transition:   0.5s ease;
+    
+}

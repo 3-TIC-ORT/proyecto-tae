@@ -1,18 +1,36 @@
+let personaje = "";
+let reliquia = "";
+let vidamaxima = 0;
+let oroinicial = 0;
 function quepersonaje(numpersonaje){
     switch(numpersonaje){
         case 1:
-            console.log("Tu personaje es el warrior")
+            personaje = "warrior";
+            reliquia = "1";
+            vidamaxima= 80;
+            oroinicial = 99;
             break
         case 2:
-            console.log("Tu personaje es el mago")
+            personaje = "mago";
+            reliquia = "2";
+            vidamaxima= 70;
+            oroinicial= 150;
             break
         case 3:
-            console.log("Tu personaje es la valkiria")
+            personaje = "valkiria";
+            reliquia = "3";
+            vidamaxima= 80;
+            oroinicial= 125;
             break
         case 4:
-            console.log("Tu personaje es  el pickpocket")
+            personaje = "packpocket";
+            reliquia = "4";
+            vidamaxima= 75;
+            oroinicial= 50;
             break
 
     }
 }
-quepersonaje(1)
+quepersonaje(1);
+console.log(personaje + " " + reliquia);
+console.log("tu vida maxima e inicial es: " + vidamaxima + " y tu oro inicial es: " + oroinicial);

@@ -8,6 +8,7 @@
     width: 33%;
     aspect-ratio: 1/1;
     transition:   0.2s ease-out;
+    cursor: pointer;
     
 }
 .arriba{

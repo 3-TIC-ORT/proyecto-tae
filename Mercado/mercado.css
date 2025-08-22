@@ -8,9 +8,22 @@
     width: 30rem;
     aspect-ratio: 3/3.5;
 }
-.skip{
-    display: flex;
-    border: 1rem black;
-    width: 2rem;
-    aspect-ratio: 1/2;
+footer{
+display: flex;
+justify-content: right;
+}
+#avanzar{
+    margin: 0;
+    text-decoration: underline;
+    font-size: 2rem;
+    padding: 1rem 1rem 0 1rem;
+    transition: transform 0.2s ease;
+}
+#avanzar:hover{
+    
+    transform: scale(1.05);
+    cursor: pointer;
+}
+#avanzar:active{
+    transform: scale(0.95);
 }

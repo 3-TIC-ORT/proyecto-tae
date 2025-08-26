@@ -1,10 +1,11 @@
+export {quepersonaje, sumaescudo, reliquia, mazo};
 let personaje = "";
-let reliquia = "";
+let reliquiainicial = "";
 let vidamaxima = 0;
 let oroinicial = 0;
 let cartas = ["ataque","ataque","escudo","escudo","porrazo"];
 let cantidadescudo = 0
-let reliquias = ["armadura de cobre","black star","sombrero magico"]
+let reliquias = [{nombre:"armadura de cobre", descripcion:"Al inicio de cada combate contra élites o jefes, obtienes 10 de escudo que bloquea un daño fijo durante 3 turnos."},{nombre:"black star" ,descripcion:"Hace que los élites suelten dos reliquias en lugar de solo una."},{nombre:"Sombrero magico",descripcion:"50% de descuento en todos los productos de la tienda"}]
 /**
  * Configura las propiedades del personaje según el número proporcionado.
  *
@@ -34,30 +35,31 @@ function quepersonaje(numpersonaje){
     switch(numpersonaje){
         case 1:
             personaje = "warrior";
-            reliquia = "1";
+            reliquiainicial = "1";
             vidamaxima= 80;
             oroinicial = 99;
             break
         case 2:
             personaje = "mago";
-            reliquia = "2";
+            reliquiainicial = "2";
             vidamaxima= 70;
             oroinicial= 150;
             break
         case 3:
             personaje = "valkiria";
-            reliquia = "3";
+            reliquiainicial = "3";
             vidamaxima= 80;
             oroinicial= 125;
             break
         case 4:
             personaje = "packpocket";
-            reliquia = "4";
+            reliquiainicial = "4";
             vidamaxima= 75;
             oroinicial= 50;
             break
 
     }
+    console.log(personaje + " " + reliquiainicial + " " + vidamaxima + " " + oroinicial)
 }
  /**
   * Gestiona un mazo de cartas, permitiendo mostrar, robar, agregar y contar las cartas.
@@ -96,39 +98,16 @@ function sumaescudo(escudoagregado){
     cantidadescudo = cantidadescudo + escudoagregado;
     console.log("cantidad de escudo del jugador es: " + cantidadescudo);
 }
-function reliquia(accion, indice = null){
-    switch(accion){
-        case "moastrar":
-            console.log("las reliquias que tenes son: " + reliquias)
-            break
-        case "descripcion":
-            switch(indice){
-                case 1:
-                console.log("tu reliquia es la armadura de cobre. Al inicio de cada combate contra élites o jefes, obtienes 10 de escudo que bloquea un daño fijo durante 3 turnos.");
-                break
-                case 2:
-                console.log("tu reliquia es black star. Hace que los élites suelten dos reliquias en lugar de solo una.");
-                break
-                case 3:
-                console.log("tu reliquia es el sombrero magico. 50% de descuento en todos los productos de la tienda");
-            }
-
+function reliquia(indice, agregar = null){
+    for(let i = 0; i < reliquias.length;i++){
+        if (reliquias[i] === reliquias[indice-1]){
+            console.log(reliquias[i].nombre + ". " + reliquias[i].descripcion);
+        }
     }
+    if(agregar){
+        reliquias.push(agregar);
+        console.log("se agrego la reliquia: " + agregar);
+    }
+
+    
 }
-function agregarreliquia(reliquiaagregada){
-    reliquias.push(reliquiaagregada)
-    console.log("se agrego la reliquia: " + reliquiaagregada)
-}
-quepersonaje(1);
-console.log(personaje + " " + reliquia);
-console.log("tu vida maxima e inicial es: " + vidamaxima + " y tu oro inicial es: " + oroinicial);
-mazo("mostrar");
-mazo("robas");
-mazo("agregar", "ataque");
-mazo("mostrar");
-mazo("cantidad");
-sumaescudo(45);
-reliquia("mostrar")
-reliquia("descripcion",1)
-agregarreliquia("arveja")
-reliquia("mostrar")

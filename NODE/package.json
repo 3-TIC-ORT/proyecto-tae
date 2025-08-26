@@ -1,6 +1,7 @@
 {
     "name": "proyecto-tae",
     "version": "1.0.0",
+    "type": "module",
     "description": "Juego",
     "main": "index.js",
     "scripts": {

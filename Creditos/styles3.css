@@ -1,40 +1,9 @@
-h2 {
-width: 1311px;
-height: 570px;
-flex-shrink: 0;
-color: #000;
-font-family: Inter;
-font-size: 64px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-margin: 0px 197px 81px 197px;
-line-height: 110px;
-}
-
-h1 {  
-width: 549px;
-height: 144px;
-color: #000;
-font-family: Inter;
-font-size: 128px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-margin: 103px 578px 126px 578px;
-display:flex;
-justify-content: center;
-align-items: center;
+.container{
+  height: 90%;
+  width: 70%;
 text-align: center;
-}
-
-.cuadrado {
-display: grid;
-justify-content: center;
-align-items: center;
-text-align: center;
-width: 1650px;
-background-color: grey;
+  background-color: lightgrey;
+  border-radius: 2rem;
 }
 
 .inter-hola {
@@ -42,4 +11,32 @@ background-color: grey;
   font-weight: 400;
   font-style: normal;
   }
-  
+  #main{
+    display: flex;
+    justify-content: center;
+    padding: 5rem;
+   height: 50rem;
+margin-top: 0px;
+  }
+  h1{
+    font-size: 6.4rem;
+  }
+  .credit{
+    font-size: 2.5rem;
+    margin: 4.3%;
+  }
+  #rrtt{
+    margin-top: 0rem;
+  }
+  *{
+    overflow: hidden;
+  }
+  .flecha{
+    font-size: 2rem;
+    background-color: lightgrey;
+    padding: 0.2rem 1rem 0.2rem 1rem;
+    border-radius: 69rem;
+  }
+  main{
+    padding: 1rem;
+  }

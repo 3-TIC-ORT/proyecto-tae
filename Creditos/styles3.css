@@ -1,7 +1,7 @@
-.container{
-  height: 90%;
-  width: 70%;
-text-align: center;
+.container {
+  height: 65%;
+  width: 80%;
+  text-align: center;
   background-color: lightgrey;
   border-radius: 2rem;
 }
@@ -10,33 +10,42 @@ text-align: center;
   font-family: "DM Serif Text", serif;
   font-weight: 400;
   font-style: normal;
-  }
-  #main{
-    display: flex;
-    justify-content: center;
-    padding: 5rem;
-   height: 50rem;
-margin-top: 0px;
-  }
-  h1{
-    font-size: 6.4rem;
-  }
-  .credit{
-    font-size: 2.5rem;
-    margin: 4.3%;
-  }
-  #rrtt{
-    margin-top: 0rem;
-  }
-  *{
-    overflow: hidden;
-  }
-  .flecha{
-    font-size: 2rem;
-    background-color: lightgrey;
-    padding: 0.2rem 1rem 0.2rem 1rem;
-    border-radius: 69rem;
-  }
-  main{
-    padding: 1rem;
-  }
+}
+
+#main {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 5rem 5rem 5rem;
+  height: 50rem;
+  margin-top: 0px;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+.credit {
+  font-size: 2rem;
+  margin: 4.3%;
+}
+
+#rrtt {
+  margin-top: 0rem;
+}
+
+* {
+  overflow: hidden;
+}
+
+.flecha {
+  font-size: 2rem;
+  background-color: lightgrey;
+  padding: 0.2rem 1rem 0.2rem 1rem;
+  border-radius: 69rem;
+}
+.flecha:hover{
+  cursor: pointer;
+}
+main {
+  padding: 1rem;
+}

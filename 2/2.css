@@ -24,7 +24,7 @@ height: 568px;
 flex-shrink: 0;
 aspect-ratio: 104/139;
 margin: 0px 0px 0px -15px;
-background: url(C:/Users/50416518/Downloads/proyecto-tae/Cosas/db7e7b456822ba8047868b00ed86ffe2dfc33101.png);
+background: url("../Cosas/db7e7b456822ba8047868b00ed86ffe2dfc33101.png");
 }
 #mago{
     width: 299px;
@@ -72,10 +72,10 @@ margin: 0px 0px 20px 62px;
     list-style-type: none;
  }
  .oro{
-    list-style-image: url("C:/Users/50416518/Downloads/proyecto-tae/Cosas/image 12.png");
+    list-style-image: url("../Cosas/image12.png");
  }
  .vida{
-    list-style-image: url("C:/Users/50416518/Downloads/proyecto-tae/Cosas/heart_98495.png");
+    list-style-image: url("../Cosas/heart_98495.png");
     
  }
  .imgvida{

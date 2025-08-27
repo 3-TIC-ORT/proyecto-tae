@@ -3,7 +3,6 @@ font-family: "Jersey25", sans-serif;
 font-weight: 400;
 font-style: normal;
 height: 8.0000125;
-transform: rotate(-3deg);
 flex-shrink: 0;
 color: #000;
 font-family: "Jersey 25";
@@ -47,17 +46,30 @@ align-items: center;
 border:none;
 display: flex;
 flex-direction: column;
+transition: transform 0.2s ease;
 }
+
 #reintentar {
 height: 6.125rem;
 font-size: 3.15rem;
 width: 24rem;
 margin-bottom: 1rem;
 margin-top: 3rem;
+border-radius: 1.25rem;
+border: 0rem;
 }
 #volver {
 height: 6.125rem;
 font-size: 3.15rem;
 width: 24rem;
 margin-bottom: 1rem;
+border-radius: 1.25rem;
+border: 0rem;
 }
+button:hover{
+cursor: pointer;
+transform: scale(1.05);
+  }
+button:active{
+transform: scale(0.97);
+  }

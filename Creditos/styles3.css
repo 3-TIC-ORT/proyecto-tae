@@ -50,3 +50,6 @@ h1 {
 main {
   padding: 1rem;
 }
+body {
+  background: linear-gradient(180deg, #121212 0%, #100A43 100%);
+}

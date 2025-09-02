@@ -1,6 +1,6 @@
 import { verestado,estado } from "./ia.js";
 let dañorecibido = 45;
-let mounstro = [{nombre:"slime",vida:80,vidamax:80,habilidad:0}]
+let mounstro = [{nombre:"slime",vida:80,vidamax:80,habilidad:}]
 mounstro[0].habilidad = mounstro.vida <= mounstro.vidamax / 2;
 console.log(mounstro[0].habilidad)
 let cartasjugadas = ["golpe","aturde"];

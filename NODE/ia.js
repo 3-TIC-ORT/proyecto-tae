@@ -16,7 +16,6 @@ function verestado(monstruo, dañorecibido, cartasjugadas, buffeosjugador, condi
     if(condicionhabilidad === true){
         return estado.habilidad
       }
-
     if (monstruo.vida <= (monstruo.vidamax/10*3)) {
         monstruo.vida = monstruo.vida + monstruo.vida * (0.3 + Math.random() * 0.2);
         return estado.curarse

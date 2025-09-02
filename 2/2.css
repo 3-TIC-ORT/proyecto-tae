@@ -1,84 +1,37 @@
-body{
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #000;
-    width: 1473px;
-height: 1024px;
+*{
+    overflow: hidden;
 }
-
 h1{
-    width: 1317px;
-height: 270px;
-flex-shrink: 0;
-color: #FFF;
-font-family: "Inknut Antiqua";
-font-size: 130px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-margin: 0px 78px 0px 78px;
-padding: 0px;
+    font-size: 5rem;
+    margin: 0;
+    text-align: center;
 }
-
-#fotomago{
-    width: 425px;
-height: 568px;
-flex-shrink: 0;
-aspect-ratio: 104/139;
-margin: 0px 0px 0px -15px;
-background: url("../Cosas/db7e7b456822ba8047868b00ed86ffe2dfc33101.png");
-}
-#mago{
-    width: 299px;
-    height: 46px;
-    flex-shrink: 0;
-flex-shrink: 0;
-color: #FFF;
-font-family: Judson;
-font-size: 50px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-margin: 10px 0px 20px 48px;
-}
-#magician{
-    margin: 14px 0px 29px -15px;
-}
-
-#fotovalk{
-    width: 352px;
-height: 494px;
-flex-shrink: 0;
-aspect-ratio: 57/80;
-margin: 70px 0px 23px 0px;
-}
-
-#valk{
-    width: 282px;
-height: 46px;
-flex-shrink: 0;
-color: #FFF;
-font-family: Judson;
-font-size: 50px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-margin: 0px 0px 20px 62px;
-}
-#personajes{
+.personajes{
     display: flex;
     justify-content: space-evenly;
- }  
- .lista{
-    color: #fff;
-    list-style-type: none;
- }
- .oro{
-    list-style-image: url("../Cosas/image12.png");
- }
- .vida{
-    list-style-image: url("../Cosas/heart_98495.png");
-    
- }
- .imgvida{
-    width: 20px;
-    float: left;
- }
+    background-color: aqua;
+}
+.valkiria{
+    width: 19.5rem;
+    aspect-ratio: 2/3;
+    border: dashed black 3px;
+}
+.magician{
+    width: 19.5rem;
+    aspect-ratio: 3/4;
+    border: dashed black 3px;
+}
+.fotovalk{
+    width: 19.5rem;
+    aspect-ratio: 3/4;
+}
+.fotomago{
+    width: 19.5rem;
+    aspect-ratio: 3/4;
+}
+.stats{
+    border: dotted black 3px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}

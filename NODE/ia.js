@@ -7,26 +7,30 @@ let estado = {
     aturdido: "aturdido",
     debuffeo: "debuffeo"
 }
-function verestado(monstruo,dañorecibido = null){
+
+function verestado(monstruo, dañorecibido, cartasjugadas, buffeosjugador, condicionhabilidad){
     monstruo.vida = monstruo.vida -dañorecibido;
     if (monstruo.vida <= 0) {
-        console.log(estado.muerto)
+        return estado.muerto
       }
-      if (monstruo.vida <= (monstruo.vidamax/10*3)) {
-        console.log(estado.curarse)
+    if(condicionhabilidad === true){
+        return estado.habilidad
+      }
+
+    if (monstruo.vida <= (monstruo.vidamax/10*3)) {
         monstruo.vida = monstruo.vida + monstruo.vida * (0.3 + Math.random() * 0.2);
+        return estado.curarse
       }
-      if (dañorecibido > 30) {
-        console.log(estado.defendiendo)
+    if (dañorecibido > 30) {
+        return estado.defendiendo
       }
-      /*if (habilidad) {
-        console.log(estado.habilidad)
+    for (let i = 0; i <= cartasjugadas.lenght ; i++){
+        if(cartasjugadas[i] === "aturde"){
+          return estado.aturdido
+        }
       }
-      if (estado === estado.aturdido) {
-        console.log(estado.aturdido)
+    if (buffeosJugador > 0) {
+        return estado.debuffeo;
       }
-      if (buffeosjugador > 0) {
-        console.log(estado.debuffeo)
-      }
-      */
+
 }

@@ -4,12 +4,12 @@ let oro = document.getElementById("li1");
 let vida = document.getElementById("li2");
 
 function statsmago(){
-    oro.textContent = "Oro: 10";
-    vida.textContent = "Vida: 20";
+    oro.textContent = "Oro: 150";
+    vida.textContent = "Vida: 70";
     console.log("mago");
 }
 function statsvalk(){
-    oro.textContent = "Oro: 15";
+    oro.textContent = "Oro: 125";
     vida.textContent = "Vida: 25";
     console.log("valk");
 }

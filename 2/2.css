@@ -1,59 +1,62 @@
-h1{
-    font-size: 5rem;
-    margin: 0;
-    text-align: center;
+body{
+  min-height: 100%;
 }
-.personajes{
-    display: flex;
-    justify-content: space-evenly;
-    background-color: aqua;
+h1 {
+  font-size: 5rem;
+  margin: 0;
+  text-align: center;
 }
-.valk{
-    font-size: 2rem;
+.personajes {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: aqua;
 }
-.mago{
-    font-size: 2rem;
+.valk {
+  font-size: 2rem;
 }
-.valkiria:hover{
-    transform: scale(1.05);
+.mago {
+  font-size: 2rem;
 }
-.valkiria:active{
-    transform: scale(0.99);
+.valkiria:hover {
+  transform: scale(1.05);
 }
-.magician:hover{
-    transform: scale(1.05);
+.valkiria:active {
+  transform: scale(0.99);
 }
-.magician:active{
-    transform: scale(0.99);
+.magician:hover {
+  transform: scale(1.05);
 }
-.valkiria{
-    width: 19.5rem;
-    aspect-ratio: 2/3;
-    border: dashed black 3px;
-    transition: all 0.5s ease;
-    cursor: pointer;
+.magician:active {
+  transform: scale(0.99);
 }
-.magician{
-    width: 19.5rem;
-    aspect-ratio: 3/4;
-    border: dashed black 3px;
-    transition: all 0.5s ease;
-    cursor: pointer;
+.valkiria {
+  width: 19.5rem;
+  aspect-ratio: 2/3;
+  border: dashed black 3px;
+  transition: all 0.5s ease;
+  cursor: pointer;
 }
-.fotovalk{
-    width: 19.5rem;
-    aspect-ratio: 3/4;
+.magician {
+  width: 19.5rem;
+  aspect-ratio: 3/4;
+  border: dashed black 3px;
+  transition: all 0.5s ease;
+  cursor: pointer;
 }
-.fotomago{
-    width: 19.5rem;
-    aspect-ratio: 3/4;
+.fotovalk {
+  width: 19.5rem;
+  aspect-ratio: 3/4;
 }
-.stats{
-    border: dotted black 3px;
-    display: flex;
-    justify-content: center;
-    justify-items: center;
+.fotomago {
+  width: 19.5rem;
+  aspect-ratio: 3/4;
 }
-li{
-    list-style-type: none;
+.stats {
+  border: dotted black 3px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+li {
+  list-style-type: none;
 }

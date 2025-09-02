@@ -1,6 +1,4 @@
-*{
-    overflow: hidden;
-}
+
 h1{
     font-size: 5rem;
     margin: 0;
@@ -10,16 +8,32 @@ h1{
     display: flex;
     justify-content: space-evenly;
     background-color: aqua;
+    
+}
+
+.valkiria:hover{
+    transform: scale(1.05);
+}
+.valkiria:active{
+    transform: scale(0.99);
+}
+.magician:hover{
+    transform: scale(1.05);
+}
+.magician:active{
+    transform: scale(0.99);
 }
 .valkiria{
     width: 19.5rem;
     aspect-ratio: 2/3;
     border: dashed black 3px;
+    transition: all 0.5s ease;
 }
 .magician{
     width: 19.5rem;
     aspect-ratio: 3/4;
     border: dashed black 3px;
+    transition: all 0.5s ease;
 }
 .fotovalk{
     width: 19.5rem;
@@ -34,4 +48,7 @@ h1{
     display: flex;
     justify-content: center;
     justify-items: center;
+}
+li{
+    list-style-type: none;
 }

@@ -1,10 +1,10 @@
 let mago = document.getElementById("magician");
+let oro = document.getElementById("li1")
+let vida = document.getElementById("li2")
 
 function statsmago(){
-    let item = document.createElement("li");
-    item.textContent = "Soy nuevo en la página";
-    
-    document.ul.appendChild(item);
+    oro.textContent = "Oro: 10";
+    vida.textContent = "Vida: 20";
 }
 
-mago.addEventListener("mouseenter", statsmago());
+mago.addEventListener("click", statsmago);

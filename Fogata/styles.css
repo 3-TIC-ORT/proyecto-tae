@@ -1,0 +1,39 @@
+body{
+    min-height: 100vh;
+    background-image: url(../Cosas/prender-una-fogata.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12rem;
+    height: 100vh;
+}
+.mina{
+    height: 20rem;
+    aspect-ratio: 1/1;
+    position: relative;
+    top: 12rem;
+    left: 18rem;
+    background-image: url(../Cosas/pngtree-mine-cave-entrance-with-railway-in-cartoon-style-isolated-on-white-background-picture-image_7836835.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}   
+.cama{
+    height: 20rem;
+    aspect-ratio: 1/1;
+    position: relative;
+    top: 12rem;
+    right: 6rem;
+    background-image: url(../Cosas/bed-and-pillow-color-illustration-png.webp);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+body{
+    overflow: hidden;
+}

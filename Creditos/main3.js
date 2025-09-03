@@ -1,4 +1,4 @@
-let atras = document.getElementById("flechad");
+let atras = document.getElementById("flecha2");
 
 function volver(){
     window.location.href ="../1/index.html";

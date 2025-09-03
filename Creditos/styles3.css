@@ -13,33 +13,34 @@
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 9rem;
   text-align: center;
   position: relative;
-  bottom: 20px;
+  bottom: 200px;
 }
 
 .credit {
   font-size: 2rem;
   margin: 4.3%;
   color: white;
+  position: relative;
+  bottom: 200px;
+  text-align: center;
+  
 }
 
 #rrtt {
   margin-top: 0rem;
 }
-
-* {
-  overflow: hidden;
+.fondo {
+  position: absolute;
+  z-index: -1;
+  width: 100vw;
 }
-
-.flecha {
-  font-size: 2rem;
-  background-color: lightgrey;
-  padding: 0.2rem 1rem 0.2rem 1rem;
-  border-radius: 69rem;
+.flecha1{
+  transform: scale(0.8);
 }
-.flecha:hover{
+.flecha1:hover{
   cursor: pointer;
 }
 main {
@@ -47,4 +48,5 @@ main {
 }
 body {
   background: linear-gradient(180deg, #121212 0%, #100A43 100%);
+  overflow: hidden;
 }

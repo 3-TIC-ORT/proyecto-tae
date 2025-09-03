@@ -24,7 +24,7 @@ function verestado(monstruo, dañorecibido, cartasjugadas, buffeosjugador, condi
     if (dañorecibido > 30) {
         return estado.defendiendo
       }
-    for (let i = 0; i <= cartasjugadas.lenght ; i++){
+    for (let i = 0; i <= cartasjugadas.length ; i++){
         if(cartasjugadas[i] === "aturde"){
           return estado.aturdido
         }

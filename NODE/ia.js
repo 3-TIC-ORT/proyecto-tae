@@ -9,7 +9,8 @@ let estado = {
 }
 
 function verestado(monstruo, dañorecibido, cartasjugadas, buffeosjugador, condicionhabilidad){
-    monstruo.vida = monstruo.vida -dañorecibido;
+  
+  monstruo.vida = monstruo.vida -dañorecibido;
     if (monstruo.vida <= 0) {
         return estado.muerto
       }

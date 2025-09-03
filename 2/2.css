@@ -1,62 +1,48 @@
-body{
+body {
   min-height: 100%;
 }
-h1 {
-  font-size: 5rem;
-  margin: 0;
+
+header {
   text-align: center;
+  margin-top: 35%;
 }
 .personajes {
-  display: flex;
-  justify-content: space-evenly;
-  background-color: aqua;
-}
-.valk {
-  font-size: 2rem;
-}
-.mago {
-  font-size: 2rem;
-}
-.valkiria:hover {
-  transform: scale(1.05);
-}
-.valkiria:active {
-  transform: scale(0.99);
-}
-.magician:hover {
-  transform: scale(1.05);
-}
-.magician:active {
-  transform: scale(0.99);
-}
-.valkiria {
-  width: 19.5rem;
-  aspect-ratio: 2/3;
-  border: dashed black 3px;
-  transition: all 0.5s ease;
-  cursor: pointer;
-}
-.magician {
-  width: 19.5rem;
-  aspect-ratio: 3/4;
-  border: dashed black 3px;
-  transition: all 0.5s ease;
-  cursor: pointer;
-}
-.fotovalk {
-  width: 19.5rem;
-  aspect-ratio: 3/4;
-}
-.fotomago {
-  width: 19.5rem;
-  aspect-ratio: 3/4;
-}
-.stats {
-  border: dotted black 3px;
+  background-color: beige;
+  height: 10rem;
+  width: 100%;
   display: flex;
   justify-content: center;
-  justify-items: center;
+  gap: 13rem;
+  
 }
-li {
-  list-style-type: none;
+.magician, .bear, .pick, .jon {
+  height: 5rem;
+  aspect-ratio: 1/1;
+  background-color: darkgray;
+  position: relative;
+  transition: background-color 0.6s ease-in-out, transform 0.6s ease-in-out, bottom 0.6s ease;
+  bottom: 0;
+  cursor: pointer;
+}
+
+
+.magician:hover {
+  background-color: lightgray;
+  transform: scale(1.1);
+  bottom: .8vh;
+}
+.jon:hover {
+  background-color: lightgray;
+  transform: scale(1.1);
+  bottom: .8vh;
+}
+.bear:hover {
+  background-color: lightgray;
+  transform: scale(1.1);
+  bottom: .8vh;
+}
+.pick:hover {
+  background-color: lightgray;
+  transform: scale(1.1);
+  bottom: .8vh;
 }

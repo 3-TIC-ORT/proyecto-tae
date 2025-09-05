@@ -94,10 +94,40 @@ function mazo(accion, carta = null){
         console.log("no se reconocio la accion")
     }
 }
+/**
+ * Añade una cantidad especificada al total actual de escudo del jugador.
+ *
+ * @param {number} escudoagregado - La cantidad de escudo que se desea sumar al total.
+ *
+ * Esta función incrementa la variable global `cantidadescudo` con el valor proporcionado
+ * y luego imprime en consola la nueva cantidad total de escudo del jugador.
+ *
+ * Ejemplo de uso:
+ * sumaescudo(10);
+ * // consola: "cantidad de escudo del jugador es: 10"
+ */
 function sumaescudo(escudoagregado){
     cantidadescudo = cantidadescudo + escudoagregado;
     console.log("cantidad de escudo del jugador es: " + cantidadescudo);
 }
+/**
+ * Muestra información de una reliquia específica y opcionalmente agrega una nueva reliquia al arreglo.
+ *
+ * @param {number} indice - El índice (1-based) de la reliquia en el arreglo `reliquias` para mostrar su información.
+ * @param {object|null} [agregar=null] - Un objeto que representa una nueva reliquia para agregar al arreglo `reliquias`. Si no se proporciona, no se agrega nada.
+ *
+ * Descripción:
+ * - Recorre el arreglo `reliquias` y busca la reliquia que coincide con la posición `indice` (considerando que `indice` es 1-based).
+ * - Si la encuentra, imprime en consola el nombre y la descripción de esa reliquia.
+ * - Si el parámetro `agregar` no es nulo, agrega ese objeto al arreglo `reliquias` e imprime un mensaje de confirmación.
+ *
+ * Ejemplo de uso:
+ * reliquia(2);
+ * // Muestra el nombre y descripción de la segunda reliquia en el arreglo.
+ *
+ * reliquia(1, { nombre: "Reliquia nueva", descripcion: "Una reliquia mágica." });
+ * // Muestra la primera reliquia y luego agrega la nueva reliquia al arreglo.
+ */
 function reliquia(indice, agregar = null){
     for(let i = 0; i < reliquias.length;i++){
         if (reliquias[i] === reliquias[indice-1]){
@@ -108,6 +138,4 @@ function reliquia(indice, agregar = null){
         reliquias.push(agregar);
         console.log("se agrego la reliquia: " + agregar);
     }
-
-    
 }

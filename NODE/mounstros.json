@@ -1,0 +1,74 @@
+[
+    {
+        "nombre": "rata hambrienta",
+        "recompenzas": 15,
+        "habilidad":"vacio",
+        "reliquia": false,
+        "tipo":"normal",
+        "cartas":1
+    },
+    {
+        "nombre": "murcielago sangriento",
+        "recompenzas": 12,
+        "habilidad":"vacio",
+        "reliquia":false,
+        "tipo":"normal",
+        "cartas":1
+    },
+    {
+        "nombre":"guerrero caido",
+        "recompenzas": 22,
+        "habilidad":"vacio",
+        "reliquia":false,
+        "tipo":"normal",
+        "cartas":1
+    },
+    {
+        "nombre":"carroñero putrefacto",
+        "recompenzas": 18,
+        "habilidad":"vacio",
+        "reliquia":false,
+        "tipo":"normal",
+        "cartas":1
+    },
+    {
+        "nombre":"slime",
+        "recompenzas": 20,
+        "habilidad":"vacio",
+        "reliquia":false,
+        "tipo":"normal",
+        "cartas":1
+    },
+    {
+        "nombre":"el centinela",
+        "recompenzas": 40,
+        "habilidad":"vacio",
+        "reliquia":"elite",
+        "tipo":"elite",
+        "cartas":1        
+    },
+    {
+        "nombre":"el guardian de hueso",
+        "recompenzas": 45,
+        "habilidad":"vacio",
+        "reliquia":"elite",
+        "tipo":"elite",
+        "cartas":1          
+    },
+    {
+        "nombre":"el idolo maldito",
+        "recompenzas": 50,
+        "habilidad":"vacio",
+        "reliquia":"elite",
+        "tipo":"elite",
+        "cartas":1   
+    },
+    {
+        "nombre":"el devorador eterno",
+        "recompenzas": 125,
+        "habilidad":"vacio",
+        "reliquia":"jefe",
+        "tipo":"jefe",
+        "cartas":3    
+    }
+]

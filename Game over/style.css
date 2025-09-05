@@ -73,3 +73,6 @@ transform: scale(1.05);
 button:active{
 transform: scale(0.97);
   }
+  body {
+overflow: hidden;
+  }

@@ -1,0 +1,41 @@
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .cofre {
+      background-color: black;
+      color: white;
+      height: 10rem;
+      width: 10rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.5rem;
+  }
+  footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  #boton {
+    position: relative;
+    bottom: 50px;
+    color: black;
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+  }
+  #boton:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+  #boton:active{
+    transform: scale(0.97);
+  }
+  body {
+    overflow: hidden;
+  }
+  

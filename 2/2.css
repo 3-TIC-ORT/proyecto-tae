@@ -1,10 +1,21 @@
 body {
-  min-height: 100%;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  transition: background 0.7s ease-in-out;
+}
+body.default{
+  background-color: aliceblue;
 }
 
+
+.container{
+  position: fixed;
+  left: 25%;
+  bottom: 0;
+}
 header {
   text-align: center;
-  margin-top: 35%;
 }
 .personajes {
   background-color: beige;
@@ -24,6 +35,8 @@ header {
   bottom: 0;
   cursor: pointer;
 }
+
+
 
 
 .magician:hover {
@@ -46,3 +59,5 @@ header {
   transform: scale(1.1);
   bottom: .8vh;
 }
+
+

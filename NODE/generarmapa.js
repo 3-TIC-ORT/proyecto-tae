@@ -1,14 +1,24 @@
 let grafo = [];
 let conexiones = [];
-let cantidadpisos = 10;
+let cantidadpisos = 3;
 let finalboss = ["Final Boss"]
+let opciones = ["M","T","E","F"]
+function palabraaleatoria(){
+    return opciones[Math.floor(Math.random() * opciones.length)];
+  }  
 function numeroAleatorio() {
     return Math.floor(Math.random() * (5 - 3 + 1)) + 3;
   }
+
 for(let i = 0;i <= cantidadpisos;i++){
 let piso = []
 for(let z = 1; z <= numeroAleatorio(); z++){
-    piso.push(i+"-"+z)  
+  if(i === 0){
+    piso.push(i+"-"+z+" "+"M")
+  }
+  else {
+    piso.push(i+"-"+z+" "+palabraaleatoria())  
+  }
 }
 grafo.push(piso)
 }

@@ -1,11 +1,20 @@
+function generarmapa(cantidadpisos){
 let grafo = [];
 let conexiones = [];
-let cantidadpisos = 3;
 let finalboss = ["Final Boss"]
-let opciones = ["M","T","E","F"]
-function palabraaleatoria(){
-    return opciones[Math.floor(Math.random() * opciones.length)];
-  }  
+function palabraaleatoria() {
+  const rand = Math.random() * 100;
+
+  if (rand < 50) {
+      return "M"; 
+  } else if (rand < 70) {
+      return "T"; 
+  } else if (rand < 85) {
+      return "F"; 
+  } else {
+      return "E"; 
+  }
+}
 function numeroAleatorio() {
     return Math.floor(Math.random() * (5 - 3 + 1)) + 3;
   }
@@ -23,7 +32,6 @@ for(let z = 1; z <= numeroAleatorio(); z++){
 grafo.push(piso)
 }
 grafo.push(finalboss)
-console.log(grafo)
 for (let i = 0; i < grafo.length - 1; i++) {
     let pisoactual = grafo[i];
     let pisosiguiente = grafo[i + 1];
@@ -39,4 +47,12 @@ for (let i = 0; i < grafo.length - 1; i++) {
 
 
 }
-console.log(conexiones)
+for(let w = 0; w < conexiones.length-1;w++){
+  if(conexiones[w][0] === conexiones[w+1][0] && conexiones[w][1] === conexiones[w+1][1]){
+    conexiones.splice(w,1)
+    w--
+  }
+}
+return {grafo, conexiones}
+}
+console.log(generarmapa(3))

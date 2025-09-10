@@ -6,9 +6,11 @@ let body = document.body;
 let parrafo = document.getElementById("p");
 let h1 = document.getElementById("h1");
 let imagen = document.getElementById("imagen-contenido");
+let vida = document.getElementById("vida");
+let oro = document.getElementById("oro");
 
 function mostrarBear() {
-  body.style.backgroundColor = "brown";
+  body.style.backgroundColor = "#C7AE20";
   h1.textContent = "The Bear";
   parrafo.textContent =
     "El oso es una criatura de las montañas de Córdoba que le encanta picar piedra y se alimenta a base de monstruos y elixires. Su hobby principal es programar.";
@@ -23,6 +25,8 @@ function mostrarMago() {
     "El mago domina los secretos de la magia ancestral y controla hechizos poderosos.";
   imagen.src = "../Cosas/magician.png";
   imagen.alt = "foto mago";
+  oro.textContent = "150";
+  vida.textContent = "70";
 }
 
 function mostrarPick() {
@@ -39,7 +43,8 @@ function mostrarJon() {
   h1.textContent = "Jon the Brave";
   parrafo.textContent =
     "Jon es un guerrero audaz que nunca teme enfrentarse a dragones y demonios.";
-  imagen.src = "../Cosas/pngtree-mine-cave-entrance-with-railway-in-cartoon-style-isolated-on-white-background-picture-image_7836835.png";
+  imagen.src =
+    "../Cosas/pngtree-mine-cave-entrance-with-railway-in-cartoon-style-isolated-on-white-background-picture-image_7836835.png";
   imagen.alt = "foto john";
 }
 

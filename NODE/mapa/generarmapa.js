@@ -1,3 +1,4 @@
+import { subscribeGETEvent, subscribePOSTEvent, realTimeEvent, startServer } from "soquetic";
 function generarmapa(cantidadpisos){
 let grafo = [];
 let conexiones = [];
@@ -5,9 +6,9 @@ let finalboss = ["Final Boss"]
 function palabraaleatoria() {
   const rand = Math.random() * 100;
 
-  if (rand < 50) {
+  if (rand < 40) {
       return "M"; 
-  } else if (rand < 70) {
+  } else if (rand < 80) {
       return "T"; 
   } else if (rand < 85) {
       return "F"; 
@@ -56,3 +57,5 @@ for(let w = 0; w < conexiones.length-1;w++){
 return {grafo, conexiones}
 }
 console.log(generarmapa(3))
+subscribeGETEvent("mapa",generarmapa);
+startServer();

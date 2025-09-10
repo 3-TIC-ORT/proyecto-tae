@@ -12,7 +12,7 @@ function palabraaleatoria() {
       return "M"; 
   } else if (rand < 80) {
       return "T"; 
-  } else if (rand < 85) {
+  } else if (rand < 80) {
       return "F"; 
   } else {
       return "E"; 
@@ -43,7 +43,7 @@ for (let i = 0; i < grafo.length - 1; i++) {
         let cantidadConexiones = Math.floor(Math.random() * 2) + 1;
       
         for (let c = 0; c < cantidadConexiones; c++) {
-          let aleatorio = pisosiguiente[Math.floor(Math.random() * pisosiguiente.length)];
+          let aleatorio = nodo +- Math.floor(Math.random() * 2) + 1;
           conexiones.push([nodo, aleatorio]);
         }
       }

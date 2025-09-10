@@ -1,19 +1,23 @@
+
 body {
   min-height: 100vh;
   min-width: 100vw;
   box-sizing: border-box;
   transition: background 0.7s ease-in-out;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .container {
   position: fixed;
-  bottom: 0;
-  left: 50%;      
-  transform: translateX(-50%); 
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 header {
   text-align: center;
   margin-bottom: 1rem;
+  font-size: 1.4rem;
 }
 .personajes {
   width: 100%;
@@ -25,14 +29,34 @@ header {
 .bear,
 .pick,
 .jon {
-  height: 5rem;
+  height: 5rem ;
   aspect-ratio: 1/1;
   background-color: darkgray;
   position: relative;
-  transition: background-color 0.6s ease-in-out, transform 0.6s ease-in-out,
-    bottom 0.6s ease;
+  transition: transform 0.45s ease-in-out;
   bottom: 0;
   cursor: pointer;
+  border: solid black 1px;
+}
+.bear{
+  background-image: url(../Cosas/Group\ 1.png);
+  background-repeat: no-repeat;
+  background-size: 5rem  5rem ;
+}
+.pick{
+  background-image: url(../Cosas/Group\ 2.png);
+  background-repeat: no-repeat;
+  background-size: 5rem  5rem ;
+}
+.jon{
+  background-image: url(../Cosas/Group\ 4.png);
+  background-repeat: no-repeat;
+  background-size: 5rem  5rem ;
+}
+.bear{
+  background-image: url(../Cosas/Group\ 1.png);
+  background-repeat: no-repeat;
+  background-size: 5rem  5rem ;
 }
 .datos {
   margin-left: 3%;
@@ -51,22 +75,41 @@ header {
 }
 
 .magician:hover {
-  background-color: lightgray;
+
   transform: scale(1.1);
-  bottom: 0.8vh;
 }
 .jon:hover {
-  background-color: lightgray;
+
   transform: scale(1.1);
-  bottom: 0.8vh;
 }
 .bear:hover {
-  background-color: lightgray;
+
   transform: scale(1.1);
-  bottom: 0.8vh;
 }
 .pick:hover {
-  background-color: lightgray;
+
   transform: scale(1.1);
-  bottom: 0.8vh;
+}
+img {
+  max-height: 55rem;
+}
+.iconos {
+  list-style: none;
+  padding-left: 0;
+}
+.oro{
+  background-image: url(../Cosas/26303c60f3014dec4fc6dc709dd5ac429c526044.png); /* Tu icono */
+  background-size: 2rem; /* Ajusta tamaño */
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 3rem; /* Espacio para el icono */
+  margin-bottom: .5rem;
+}
+.vida{
+  background-image: url(../Cosas/heart_98495.png); /* Tu icono */
+  background-size: 2rem 2rem; /* Ajusta tamaño */
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 3rem; /* Espacio para el icono */
+  margin-bottom: .5rem;
 }

@@ -8,6 +8,7 @@ let h1 = document.getElementById("h1");
 let imagen = document.getElementById("imagen-contenido");
 let vida = document.getElementById("vida");
 let oro = document.getElementById("oro");
+let titulo = document.getElementById("titulo");
 
 function mostrarBear() {
   body.style.backgroundColor = "#C7AE20";
@@ -16,6 +17,8 @@ function mostrarBear() {
     "El oso es una criatura de las montañas de Córdoba que le encanta picar piedra y se alimenta a base de monstruos y elixires. Su hobby principal es programar.";
   imagen.src = "../Cosas/bear.png";
   imagen.alt = "foto bear";
+  titulo.textContent = "";
+  bear.filter = "drop-shadow(0 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0 -0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem -0.03rem 0.2rem rgba(255, 253, 253, 0.5)) drop-shadow(0.03rem -0.03rem 0.2rem rgba(255, 250, 250, 0.5)) drop-shadow(-0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5))";
 }
 
 function mostrarMago() {
@@ -27,6 +30,8 @@ function mostrarMago() {
   imagen.alt = "foto mago";
   oro.textContent = "150";
   vida.textContent = "70";
+  titulo.textContent = "";
+  
 }
 
 function mostrarPick() {
@@ -36,6 +41,7 @@ function mostrarPick() {
     "Pick es un minero legendario que cava en las profundidades de las cuevas buscando tesoros.";
   imagen.src = "../Cosas/valkiria.png";
   imagen.alt = "foto valkiria";
+  titulo.textContent = "";
 }
 
 function mostrarJon() {
@@ -46,6 +52,7 @@ function mostrarJon() {
   imagen.src =
     "../Cosas/pngtree-mine-cave-entrance-with-railway-in-cartoon-style-isolated-on-white-background-picture-image_7836835.png";
   imagen.alt = "foto john";
+  titulo.textContent = "";
 }
 
 mago.addEventListener("click", mostrarMago);

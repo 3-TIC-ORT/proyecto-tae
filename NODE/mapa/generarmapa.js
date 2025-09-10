@@ -1,5 +1,6 @@
 import { subscribeGETEvent, subscribePOSTEvent, realTimeEvent, startServer } from "soquetic";
-function generarmapa(cantidadpisos){
+function generarmapa(query){
+let cantidadpisos = parseInt(query.cantidadpisos);
 let grafo = [];
 let conexiones = [];
 let finalboss = ["Final Boss"]

@@ -5,23 +5,24 @@ let estado = {
     defendiendo: "defendiendo",
     habilidad: "habilidad",
     aturdido: "aturdido",
-    debuffeo: "debuffeo"
+    debuffeo: "debuffeo",
+    atacar: "atacar"
 }
 
 function verestado(monstruo, dañorecibido, cartasjugadas, buffeosjugador, condicionhabilidad){
-  
+
   monstruo.vida = monstruo.vida -dañorecibido;
     if (monstruo.vida <= 0) {
         return estado.muerto
       }
-    if(condicionhabilidad === true){
+    else if(condicionhabilidad === true){
         return estado.habilidad
       }
-    if (monstruo.vida <= (monstruo.vidamax/10*3)) {
+    else if (monstruo.vida <= (monstruo.vidamax/10*3)) {
         monstruo.vida = monstruo.vida + monstruo.vida * (0.3 + Math.random() * 0.2);
         return estado.curarse
       }
-    if (dañorecibido > 30) {
+    else if (dañorecibido > 30) {
         return estado.defendiendo
       }
     for (let i = 0; i <= cartasjugadas.length ; i++){
@@ -29,8 +30,11 @@ function verestado(monstruo, dañorecibido, cartasjugadas, buffeosjugador, condi
           return estado.aturdido
         }
       }
-    if (buffeosJugador > 0) {
+    if (buffeosjugador > 0) {
         return estado.debuffeo;
       }
+    else{
+      return estado.atacar
+    }
 
 }

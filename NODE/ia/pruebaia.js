@@ -1,10 +1,22 @@
-import { verestado,estado } from "./ia.js";
+import { verestado} from "./ia.js";
 import fs from "fs";
-let mounstros = JSON.parse(fs.readFileSync("./mounstros.json","utf-8"));
-console.log(mounstros)
-let dañorecibido = 0;
-let mounstro = [{nombre:"slime",vida:30,vidamax:80,habilidad:false}]
-mounstro[0].habilidad = mounstro[0].vida <= mounstro[0].vidamax / 2;
-let cartasjugadas = ["golpe","aturde"];
-let buffeosJugador = 3
-console.log(verestado(mounstro[0], dañorecibido, cartasjugadas, buffeosJugador, mounstro[0].habilidad))
+let  mounstros =[{
+    nombre : "",
+    recompenzas : 0,
+    habilidad : "",
+    reliquia : false,
+    tipo : "",
+    cartas : 0
+    }
+]
+let mounstro = {}
+mounstros = JSON.parse(fs.readFileSync("jsons/mounstros.json","utf-8"));
+for(let i = 0;i < mounstros.lenght;i++){
+    if(mounstros[i].nombre === "slime"){
+        mounstro = mounstros[i];
+    }
+}
+let dañorecibido = 50;
+let cartasjugadas = ["golpe"];
+let buffeosJugador = 0
+console.log(verestado(mounstro, dañorecibido, cartasjugadas, buffeosJugador, mounstro.habilidad))

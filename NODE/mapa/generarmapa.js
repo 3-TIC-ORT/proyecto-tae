@@ -1,4 +1,5 @@
 import { subscribeGETEvent, subscribePOSTEvent, realTimeEvent, startServer } from "soquetic";
+
 function generarmapa(query){
 let cantidadpisos = query && query.cantidadpisos ? parseInt(query.cantidadpisos) : 0;
 console.log("Recibí petición con cantidadpisos =", cantidadpisos);
@@ -10,9 +11,9 @@ function palabraaleatoria() {
 
   if (rand < 40) {
       return "M"; 
-  } else if (rand < 60) {
+  } else if (rand < 65) {
       return "T"; 
-  } else if (rand < 70) {
+  } else if (rand < 80) {
       return "F"; 
   } else {
       return "E"; 
@@ -28,7 +29,10 @@ for(let z = 1; z <= numeroAleatorio(); z++){
   if(i === 0){
     piso.push(i+"-"+z+" "+"M")
   }
-  else {
+  else if(i === cantidadpisos){
+    piso.push(i+"-"+z+" "+"F")  
+  }
+  else{
     piso.push(i+"-"+z+" "+palabraaleatoria())  
   }
 }

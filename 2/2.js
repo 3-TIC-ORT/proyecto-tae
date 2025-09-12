@@ -12,6 +12,7 @@ let titulo = document.getElementById("titulo");
 let atras = document.getElementById("atras");
 let poder = document.getElementById("poder");
 let descpoder = document.getElementById("descpoder");
+let foto = document.getElementById("simbolo");
 
 function volver() {
   window.location.href = "../1/index.html"
@@ -35,6 +36,7 @@ function mostrarBear() {
   oro.textContent = "99";
   poder.textContent = "Escudo de Hierro";
   descpoder.textContent = "Cada vez que termina el combate se cura 6 de vida.";
+  foto.src = "../Cosas/escudo.png"
   mago.style.filter = "none";
   jon.style.filter = "none";
   pick.style.filter = "none";

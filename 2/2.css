@@ -23,9 +23,23 @@ body {
 }
 .atras{
   border: black 2px solid;
+  height: 4rem;
+  aspect-ratio: 4/3;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 2.8rem;
+  cursor: pointer;
 }
 .avanzar{
   border: black 2px solid;
+  height: 4rem;
+  aspect-ratio: 4/3;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  font-size: 2.8rem;
+  cursor: pointer;
 }
 header {
   text-align: center;
@@ -77,11 +91,19 @@ header {
   flex-direction: row;
   justify-content: space-around;
 }
-.nombre {
-  font-size: 4rem;
-}
 .desc {
   font-size: 2rem;
+  color: white;
+}
+.nombre{
+  margin: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.img{
+  max-height: 80vh;
+
 }
 .conjunto {
   max-width: 50%;
@@ -120,6 +142,7 @@ img {
   background-position: left center;
   padding-left: 3rem; /* Espacio para el icono */
   margin-bottom: 0.5rem;
+  font-size: 1.5rem;
 }
 .vida {
   background-image: url(../Cosas/heart_98495.png); /* Tu icono */
@@ -128,4 +151,9 @@ img {
   background-position: left center;
   padding-left: 3rem; /* Espacio para el icono */
   margin-bottom: 0.5rem;
+  color: red;
+  font-size: 1.5rem;
+}
+.poder{
+  color: blueviolet;
 }

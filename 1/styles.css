@@ -6,56 +6,35 @@
 
 }
 
-h1{
-    color: #000;
-font-family: "Inknut Antiqua";
-font-size: 3.5rem;
+.titulo{
+height: 23.25rem;
+align-self: stretch;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 display: flex;
-width: 100%;
-height: 2.5625rem;
-flex-direction: column;
 justify-content: center;
-flex-shrink: 0;
-margin-top: 5rem;
-/*margin: 148px 149px 59px 149px;*/
-text-align: center;
-}
-h2{
-    color: #000;
-font-family: "Inknut Antiqua";
-font-size: 3.375rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-display: flex;
-width: 100%;
-height: 2.3125rem;
-flex-direction: column;
-justify-content: center;
-flex-shrink: 0;
-text-align: center;
-/*margin: 59px 633px 0px 633px;*/
+position: relative;
+top: 50px;
+font-family: "Dela Gothic One", sans-serif;
+font-size: 12rem;
+color: black;
+z-index: 1;
+margin: 0;
 }
 
 button {
-flex-shrink: 0;
-color: #000;
-font-family: Inter;
-
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-border-radius: 1.25rem;
-background: #D9D9D9;
-display:flex;
-justify-content: center;
-align-items: center;
-border:none;
-transition: transform 0.2s ease;
-
+  color: #000;
+  font-family: "Inknut Antiqua", serif;
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  transition: transform 0.2s ease;
+  margin-top: 1rem;
 }
 
 #boton1 {
@@ -123,10 +102,9 @@ button:active{
     font-weight: 900;
     font-style: normal;
   }
- body {
-  background: linear-gradient(180deg, #121212 0%, #430A0A 100%);
- } 
- .abajo {
-  display: flex;
-  justify-content: flex-end;
- }
+  .dela-gothic-one-regular {
+    font-family: "Dela Gothic One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  

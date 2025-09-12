@@ -11,12 +11,13 @@ let  mounstros =[{
 ]
 let mounstro = {}
 mounstros = JSON.parse(fs.readFileSync("jsons/mounstros.json","utf-8"));
-for(let i = 0;i < mounstros.lenght;i++){
+for(let i = 0;i < mounstros.length;i++){
     if(mounstros[i].nombre === "slime"){
         mounstro = mounstros[i];
     }
 }
-let dañorecibido = 50;
+console.log(mounstro.habilidad)
+let dañorecibido = 0;
 let cartasjugadas = ["golpe"];
 let buffeosJugador = 0
 console.log(verestado(mounstro, dañorecibido, cartasjugadas, buffeosJugador, mounstro.habilidad))

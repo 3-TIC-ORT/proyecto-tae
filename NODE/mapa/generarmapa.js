@@ -21,9 +21,9 @@ let conexiones = [];
 let finalboss = ["Final Boss"]
 function palabraaleatoria() {
   const rand = Math.random() * 100;
-  if (rand < 40) {
+  if (rand < 30) {
       return "M"; 
-  } else if (rand < 65) {
+  } else if (rand < 80) {
       return "T"; 
   } else if (rand < 80) {
       return "F"; 

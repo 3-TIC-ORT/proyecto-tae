@@ -2,7 +2,7 @@
     {
         "nombre": "rata hambrienta",
         "recompenzas": 15,
-        "habilidad":"vacio",
+        "habilidad":"Ataca dos veces seguidas, pero el segundo ataque tiene un 50% menos de daño",
         "reliquia": false,
         "tipo":"normal",
         "cartas":1
@@ -10,7 +10,7 @@
     {
         "nombre": "murcielago sangriento",
         "recompenzas": 12,
-        "habilidad":"vacio",
+        "habilidad":" Cuando ataca, roba vida al jugador equivalente al 30% del daño causado.",
         "reliquia":false,
         "tipo":"normal",
         "cartas":1
@@ -18,7 +18,7 @@
     {
         "nombre":"guerrero caido",
         "recompenzas": 22,
-        "habilidad":"vacio",
+        "habilidad":"Si recibe daño, su siguiente ataque inflige daño extra",
         "reliquia":false,
         "tipo":"normal",
         "cartas":1
@@ -26,7 +26,7 @@
     {
         "nombre":"carroñero putrefacto",
         "recompenzas": 18,
-        "habilidad":"vacio",
+        "habilidad":"Al derrotar a un enemigo, se cura un 20% de su vida máxima.",
         "reliquia":false,
         "tipo":"normal",
         "cartas":1
@@ -34,7 +34,7 @@
     {
         "nombre":"slime",
         "recompenzas": 20,
-        "habilidad":"vacio",
+        "habilidad":"Cuando su vida baja de el 50% se divide en 2 slimes mas chicos con la vida del slime principal",
         "reliquia":false,
         "tipo":"normal",
         "cartas":1
@@ -42,7 +42,7 @@
     {
         "nombre":"el centinela",
         "recompenzas": 40,
-        "habilidad":"vacio",
+        "habilidad":" Reduce el daño recibido en un 20% y contraataca con un golpe moderado cuando recibe ataques fuertes (>30 daño).",
         "reliquia":"elite",
         "tipo":"elite",
         "cartas":1        
@@ -50,7 +50,7 @@
     {
         "nombre":"el guardian de hueso",
         "recompenzas": 45,
-        "habilidad":"vacio",
+        "habilidad":"Gana un escudo que absorbe daño equivalente al 30% de su vida máxima durante 3 turnos.",
         "reliquia":"elite",
         "tipo":"elite",
         "cartas":1          
@@ -58,7 +58,7 @@
     {
         "nombre":"el idolo maldito",
         "recompenzas": 50,
-        "habilidad":"vacio",
+        "habilidad":" Aplica una maldición al jugador que reduce el daño de sus ataques en un 2 0% por 3 turnos.",
         "reliquia":"elite",
         "tipo":"elite",
         "cartas":1   
@@ -66,7 +66,7 @@
     {
         "nombre":"el devorador eterno",
         "recompenzas": 125,
-        "habilidad":"vacio",
+        "habilidad":"Al comienzo de cada turno, El Devorador Eterno consume una carta aleatoria del mazo del jugador, eliminándola de la partida. Por cada 3 cartas consumidas, gana una mejora permanente:+1 de fuerza +1 de regeneración por turno +1 de armadura permanente",
         "reliquia":"jefe",
         "tipo":"jefe",
         "cartas":3    

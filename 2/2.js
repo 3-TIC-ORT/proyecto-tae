@@ -9,15 +9,32 @@ let imagen = document.getElementById("imagen-contenido");
 let vida = document.getElementById("vida");
 let oro = document.getElementById("oro");
 let titulo = document.getElementById("titulo");
+let atras = document.getElementById("atras");
+let poder = document.getElementById("poder");
+let descpoder = document.getElementById("descpoder");
+
+function volver() {
+  window.location.href = "../1/index.html"
+}
 
 function mostrarBear() {
   body.style.backgroundColor = "#C7AE20";
   h1.textContent = "The Bear";
   parrafo.textContent =
-    "El oso es una criatura de las montañas de Córdoba que le encanta picar piedra y se alimenta a base de monstruos y elixires. Su hobby principal es programar.";
-  imagen.src = "../Cosas/bear.png";
+    "El ultimo de su manada. Vendio su alma para olvidar su vida pasada.";
+  imagen.src = "../Cosas/oso.png";
   imagen.alt = "foto bear";
   titulo.textContent = "";
+  h1.style.fontFamily = "Sedgwick Ave Display, cursive";
+  h1.style.fontWeight = "400";
+  h1.style.fontStyle = "normal";
+  h1.style.color = "#D52CB0"
+  h1.style.fontSize = "10rem";
+  h1.style.backgroundImage = "url('../Cosas/image 47.png')";
+  vida.textContent = "80 PV";
+  oro.textContent = "99";
+  poder.textContent = "Escudo de Hierro";
+  descpoder.textContent = "Cada vez que termina el combate se cura 6 de vida.";
   mago.style.filter = "none";
   jon.style.filter = "none";
   pick.style.filter = "none";
@@ -77,3 +94,4 @@ mago.addEventListener("click", mostrarMago);
 jon.addEventListener("click", mostrarJon);
 bear.addEventListener("click", mostrarBear);
 pick.addEventListener("click", mostrarPick);
+atras.addEventListener("click", volver)

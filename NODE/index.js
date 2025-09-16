@@ -34,32 +34,40 @@ let reliquias = [{nombre:"armadura de cobre", descripcion:"Al inicio de cada com
 function quepersonaje(numpersonaje){
     switch(numpersonaje){
         case 1:
-            personaje = "warrior";
-            reliquiainicial = "1";
-            vidamaxima= 80;
-            oroinicial = 99;
+            personaje = {
+            nombre:"warrior",
+            reliquiainicial: "1",
+            vidamaxima: 80,
+            oroinicial: 99
+        }
             break
         case 2:
-            personaje = "mago";
-            reliquiainicial = "2";
-            vidamaxima= 70;
-            oroinicial= 150;
+            personaje = {
+            nombre: "mago",
+            reliquiainicial: "2",
+            vidamaxima: 70,
+            oroinicial: 150
+        }
             break
         case 3:
-            personaje = "valkiria";
-            reliquiainicial = "3";
-            vidamaxima= 80;
-            oroinicial= 125;
+            personaje = {
+            nombre: "valkiria",
+            reliquiainicial: "3",
+            vidamaxima: 80,
+            oroinicial: 125
+        }
             break
         case 4:
-            personaje = "packpocket";
-            reliquiainicial = "4";
-            vidamaxima= 75;
-            oroinicial= 50;
+            personaje = {
+            nombre: "packpocket",
+            reliquiainicial: "4",
+            vidamaxima: 75,
+            oroinicial: 50
+        }
             break
 
     }
-    console.log(personaje + " " + reliquiainicial + " " + vidamaxima + " " + oroinicial)
+    return personaje
 }
  /**
   * Gestiona un mazo de cartas, permitiendo mostrar, robar, agregar y contar las cartas.
@@ -75,23 +83,21 @@ function quepersonaje(numpersonaje){
 function mazo(accion, carta = null){
     switch (accion){
         case "mostrar":
-        console.log("las cartas en tu mazo son: " + cartas);
-        break
+        return cartas;
         case "robas":
         let cartarobada = cartas.shift();
-        console.log("la proxima carta a robar es: " + cartarobada);
-        break
+        return  cartarobada;
+
         case "agregar":
         if(carta){
             cartas.push(carta);
-            console.log("agregaste la carta " + carta + " a tu mazo");
+            return carta;
         }
-        break
+        
         case "cantidad":
-        console.log(cartas.length);
-        break
+        return(cartas.length);
         default:
-        console.log("no se reconocio la accion")
+        return("Error")
     }
 }
 /**

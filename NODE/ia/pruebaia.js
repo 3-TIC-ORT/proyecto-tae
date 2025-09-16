@@ -16,8 +16,9 @@ for(let i = 0;i < mounstros.length;i++){
         mounstro = mounstros[i];
     }
 }
-console.log(mounstro.habilidad)
+let habilidad = eval(mounstro.habilidad)
+console.log(habilidad)
 let dañorecibido = 0;
 let cartasjugadas = ["golpe"];
 let buffeosJugador = 0
-console.log(verestado(mounstro, dañorecibido, cartasjugadas, buffeosJugador, mounstro.habilidad))
+console.log(verestado(mounstro, dañorecibido, cartasjugadas, buffeosJugador, habilidad))

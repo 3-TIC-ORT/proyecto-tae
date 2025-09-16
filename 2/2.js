@@ -23,8 +23,9 @@ function mostrarBear() {
   h1.textContent = "The Bear";
   parrafo.textContent =
     "El ultimo de su manada. Vendio su alma para olvidar su vida pasada.";
-  imagen.src = "../Cosas/oso.png";
+  imagen.src = "../Cosas/oso-removebg-preview.png";
   imagen.alt = "foto bear";
+  imagen.style.marginTop = "2rem";
   titulo.textContent = "";
   h1.style.fontFamily = "Sedgwick Ave Display, cursive";
   h1.style.fontWeight = "400";

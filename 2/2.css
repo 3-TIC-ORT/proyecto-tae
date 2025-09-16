@@ -9,7 +9,7 @@ body {
 }
 .titulo {
   text-align: center;
-  font-size: 12rem;
+  font-size: 12rem; 
   font-family: "Dela Gothic One", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -22,14 +22,18 @@ body {
   width: 100%;
 }
 .atras {
-  border: black 2px solid;
   height: 4rem;
   aspect-ratio: 4/3;
   position: fixed;
   bottom: 0;
   left: 0;
-  font-size: 2.8rem;
   cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: clamp(1rem, 3vw, 2.5rem);
+  background-image: url(../Cosas/image34.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 .avanzar {
   border: black 2px solid;
@@ -38,8 +42,9 @@ body {
   position: fixed;
   bottom: 0;
   right: 0;
-  font-size: 2.8rem;
   cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: clamp(1rem, 3vw, 2.8rem);
 }
 header {
   text-align: center;
@@ -50,13 +55,14 @@ header {
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 12rem;
+  gap: 10rem;
+  flex-wrap: wrap;
 }
 .magician,
 .bear,
 .pick,
 .jon {
-  height: 5rem;
+  height: 6rem;
   aspect-ratio: 1/1;
   background-color: darkgray;
   position: relative;
@@ -68,22 +74,22 @@ header {
 .bear {
   background-image: url(../Cosas/Group\ 1.png);
   background-repeat: no-repeat;
-  background-size: 5rem 5rem;
+  background-size: 6rem;
 }
 .pick {
   background-image: url(../Cosas/Group\ 2.png);
   background-repeat: no-repeat;
-  background-size: 5rem 5rem;
+  background-size: 6rem;
 }
 .jon {
   background-image: url(../Cosas/Group\ 4.png);
   background-repeat: no-repeat;
-  background-size: 5rem 5rem;
+  background-size: 6rem;
 }
 .magician {
   background-image: url();
   background-repeat: no-repeat;
-  background-size: 5rem 5rem;
+  background-size: 6rem;
 }
 .datos {
   margin-left: 3%;
@@ -100,12 +106,14 @@ header {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  width: fit-content;
+  height: auto;
 }
 .img {
-  max-height: 80vh;
+  max-width: 100%;
+  height: auto;
 }
 .conjunto {
-  height: 0;
   max-width: 50%;
 }
 
@@ -158,9 +166,14 @@ img {
   color: blueviolet;
   font-size: 1.5rem;
 }
-.descpoder{
+.descpoder {
   font-size: 1.2rem;
 }
-.poderes{
-  
+.poderes {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.simbolo {
+  height: fit-content;
 }

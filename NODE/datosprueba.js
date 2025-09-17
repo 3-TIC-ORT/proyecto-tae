@@ -1,4 +1,5 @@
 import { quepersonaje, mazo, sumaescudo, reliquia } from './index.js';
+export {personaje,cartas,reliquias}
 let personaje = quepersonaje(1);
 console.log(personaje)
 let cartas = mazo("mostrar")
@@ -7,6 +8,7 @@ console.log(sumaescudo(45));
 console.log(reliquia("armadura de cobre"))
 console.log(reliquia(0,{nombre:"arveja",descripcion:"arveja laser"}))
 console.log(reliquia("arveja"))
+let reliquias = reliquia(0)
 
 /*
 console.log("en tu mazo hay: " + mazo("mostrar"));

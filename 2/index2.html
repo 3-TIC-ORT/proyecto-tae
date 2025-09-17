@@ -20,6 +20,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -29,10 +32,12 @@
           src="../Cosas/db7e7b456822ba8047868b00ed86ffe2dfc33101.png"
           alt=""
         />
-      <div class="conjunto">
+      <div class="conjunto" id="conjunto">
       <h1 id="h1" class="nombre"></h1>
-        <p class="vida" id="vida"></p>
-        <p class="oro" id="oro"></p>
+      <div class="stats">
+      <p class="vida" id="vida"></p>
+      <p class="oro" id="oro"></p>
+    </div>
       <p id="p" class="desc"></p>
       <div class="poderes">
         <img src="" alt="" class="simbolo" id="simbolo">
@@ -46,13 +51,13 @@
     <h1 id="titulo" class="titulo">TAE</h1>
     <div class="container">
       <header>
-        <h1>Elige un personaje</h1>
+        <h1 id="elige">Elige un personaje</h1>
       </header>
       <main class="personajes">
         <div id="bear" class="bear"></div>
+        <div id="pick" class="pick"></div>
         <div id="magician" class="magician"></div>
         <div id="jon" class="jon"></div>
-        <div id="pick" class="pick"></div>
       </main>
     </div>
     <div class="atras" id="atras">Atras</div>

@@ -1,3 +1,9 @@
+.pickpocket {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   min-height: 100vh;
   min-width: 100vw;
@@ -9,10 +15,12 @@ body {
 }
 .titulo {
   text-align: center;
-  font-size: 12rem; 
+  font-size: 12rem;
   font-family: "Dela Gothic One", sans-serif;
   font-weight: 400;
   font-style: normal;
+  width: 100vw;
+  margin: 0;
 }
 .container {
   position: fixed;
@@ -22,29 +30,36 @@ body {
   width: 100%;
 }
 .atras {
-  height: 4rem;
+  height: 5rem;
   aspect-ratio: 4/3;
   position: fixed;
   bottom: 0;
   left: 0;
   cursor: pointer;
-  padding: 0.5rem 1rem;
-  font-size: clamp(1rem, 3vw, 2.5rem);
+  padding: 1rem;
+  font-size: 2rem;
   background-image: url(../Cosas/image34.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  display: flex;
+  align-items: center;
 }
 .avanzar {
-  border: black 2px solid;
-  height: 4rem;
+  height: 5rem;
   aspect-ratio: 4/3;
   position: fixed;
   bottom: 0;
   right: 0;
   cursor: pointer;
-  padding: 0.5rem 1rem;
-  font-size: clamp(1rem, 3vw, 2.8rem);
+  padding: 1rem;
+  font-size: 2rem;
+  background-image: url(../Cosas/pinturaizquierda.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  align-items: center;
 }
 header {
   text-align: center;
@@ -82,12 +97,12 @@ header {
   background-size: 6rem;
 }
 .jon {
-  background-image: url(../Cosas/Group\ 4.png);
+  background-image: url();
   background-repeat: no-repeat;
   background-size: 6rem;
 }
 .magician {
-  background-image: url();
+  background-image: url(../Cosas/Group\ 4.png);
   background-repeat: no-repeat;
   background-size: 6rem;
 }
@@ -116,7 +131,10 @@ header {
 .conjunto {
   max-width: 50%;
 }
-
+.stats{
+  display: flex;
+  gap: 5rem;
+}
 .magician:hover {
   border: whitesmoke 1px solid;
   transform: scale(1.1);
@@ -144,8 +162,8 @@ img {
   padding-left: 0;
 }
 .oro {
-  background-image: url(../Cosas/26303c60f3014dec4fc6dc709dd5ac429c526044.png); /* Tu icono */
-  background-size: 2rem; /* Ajusta tamaño */
+  background-image: url(../Cosas/oro.png); /* Tu icono */
+  background-size: 1.6rem; /* Ajusta tamaño */
   background-repeat: no-repeat;
   background-position: left center;
   padding-left: 3rem; /* Espacio para el icono */

@@ -3,9 +3,11 @@ let personaje = quepersonaje(1);
 console.log(personaje)
 let cartas = mazo("mostrar")
 console.log(cartas)
-sumaescudo(45);
-reliquia(1,{nombre:"arveja",descripcion:"arveja laser"})
-reliquia(4)
+console.log(sumaescudo(45));
+console.log(reliquia("armadura de cobre"))
+console.log(reliquia(0,{nombre:"arveja",descripcion:"arveja laser"}))
+console.log(reliquia("arveja"))
+
 /*
 console.log("en tu mazo hay: " + mazo("mostrar"));
 console.log("robaste la carta: " + mazo("robas"));

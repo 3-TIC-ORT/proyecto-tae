@@ -15,12 +15,14 @@ let descpoder = document.getElementById("descpoder");
 let foto = document.getElementById("simbolo");
 let elige = document.getElementById("elige");
 let conjunto = document.getElementById("conjunto");
+let avanzar = document.getElementById("avanzar");
 
 function volver() {
   window.location.href = "../1/index.html";
 }
 
 function mostrarMago() {
+  avanzar.style.opacity ="100";
   body.style.backgroundColor = "purple";
   h1.textContent = "The Magician";
   parrafo.textContent =
@@ -37,6 +39,7 @@ function mostrarMago() {
     "drop-shadow(0 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0 -0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem -0.03rem 0.2rem rgba(255, 253, 253, 0.5)) drop-shadow(0.03rem -0.03rem 0.2rem rgba(255, 250, 250, 0.5)) drop-shadow(-0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5))";
 }
 function mostrarBear() {
+  avanzar.style.opacity ="100";
   body.style.backgroundColor = "#C7AE20";
   h1.textContent = "The Bear";
   conjunto.style.marginTop = "1rem";
@@ -67,6 +70,7 @@ function mostrarBear() {
 }
 
 function mostrarPick() {
+  avanzar.style.opacity ="100";
   body.style.backgroundColor = "#000A57";
   imagen.alt = "foto pick";
   titulo.textContent = "";
@@ -76,7 +80,7 @@ function mostrarPick() {
   h1.textContent = "The Pickpocket";
   oro.textContent = "50";
   oro.style.color = "white";
-  poder.style.color = "white";
+  poder.style.color = "gold";
   descpoder.style.color = "white";
   imagen.src = "../Cosas/pick.png";
   imagen.style.transform = "scale(1.1)";
@@ -98,6 +102,7 @@ function mostrarPick() {
 }
 
 function mostrarJon() {
+  avanzar.style.opacity ="100";
   body.style.backgroundColor = "gold";
   h1.textContent = "Jon the Brave";
   parrafo.textContent =

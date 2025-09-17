@@ -114,7 +114,7 @@ function mazo(accion, carta = null){
  */
 function sumaescudo(escudoagregado){
     cantidadescudo = cantidadescudo + escudoagregado;
-    console.log("cantidad de escudo del jugador es: " + cantidadescudo);
+    return cantidadescudo;
 }
 /**
  * Muestra información de una reliquia específica y opcionalmente agrega una nueva reliquia al arreglo.
@@ -134,14 +134,21 @@ function sumaescudo(escudoagregado){
  * reliquia(1, { nombre: "Reliquia nueva", descripcion: "Una reliquia mágica." });
  * // Muestra la primera reliquia y luego agrega la nueva reliquia al arreglo.
  */
-function reliquia(indice, agregar = null){
+function reliquia( nombrereliquia , agregar = null){
+    if(nombrereliquia === 0 || nombrereliquia === "ninguno" && agregar){
+        reliquias.push(agregar);
+        return reliquias[reliquias.length-1]
+    }
+    if(nombrereliquia === 0 || nombrereliquia === "ninguno" && agregar === null){
+    return reliquias    
+    }
+    
+    else{
     for(let i = 0; i < reliquias.length;i++){
-        if (reliquias[i] === reliquias[indice-1]){
-            console.log(reliquias[i].nombre + ". " + reliquias[i].descripcion);
+        if (reliquias[i].nombre === nombrereliquia){
+            return ({nombre:reliquias[i].nombre,
+                  descripcion:reliquias[i].descripcion});
         }
     }
-    if(agregar){
-        reliquias.push(agregar);
-        console.log("se agrego la reliquia: " + agregar);
     }
 }

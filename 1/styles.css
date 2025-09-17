@@ -112,12 +112,13 @@ body {
   background-color: white;
   background-image: url('../Cosas/Anotación 2025-09-16 140629.png');
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  background-position: center 30%;
+  background-size: 110%;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
   flex-direction: column;
+  background-blend-mode: multiply;
 }

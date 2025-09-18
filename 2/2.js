@@ -23,7 +23,7 @@ function volver() {
 
 function mostrarMago() {
   avanzar.style.opacity = "100";
-  body.style.backgroundColor = "#black";
+  body.style.backgroundColor = "black";
   imagen.alt = "foto mago";
   titulo.textContent = "";
   conjunto.style.marginTop = "1rem";
@@ -34,27 +34,29 @@ function mostrarMago() {
   oro.style.color = "white";
   poder.style.color = "white";
   descpoder.style.color = "white";
-  imagen.src = "../Cosas/pick.png";
-  imagen.style.transform = "scale(1.1)";
+  imagen.src = "../Cosas/mago.png";
   imagen.style.marginTop = "3rem";
+  imagen.style.height = "90vh";
   vida.textContent = "70 PV";
   poder.textContent = "Báculo del Archimago";
   h1.style.color = "white";
-  h1.style.fontSize = "6rem";
+  h1.style.fontSize = "8rem";
   h1.style.backgroundImage = "url()";
   descpoder.textContent =
     "Nunca tuvo muchos amigos, pero siempre encontraba un refugio.";
-  foto.src = "../Cosas/trebol.png";
+  foto.src = "../Cosas/bara.svg";
   parrafo.textContent = "Empezo desde chico. Ahora maneja todo un imperio.";
   pick.style.filter = "none";
   jon.style.filter = "none";
   bear.style.filter = "none";
   mago.style.filter =
-    "drop-shadow(0 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0 -0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem -0.03rem 0.2rem rgba(255, 253, 253, 0.5)) drop-shadow(0.03rem -0.03rem 0.2rem rgba(255, 250, 250, 0.5)) drop-shadow(-0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5))";}
+    "drop-shadow(0 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0 -0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem -0.03rem 0.2rem rgba(255, 253, 253, 0.5)) drop-shadow(0.03rem -0.03rem 0.2rem rgba(255, 250, 250, 0.5)) drop-shadow(-0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5))";
+}
 function mostrarBear() {
   avanzar.style.opacity = "100";
   body.style.backgroundColor = "#C7AE20";
   h1.textContent = "The Bear";
+  imagen.style.height = "90vh";
   conjunto.style.marginTop = "1rem";
   parrafo.textContent =
     "El ultimo de su manada. Vendio su alma para olvidar su vida pasada.";
@@ -88,6 +90,7 @@ function mostrarPick() {
   body.style.backgroundColor = "#000A57";
   imagen.alt = "foto pick";
   titulo.textContent = "";
+  imagen.style.height = "90vh";
   conjunto.style.marginTop = "1rem";
   elige.style.color = "white";
   h1.style.fontFamily = "EB Garamond, serif";
@@ -97,7 +100,6 @@ function mostrarPick() {
   poder.style.color = "gold";
   descpoder.style.color = "white";
   imagen.src = "../Cosas/pick.png";
-  imagen.style.transform = "scale(1.1)";
   imagen.style.marginTop = "3rem";
   vida.textContent = "75 PV";
   poder.textContent = "Trébol de oro";
@@ -118,6 +120,7 @@ function mostrarPick() {
 function mostrarJon() {
   avanzar.style.opacity = "100";
   body.style.backgroundColor = "gold";
+  imagen.style.height = "90vh";
   h1.textContent = "Jon the Brave";
   parrafo.textContent =
     "Jon es un guerrero audaz que nunca teme enfrentarse a dragones y demonios.";

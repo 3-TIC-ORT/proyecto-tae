@@ -1,5 +1,11 @@
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 
 .garamond {
   font-family: "EB Garamond", serif;
@@ -39,14 +45,14 @@ body {
   width: 100%;
 }
 .atras {
-  height: 6rem;
+  height: 13vh;
   aspect-ratio: 4/3;
   position: fixed;
   bottom: 0;
   left: 0;
   cursor: pointer;
   padding: 1rem;
-  font-size: 2rem;
+  font-size: 4vh;
   background-image: url(../Cosas/image34.png);
   background-repeat: no-repeat;
   background-position: center;
@@ -57,14 +63,14 @@ body {
 .avanzar {
   transition: opacity ease 0.2s;
   opacity: 0;
-  height: 6rem;
+  height: 13vh;
   aspect-ratio: 4/3;
   position: fixed;
   bottom: 0;
   right: 0;
   cursor: pointer;
   padding: 1rem;
-  font-size: 1.88rem;
+  font-size: 3.2vh;
   background-image: url(../Cosas/pinturaizquierda.png);
   background-repeat: no-repeat;
   background-position: center;
@@ -141,7 +147,7 @@ header {
 }
 .img {
   max-width: 100%;
-  height: auto;
+  height: 0;
   transition: all ease 0.6s;
 }
 .conjunto {

@@ -13,7 +13,7 @@ import { subscribeGETEvent, subscribePOSTEvent, realTimeEvent, startServer } fro
  *   - grafo: Array de pisos, donde cada piso es un array de nodos en formato "i-z tipo".
  *   - conexiones: Array de pares [origen, destino] que representan conexiones entre pisos consecutivos.
  */
-function generarmapa(query){
+export function generarmapa(query){
 let cantidadpisos = query && query.cantidadpisos ? parseInt(query.cantidadpisos) : 0;
 console.log("Recibí petición con cantidadpisos =", cantidadpisos);
 let grafo = [];

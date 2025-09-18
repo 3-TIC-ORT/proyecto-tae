@@ -8,8 +8,5 @@
         "start": "node index.js"
     },
     "author": "Julian G, Joaquin S, Ivan R y lorenzo L",
-    "license": "ISC",
-    "dependencies": {
-        "soquetic": "^1.4.1"
-    }
+    "license": "ISC"
 }

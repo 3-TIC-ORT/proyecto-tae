@@ -43,9 +43,9 @@ function mostrarMago() {
   h1.style.fontSize = "8rem";
   h1.style.backgroundImage = "url()";
   descpoder.textContent =
-    "Nunca tuvo muchos amigos, pero siempre encontraba un refugio.";
+    "Incrementa tu maná maximo en 1";
   foto.src = "../Cosas/bara.svg";
-  parrafo.textContent = "Empezo desde chico. Ahora maneja todo un imperio.";
+  parrafo.textContent = "Nunca tuvo muchos amigos, pero siempre encontraba un refugio.";
   pick.style.filter = "none";
   jon.style.filter = "none";
   bear.style.filter = "none";

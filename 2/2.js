@@ -40,7 +40,7 @@ function mostrarMago() {
   vida.textContent = "70 PV";
   poder.textContent = "Báculo del Archimago";
   h1.style.color = "white";
-  h1.style.fontSize = "8rem";
+  h1.style.fontSize = "7.5rem";
   h1.style.backgroundImage = "url()";
   descpoder.textContent =
     "Incrementa tu maná maximo en 1";
@@ -68,7 +68,7 @@ function mostrarBear() {
   h1.style.fontWeight = "400";
   h1.style.fontStyle = "normal";
   h1.style.color = "#D52CB0";
-  h1.style.fontSize = "10rem";
+  h1.style.fontSize = "9rem";
   h1.style.backgroundImage = "url('../Cosas/image 47.png')";
   vida.textContent = "80 PV";
   oro.textContent = "99";

@@ -1,3 +1,8 @@
+
+:root {
+  --mouse: url("../Cosas/mouse.png") 16 16, auto;
+  --pointer: url("../Cosas/pointer.png") 16 16, pointer;
+}
 .contenedor-recompensas{
 padding: 1.25rem;
 border-radius: 0.625rem;
@@ -33,4 +38,7 @@ align-items: center;
     font-family: "Fira Sans", sans-serif;
     font-weight: 800;
     font-style: normal;
+  }
+  body{
+    cursor: var(--mouse);
   }

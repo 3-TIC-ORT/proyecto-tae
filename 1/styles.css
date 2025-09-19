@@ -1,3 +1,10 @@
+:root {
+  --mouse: url("../Cosas/mouse.png") 16 16, auto;
+  --pointer: url("../Cosas/pointer.png") 16 16, pointer;
+}
+body{
+  cursor: var(--mouse);
+}
 .container{
   display: flex;
   flex-direction: column;
@@ -55,7 +62,7 @@ height: 5.1875rem;
 }
 
 button:hover{
-  cursor: pointer;
+  cursor: var(--pointer);
   transform: scale(1.05);
 }
 button:active{

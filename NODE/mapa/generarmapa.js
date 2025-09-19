@@ -1,4 +1,3 @@
-import { subscribeGETEvent, subscribePOSTEvent, realTimeEvent, startServer } from "soquetic";
 /**
  * Genera un grafo de pisos para un juego o sistema de niveles,
  * asignando nodos a cada piso y creando conexiones aleatorias entre ellos.
@@ -13,7 +12,7 @@ import { subscribeGETEvent, subscribePOSTEvent, realTimeEvent, startServer } fro
  *   - grafo: Array de pisos, donde cada piso es un array de nodos en formato "i-z tipo".
  *   - conexiones: Array de pares [origen, destino] que representan conexiones entre pisos consecutivos.
  */
-function generarmapa(query){
+export function generarmapa(query){
 let cantidadpisos = query && query.cantidadpisos ? parseInt(query.cantidadpisos) : 0;
 console.log("Recibí petición con cantidadpisos =", cantidadpisos);
 let grafo = [];
@@ -69,7 +68,5 @@ for(let w = 0; w < conexiones.length-1;w++){
     w--
   }
 }
-return {grafo, conexiones}
+return {grafo,conexiones}
 }
-subscribeGETEvent("mapa",generarmapa);
-startServer(4000);

@@ -7,6 +7,7 @@
     border: dashed black 0.5vh;
     width: 30rem;
     aspect-ratio: 3/3.5;
+    
 }
 footer{
 display: flex;

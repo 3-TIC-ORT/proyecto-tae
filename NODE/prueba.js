@@ -20,7 +20,7 @@ boton.addEventListener("click", () => {
     });
 });
 guardar.addEventListener("click",() => {
-    postEvent("guardar",(data) => {
+    postEvent("guardar",() => {
         console.log("se a guardado el juego")
         return true
     })})

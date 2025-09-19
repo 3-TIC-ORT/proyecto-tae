@@ -135,11 +135,11 @@ function sumaescudo(escudoagregado){
  * // Muestra la primera reliquia y luego agrega la nueva reliquia al arreglo.
  */
 function reliquia( nombrereliquia , agregar = null){
-    if(nombrereliquia === 0 || nombrereliquia === "ninguno" && agregar){
+    if((nombrereliquia === 0 || nombrereliquia === "ninguno") && agregar){
         reliquias.push(agregar);
         return reliquias[reliquias.length-1]
     }
-    if(nombrereliquia === 0 || nombrereliquia === "ninguno" && agregar === null){
+    if((nombrereliquia === 0 || nombrereliquia === "ninguno") && agregar === null){
     return reliquias    
     }
     

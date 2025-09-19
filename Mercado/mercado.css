@@ -10,7 +10,7 @@
 }
 footer{
 display: flex;
-justify-content: right;
+justify-content: left;
 }
 #avanzar{
     margin: 0;
@@ -26,4 +26,43 @@ justify-content: right;
 }
 #avanzar:active{
     transform: scale(0.95);
+}
+.titulo {
+width: 201px;
+height: 73px;
+flex-shrink: 0;
+color: #000;
+font-family: "Dela Gothic One";
+font-size: 75px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin: 17px 155px 55px 75px;
+}
+.dela-gothic-one-regular {
+    font-family: "Dela Gothic One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+.corazon {
+    display: block;
+    margin: 65.67px 20px 54.77px 155px;
+}
+.arriba {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.vida {
+    font-family: 'Inknut Antiqua', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #CD0003;
+    position: relative;
+    top: 5px;
+}
+.todo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }

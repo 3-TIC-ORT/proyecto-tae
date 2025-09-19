@@ -16,6 +16,10 @@ let foto = document.getElementById("simbolo");
 let elige = document.getElementById("elige");
 let conjunto = document.getElementById("conjunto");
 let avanzar = document.getElementById("avanzar");
+let siMago = false;
+let siBear = false;
+let siPick = false;
+let siJon = false;
 
 function volver() {
   window.location.href = "../1/index.html";
@@ -51,7 +55,11 @@ function mostrarMago() {
   bear.style.filter = "none";
   mago.style.filter =
     "drop-shadow(0 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0 -0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem -0.03rem 0.2rem rgba(255, 253, 253, 0.5)) drop-shadow(0.03rem -0.03rem 0.2rem rgba(255, 250, 250, 0.5)) drop-shadow(-0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5))";
-}
+  siMago = true;
+  siBear = false;
+  siJon = false;
+  siPick = false;
+  }
 function mostrarBear() {
   avanzar.style.opacity = "100";
   body.style.backgroundColor = "#C7AE20";
@@ -83,7 +91,11 @@ function mostrarBear() {
   elige.style.color = "black";
   bear.style.filter =
     "drop-shadow(0 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0 -0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem -0.03rem 0.2rem rgba(255, 253, 253, 0.5)) drop-shadow(0.03rem -0.03rem 0.2rem rgba(255, 250, 250, 0.5)) drop-shadow(-0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5))";
-}
+  siMago = false;
+  siBear = true;
+  siJon = false;
+  siPick = false;
+  }
 
 function mostrarPick() {
   avanzar.style.opacity = "100";
@@ -115,7 +127,11 @@ function mostrarPick() {
   bear.style.filter = "none";
   pick.style.filter =
     "drop-shadow(0 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0 -0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem -0.03rem 0.2rem rgba(255, 253, 253, 0.5)) drop-shadow(0.03rem -0.03rem 0.2rem rgba(255, 250, 250, 0.5)) drop-shadow(-0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5))";
-}
+  siMago = false;
+  siBear = false;
+  siJon = false;
+  siPick = true;
+  }
 
 function mostrarJon() {
   avanzar.style.opacity = "100";
@@ -133,6 +149,24 @@ function mostrarJon() {
   pick.style.filter = "none";
   jon.style.filter =
     "drop-shadow(0 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0 -0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem -0.03rem 0.2rem rgba(255, 253, 253, 0.5)) drop-shadow(0.03rem -0.03rem 0.2rem rgba(255, 250, 250, 0.5)) drop-shadow(-0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5))";
+  siMago = false;
+  siBear = false;
+  siJon = true;
+  siPick = false;
+  }
+
+
+function avanzarMago(){
+  window.location.href = "../mapaMago/index.html";
+}
+function avanzarBear(){
+  window.location.href = "../mapaBear/index.html";
+}
+function avanzarPick(){
+  window.location.href = "../mapaPick/index.html";
+}
+function avanzarJon(){
+  window.location.href = "../mapaJon/index.html";
 }
 
 mago.addEventListener("click", mostrarMago);
@@ -140,3 +174,32 @@ jon.addEventListener("click", mostrarJon);
 bear.addEventListener("click", mostrarBear);
 pick.addEventListener("click", mostrarPick);
 atras.addEventListener("click", volver);
+
+function mapaMago(){
+  if(siMago = true){
+  mago.addEventListener("click", avanzarMago);
+}
+}
+
+function mapaBear(){
+  if(siBear = true){
+  bear.addEventListener("click", avanzarBear);
+}
+}
+
+function mapaPick(){
+  if(siPick = true){
+  pick.addEventListener("click", avanzarPick);
+}
+}
+
+function mapaJon(){
+  if(siJon = true){
+  jon.addEventListener("click", avanzarJon);
+}
+}
+
+mago.addEventListener("click", mapaMago);
+bear.addEventListener("click", mapaBear);
+pick.addEventListener("click", mapaPick);
+jon.addEventListener("click", mapaJon);

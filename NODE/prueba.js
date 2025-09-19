@@ -2,6 +2,7 @@ connect2Server(4000)
 let boton = document.getElementById("boton");
 let input = document.getElementById("input");
 let salida = document.getElementById("salida")
+let guardar = document.getElementById("guardar")
 function mapa(data){
     console.log(data)
 } 
@@ -18,3 +19,8 @@ boton.addEventListener("click", () => {
         salida.innerText = JSON.stringify(data, null, 2);
     });
 });
+guardar.addEventListener("click",() => {
+    postEvent("guardar",(data) => {
+        console.log("se a guardado el juego")
+        return true
+    })})

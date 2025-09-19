@@ -45,10 +45,11 @@ margin: 17px 155px 55px 75px;
     font-weight: 400;
     font-style: normal;
   }
-.corazon {
-    display: block;
-    margin: 65.67px 20px 54.77px 155px;
-}
+  .corazon {
+    height: 30px;
+    margin-left: 65.67px;
+    margin-right: 20px ;
+  }
 .arriba {
     display: flex;
     align-items: center;
@@ -65,5 +66,39 @@ margin: 17px 155px 55px 75px;
 .todo {
     display: flex;
     align-items: center;
-    gap: 20px;
+    height: 100px;
+}
+
+.bolsa {
+    height: 40px;
+    margin-left: 60px;
+    margin-right: 21px;
+  }
+.oro {
+    color: #000;
+    font-family:'Inknut Antiqua', serif ;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    position: relative;
+    top: 5px;
+}
+
+.reliquias {
+    height: 50px;
+    margin-left: 400px;
+  }
+.circulo  {
+    position: absolute;
+    background-color: lightgray;
+    color: black;
+    font-size: 14px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
 }

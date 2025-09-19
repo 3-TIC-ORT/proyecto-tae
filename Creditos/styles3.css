@@ -1,3 +1,7 @@
+:root {
+  --mouse: url("../Cosas/mouse.png") 16 16, auto;
+  --pointer: url("../Cosas/pointer.png") 16 16, pointer;
+}
 .inter-hola {
   font-family: "DM Serif Text", serif;
   font-weight: 400;
@@ -41,7 +45,7 @@ h1 {
   transform: scale(0.8);
 }
 .flecha1:hover{
-  cursor: pointer;
+  cursor: var(--pointer);
 }
 main {
   padding: 1rem;
@@ -49,4 +53,5 @@ main {
 body {
   background: linear-gradient(180deg, #121212 0%, #100A43 100%);
   overflow: hidden;
+  cursor: var(--mouse);
 }

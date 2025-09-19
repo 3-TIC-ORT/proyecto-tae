@@ -1,3 +1,7 @@
+:root {
+  --mouse: url("../Cosas/mouse.png") 16 16, auto;
+  --pointer: url("../Cosas/pointer.png") 16 16, pointer;
+}
 * {
   box-sizing: border-box;
 }
@@ -5,6 +9,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  cursor: var(--mouse);
 }
 
 .garamond {
@@ -26,6 +31,7 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   background-color: #333333;
+  cursor: var(--mouse);
 }
 .titulo {
   margin: 0;
@@ -50,7 +56,7 @@ body {
   position: fixed;
   bottom: 0;
   left: 0;
-  cursor: pointer;
+  cursor: var(--pointer);
   padding: 1rem;
   font-size: 4vh;
   background-image: url(../Cosas/image34.png);
@@ -68,7 +74,7 @@ body {
   position: fixed;
   bottom: 0;
   right: 0;
-  cursor: pointer;
+  cursor: var(--pointer);
   padding: 1rem;
   font-size: 3.2vh;
   background-image: url(../Cosas/pinturaizquierda.png);
@@ -101,7 +107,7 @@ header {
   position: relative;
   transition: transform 0.45s ease-in-out, filter 0.02s ease-in-out;
   bottom: 0;
-  cursor: pointer;
+  cursor: var(--pointer);
   border: solid black 1px;
 }
 .bear {

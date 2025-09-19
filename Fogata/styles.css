@@ -1,3 +1,7 @@
+:root {
+    --mouse: url("../Cosas/mouse.png") 16 16, auto;
+    --pointer: url("../Cosas/pointer.png") 16 16, pointer;
+  }
 body{
     min-height: 100vh;
     background-image: url(../Cosas/prender-una-fogata.jpg);
@@ -21,7 +25,7 @@ body{
     background-image: url(../Cosas/pngtree-mine-cave-entrance-with-railway-in-cartoon-style-isolated-on-white-background-picture-image_7836835.png);
     background-repeat: no-repeat;
     background-size: contain;
-    cursor: pointer;
+    cursor: var(--pointer);
 }   
 .cama{
     height: 20rem;
@@ -32,8 +36,9 @@ body{
     background-image: url(../Cosas/bed-and-pillow-color-illustration-png.webp);
     background-repeat: no-repeat;
     background-size: contain;
-    cursor: pointer;
+    cursor: var(--pointer);
 }
 body{
     overflow: hidden;
+    cursor: var(--mouse);
 }

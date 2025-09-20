@@ -175,19 +175,6 @@ bear.addEventListener("click", mostrarBear);
 pick.addEventListener("click", mostrarPick);
 atras.addEventListener("click", volver);
 
-/*if(siMago === true){
-  avanzar.addEventListener("click", avanzarMago);
-}
-else if(siBear === true){
-  avanzar.addEventListener("click", avanzarBear);
-}
-else if(siPick === true){
-  avanzar.addEventListener("click", avanzarPick);
-}
-else if(siJon === true){
-  avanzar.addEventListener("click", avanzarJon);
-} */
-
   avanzar.addEventListener("click", () => {
   if (siMago) {
     avanzarMago();

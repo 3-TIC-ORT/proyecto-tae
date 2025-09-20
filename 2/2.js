@@ -175,31 +175,27 @@ bear.addEventListener("click", mostrarBear);
 pick.addEventListener("click", mostrarPick);
 atras.addEventListener("click", volver);
 
-function mapaMago(){
-  if(siMago = true){
-  mago.addEventListener("click", avanzarMago);
+/*if(siMago === true){
+  avanzar.addEventListener("click", avanzarMago);
 }
+else if(siBear === true){
+  avanzar.addEventListener("click", avanzarBear);
 }
+else if(siPick === true){
+  avanzar.addEventListener("click", avanzarPick);
+}
+else if(siJon === true){
+  avanzar.addEventListener("click", avanzarJon);
+} */
 
-function mapaBear(){
-  if(siBear = true){
-  bear.addEventListener("click", avanzarBear);
-}
-}
-
-function mapaPick(){
-  if(siPick = true){
-  pick.addEventListener("click", avanzarPick);
-}
-}
-
-function mapaJon(){
-  if(siJon = true){
-  jon.addEventListener("click", avanzarJon);
-}
-}
-
-mago.addEventListener("click", mapaMago);
-bear.addEventListener("click", mapaBear);
-pick.addEventListener("click", mapaPick);
-jon.addEventListener("click", mapaJon);
+  avanzar.addEventListener("click", () => {
+  if (siMago) {
+    avanzarMago();
+  } else if (siBear) {
+    avanzarBear();
+  } else if (siPick) {
+    avanzarPick();
+  } else if (siJon) {
+    avanzarJon();
+  }
+});

@@ -1,4 +1,4 @@
-connect2Server(4000)
+connect2Server()
 let boton = document.getElementById("boton");
 let input = document.getElementById("input");
 let salida = document.getElementById("salida")

@@ -18,7 +18,8 @@ subscribeGETEvent("mapa",(query) => {
 subscribePOSTEvent("guardar",(data) => {
   if(data === true){
   let saving = JSON.parse(fs.readFileSync("./jsons/saving.json"))
+  saving = info
   fs.writeFileSync("./jsons/saving.json",JSON.stringify(saving,null,2))
 }
 })
-startServer(4000);
+startServer();

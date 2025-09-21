@@ -1,3 +1,4 @@
+/* Se tiene que llamar "styles.css" */
 :root {
   --mouse: url("../Cosas/mouse.png") 16 16, auto;
   --pointer: url("../Cosas/pointer.png") 16 16, pointer;
@@ -8,12 +9,6 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url("../Cosas/mapathebear.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-position-y: top;
-    height: 300vh;
 }
 .letra{
       font-family: "Inknut Antiqua", serif;

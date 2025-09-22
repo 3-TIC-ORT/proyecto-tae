@@ -18,73 +18,58 @@ console.log("Recibí petición con cantidadpisos =", cantidadpisos);
 let grafo = [];
 let conexiones = [];
 let finalboss = ["Final Boss"]
+
 function palabraaleatoria() {
   const rand = Math.random() * 100;
-  if (rand < 30) {
-      return "M"; 
-  } else if (rand < 80) {
-      return "T"; 
-  } else if (rand < 80) {
-      return "F"; 
-  } else {
-      return "E"; 
-  }
+  if (rand < 60) 
+  {return "M";}
+   else if (rand < 40) {return "T";}
+   else if (rand < 40) {return "F";}
+   else {return "E";}
 }
+
 function numeroAleatorio() {
     return Math.floor(Math.random() * (5 - 3 + 1)) + 3;
   }
+
 for(let i = 0;i <= cantidadpisos;i++){
 let piso = []
 for(let z = 1; z <= numeroAleatorio(); z++){
   if(i === 0){
-    piso.push({id: i+"-"+z+"-"+"M",conectado:false})
+    piso.push(i+"-"+z+" "+"M")
   }
   else if(i === cantidadpisos){
-    piso.push({id: i+"-"+z+"-"+"F",conectado:false})  
+    piso.push(i+"-"+z+" "+"F")  
   }
-  else{
-    piso.push({id: i+"-"+z+"-"+palabraaleatoria(),conectado:false})  
-  }
+  else{piso.push(i+"-"+z+" "+palabraaleatoria())}
 }
+
 grafo.push(piso)
 }
+
 grafo.push(finalboss)
 
 //conexion
-function num_conexiones(indiceNodo, levellength){
-  if(indiceNodo === 1 || indiceNodo === levellength){
-    return 2
-  }
-  else{return 3}
+function numcon(nodoactual, pisoLength) {
+  const desplazamiento = Math.floor(Math.random() * 3) - 1;
+  let nuevoIndice = nodoactual + desplazamiento;
+  if (nuevoIndice < 0) nuevoIndice = 0;
+  if (nuevoIndice >= pisoLength) nuevoIndice = pisoLength - 1;
+  return nuevoIndice;
 }
-grafo.forEach((level, index) => {
-  if (index + 1 >= grafo.length - 1) return;
-  level.forEach((nodo) => {
-    let cantidadConexiones = num_conexiones(nodo.id[2], level.length)
-    if (index + 1 < grafo.length) {
-      let siguientePiso = grafo[index + 1]
-      for (let i = 0; i < cantidadConexiones; i++) {
-        let nodos_conectables = siguientePiso.filter((conectnodo) => {
-          if (!conectnodo || !conectnodo.id) return false;
-          let diff = parseInt(nodo.id.split("-")[1]) - parseInt(conectnodo.id.split("-")[1])
-          return diff <= 2 && diff >= -1
-        })
-        if (nodos_conectables.length > 0) {
-          for (let i = 0; i < cantidadConexiones; i++){
-            function aleatorio(arr){
-              let indice = Math.floor(Math.random() * arr.length)
-              return arr[indice]
-            }
-            let destino = aleatorio(nodos_conectables)
-            conexiones.push([nodo, destino])
-            nodo.conectado = true
-      }
-    }
-    }
+for (let i = 0; i < grafo.length - 1; i++) {
+    let pisoactual = grafo[i];
+    let pisosiguiente = grafo[i + 1];
+    for (let j = 0; j < pisoactual.length; j++) {
+        let nodo = pisoactual[j]
+        let cantidadConexiones = Math.floor(Math.random() * 2) + 1;
+        for (let c = 0; c < cantidadConexiones; c++) {
+        let nodoactual = parseInt(nodo.split("-")[1]);
+        let aleatorio = pisosiguiente[numcon(nodoactual, pisosiguiente.length)];
+        conexiones.push([nodo, aleatorio]);  
   }
-})});
-  grafo = grafo.map(level => level.filter(nodo => nodo.conectado))
-    
+}
+}
 
 for(let w = 0; w < conexiones.length-1;w++){
   if(conexiones[w][0] === conexiones[w+1][0] && conexiones[w][1] === conexiones[w+1][1]){
@@ -92,6 +77,19 @@ for(let w = 0; w < conexiones.length-1;w++){
     w--
   }
 }
+
+for (let i = 1; i < grafo.length; i++) { 
+  let piso = grafo[i];
+  let pisoAnterior = grafo[i-1];
+  for (let nodo of piso) {
+    let tieneEntrada = conexiones.some(c => c[1] === nodo);
+    if (!tieneEntrada) {
+      let nodoanterior = pisoAnterior[Math.floor(Math.random() * pisoAnterior.length)];
+      conexiones.push([nodoanterior, nodo]);
+    }
+  }
+}
+
 /*for(let i = 0; i < grafo.length - 1;i++){
   let level = grafo[i]
   let nextlevel = grafo[i+1]

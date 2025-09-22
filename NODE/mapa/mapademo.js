@@ -78,7 +78,12 @@ function mostrarMapa() {
     }
 }
 
-
+function mostrarConexiones(){
+    conexiones.forEach(e => {
+        console.log(e)
+    });
+}
 
 crearMapa();
 mostrarMapa();
+mostrarConexiones();

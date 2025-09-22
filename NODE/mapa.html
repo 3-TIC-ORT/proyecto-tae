@@ -96,87 +96,96 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.1/soquetic-client.js"></script>
 
-  <script>
-    connect2Server();
+<script>
+  connect2Server();
 
-    const boton = document.getElementById("boton");
-    const input = document.getElementById("input");
-    const salida = document.getElementById("salida");
-    const guardar = document.getElementById("guardar");
+  const boton = document.getElementById("boton");
+  const input = document.getElementById("input");
+  const salida = document.getElementById("salida");
+  const guardar = document.getElementById("guardar");
 
-    function renderMapa(data) {
-      const container = document.getElementById("mapa");
-      const svg = document.getElementById("conexiones");
-      container.innerHTML = "";
-      svg.innerHTML = "";
+  function renderMapa(data) {
+    const container = document.getElementById("mapa");
+    const svg = document.getElementById("conexiones");
+    container.innerHTML = "";
+    svg.innerHTML = "";
 
-      const posiciones = {};
+    const posiciones = {};
 
-      data.grafo.forEach((piso) => {
-        const col = document.createElement("div");
-        col.className = "piso";
+    data.grafo.forEach((piso) => {
+      const col = document.createElement("div");
+      col.className = "piso";
 
-        piso.forEach((nodo) => {
-          const div = document.createElement("div");
-          if (typeof nodo === "string") {
-            div.className = "nodo Final";
-            div.textContent = "B";
-            posiciones["Final Boss"] = {};
-          } else {
-            const tipo = nodo.id.split("-")[2];
+      piso.forEach((nodoStr) => {
+        const div = document.createElement("div");
+        div.className = "nodo";
+
+        let tipo = "M"; // default
+        let texto = nodoStr;
+
+        if (nodoStr === "Final Boss") {
+          div.className = "nodo Final";
+          div.textContent = "B";
+          tipo = "Final";
+          texto = "Final Boss";
+        } else {
+          const partes = nodoStr.split(" "); // "0-1 M" => ["0-1", "M"]
+          if (partes.length === 2) {
+            tipo = partes[1];
             div.className = `nodo ${tipo}`;
             div.textContent = tipo;
+            texto = nodoStr;
           }
+        }
 
-          col.appendChild(div);
+        col.appendChild(div);
 
-          setTimeout(() => {
-            const rect = div.getBoundingClientRect();
-            const parentRect = container.getBoundingClientRect();
-            posiciones[typeof nodo === "string" ? nodo : nodo.id] = {
-              x: rect.left + rect.width / 2 - parentRect.left,
-              y: rect.top + rect.height / 2 - parentRect.top
-            };
-          }, 0);
-        });
-
-        container.appendChild(col);
+        setTimeout(() => {
+          const rect = div.getBoundingClientRect();
+          const parentRect = container.getBoundingClientRect();
+          posiciones[texto] = {
+            x: rect.left + rect.width / 2 - parentRect.left,
+            y: rect.top + rect.height / 2 - parentRect.top
+          };
+        }, 0);
       });
 
-      setTimeout(() => {
-        data.conexiones.forEach(([origen, destino]) => {
-          const idOrigen = origen.id;
-          const idDestino = destino.id;
-          if (posiciones[idOrigen] && posiciones[idDestino]) {
-            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-            line.setAttribute("x1", posiciones[idOrigen].x);
-            line.setAttribute("y1", posiciones[idOrigen].y);
-            line.setAttribute("x2", posiciones[idDestino].x);
-            line.setAttribute("y2", posiciones[idDestino].y);
-            line.setAttribute("stroke", "white");
-            svg.appendChild(line);
-          }
-        });
-      }, 100);
+      container.appendChild(col);
+    });
+
+    setTimeout(() => {
+      data.conexiones.forEach(([origen, destino]) => {
+        if (posiciones[origen] && posiciones[destino]) {
+          const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          line.setAttribute("x1", posiciones[origen].x);
+          line.setAttribute("y1", posiciones[origen].y);
+          line.setAttribute("x2", posiciones[destino].x);
+          line.setAttribute("y2", posiciones[destino].y);
+          line.setAttribute("stroke", "white");
+          svg.appendChild(line);
+        }
+      });
+    }, 100);
+  }
+
+  boton.addEventListener("click", () => {
+    const pisos = parseInt(input.value);
+    if (pisos <= 0) {
+      alert("La cantidad de pisos no puede ser menor o igual a 0");
+      return;
     }
 
-    boton.addEventListener("click", () => {
-      const pisos = parseInt(input.value);
-      if (pisos <= 0) {
-        alert("La cantidad de pisos no puede ser menor o igual a 0");
-        return;
-      }
-
-      getEvent(`mapa?cantidadpisos=${pisos}`, (data) => {
-        console.log("Mapa generado:", data);
-        salida.innerText = JSON.stringify(data, null, 2);
-        renderMapa(data); // <--- ACTUALIZA EL MAPA EN PANTALLA
-      });
+    getEvent(`mapa?cantidadpisos=${pisos}`, (data) => {
+      console.log("Mapa generado:", data);
+      salida.innerText = JSON.stringify(data, null, 2);
+      renderMapa(data); // ACTUALIZA EL MAPA EN PANTALLA
     });
+  });
 
-    guardar.addEventListener("click", () => {
-      postEvent("guardar", true);
-    });
-  </script>
+  guardar.addEventListener("click", () => {
+    postEvent("guardar", true);
+  });
+</script>
+
 </body>
 </html>

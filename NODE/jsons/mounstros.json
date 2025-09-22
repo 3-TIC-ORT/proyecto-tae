@@ -52,7 +52,7 @@
     {
         "nombre":"el centinela",
         "recompenzas": 40,
-        "habilidad":" Reduce el daño recibido en un 20% y contraataca con un golpe moderado cuando recibe ataques fuertes (>30 daño).",
+        "habilidad":" Reduce el daño recibido en un 20% ",
         "reliquia":"elite",
         "tipo":"elite",
         "cartas":1,

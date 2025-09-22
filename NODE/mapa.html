@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa con conexiones</title>
+  <style>
+    body {
+      background: #222;
+      color: white;
+      font-family: sans-serif;
+    }
+    .mapa-container {
+      position: relative;
+      width: 100%;
+      height: 600px;
+    }
+    .mapa {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 80px; /* espacio entre columnas */
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .piso {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+    }
+    .nodo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      cursor: pointer;
+      border: 2px solid white;
+      position: relative;
+    }
+    .M { background: red; }
+    .T { background: yellow; color: black; }
+    .E { background: purple; }
+    .F { background: orange; }
+    .Final { background: black; color: white; border: 2px solid gold; }
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mapa estilo Slay the Spire</h1>
+  <div class="mapa-container">
+    <svg id="conexiones"></svg>
+    <div id="mapa" class="mapa"></div>
+  </div>
+
+  <script>
+    // Ejemplo de datos
+    const mapa =  {
+  "grafo": [
+    [
+      "0-1 M",
+      "0-2 M",
+      "0-3 M",
+      "0-4 M"
+    ],
+    [
+      "1-1 M",
+      "1-2 T",
+      "1-3 E",
+      "1-4 E"
+    ],
+    [
+      "2-1 M",
+      "2-2 T",
+      "2-3 T",
+      "2-4 M",
+      "2-5 T"
+    ],
+    [
+      "3-1 T",
+      "3-2 T",
+      "3-3 T"
+    ],
+    [
+      "4-1 M",
+      "4-2 T",
+      "4-3 M"
+    ],
+    [
+      "5-1 F",
+      "5-2 F",
+      "5-3 F",
+      "5-4 F"
+    ]
+  ],
+  "conexiones": [
+    [
+      "0-1 M",
+      "1-2 T"
+    ],
+    [
+      "0-1 M",
+      "1-1 M"
+    ],
+    [
+      "0-2 M",
+      "1-2 T"
+    ],
+    [
+      "0-2 M",
+      "1-1 M"
+    ],
+    [
+      "0-2 M",
+      "1-3 E"
+    ],
+    [
+      "0-3 M",
+      "1-4 E"
+    ],
+    [
+      "0-3 M",
+      "1-2 T"
+    ],
+    [
+      "0-3 M",
+      "1-3 E"
+    ],
+    [
+      "0-4 M",
+      "1-3 E"
+    ],
+    [
+      "0-4 M",
+      "1-4 E"
+    ],
+    [
+      "1-1 M",
+      "2-2 T"
+    ],
+    [
+      "1-1 M",
+      "2-1 M"
+    ],
+    [
+      "1-2 T",
+      "2-3 T"
+    ],
+    [
+      "1-2 T",
+      "2-1 M"
+    ],
+    [
+      "1-2 T",
+      "2-2 T"
+    ],
+    [
+      "1-3 E",
+      "2-3 T"
+    ],
+    [
+      "1-3 E",
+      "2-2 T"
+    ],
+    [
+      "1-3 E",
+      "2-4 M"
+    ],
+    [
+      "1-4 E",
+      "2-5 T"
+    ],
+    [
+      "1-4 E",
+      "2-4 M"
+    ],
+    [
+      "1-4 E",
+      "2-3 T"
+    ],
+    [
+      "1-5 E",
+      "2-4 M"
+    ],
+    [
+      "1-5 E",
+      "2-5 T"
+    ],
+    [
+      "2-1 M",
+      "3-2 T"
+    ],
+    [
+      "2-1 M",
+      "3-1 T"
+    ],
+    [
+      "2-2 T",
+      "3-1 T"
+    ],
+    [
+      "2-2 T",
+      "3-2 T"
+    ],
+    [
+      "2-2 T",
+      "3-3 T"
+    ],
+    [
+      "2-3 T",
+      "3-3 T"
+    ],
+    [
+      "2-3 T",
+      "3-2 T"
+    ],
+    [
+      "2-4 M",
+      "3-3 T"
+    ],
+    [
+      "3-1 T",
+      "4-2 T"
+    ],
+    [
+      "3-1 T",
+      "4-1 M"
+    ],
+    [
+      "3-2 T",
+      "4-3 M"
+    ],
+    [
+      "3-2 T",
+      "4-2 T"
+    ],
+    [
+      "3-2 T",
+      "4-1 M"
+    ],
+    [
+      "3-3 T",
+      "4-3 M"
+    ],
+    [
+      "3-3 T",
+      "4-2 T"
+    ],
+    [
+      "4-1 M",
+      "5-2 F"
+    ],
+    [
+      "4-1 M",
+      "5-1 F"
+    ],
+    [
+      "4-2 T",
+      "5-2 F"
+    ],
+    [
+      "4-2 T",
+      "5-3 F"
+    ],
+    [
+      "4-2 T",
+      "5-1 F"
+    ],
+    [
+      "4-3 M",
+      "5-4 F"
+    ],
+    [
+      "4-3 M",
+      "5-3 F"
+    ]
+  ]
+}
+    function renderMapa(data) { 
+      const container = document.getElementById("mapa");
+      const svg = document.getElementById("conexiones");
+      container.innerHTML = "";
+      svg.innerHTML = "";
+
+      // Guardamos referencias a cada nodo
+      const posiciones = {};
+
+      data.grafo.forEach((piso, i) => {
+        const col = document.createElement("div");
+        col.className = "piso";
+
+        piso.forEach((nodo, j) => {
+          const div = document.createElement("div");
+          const tipo = nodo.split(" ")[1]; // M, T, E, F
+          div.className = `nodo ${tipo || "Final"}`;
+          div.textContent = tipo || "B";
+          col.appendChild(div);
+          container.appendChild(col);
+
+          // Guardamos la posición real del nodo (cuando se renderiza)
+          setTimeout(() => {
+            const rect = div.getBoundingClientRect();
+            const parentRect = container.getBoundingClientRect();
+            posiciones[nodo] = {
+              x: rect.left + rect.width / 2 - parentRect.left,
+              y: rect.top + rect.height / 2 - parentRect.top
+            };
+          }, 0);
+        });
+
+        container.appendChild(col);
+      });
+
+      // Dibujar conexiones (esperamos un tick para que se calculen posiciones)
+      setTimeout(() => {
+        data.conexiones.forEach(([origen, destino]) => {
+          if (posiciones[origen] && posiciones[destino]) {
+            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            line.setAttribute("x1", posiciones[origen].x);
+            line.setAttribute("y1", posiciones[origen].y);
+            line.setAttribute("x2", posiciones[destino].x);
+            line.setAttribute("y2", posiciones[destino].y);
+            line.setAttribute("stroke", "white");
+            svg.appendChild(line);
+          }
+        });
+      }, 100);
+    }
+
+    renderMapa(mapa);
+  </script>
+</body>
+</html>

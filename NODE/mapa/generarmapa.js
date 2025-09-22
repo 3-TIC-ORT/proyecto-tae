@@ -49,18 +49,24 @@ for(let z = 1; z <= numeroAleatorio(); z++){
 grafo.push(piso)
 }
 grafo.push(finalboss)
-for (let i = 0; i < grafo.length - 1; i++) {
-    let pisoactual = grafo[i];
-    let pisosiguiente = grafo[i + 1];
-    for (let j = 0; j < pisoactual.length; j++) {
-        let nodo = pisoactual[j]
-        let cantidadConexiones = Math.floor(Math.random() * 2) + 1;
-      
-        for (let c = 0; c < cantidadConexiones; c++) {
-          let aleatorio = pisosiguiente[Math.floor(Math.random() * pisosiguiente.length)];
-          conexiones.push([nodo, aleatorio]);
-        }
-      }
+
+//conexion
+for(let i = 0; i < grafo.length - 1;i++){
+  let level = grafo[i]
+  let nextlevel = grafo[i+1]
+  for(let z = 0; z < level.length;z++){
+      let node = level[z]
+      let indiceNodo = parseInt(node.split("-")[1]);
+      let cantidadConexiones = (indiceNodo === 0 || indiceNodo === level.length - 1) ? 2 : 3;
+      for (let y = 0; y < cantidadConexiones; y++) {
+        for(let o = 0; o < nextlevel.length;o++){
+      let conectnode = nextlevel[o];
+      if((conectnode.split("-")[1]-node.split("-")[1]) <= 1 && (conectnode.split("-")[1]-node.split("-")[1]) > -2){
+      conexiones.push([node,conectnode])
+     }       
+    }
+   }
+  }
 }
 for(let w = 0; w < conexiones.length-1;w++){
   if(conexiones[w][0] === conexiones[w+1][0] && conexiones[w][1] === conexiones[w+1][1]){
@@ -68,5 +74,37 @@ for(let w = 0; w < conexiones.length-1;w++){
     w--
   }
 }
+
+/*
+for (let i = 0; i < grafo.length - 1; i++) {
+    let pisoactual = grafo[i];
+    let pisosiguiente = grafo[i + 1];
+    for (let j = 0; j < pisoactual.length; j++) {
+        let nodo = pisoactual[j]
+        let cantidadConexiones = Math.floor(Math.random() * 2) + 1;
+        for (let c = 0; c < cantidadConexiones; c++) {
+          
+function numcon(nodoactual, pisoLength) {
+  const desplazamiento = Math.floor(Math.random() * 3) - 1;
+  let nuevoIndice = nodoactual + desplazamiento;
+  if (nuevoIndice < 0) nuevoIndice = 0;
+  if (nuevoIndice >= pisoLength) nuevoIndice = pisoLength - 1;
+  return nuevoIndice;
+}
+
+        let nodoactual = parseInt(nodo.split("-")[1]);
+        let aleatorio = pisosiguiente[numcon(nodoactual, pisosiguiente.length)];
+        conexiones.push([nodo, aleatorio]);  
+  }
+}
+}
+
+for(let w = 0; w < conexiones.length-1;w++){
+  if(conexiones[w][0] === conexiones[w+1][0] && conexiones[w][1] === conexiones[w+1][1]){
+    conexiones.splice(w,1)
+    w--
+  }
+}
+  */
 return {grafo,conexiones}
 }

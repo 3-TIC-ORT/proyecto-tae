@@ -37,13 +37,13 @@ for(let i = 0;i <= cantidadpisos;i++){
 let piso = []
 for(let z = 1; z <= numeroAleatorio(); z++){
   if(i === 0){
-    piso.push(i+"-"+z+" "+"M")
+    piso.push({id: i+"-"+z+"-"+"M",conectado:false})
   }
   else if(i === cantidadpisos){
-    piso.push(i+"-"+z+" "+"F")  
+    piso.push({id: i+"-"+z+"-"+"F",conectado:false})  
   }
   else{
-    piso.push(i+"-"+z+" "+palabraaleatoria())  
+    piso.push({id: i+"-"+z+"-"+palabraaleatoria(),conectado:false})  
   }
 }
 grafo.push(piso)
@@ -51,7 +51,48 @@ grafo.push(piso)
 grafo.push(finalboss)
 
 //conexion
-for(let i = 0; i < grafo.length - 1;i++){
+function num_conexiones(indiceNodo, levellength){
+  if(indiceNodo === 1 || indiceNodo === levellength){
+    return 2
+  }
+  else{return 3}
+}
+grafo.forEach((level, index) => {
+  if (index + 1 >= grafo.length - 1) return;
+  level.forEach((nodo) => {
+    let cantidadConexiones = num_conexiones(nodo.id[2], level.length)
+    if (index + 1 < grafo.length) {
+      let siguientePiso = grafo[index + 1]
+      for (let i = 0; i < cantidadConexiones; i++) {
+        let nodos_conectables = siguientePiso.filter((conectnodo) => {
+          if (!conectnodo || !conectnodo.id) return false;
+          let diff = parseInt(nodo.id.split("-")[1]) - parseInt(conectnodo.id.split("-")[1])
+          return diff <= 2 && diff >= -1
+        })
+        if (nodos_conectables.length > 0) {
+          for (let i = 0; i < cantidadConexiones; i++){
+            function aleatorio(arr){
+              let indice = Math.floor(Math.random() * arr.length)
+              return arr[indice]
+            }
+            let destino = aleatorio(nodos_conectables)
+            conexiones.push([nodo, destino])
+            nodo.conectado = true
+      }
+    }
+    }
+  }
+})});
+  grafo = grafo.map(level => level.filter(nodo => nodo.conectado))
+    
+
+for(let w = 0; w < conexiones.length-1;w++){
+  if(conexiones[w][0] === conexiones[w+1][0] && conexiones[w][1] === conexiones[w+1][1]){
+    conexiones.splice(w,1)
+    w--
+  }
+}
+/*for(let i = 0; i < grafo.length - 1;i++){
   let level = grafo[i]
   let nextlevel = grafo[i+1]
   for(let z = 0; z < level.length;z++){
@@ -74,7 +115,7 @@ for(let w = 0; w < conexiones.length-1;w++){
     w--
   }
 }
-
+*/
 /*
 for (let i = 0; i < grafo.length - 1; i++) {
     let pisoactual = grafo[i];

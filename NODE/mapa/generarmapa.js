@@ -84,13 +84,20 @@ for (let i = 1; i < grafo.length; i++) {
   for (let nodo of piso) {
     let tieneEntrada = conexiones.some(c => c[1] === nodo);
     if (!tieneEntrada) {
-      let nodoanterior = pisoAnterior[Math.floor(Math.random() * pisoAnterior.length)];
+      let nodoanterior = pisoAnterior[parseInt(nodo[2])];
+      if(nodoanterior){
       conexiones.push([nodoanterior, nodo]);
+      }
+      else{
+      nodoanterior = pisoAnterior[pisoAnterior.length-1]
+      conexiones.push([nodoanterior, nodo]);        
+      }
     }
   }
 }
 
-/*for(let i = 0; i < grafo.length - 1;i++){
+/*
+for(let i = 0; i < grafo.length - 1;i++){
   let level = grafo[i]
   let nextlevel = grafo[i+1]
   for(let z = 0; z < level.length;z++){

@@ -21,3 +21,90 @@ body {
 html{
     cursor: var(--mouse);
 }
+.caja{
+  height: 11vh;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: solid 10px black;
+  cursor: var(--pointer);
+}
+.container{
+  height: 100%;
+}
+.lugar1{
+  background-color: rebeccapurple;
+  position: relative;
+  top: 83.8%;
+  left: 19%;
+}
+.lugar2{
+  background-color: red;
+  position: relative;
+  top: 80%;
+  left: 50.3%;
+}
+.lugar3{
+  background-color: blue;
+  position: relative;
+  top: 76.4%;
+  left: 81.6%;
+}
+.lugar4{
+  background-color: green;
+  position: relative;
+  top: 60%;
+  left: 36.5%;
+}
+.lugar5{
+  background-color: coral;
+  position: relative;
+  top: 56.4%;
+  left: 64%;
+}
+.lugar6{
+  background-color: olivedrab;
+  position: relative;
+  top: 42.2%;
+  left: 19%;
+}
+.lugar7{
+  background-color: aqua;
+  position: relative;
+  top: 37.6%;
+  left: 50%;
+}
+.lugar8{
+  background-color: crimson;
+  position: relative;
+  top: 19.7%;
+  left: 26.68%;
+}
+.lugar9{
+  background-color: teal;
+  position: relative;
+  top: 19.7%;
+  left: 72%;
+}
+.lugar10{
+  background-color: hotpink;
+  position: relative;
+  top: 1.3%;
+  left: 51.55%;
+}
+.lugar11{
+  position: relative;
+  bottom: 8.97%;
+  left: 17.3%;
+}
+.lugar12{
+  background-color: blanchedalmond;
+  position: relative;
+  bottom: 12%;
+  left: 81.6%;
+}
+.lugar13{
+  background-color: mediumpurple;
+  position: relative;
+  bottom: 28%;
+  left: 51.6%;
+}

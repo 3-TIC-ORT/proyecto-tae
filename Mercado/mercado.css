@@ -85,13 +85,21 @@ margin: 17px 155px 55px 75px;
     top: 5px;
 }
 
+.reliquia-circulo{
+  position: relative;
+  position: absolute;
+  margin-left: 400px;
+}
 .reliquia {
   margin-left: 400px;
   height: 60px;
+  position: relative;
+  top: 15px;
 }
 
 .circulo {
-  position: absolute;
+  position: relative;
+  bottom: 10px;
   background: lightgray;
   border: 1px solid #000;
   border-radius: 50%;

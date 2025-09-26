@@ -157,16 +157,16 @@ function mostrarJon() {
 
 
 function avanzarMago(){
-  window.location.href = "../mapaMago/index.html";
+  window.location.href = "../mapaBear/index.html";
 }
 function avanzarBear(){
   window.location.href = "../mapaBear/index.html";
 }
 function avanzarPick(){
-  window.location.href = "../mapaPick/index.html";
+  window.location.href = "../mapaBear/index.html";
 }
 function avanzarJon(){
-  window.location.href = "../mapaJon/index.html";
+  window.location.href = "../mapaBear/index.html";
 }
 
 mago.addEventListener("click", mostrarMago);

@@ -8,7 +8,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url("../Cosas/mapathebear.png");
+    background-image: url("");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -107,4 +107,11 @@ html{
   position: relative;
   bottom: 28%;
   left: 51.6%;
+}
+h1{
+  color: #D52CB0;
+  font-family: "Sedgwick Ave Display", cursive;
+  font-size: 15rem;
+  text-align: center;
+  margin: 0;
 }

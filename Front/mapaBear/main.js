@@ -10,3 +10,4 @@ function abajo(){
   };
 
 window.onload = abajo();
+getEvent()

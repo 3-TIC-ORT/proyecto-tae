@@ -174,15 +174,21 @@ jon.addEventListener("click", mostrarJon);
 bear.addEventListener("click", mostrarBear);
 pick.addEventListener("click", mostrarPick);
 atras.addEventListener("click", volver);
-
+let personaje = ""
   avanzar.addEventListener("click", () => {
   if (siMago) {
+    personaje = "mago"
     avanzarMago();
   } else if (siBear) {
+    personaje = "bear"
     avanzarBear();
   } else if (siPick) {
+    personaje = "pick"
     avanzarPick();
   } else if (siJon) {
+    personaje = "jon"
     avanzarJon();
   }
+  postEvent("personaje",personaje)
 });
+connect2Server()

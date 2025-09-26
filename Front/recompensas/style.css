@@ -15,7 +15,7 @@ margin: 0 auto;
 }
 
 .titulo{
-font-size: 5rem;
+font-size: 3rem;
 font-family: "Fira Sans", sans-serif;
 color: #333;
 text-align: center;
@@ -26,19 +26,95 @@ align-items: center;
 
 .recompensa {
 background-color: black;
-height: 4.375rem;
+height: 2.375rem;
 margin: 1.25rem 0;
 border: 0.125rem solid white;
-width: 30rem;
+width: 15rem;
 display: flex;
 justify-content: center;
 align-items: center;
+cursor: var(--pointer);
 }
   .fira-sans-extrabold {
     font-family: "Fira Sans", sans-serif;
     font-weight: 800;
     font-style: normal;
   }
-  body{
+ html, body{
     cursor: var(--mouse);
   }
+  
+:root { --bg: url("../Cosas/fondor.png"); --overlay: rgba(0,0,0,0.5); --radius: 12px; }
+* { box-sizing: border-box; }
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; padding:2rem; }
+button { font: inherit; }
+
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  background: var(--overlay);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease, visibility .18s;
+  z-index: 1000;
+}
+.modal-overlay.is-open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal */
+.modal {
+  background: var(--bg);
+  width: 30rem;
+  height: 70vh;
+  overflow: auto;
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  transform: translateY(-10px) scale(.99);
+  opacity: 0;
+  transition: transform .18s ease, opacity .18s ease;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  display: flex;
+}
+.modal-overlay.is-open .modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Botón cerrar */
+.modal-close {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  font-size: 4rem;
+  line-height: 1;
+  cursor: var(--pointer);
+}
+
+/* Contenido */
+.modal h2 { margin: 0 0 .5rem 0; font-size: 1.25rem; }
+.modal p { margin: 0 0 1rem; line-height: 1.4; }
+.modal-actions { display:flex; gap:.5rem; justify-content:flex-end; margin-top:1rem; }
+
+/* Evitar scroll del fondo cuando el modal está abierto */
+body.modal-open { overflow: hidden; }
+
+/* Respectar reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .modal, .modal-overlay { transition: none !important; transform: none !important; }
+}
+.boton{
+  cursor: var(--pointer);
+}

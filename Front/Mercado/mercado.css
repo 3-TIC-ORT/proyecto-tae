@@ -1,3 +1,22 @@
+:root {
+  --mouse: url("../Cosas/mouse.png") 16 16, auto;
+  --pointer: url("../Cosas/pointer.png") 16 16, pointer;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    width: 120%;
+    height: 100%;
+}
+.letra{
+      font-family: "Inknut Antiqua", serif;
+}
+html{
+    cursor: var(--mouse);
+}
 .container{
     display: flex;
     justify-content: center;
@@ -29,8 +48,8 @@ justify-content: left;
     transform: scale(0.95);
 }
 .titulo {
-width: 201px;
-height: 73px;
+width: 12.5625rem;
+height: 4.5625rem;
 flex-shrink: 0;
 color: #000;
 font-family: "Dela Gothic One";
@@ -70,7 +89,7 @@ margin: 17px 155px 55px 75px;
 }
 
 .bolsa {
-    height: 40px;
+    height: 2.5rem;
     margin-left: 60px;
     margin-right: 21px;
   }
@@ -87,12 +106,13 @@ margin: 17px 155px 55px 75px;
 
 .reliquia-circulo{
   position: relative;
+  top: 28px;
   position: absolute;
   margin-left: 400px;
 }
 .reliquia {
   margin-left: 400px;
-  height: 60px;
+  height: 3.75rem;
   position: relative;
   top: 15px;
 }
@@ -101,13 +121,22 @@ margin: 17px 155px 55px 75px;
   position: relative;
   bottom: 10px;
   background: lightgray;
-  border: 1px solid #000;
   border-radius: 50%;
   font-size: 12px;
-  width: 22px;
-  height: 22px;
+  width: 1.375rem;
+  height: 1.375rem;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 400px;
+}
+
+.mapa{
+  height: 3.75rem;
+  margin-left: 540px;
+}
+
+.cartas {
+  height: 3.75rem;
+  margin-left: 40px;
 }

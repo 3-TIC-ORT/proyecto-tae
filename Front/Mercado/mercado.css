@@ -8,8 +8,10 @@
 body {
     margin: 0;
     padding: 0;
-    width: 115%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+   
+    
 }
 .letra{
       font-family: "Inknut Antiqua", serif;
@@ -17,27 +19,15 @@ body {
 html{
     cursor: var(--mouse);
 }
-.container{
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-}
-#mercader{
-    border: dashed black 0.5vh;
-    width: 30rem;
-    aspect-ratio: 3/3.5;
-    
-}
-footer{
-display: flex;
-justify-content: left;
-}
+
 #avanzar{
     margin: 0;
     text-decoration: underline;
     font-size: 2rem;
     padding: 1rem 1rem 0 1rem;
     transition: transform 0.2s ease;
+  position: fixed;
+  bottom: 1rem;
 }
 #avanzar:hover{
     
@@ -70,9 +60,11 @@ margin: 17px 155px 55px 75px;
     margin-right: 20px ;
   }
 .arriba {
+    max-height: 20vh;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    background-color: white;
 }
 .vida {
     font-family: 'Inknut Antiqua', serif;
@@ -93,6 +85,14 @@ margin: 17px 155px 55px 75px;
     margin-left: 60px;
     margin-right: 21px;
   }
+
+.container{
+  background-image: url("../Cosas/eb223c4034a1c48c8bc140e0a14ae7ecd0cbf9de.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 120vw 115vh;
+  height: 80vh;
+}
 .oro {
     color: #000;
     font-family:'Inknut Antiqua', serif ;
@@ -140,3 +140,4 @@ margin: 17px 155px 55px 75px;
   height: 3.75rem;
   margin-left: 40px;
 }
+

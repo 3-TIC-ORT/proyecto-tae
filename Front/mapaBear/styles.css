@@ -6,20 +6,25 @@
   box-sizing: border-box;
 }
 body {
-    margin: 0;
-    padding: 0;
-    background-image: url("");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-position-y: top;
-    height: 300vh;
+  margin: 0;
+  padding: 0;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-position-y: top;
+  height: 300vh;
 }
-.letra{
-      font-family: "Inknut Antiqua", serif;
+.letra {
+  font-family: "Inknut Antiqua", serif;
 }
-html{
-    cursor: var(--mouse);
+html {
+  cursor: var(--mouse);
+}
+h1{
+  
+  text-align: center;
+  margin: 0;
 }
 /* Contenedor general del mapa */
 #container-mapa {
@@ -57,7 +62,7 @@ html{
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 2;
   transition: transform 0.2s;
@@ -69,11 +74,21 @@ html{
 }
 
 /* Tipos de nodo */
-.nodo.M { background-color: #d0e7ff; } /* Monstruo */
-.nodo.E { background-color: #ffdcdc; } /* Elite */
-.nodo.T { background-color: #fff5c2; } /* Tesoro */
-.nodo.S { background-color: #ddffdd; } /* Descanso */
-.nodo.F { background-color: #eeeeee; } /* Evento / vacíos */
+.nodo.M {
+  background-color: #d0e7ff;
+} /* Monstruo */
+.nodo.E {
+  background-color: #ffdcdc;
+} /* Elite */
+.nodo.T {
+  background-color: #fff5c2;
+} /* Tesoro */
+.nodo.S {
+  background-color: #ddffdd;
+} /* Descanso */
+.nodo.F {
+  background-color: #eeeeee;
+} /* Evento / vacíos */
 
 /* Final Boss (B) */
 .finalBoss {

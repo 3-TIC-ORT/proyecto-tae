@@ -32,8 +32,6 @@ function mostrarMago() {
   titulo.textContent = "";
   conjunto.style.marginTop = "1rem";
   elige.style.color = "white";
-  h1.style.fontFamily = "Galdeano, sans-serif";
-  h1.textContent = "The Magician";
   oro.textContent = "150";
   oro.style.color = "white";
   poder.style.color = "white";
@@ -43,6 +41,8 @@ function mostrarMago() {
   imagen.style.height = "90vh";
   vida.textContent = "70 PV";
   poder.textContent = "Báculo del Archimago";
+  h1.style.fontFamily = "Galdeano, sans-serif";
+  h1.textContent = "The Magician";
   h1.style.color = "white";
   h1.style.fontSize = "7.5rem";
   h1.style.backgroundImage = "url()";
@@ -63,21 +63,20 @@ function mostrarMago() {
 function mostrarBear() {
   avanzar.style.opacity = "100";
   body.style.backgroundColor = "#C7AE20";
-  h1.textContent = "The Bear";
   imagen.style.height = "90vh";
   conjunto.style.marginTop = "1rem";
   parrafo.textContent =
-    "El ultimo de su manada. Vendio su alma para olvidar su vida pasada.";
+  "El ultimo de su manada. Vendio su alma para olvidar su vida pasada.";
   imagen.src = "../Cosas/oso-removebg-preview.png";
   imagen.alt = "foto bear";
   imagen.style.marginTop = "2rem";
   titulo.textContent = "";
+  h1.textContent = "The Bear";
   h1.style.fontFamily = "Sedgwick Ave Display, cursive";
   h1.style.fontWeight = "400";
   h1.style.fontStyle = "normal";
   h1.style.color = "#D52CB0";
   h1.style.fontSize = "9rem";
-  h1.style.backgroundImage = "url('../Cosas/image 47.png')";
   vida.textContent = "80 PV";
   oro.textContent = "99";
   poder.textContent = "Escudo de Hierro";
@@ -105,8 +104,6 @@ function mostrarPick() {
   imagen.style.height = "90vh";
   conjunto.style.marginTop = "1rem";
   elige.style.color = "white";
-  h1.style.fontFamily = "EB Garamond, serif";
-  h1.textContent = "The Pickpocket";
   oro.textContent = "50";
   oro.style.color = "white";
   poder.style.color = "gold";
@@ -115,6 +112,8 @@ function mostrarPick() {
   imagen.style.marginTop = "3rem";
   vida.textContent = "75 PV";
   poder.textContent = "Trébol de oro";
+  h1.style.fontFamily = "EB Garamond, serif";
+  h1.textContent = "The Pickpocket";
   h1.style.color = "white";
   h1.style.fontSize = "6rem";
   h1.style.backgroundImage = "url()";
@@ -139,16 +138,16 @@ function mostrarJon() {
   imagen.style.height = "90vh";
   h1.textContent = "Jon the Brave";
   parrafo.textContent =
-    "Jon es un guerrero audaz que nunca teme enfrentarse a dragones y demonios.";
+  "Jon es un guerrero audaz que nunca teme enfrentarse a dragones y demonios.";
   imagen.src =
-    "../Cosas/pngtree-mine-cave-entrance-with-railway-in-cartoon-style-isolated-on-white-background-picture-image_7836835.png";
+  "../Cosas/pngtree-mine-cave-entrance-with-railway-in-cartoon-style-isolated-on-white-background-picture-image_7836835.png";
   imagen.alt = "foto john";
   titulo.textContent = "";
   mago.style.filter = "none";
   bear.style.filter = "none";
   pick.style.filter = "none";
   jon.style.filter =
-    "drop-shadow(0 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0 -0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem -0.03rem 0.2rem rgba(255, 253, 253, 0.5)) drop-shadow(0.03rem -0.03rem 0.2rem rgba(255, 250, 250, 0.5)) drop-shadow(-0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5))";
+  "drop-shadow(0 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0 -0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem -0.03rem 0.2rem rgba(255, 253, 253, 0.5)) drop-shadow(0.03rem -0.03rem 0.2rem rgba(255, 250, 250, 0.5)) drop-shadow(-0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5))";
   siMago = false;
   siBear = false;
   siJon = true;

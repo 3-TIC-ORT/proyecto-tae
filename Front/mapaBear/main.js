@@ -1,22 +1,21 @@
 window.addEventListener("DOMContentLoaded", () => {
   let salida = document.getElementById("salida");
   let pisosContainer = document.getElementById("pisos-container");
-let svg = document.getElementById("conecciones");
+  let svg = document.getElementById("conecciones");
 
-pisosContainer.innerHTML = "";
-svg.innerHTML = "";
-connect2Server()
+  pisosContainer.innerHTML = "";
+  svg.innerHTML = "";
+  connect2Server();
   getEvent(`mapa?cantidadpisos=${3}`, (data) => {
     salida.innerText = JSON.stringify(data, null, 2);
     rendermapa(data);
   });
-  
 
   function rendermapa(data) {
     let container = document.getElementById("container-mapa");
     let svg = document.getElementById("conecciones");
-    container.innerText = "";
-    svg.innerText = "";
+    pisosContainer.innerHTML = "";
+    svg.innerHTML = "";
 
     let posiciones = {};
 
@@ -48,7 +47,7 @@ connect2Server()
           let parentReact = container.getBoundingClientRect();
           posiciones[texto] = {
             x: rect.left + rect.width / 2 - parentReact.left,
-            y: rect.top + rect.height / 2 - parentReact.top
+            y: rect.top + rect.height / 2 - parentReact.top,
           };
         }, 50);
       });
@@ -58,7 +57,10 @@ connect2Server()
     setTimeout(() => {
       data.conexiones.forEach(([origen, destino]) => {
         if (posiciones[origen] && posiciones[destino]) {
-          let line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          let line = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "line"
+          );
           line.setAttribute("x1", posiciones[origen].x);
           line.setAttribute("y1", posiciones[origen].y);
           line.setAttribute("x2", posiciones[destino].x);
@@ -71,3 +73,21 @@ connect2Server()
     }, 100);
   }
 });
+let personaje = "";
+getEvent("personaje", (data) => {
+  if(data === "bear"){
+    personaje = bear;
+  }
+  else if(data === "mago"){
+    personaje = "mago";
+  }
+  else if(data === "jon"){
+    personaje = "jon";
+  }
+  else if(data === "pick"){
+    personaje = "pick";
+  }
+});
+
+if(personaje === "bear"){}
+

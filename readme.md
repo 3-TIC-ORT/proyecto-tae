@@ -7,10 +7,10 @@ Un roguelike de cartas inspirado en *Slay the Spire*, con personajes, reliquias,
 
 ## 👥 Integrantes
 
-- **Julian Garbate (3TB)** – Back End  
-- **Lorenzo Laniado (3TB)** – TIMI (diseño de cartas, reliquias, personajes y pantallas)  
-- **Joaquin Schopflocher (3TB)** – Front End  
-- **Iván Rostein (3TB)** – Front End  
+- **Julian G** – Back End  
+- **Lorenzo L** – TIMI
+- **Joaquin S** – Front End  
+- **Iván R** – Front End  
 
 ---
 

@@ -20,6 +20,8 @@
       href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.2/soquetic-client.js"></script>
       <link rel="icon" href="../Cosas/Screenshot 2025-08-14 131918.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,6 +36,14 @@
   <body>
     <main class="container">
       <h1>The Bear</h1>
+      <div id="container-mapa" style="position: relative;">
+        <svg id="conecciones"></svg>
+        <div id="pisos-container"></div>
+      </div>
+      <pre id="salida"></pre>
+
+
+
       <!-- div id="lugar1" class="lugar1 caja"></div -->
       <!-- div id="lugar2" class="lugar2 caja"></div -->
       <!-- div id="lugar3" class="lugar3 caja"></div -->

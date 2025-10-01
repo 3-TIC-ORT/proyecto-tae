@@ -27,6 +27,7 @@ h1{
   background-repeat: no-repeat;
   text-align: center;
   margin: 0;
+  padding: 3.5rem;
 }
 /* Contenedor general del mapa */
 #container-mapa {
@@ -35,7 +36,7 @@ h1{
   align-items: center;
   position: relative;
   margin: 40px auto;
-  padding: 20px;
+  padding: 1.2rem;
   border-radius: 10px;
   width: 90vw;
   max-width: 800px;
@@ -72,8 +73,11 @@ h1{
 
 /* Tipos de nodo */
 .nodo.M {
-  background-color: rgb(226, 102, 102);
-  border-radius: 50%;
+  background-image: url("../Cosas/balar.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 64%;
+  background-position-x: right;
 } /* Monstruo */
 .nodo.E {
   background-color: red;

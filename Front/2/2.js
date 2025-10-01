@@ -46,10 +46,10 @@ function mostrarMago() {
   h1.style.color = "white";
   h1.style.fontSize = "7.5rem";
   h1.style.backgroundImage = "url()";
-  descpoder.textContent =
-    "Incrementa tu maná maximo en 1";
+  descpoder.textContent = "Incrementa tu maná maximo en 1";
   foto.src = "../Cosas/bara.svg";
-  parrafo.textContent = "Nunca tuvo muchos amigos, pero siempre encontraba un refugio.";
+  parrafo.textContent =
+    "Nunca tuvo muchos amigos, pero siempre encontraba un refugio.";
   pick.style.filter = "none";
   jon.style.filter = "none";
   bear.style.filter = "none";
@@ -59,15 +59,15 @@ function mostrarMago() {
   siBear = false;
   siJon = false;
   siPick = false;
-  }
+}
 function mostrarBear() {
   avanzar.style.opacity = "100";
   body.style.backgroundColor = "#C7AE20";
   imagen.style.height = "90vh";
   conjunto.style.marginTop = "1rem";
   parrafo.textContent =
-  "El ultimo de su manada. Vendio su alma para olvidar su vida pasada.";
-  imagen.src = "../Cosas/oso-removebg-preview.png";
+    "El ultimo de su manada. Vendio su alma para olvidar su vida pasada.";
+  imagen.src = "../Cosas/bear.png";
   imagen.alt = "foto bear";
   imagen.style.marginTop = "2rem";
   titulo.textContent = "";
@@ -94,7 +94,7 @@ function mostrarBear() {
   siBear = true;
   siJon = false;
   siPick = false;
-  }
+}
 
 function mostrarPick() {
   avanzar.style.opacity = "100";
@@ -130,7 +130,7 @@ function mostrarPick() {
   siBear = false;
   siJon = false;
   siPick = true;
-  }
+}
 
 function mostrarJon() {
   avanzar.style.opacity = "100";
@@ -138,33 +138,32 @@ function mostrarJon() {
   imagen.style.height = "90vh";
   h1.textContent = "Jon the Brave";
   parrafo.textContent =
-  "Jon es un guerrero audaz que nunca teme enfrentarse a dragones y demonios.";
+    "Jon es un guerrero audaz que nunca teme enfrentarse a dragones y demonios.";
   imagen.src =
-  "../Cosas/pngtree-mine-cave-entrance-with-railway-in-cartoon-style-isolated-on-white-background-picture-image_7836835.png";
+    "../Cosas/pngtree-mine-cave-entrance-with-railway-in-cartoon-style-isolated-on-white-background-picture-image_7836835.png";
   imagen.alt = "foto john";
   titulo.textContent = "";
   mago.style.filter = "none";
   bear.style.filter = "none";
   pick.style.filter = "none";
   jon.style.filter =
-  "drop-shadow(0 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0 -0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem -0.03rem 0.2rem rgba(255, 253, 253, 0.5)) drop-shadow(0.03rem -0.03rem 0.2rem rgba(255, 250, 250, 0.5)) drop-shadow(-0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5))";
+    "drop-shadow(0 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0 -0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem 0 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5)) drop-shadow(-0.03rem -0.03rem 0.2rem rgba(255, 253, 253, 0.5)) drop-shadow(0.03rem -0.03rem 0.2rem rgba(255, 250, 250, 0.5)) drop-shadow(-0.03rem 0.03rem 0.2rem rgba(255, 255, 255, 0.5))";
   siMago = false;
   siBear = false;
   siJon = true;
   siPick = false;
-  }
+}
 
-
-function avanzarMago(){
+function avanzarMago() {
   window.location.href = "../mapaBear/index.html";
 }
-function avanzarBear(){
+function avanzarBear() {
   window.location.href = "../mapaBear/index.html";
 }
-function avanzarPick(){
+function avanzarPick() {
   window.location.href = "../mapaBear/index.html";
 }
-function avanzarJon(){
+function avanzarJon() {
   window.location.href = "../mapaBear/index.html";
 }
 
@@ -173,21 +172,21 @@ jon.addEventListener("click", mostrarJon);
 bear.addEventListener("click", mostrarBear);
 pick.addEventListener("click", mostrarPick);
 atras.addEventListener("click", volver);
-let personaje = ""
-  avanzar.addEventListener("click", () => {
+let personaje = "";
+avanzar.addEventListener("click", () => {
   if (siMago) {
-    personaje = "mago"
+    personaje = "mago";
     avanzarMago();
   } else if (siBear) {
-    personaje = "bear"
+    personaje = "bear";
     avanzarBear();
   } else if (siPick) {
-    personaje = "pick"
+    personaje = "pick";
     avanzarPick();
   } else if (siJon) {
-    personaje = "jon"
+    personaje = "jon";
     avanzarJon();
   }
-  postEvent("personaje",personaje)
+  postEvent("personaje", personaje);
 });
-connect2Server()
+connect2Server();

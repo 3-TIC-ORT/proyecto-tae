@@ -4,41 +4,40 @@
   }
 body{
     min-height: 100vh;
-    background-image: url(../Cosas/prender-una-fogata.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
-    
+}
+.arriba{
+    background-color: red;
+    height: 20vh;
+}
+h2{
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 5rem;
 }
 .container{
+    height: 80vh;
+}
+.cajas{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12rem;
-    height: 100vh;
+    justify-content: space-evenly;
+
+}
+.cama{
+    border: 2px solid black;
+    height: 12vh;
+    aspect-ratio: 5/3;
 }
 .mina{
-    height: 20rem;
-    aspect-ratio: 1/1;
-    position: relative;
-    top: 12rem;
-    left: 18rem;
-    background-image: url(../Cosas/pngtree-mine-cave-entrance-with-railway-in-cartoon-style-isolated-on-white-background-picture-image_7836835.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    cursor: var(--pointer);
-}   
-.cama{
-    height: 20rem;
-    aspect-ratio: 1/1;
-    position: relative;
-    top: 12rem;
-    right: 6rem;
-    background-image: url(../Cosas/bed-and-pillow-color-illustration-png.webp);
-    background-repeat: no-repeat;
-    background-size: contain;
-    cursor: var(--pointer);
+    border: 2px solid black;
+    height: 12vh;
+    aspect-ratio: 5/3;
 }
-body{
-    overflow: hidden;
-    cursor: var(--mouse);
+P{
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 1.5rem;
 }

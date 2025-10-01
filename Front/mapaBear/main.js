@@ -1,12 +1,12 @@
-function abajo(){
+function abajo() {
   setTimeout(() => {
     window.scrollTo({
       top: document.body.scrollHeight,
       left: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   }, 500);
-};
+}
 
 window.onload = abajo();
 window.addEventListener("DOMContentLoaded", () => {
@@ -28,7 +28,7 @@ window.addEventListener("DOMContentLoaded", () => {
       h1.style.fontFamily = "Galdeano, sans-serif";
       h1.textContent = "The Magician";
       h1.style.color = "black";
-      h1.style.fontSize = "7.5rem";
+      h1.style.fontSize = "12rem";
     } else if (personaje === "jon") {
       h1.textContent = "Warrior";
     } else if (personaje === "bear") {
@@ -37,13 +37,13 @@ window.addEventListener("DOMContentLoaded", () => {
       h1.style.fontWeight = "400";
       h1.style.fontStyle = "normal";
       h1.style.color = "#D52CB0";
-      h1.style.fontSize = "9rem";
+      h1.style.fontSize = "13rem";
     } else if (personaje === "pick") {
       h1.style.fontFamily = "EB Garamond, serif";
       h1.textContent = "The Pickpocket";
       h1.style.color = "black";
       h1.style.fontSize = "6rem";
-      h1.style.backgroundImage = "url('../Cosas/image 19.png')";
+      h1.style.backgroundImage = "url('../Cosas/bala.png')";
     } else {
       h1.textContent = personaje;
     }

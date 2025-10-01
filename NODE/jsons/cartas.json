@@ -1,0 +1,46 @@
+{
+    "cartas": {
+      "ataque": [
+        {"nombre": "Golpe", "daño": 7, "elixir": 1},
+        {"nombre": "Espada pesada", "daño": 15, "elixir": 2},
+        {"nombre": "Ira", "daño": 8, "elixir": 0},
+        {"nombre": "Ráfaga", "daño": 5, "efecto": "daño a todos los enemigos", "elixir": 1},
+        {"nombre": "Festín", "daño": 15, "efecto": "si mata un enemigo gana 3 PV totales", "elixir": 2},
+        {"nombre": "Ataque rápido", "daño": 9, "efecto": "roba una carta", "elixir": 1},
+        {"nombre": "Chapiadora.com", "daño": 32, "elixir": 3},
+        {"nombre": "Promo 2027", "daño": 10, "efecto": "roba 2 cartas", "elixir": 1},
+        {"nombre": "Choque", "daño": 14, "efecto": "si solo tienes cartas de ataque en tu mano ataca con 14 PV", "elixir": 0},
+        {"nombre": "Garrote", "daño": 14, "efecto": "aplica 2 de vulnerabilidad", "elixir": 2},
+        {"nombre": "Zip", "daño": 5, "efecto": "saltea el turno del contrincante", "elixir": 2},
+        {"nombre": "Uppercut", "daño": 20, "efecto": "el rival gana 3 de vulnerabilidad", "elixir": 2}
+      ],
+      "defensa": [
+        {"nombre": "Escudo", "bloqueo": 6, "elixir": 1},
+        {"nombre": "Trinchera", "efecto": "duplica tu bloqueo", "elixir": 2},
+        {"nombre": "Protector", "bloqueo": 11, "efecto": "roba una carta", "elixir": 2},
+        {"nombre": "Heroico", "efecto": "pierde 6 PV y gana 30 de escudo", "elixir": 2},
+        {"nombre": "Verdadero valor", "bloqueo": 7, "efecto": "agota una carta de tu mano", "elixir": 1},
+        {"nombre": "Segundo aliento", "efecto": "agota todas las cartas no-ataque y da 5 de elixir por cada una", "elixir": 2},
+        {"nombre": "Defensa en placas", "bloqueo": 5, "efecto": "gana 5 de escudo en los siguientes 3 turnos", "elixir": 2},
+        {"nombre": "Estrategia defensiva", "bloqueo": 3, "efecto": "el ataque rival baja 25%", "elixir": 2},
+        {"nombre": "Copa", "bloqueo": 3, "efecto": "próximas 4 cartas de escudo ganan 25% más", "elixir": 2},
+        {"nombre": "Auto-escudo", "bloqueo": 11, "efecto": "si no tienes escudo, es 1", "elixir": 1},
+        {"nombre": "Mutación", "bloqueo": 1, "efecto": "cada vez que la juegas mejora +1", "elixir": 1},
+        {"nombre": "Espadas orbitantes", "bloqueo": 10, "efecto": "este y el próximo turno", "elixir": 2}
+      ],
+      "apoyo": [
+        {"nombre": "Flexionar", "efecto": "gana 2 de fuerza este turno", "elixir": 0},
+        {"nombre": "Ritual", "efecto": "gasta 6 PV gana 2 de elixir", "elixir": 0},
+        {"nombre": "Doble ataque", "efecto": "próxima carta se juega 2 veces", "elixir": 1},
+        {"nombre": "Furia", "efecto": "cada carta de ataque gana 3 puntos de defensa para la vida", "elixir": 0},
+        {"nombre": "Columna suertuda", "efecto": "roba 3 cartas, no robar más este turno", "elixir": 0},
+        {"nombre": "Ataque ancestral", "efecto": "agrega un ataque al azar que cuesta 0 elixir", "elixir": 1},
+        {"nombre": "Debilidad", "efecto": "aplica 2 de vulnerabilidad a un enemigo", "elixir": 0},
+        {"nombre": "Barricada", "efecto": "tu bloqueo no desaparece al final del turno", "elixir": 1},
+        {"nombre": "Golpe de cuerpo", "efecto": "inflige daño igual al bloque que tienes", "elixir": 0},
+        {"nombre": "Ignorar", "efecto": "gana 8 de escudo y roba una carta", "elixir": 1},
+        {"nombre": "Lamento penetrante", "efecto": "reduce 6 de ataque a todos los enemigos", "elixir": 1}
+      ]
+    }
+  }
+  

@@ -8,7 +8,7 @@
 body {
     margin: 0;
     padding: 0;
-    width: 100vw;
+    width: 110vw;
     height: 100vh;
    
     
@@ -60,7 +60,7 @@ margin: 17px 155px 55px 75px;
     margin-right: 20px ;
   }
 .arriba {
-    max-height: 20vh;
+    max-height: 45vh;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -90,8 +90,9 @@ margin: 17px 155px 55px 75px;
   background-image: url("../Cosas/eb223c4034a1c48c8bc140e0a14ae7ecd0cbf9de.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 120vw 115vh;
+  background-size: 145vw 145vh;
   height: 80vh;
+  padding-top: 2rem;
 }
 .oro {
     color: #000;
@@ -141,3 +142,14 @@ margin: 17px 155px 55px 75px;
   margin-left: 40px;
 }
 
+.mercader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7rem;
+}
+
+#precio-oro {
+  display: flex;
+  justify-content: center;
+}

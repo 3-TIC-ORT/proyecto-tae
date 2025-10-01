@@ -1,12 +1,64 @@
+function abajo(){
+  setTimeout(() => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, 500);
+};
+
+window.onload = abajo();
 window.addEventListener("DOMContentLoaded", () => {
+  // Obtener el elemento h1 una vez que el DOM esté listo
+  let h1 = document.querySelector("h1");
+  if (!h1) {
+    console.error("No se encontró el elemento <h1> en el DOM");
+    return;
+  }
+
+  // Conectar al servidor
+  connect2Server();
+
+  // Escuchar evento 'personaje'
+  getEvent("personaje", (data) => {
+    let personaje = data;
+
+    if (personaje === "mago") {
+      h1.style.fontFamily = "Galdeano, sans-serif";
+      h1.textContent = "The Magician";
+      h1.style.color = "black";
+      h1.style.fontSize = "7.5rem";
+    } else if (personaje === "jon") {
+      h1.textContent = "Warrior";
+    } else if (personaje === "bear") {
+      h1.textContent = "The Bear";
+      h1.style.fontFamily = "Sedgwick Ave Display, cursive";
+      h1.style.fontWeight = "400";
+      h1.style.fontStyle = "normal";
+      h1.style.color = "#D52CB0";
+      h1.style.fontSize = "9rem";
+    } else if (personaje === "pick") {
+      h1.style.fontFamily = "EB Garamond, serif";
+      h1.textContent = "The Pickpocket";
+      h1.style.color = "black";
+      h1.style.fontSize = "6rem";
+      h1.style.backgroundImage = "url('../Cosas/image 19.png')";
+    } else {
+      h1.textContent = personaje;
+    }
+  });
+
+  // Variables para otros elementos
   let salida = document.getElementById("salida");
   let pisosContainer = document.getElementById("pisos-container");
   let svg = document.getElementById("conecciones");
 
   pisosContainer.innerHTML = "";
   svg.innerHTML = "";
-  connect2Server();
-  getEvent(`mapa?cantidadpisos=${3}`, (data) => {
+
+  // Escuchar evento para el mapa
+  getEvent(`mapa?cantidadpisos=${7}`, (data) => {
     salida.innerText = JSON.stringify(data, null, 2);
     rendermapa(data);
   });
@@ -22,11 +74,13 @@ window.addEventListener("DOMContentLoaded", () => {
     data.grafo.forEach((piso) => {
       let fila = document.createElement("div");
       fila.className = "piso";
+
       piso.forEach((nodo) => {
         let div = document.createElement("div");
         div.className = "nodo";
         let tipo = "M";
         let texto = nodo;
+
         if (nodo === "Final Boss") {
           div.className = "finalBoss";
           div.textContent = "B";
@@ -41,19 +95,24 @@ window.addEventListener("DOMContentLoaded", () => {
             texto = nodo;
           }
         }
+
         fila.appendChild(div);
+
+        // Calcular posición relativa al container
         setTimeout(() => {
           let rect = div.getBoundingClientRect();
-          let parentReact = container.getBoundingClientRect();
+          let parentRect = container.getBoundingClientRect();
           posiciones[texto] = {
-            x: rect.left + rect.width / 2 - parentReact.left,
-            y: rect.top + rect.height / 2 - parentReact.top,
+            x: rect.left + rect.width / 2 - parentRect.left,
+            y: rect.top + rect.height / 2 - parentRect.top,
           };
         }, 50);
       });
+
       container.appendChild(fila);
     });
 
+    // Dibujar las conexiones con SVG
     setTimeout(() => {
       data.conexiones.forEach(([origen, destino]) => {
         if (posiciones[origen] && posiciones[destino]) {
@@ -66,28 +125,10 @@ window.addEventListener("DOMContentLoaded", () => {
           line.setAttribute("x2", posiciones[destino].x);
           line.setAttribute("y2", posiciones[destino].y);
           line.setAttribute("stroke", "black");
-          line.setAttribute("stroke-width", "2");
+          line.setAttribute("stroke-width", "4");
           svg.appendChild(line);
         }
       });
     }, 100);
   }
 });
-let personaje = "";
-getEvent("personaje", (data) => {
-  if(data === "bear"){
-    personaje = bear;
-  }
-  else if(data === "mago"){
-    personaje = "mago";
-  }
-  else if(data === "jon"){
-    personaje = "jon";
-  }
-  else if(data === "pick"){
-    personaje = "pick";
-  }
-});
-
-if(personaje === "bear"){}
-

@@ -21,6 +21,7 @@ subscribeGETEvent("mapa",(query) => {
   return mapa
 })
 subscribePOSTEvent("personaje",(data) => {
+  console.log("POST recibido:", data);
   info.personaje.personaje = data
   if(data === "bear"){
     info.personaje.reliquia_inicial = "reliquia bear"
@@ -49,11 +50,10 @@ subscribePOSTEvent("personaje",(data) => {
   return info.personaje
 })
 
-subscribeGETEvent("personaje",(data) => {
-  if(data){
-    return info.personaje.personaje
-  }
-})
+subscribeGETEvent("personaje", () => {
+  console.log("GET solicitado. Personaje actual:", info.personaje.personaje);
+  return info.personaje.personaje;
+});
 
 subscribePOSTEvent("vida",(data) => {
   info.personaje.vida = data

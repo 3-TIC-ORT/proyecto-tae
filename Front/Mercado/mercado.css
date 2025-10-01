@@ -21,13 +21,20 @@ html{
 }
 
 #avanzar{
-    margin: 0;
-    text-decoration: underline;
-    font-size: 2rem;
-    padding: 1rem 1rem 0 1rem;
-    transition: transform 0.2s ease;
+  height: 13vh;
+  aspect-ratio: 4/3;
   position: fixed;
-  bottom: 1rem;
+  bottom: -2rem;
+  left: 0;
+  cursor: var(--pointer);
+  padding: 1rem;
+  font-size: 4vh;
+  background-image: url(../Cosas/image34.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  align-items: center;
 }
 #avanzar:hover{
     

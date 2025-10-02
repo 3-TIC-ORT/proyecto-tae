@@ -1,43 +1,87 @@
 :root {
-    --mouse: url("../Cosas/mouse.png") 16 16, auto;
-    --pointer: url("../Cosas/pointer.png") 16 16, pointer;
-  }
-body{
-    min-height: 100vh;
-    background-repeat: no-repeat;
-    background-size: 100%;
+  --mouse: url("../Cosas/mouse.png") 16 16, auto;
+  --pointer: url("../Cosas/pointer.png") 16 16, pointer;
 }
-.arriba{
-    background-color: red;
-    height: 20vh;
+body {
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
-h2{
-    font-size: 2.5rem;
-    text-align: center;
-    margin-top: 5rem;
+.arriba {
+  min-height: 15vh;
+  max-height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: white;
+  width: 100vw;
+  padding: 0;
+  border: solid 2px black;
 }
-.container{
-    height: 80vh;
+.titulo {
+  font-family: "Dela Gothic One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  font-size: 3.5rem;
 }
-.cajas{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-evenly;
+.izq {
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+}
+.vida {
+  border: 2px red solid;
+  width: 20%;
+  height: 5vh;
+}
+.oro {
+  border: 2px gold solid;
+  width: 20%;
+  height: 5vh;
+}
+.der {
+  display: flex;
+  gap: 5vh;
+  width: 40%;
+  justify-content: flex-end;
+  padding-right: 10vh;
+}
+.icon {
+  border: 2px solid black;
+  height: 7vh;
+  aspect-ratio: 1/1;
+}
 
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 5rem;
 }
-.cama{
-    border: 2px solid black;
-    height: 12vh;
-    aspect-ratio: 5/3;
+.container {
+  height: 80vh;
 }
-.mina{
-    border: 2px solid black;
-    height: 12vh;
-    aspect-ratio: 5/3;
+.cajas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
 }
-P{
-    margin-top: 0.5rem;
-    text-align: center;
-    font-size: 1.5rem;
+.cama {
+  border: 2px solid black;
+  height: 12vh;
+  aspect-ratio: 5/3;
+}
+.mina {
+  border: 2px solid black;
+  height: 12vh;
+  aspect-ratio: 5/3;
+}
+P {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+#axion {
+  font-weight: 500;
 }

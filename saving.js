@@ -51,19 +51,32 @@ subscribePOSTEvent("personaje",(data) => {
 })
 
 subscribeGETEvent("personaje", () => {
-  console.log("GET solicitado. Personaje actual:", info.personaje.personaje);
+  console.log("GET solicitado. Personaje actual: ", info.personaje.personaje);
   return info.personaje.personaje;
 });
 
-subscribePOSTEvent("vida",(data) => {
-  info.personaje.vida = data
-  return info.personaje.vida
+subscribeGETEvent("fogata",() => {
+console.log("GET solicitado. ORO, VIDA, MAPA, RELIQUIAS: ", {
+  oro:info.personaje.oro,
+  vida:info.personaje.vida,
+  vidamax:info.personaje.vidamax,
+  mapa:info.mapa,
+  reliquias:reliquias,
+  mazo:mazo
 })
+return {
+  oro:info.personaje.oro,
+  vida:info.personaje.vida,
+  vidamax:info.personaje.vidamax,
+  mapa:info.mapa,
+  reliquias:reliquias,
+  mazo:mazo
+}
+});
 
-
-subscribePOSTEvent("mazo",(data) => {
-  info.mazo = data
-  return info.mazo
+subscribePOSTEvent("fogata",(data) => {
+  info.personaje.oro = data.oro
+  info.personaje.vida = data.vida
 })
 
 

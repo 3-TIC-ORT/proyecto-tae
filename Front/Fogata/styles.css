@@ -32,6 +32,7 @@ html {
   display: flex;
   justify-content: space-evenly;
   width: 60%;
+  align-items: center;
 }
 .vida {
   border: 2px red solid;
@@ -49,6 +50,7 @@ html {
   width: 40%;
   justify-content: flex-end;
   padding-right: 10vh;
+  align-items: center;
 }
 .icon {
   height: 7vh;
@@ -93,9 +95,11 @@ P {
 }
 .mapa {
   background-image: url("../Cosas/images-removebg-preview\ 1.png");
+  background-size: contain;
 }
 .reliquias {
   background-image: url("../Cosas/image\ 44.png");
+  background-size: contain;
   display: flex;
   align-items: end;
 }
@@ -107,7 +111,7 @@ P {
   align-items: end;
 }
 .circulo-reliquias {
-  height: 1.5rem;
+  height: 3.6vh;
   aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: lightgray;
@@ -118,7 +122,7 @@ P {
   justify-content: center;
 }
 .circulo-cartas {
-  height: 1.5rem;
+  height: 3.6vh;
   aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: lightgray;

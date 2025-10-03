@@ -132,3 +132,9 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 100);
   }
 });
+
+let fogata = document.getElementById("fogata");
+function ir(){
+  window.location.href = "../fogata/index.html"
+}
+fogata.addEventListener("click", ir);

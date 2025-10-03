@@ -1,23 +1,42 @@
 let cama = document.getElementById("cama");
 let mina = document.getElementById("mina");
 let act = document.getElementById("axion");
-function hoverCama(){
+let oro = document.getElementById("oro");
+let vida = document.getElementById("vida");
+let info = {};
+connect2Server();
+getEvent("fogata", (data) => {
+    info = {
+        oro: data.oro,
+        vida: data.vida,
+        vidamax: data.vidamax,
+        mapa: data.mapa,
+        reliquias: data.reliquias,
+        mazo: data.mazo
+    }
+})
+function mostrarVida() {
+    vida.textContent = "PV: " + info.vida;
+}
+
+function hoverCama() {
     console.log("hola");
     act.textContent = "Cura un 30% de tu PV";
 }
-function hoverMina(){
+function hoverMina() {
     act.textContent = "Minar";
 }
-function nada(){
+function nada() {
     act.textContent = "";
 }
 cama.addEventListener("mouseover", hoverCama);
 mina.addEventListener("mouseover", hoverMina);
 cama.addEventListener("mouseleave", nada);
 mina.addEventListener("mouseleave", nada);
+vida.addEventListener("click", mostrarVida);
 
 let mapa = document.getElementById("mapa");
-function irMapa(){
+function irMapa() {
     window.location.href = "../mapa/index.html";
 }
 mapa.addEventListener("click", irMapa);

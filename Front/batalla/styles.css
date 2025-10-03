@@ -19,7 +19,6 @@ body {
 html {
   cursor: var(--mouse);
 }
-
 .arriba {
   min-height: 15vh;
   max-height: 20vh;
@@ -31,7 +30,6 @@ html {
   padding: 0;
   border: solid 2px black;
 }
-
 .titulo {
   font-family: "Dela Gothic One", sans-serif;
   font-weight: 400;
@@ -39,26 +37,36 @@ html {
   margin: 0;
   font-size: 4rem;
 }
-
 .izq {
   display: flex;
   justify-content: space-evenly;
   width: 60%;
   align-items: center;
 }
-
 .vida {
-  border: 2px red solid;
-  width: 20%;
+  background-image: url("../Cosas/Vector.png");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: 15%;
+  background-position-y: center;
+  font-size: 4vh;
+  color: red;
+  width: 23%;
   height: 5vh;
 }
-
 .oro {
-  border: 2px gold solid;
+  font-size: 4vh;
   width: 20%;
   height: 5vh;
+  background-image: url("../Cosas/image\ 42.png");
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: 15%;
 }
-
 .der {
   display: flex;
   gap: 5vh;
@@ -67,25 +75,21 @@ html {
   padding-right: 10vh;
   align-items: center;
 }
-
 .icon {
   height: 7vh;
   aspect-ratio: 1/1;
   cursor: var(--pointer);
 }
-
 .mapa {
   background-image: url("../Cosas/images-removebg-preview\ 1.png");
   background-size: contain;
 }
-
 .reliquias {
   background-image: url("../Cosas/image\ 44.png");
   background-size: contain;
   display: flex;
   align-items: end;
 }
-
 .cartas {
   background-image: url("../Cosas/cartasicon.png");
   background-repeat: no-repeat;
@@ -93,7 +97,6 @@ html {
   display: flex;
   align-items: end;
 }
-
 .circulo-reliquias {
   height: 3.6vh;
   aspect-ratio: 1/1;
@@ -105,7 +108,6 @@ html {
   align-items: center;
   justify-content: center;
 }
-
 .circulo-cartas {
   height: 3.6vh;
   aspect-ratio: 1/1;
@@ -120,6 +122,7 @@ html {
 
 .container {
   min-height: 50vh;
+  width: 100vw;
   border: solid red 2px;
   display: flex;
   justify-content: center;
@@ -128,6 +131,7 @@ html {
 
 .abajo {
   min-height: 35vh;
+  width: 100vw;
   border: solid blue 2px;
   display: flex;
   align-items: center;
@@ -144,7 +148,9 @@ html {
 .caja-personaje {
   height: 30vh;
   aspect-ratio: 2/3;
-  border: solid 2px blue;
+  display: flex;
+  flex-direction: column;
+  gap: 3%;
 }
 
 .caja {
@@ -156,18 +162,82 @@ html {
 }
 
 .cartaG {
-  height: 20vh;
-  aspect-ratio: 2/3;
+  width: 9vw;
+  height: 25vh;
   border: 2px solid black;
+  cursor: var(--pointer);
+}
+.carta1 { 
+  transform: rotate(-13deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 0;
+  left: 35vw;
+  background-color: aqua;
+}
+.carta2 {
+  transform: rotate(-10deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 4vh;
+  left: 43vw;
+  background-color: bisque;
+}
+.carta3 {
+  transform: rotate(0deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 5vh;
+  left: 50vw;
+  background-color: blueviolet;
+}
+.carta4 {
+  transform: rotate(10deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 4vh;
+  left: 57vw;
+  background-color: coral;
+}
+.carta5 {
+  transform: rotate(13deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 0;
+  left: 65vw;
+  background-color: yellow;
+}
+.carta1:hover {
+  transform: rotate(0deg);
+  bottom: 6vh;
+}
+
+.carta2:hover {
+  transform: rotate(0deg);
+  bottom: 12vh;
+}
+.carta3:hover {
+  transform: rotate(0deg);
+  bottom: 10vh;
+}
+.carta4:hover {
+  transform: rotate(0deg);
+  bottom: 12vh;
+}
+.carta5:hover {
+  transform: rotate(0deg);
+  bottom: 6vh;
 }
 .personaje {
-  height: 80%;
+  background-color: blue;
   width: 100%;
+  height: 90%;
 }
 
 .vida1 {
-  height: 20%;
+  height: 5%;
   width: 100%;
   background-color: red;
   display: flex;
+  border-radius: 10px;
 }

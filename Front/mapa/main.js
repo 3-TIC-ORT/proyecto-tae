@@ -135,6 +135,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
 let fogata = document.getElementById("fogata");
 function ir(){
-  window.location.href = "../fogata/index.html"
+  window.location.href = "../fogata/index.html";
+}
+let batalla = document.getElementById("batalla");
+function irB(){
+  window.location.href = "../batalla/batalla.html";
 }
 fogata.addEventListener("click", ir);
+batalla.addEventListener("click", irB);

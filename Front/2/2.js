@@ -154,18 +154,10 @@ function mostrarJon() {
   siPick = false;
 }
 
-function avanzarMago() {
+function avanzarMapa() {
   window.location.href = "../mapa/index.html";
 }
-function avanzarBear() {
-  window.location.href = "../mapa/index.html";
-}
-function avanzarPick() {
-  window.location.href = "../mapa/index.html";
-}
-function avanzarJon() {
-  window.location.href = "../mapa/index.html";
-}
+
 
 mago.addEventListener("click", mostrarMago);
 jon.addEventListener("click", mostrarJon);
@@ -176,16 +168,16 @@ let personaje = "";
 avanzar.addEventListener("click", () => {
   if (siMago) {
     personaje = "mago";
-    avanzarMago();
+    avanzarMapa();
   } else if (siBear) {
     personaje = "bear";
-    avanzarBear();
+    avanzarMapa();
   } else if (siPick) {
     personaje = "pick";
-    avanzarPick();
+    avanzarMapa();
   } else if (siJon) {
     personaje = "jon";
-    avanzarJon();
+    avanzarMapa();
   }
   postEvent("personaje", personaje);
 });

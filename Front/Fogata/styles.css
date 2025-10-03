@@ -35,14 +35,28 @@ html {
   align-items: center;
 }
 .vida {
-  border: 2px red solid;
-  width: 20%;
+  background-image: url("../Cosas/Vector.png");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: 15%;
+  background-position-y: center;
+  font-size: 4vh;
+  color: red;
+  width: 23%;
   height: 5vh;
 }
 .oro {
-  border: 2px gold solid;
+  font-size: 4vh;
   width: 20%;
   height: 5vh;
+  background-image: url("../Cosas/image\ 42.png");
+  background-repeat: no-repeat; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: 15%;
 }
 .der {
   display: flex;
@@ -56,42 +70,6 @@ html {
   height: 7vh;
   aspect-ratio: 1/1;
   cursor: var(--pointer);
-}
-
-h2 {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-top: 5rem;
-}
-.container {
-  font-family: "Galdeano", sans-serif;
-  height: 80vh;
-}
-.cajas {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-evenly;
-}
-.cama {
-  border: 2px solid black;
-  height: 12vh;
-  aspect-ratio: 5/3;
-  cursor: var(--pointer);
-}
-.mina {
-  border: 2px solid black;
-  height: 12vh;
-  aspect-ratio: 5/3;
-  cursor: var(--pointer);
-}
-P {
-  margin-top: 0.5rem;
-  text-align: center;
-  font-size: 1.5rem;
-}
-#axion {
-  font-weight: 500;
 }
 .mapa {
   background-image: url("../Cosas/images-removebg-preview\ 1.png");
@@ -131,4 +109,40 @@ P {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 5rem;
+}
+.container {
+  font-family: "Galdeano", sans-serif;
+  height: 80vh;
+}
+.cajas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.cama {
+  border: 2px solid black;
+  height: 12vh;
+  aspect-ratio: 5/3;
+  cursor: var(--pointer);
+}
+.mina {
+  border: 2px solid black;
+  height: 12vh;
+  aspect-ratio: 5/3;
+  cursor: var(--pointer);
+}
+P {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+#axion {
+  font-weight: 500;
 }

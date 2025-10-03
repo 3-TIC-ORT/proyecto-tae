@@ -44,54 +44,91 @@ html{
 #avanzar:active{
     transform: scale(0.95);
 }
-.titulo {
-width: 12.5625rem;
-height: 4.5625rem;
-flex-shrink: 0;
-color: #000;
-font-family: "Dela Gothic One";
-font-size: 75px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-margin: 17px 155px 55px 75px;
-}
-.dela-gothic-one-regular {
-    font-family: "Dela Gothic One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  .corazon {
-    height: 30px;
-    margin-left: 65.67px;
-    margin-right: 20px ;
-  }
 .arriba {
-    max-height: 45vh;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: white;
+  min-height: 15vh;
+  max-height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: white;
+  width: 100vw;
+  padding: 0;
+}
+.titulo {
+  font-family: "Dela Gothic One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  font-size: 4rem;
+}
+.izq {
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+  align-items: center;
 }
 .vida {
-    font-family: 'Inknut Antiqua', serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: #CD0003;
-    position: relative;
-    top: 5px;
+  border: 2px red solid;
+  width: 20%;
+  height: 5vh;
 }
-.todo {
-    display: flex;
-    align-items: center;
-    height: 100px;
+.oro {
+  border: 2px gold solid;
+  width: 20%;
+  height: 5vh;
 }
-
-.bolsa {
-    height: 2.5rem;
-    margin-left: 60px;
-    margin-right: 21px;
-  }
+.der {
+  display: flex;
+  gap: 5vh;
+  width: 40%;
+  justify-content: flex-end;
+  padding-right: 10vh;
+  align-items: center;
+}
+.icon {
+  height: 7vh;
+  aspect-ratio: 1/1;
+  cursor: var(--pointer);
+}
+.mapa {
+  background-image: url("../Cosas/images-removebg-preview\ 1.png");
+  background-size: contain;
+}
+.reliquias {
+  background-image: url("../Cosas/image\ 44.png");
+  background-size: contain;
+  display: flex;
+  align-items: end;
+}
+.cartas {
+  background-image: url("../Cosas/cartasicon.png");
+  background-repeat: no-repeat;
+  background-size: 90%;
+  display: flex;
+  align-items: end;
+}
+.circulo-reliquias {
+  height: 3.6vh;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: lightgray;
+  text-align: center;
+  font-size: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.circulo-cartas {
+  height: 3.6vh;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: lightgray;
+  text-align: center;
+  font-size: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .container{
   background-image: url("../Cosas/eb223c4034a1c48c8bc140e0a14ae7ecd0cbf9de.png");
@@ -100,63 +137,4 @@ margin: 17px 155px 55px 75px;
   background-size: 145vw 145vh;
   height: 80vh;
   padding-top: 2rem;
-}
-.oro {
-    color: #000;
-    font-family:'Inknut Antiqua', serif ;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    position: relative;
-    top: 5px;
-}
-
-.reliquia-circulo{
-  position: relative;
-  top: 28px;
-  position: absolute;
-  margin-left: 400px;
-}
-.reliquia {
-  margin-left: 400px;
-  height: 3.75rem;
-  position: relative;
-  top: 15px;
-}
-
-.circulo {
-  position: relative;
-  bottom: 10px;
-  background: lightgray;
-  border-radius: 50%;
-  font-size: 12px;
-  width: 1.375rem;
-  height: 1.375rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 400px;
-}
-
-.mapa{
-  height: 3.75rem;
-  margin-left: 540px;
-}
-
-.cartas {
-  height: 3.75rem;
-  margin-left: 40px;
-}
-
-.mercader {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 7rem;
-}
-
-#precio-oro {
-  display: flex;
-  justify-content: center;
-}
+  }

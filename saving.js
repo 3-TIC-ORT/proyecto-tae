@@ -62,15 +62,12 @@ console.log("GET solicitado. ORO, VIDA, MAPA, RELIQUIAS: ", {
   vidamax:info.personaje.vidamax,
   mapa:info.mapa,
   reliquias:reliquias,
-  mazo:mazo
 })
 return {
   oro:info.personaje.oro,
   vida:info.personaje.vida,
   vidamax:info.personaje.vidamax,
   mapa:info.mapa,
-  reliquias:reliquias,
-  mazo:mazo
 }
 });
 

@@ -1,5 +1,4 @@
-{
-  "cartas": [
+[
       {"nombre": "Golpe", "daño": 7, "elixir": 1, "tipo": "ataque", "efecto": null},
       {"nombre": "Espada pesada", "daño": 15, "elixir": 2, "tipo": "ataque", "efecto": null},
       {"nombre": "Ira", "daño": 8, "elixir": 0, "tipo": "ataque", "efecto": null},
@@ -37,5 +36,5 @@
       {"nombre": "Golpe de cuerpo", "efecto": "inflige_danio_igual_a_bloqueo();", "elixir": 0, "tipo": "apoyo"},
       {"nombre": "Ignorar", "efecto": "gana_escudo(8); roba_una_carta();", "elixir": 1, "tipo": "apoyo"},
       {"nombre": "Lamento penetrante", "efecto": "reduce_danio_a_enemigos(6);", "elixir": 1, "tipo": "apoyo"}
-    ]
-}
+]
+

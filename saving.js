@@ -1,5 +1,6 @@
 import { subscribeGETEvent, subscribePOSTEvent, realTimeEvent, startServer } from "soquetic";
 import { generarmapa } from './NODE/mapa/generarmapa.js';
+import {cartas_mercado} from "./NODE/mercado.js"
 import fs from "fs";
 let info = {
     personaje:{
@@ -141,5 +142,7 @@ subscribePOSTEvent("agregar-reliquia", (data) => {
   fs.writeFileSync("./NODE/jsons/reliquiauso.json", JSON.stringify(reliquiasuso, null, 2));
   return reliquiasuso;
 });
+
+subscribeGETEvent("mercado",cartas_mercado)
 
 startServer();

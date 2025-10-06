@@ -10,9 +10,15 @@ let eliminar = document.getElementById("eliminar")
 let reliquias = document.getElementById("reliquias")
 let reliquia = document.getElementById("reliquia")
 let agregarreliquia = document.getElementById("agregar-reliquia")
+let mercado = document.getElementById("mercado")
 function mapa(data){
     console.log(data)
 } 
+mercado.addEventListener("click",() => {
+    getEvent("mercado",(data)=>{
+        salida.innerText = JSON.stringify(data,null,2)
+    })
+})
 reliquias.addEventListener("click",() => {
     getEvent("reliquia",(data)=>{
         salida.innerText = JSON.stringify(data,null,2)

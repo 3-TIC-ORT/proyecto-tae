@@ -180,5 +180,16 @@ avanzar.addEventListener("click", () => {
     avanzarMapa();
   }
   postEvent("personaje", personaje);
+  postEvent("modificar-mazo",{accion:"agregar",carta:"golpe"})
+  postEvent("modificar-mazo",{accion:"agregar",carta:"golpe"})
+  postEvent("modificar-mazo",{accion:"agregar",carta:"golpe"})
+  postEvent("modificar-mazo",{accion:"agregar",carta:"golpe"})
+  postEvent("modificar-mazo",{accion:"agregar",carta:"golpe"})
+  postEvent("modificar-mazo",{accion:"agregar",carta:"escudo"})
+  postEvent("modificar-mazo",{accion:"agregar",carta:"escudo"})
+  postEvent("modificar-mazo",{accion:"agregar",carta:"escudo"})
+  postEvent("modificar-mazo",{accion:"agregar",carta:"escudo"})
+  postEvent("modificar-mazo",{accion:"agregar",carta:"escudo"})
+  postEvent("modificar-mazo",{accion:"agregar",carta:"Garrote"})
 });
 connect2Server();

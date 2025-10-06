@@ -2,6 +2,7 @@ window.addEventListener("DOMContentLoaded", () => {
     let oro = document.getElementById("oro");
     let vida = document.getElementById("vida");
     let info = {};
+    let mapa = document.getElementById("mapa");
 
     connect2Server();
 
@@ -26,4 +27,9 @@ window.addEventListener("DOMContentLoaded", () => {
     function mostrarOro() {
         oro.textContent = "Oro: " + info.oro;
     }
+    function irMapa() {
+        window.location.href = "../mapa/index.html";
+      }
+
+    mapa.addEventListener("click", irMapa);
 });

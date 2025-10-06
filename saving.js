@@ -18,7 +18,8 @@ subscribeGETEvent("mapa",(query) => {
   const mapa = generarmapa(query)
   info.mapa = mapa
   return mapa
-})
+});
+
 subscribePOSTEvent("personaje",(data) => {
   console.log("POST recibido:", data);
   info.personaje.personaje = data
@@ -47,7 +48,7 @@ subscribePOSTEvent("personaje",(data) => {
     info.personaje.oro = 125
   }
   return info.personaje
-})
+});
 
 subscribeGETEvent("personaje", () => {
   console.log("GET solicitado. Personaje actual: ", info.personaje.personaje);
@@ -60,7 +61,6 @@ console.log("GET solicitado. ORO, VIDA, MAPA, RELIQUIAS: ", {
   vida:info.personaje.vida,
   vidamax:info.personaje.vidamax,
   mapa:info.mapa,
-  reliquias:reliquias,
 })
 return {
   oro:info.personaje.oro,
@@ -73,8 +73,7 @@ return {
 subscribePOSTEvent("fogata",(data) => {
   info.personaje.oro = data.oro
   info.personaje.vida = data.vida
-})
-
+});
 
 subscribePOSTEvent("guardar",(data) => {
   if(data === true){
@@ -82,14 +81,14 @@ subscribePOSTEvent("guardar",(data) => {
   saving = info
   fs.writeFileSync("./jsons/saving.json",JSON.stringify(saving,null,2))
 }
-})
+});
 
 subscribeGETEvent("mazo",() => {
     let mazo = JSON.parse(fs.readFileSync("./NODE/jsons/mazo.json"))
     info.mazo = mazo
     console.log(mazo)
     return mazo
-})
+});
 
 subscribePOSTEvent("modificar-mazo", (data) => {
   console.log("POST recibido:", data);
@@ -121,7 +120,7 @@ subscribeGETEvent("reliquia",() => {
     info.reliquias = reliquias
     console.log(reliquias)
     return reliquias
-})
+});
 
 subscribePOSTEvent("agregar-reliquia", (data) => {
   console.log("POST recibido:", data);

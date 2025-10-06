@@ -5,7 +5,7 @@
     "description": "Juego",
     "main": "index.js",
     "scripts": {
-        "start": "node index.js"
+        "dev": "node saving.js"
     },
     "author": "Julian G, Joaquin S, Ivan R y lorenzo L",
     "license": "ISC",

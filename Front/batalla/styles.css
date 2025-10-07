@@ -260,3 +260,6 @@ html {
   display: flex;
   border-radius: 10px;
 }
+.boton{
+  font-size: 5rem;
+}

@@ -75,27 +75,29 @@ h1{
   background-color: burlywood;
   border-radius: 50%;
 }
-/* Tipos de nodo */
-.nodo.M {
-  background-position: center;
+.nodoPick{
+  background-image: url("../Cosas/balar.png");
+   background-position: center;
   background-repeat: no-repeat;
   background-position-x: right;
+  background-size: contain;
+}
+/* Tipos de nodo */
+.nodo.M {
+
 } /* Monstruo */
 .nodo.E {
 
-  border-radius: 50%;
 } /* Elite */
 .nodo.T {
 
-  border-radius: 50%;
 } /* Tesoro */
 .nodo.S {
 
-  border-radius: 50%;
+
 } /* Descanso */
 .nodo.F {
 
-  border-radius: 50%;
 } /* Evento / vacíos */
 
 /* Final Boss (B) */
@@ -112,6 +114,7 @@ h1{
   align-items: center;
   justify-content: center;
   z-index: 2;
+  background-image: none;
 }
 
 /* SVG para líneas de conexión */

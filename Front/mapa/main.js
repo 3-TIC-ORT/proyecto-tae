@@ -127,6 +127,8 @@ window.addEventListener("DOMContentLoaded", () => {
       h1.style.color = "black";
       h1.style.fontSize = "6rem";
       h1.style.backgroundImage = "url('../Cosas/bala.png')";
+      let nodos = document.querySelectorAll(".nodo");
+      nodos.forEach(n => n.classList.add("nodoPick"));
     } else {
       h1.textContent = personaje;
     }

@@ -691,5 +691,236 @@
     "efecto": "mounstro.mejoras.push('vulnerable'); mounstro.mejoras.push('vulnerable');",
     "elixir": 2,
     "tipo": "ataque"
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Garrote",
+    "daño": 14,
+    "efecto": "mounstro.mejoras.push('vulnerable'); mounstro.mejoras.push('vulnerable');",
+    "elixir": 2,
+    "tipo": "ataque"
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Garrote",
+    "daño": 14,
+    "efecto": "mounstro.mejoras.push('vulnerable'); mounstro.mejoras.push('vulnerable');",
+    "elixir": 2,
+    "tipo": "ataque"
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "efecto": null,
+    "tipo": "defensa"
+  },
+  {
+    "nombre": "Garrote",
+    "daño": 14,
+    "efecto": "mounstro.mejoras.push('vulnerable'); mounstro.mejoras.push('vulnerable');",
+    "elixir": 2,
+    "tipo": "ataque"
   }
 ]

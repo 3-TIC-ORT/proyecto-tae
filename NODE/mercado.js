@@ -14,3 +14,15 @@ let mercado = {
 }
 return mercado
 }
+export function cartas_eleccion(){
+  let cartas = JSON.parse(fs.readFileSync("./NODE/jsons/cartas.json","utf-8"))
+function numeroAleatorio() {
+  return Math.floor(Math.random() * (cartas.length + 1));
+}
+let eleccion = {
+    carta1: cartas[numeroAleatorio()],
+    carta2: cartas[numeroAleatorio()],
+    carta3: cartas[numeroAleatorio()],
+}
+return eleccion
+}

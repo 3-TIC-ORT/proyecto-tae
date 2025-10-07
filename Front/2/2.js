@@ -26,7 +26,7 @@ function volver() {
 }
 
 function mostrarMago() {
-  avanzar.style.opacity = "100";
+  avanzar.style.opacity = "1";
   body.style.backgroundColor = "black";
   imagen.alt = "foto mago";
   titulo.textContent = "";
@@ -61,7 +61,7 @@ function mostrarMago() {
   siPick = false;
 }
 function mostrarBear() {
-  avanzar.style.opacity = "100";
+  avanzar.style.opacity = "1";
   body.style.backgroundColor = "#C7AE20";
   imagen.style.height = "90vh";
   conjunto.style.marginTop = "1rem";
@@ -97,7 +97,7 @@ function mostrarBear() {
 }
 
 function mostrarPick() {
-  avanzar.style.opacity = "100";
+  avanzar.style.opacity = "1";
   body.style.backgroundColor = "#000A57";
   imagen.alt = "foto pick";
   titulo.textContent = "";
@@ -133,7 +133,7 @@ function mostrarPick() {
 }
 
 function mostrarJon() {
-  avanzar.style.opacity = "100";
+  avanzar.style.opacity = "1";
   body.style.backgroundColor = "gold";
   imagen.style.height = "90vh";
   h1.textContent = "Jon the Brave";
@@ -158,15 +158,12 @@ function avanzarMapa() {
   window.location.href = "../mapa/index.html";
 }
 
-
 mago.addEventListener("click", mostrarMago);
 jon.addEventListener("click", mostrarJon);
 bear.addEventListener("click", mostrarBear);
 pick.addEventListener("click", mostrarPick);
 atras.addEventListener("click", volver);
 let personaje = "";
-  postEvent("vaciar-reliquias",true);
-  postEvent("vaciar-mazo",true);
 avanzar.addEventListener("click", () => {
   if (siMago) {
     personaje = "mago";
@@ -182,16 +179,26 @@ avanzar.addEventListener("click", () => {
     avanzarMapa();
   }
   postEvent("personaje", personaje);
-  postEvent("modificar-mazo",{accion:"agregar",carta:"golpe"})
-  postEvent("modificar-mazo",{accion:"agregar",carta:"golpe"})
-  postEvent("modificar-mazo",{accion:"agregar",carta:"golpe"})
-  postEvent("modificar-mazo",{accion:"agregar",carta:"golpe"})
-  postEvent("modificar-mazo",{accion:"agregar",carta:"golpe"})
-  postEvent("modificar-mazo",{accion:"agregar",carta:"escudo"})
-  postEvent("modificar-mazo",{accion:"agregar",carta:"escudo"})
-  postEvent("modificar-mazo",{accion:"agregar",carta:"escudo"})
-  postEvent("modificar-mazo",{accion:"agregar",carta:"escudo"})
-  postEvent("modificar-mazo",{accion:"agregar",carta:"escudo"})
-  postEvent("modificar-mazo",{accion:"agregar",carta:"Garrote"})
+  postEvent("modificar-mazo", { accion: "agregar", carta: "golpe" });
+  postEvent("modificar-mazo", { accion: "agregar", carta: "golpe" });
+  postEvent("modificar-mazo", { accion: "agregar", carta: "golpe" });
+  postEvent("modificar-mazo", { accion: "agregar", carta: "golpe" });
+  postEvent("modificar-mazo", { accion: "agregar", carta: "golpe" });
+  postEvent("modificar-mazo", { accion: "agregar", carta: "escudo" });
+  postEvent("modificar-mazo", { accion: "agregar", carta: "escudo" });
+  postEvent("modificar-mazo", { accion: "agregar", carta: "escudo" });
+  postEvent("modificar-mazo", { accion: "agregar", carta: "escudo" });
+  postEvent("modificar-mazo", { accion: "agregar", carta: "escudo" });
+  postEvent("modificar-mazo", { accion: "agregar", carta: "Garrote" });
 });
-connect2Server();
+window.addEventListener("DOMContentLoaded", () => {
+  connect2Server().then(() => {
+    console.log("✅ Conectado a Soquetic correctamente.");
+
+    // 🔹 ahora sí podés enviar eventos
+    postEvent("vaciar-reliquias", true);
+    postEvent("vaciar-mazo", true);
+  }).catch((err) => {
+    console.error("❌ Error al conectar con Soquetic:", err);
+  });
+});

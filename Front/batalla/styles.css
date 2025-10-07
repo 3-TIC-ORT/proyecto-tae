@@ -169,25 +169,8 @@ html {
   height: 25vh;
   border: 2px solid black;
   cursor: var(--pointer);
-
 }
-.carta1 { 
-  transform: rotate(-13deg);
-  transition: transform 1s ease, bottom 1s ease;
-  position: absolute;
-  bottom: 0;
-  left: 35vw;
-  background-color: aqua;
-}
-.carta2 {
-  transform: rotate(-10deg);
-  transition: transform 1s ease, bottom 1s ease;
-  position: absolute;
-  bottom: 4vh;
-  left: 43vw;
-  background-color: bisque;
-}
-.carta3 {
+.carta1 {
   transform: rotate(0deg);
   transition: transform 1s ease, bottom 1s ease;
   position: absolute;
@@ -195,43 +178,75 @@ html {
   left: 50vw;
   background-color: blueviolet;
 }
-.carta4 {
-  transform: rotate(10deg);
+.carta2 {
+  transform: rotate(3.5deg);
   transition: transform 1s ease, bottom 1s ease;
   position: absolute;
   bottom: 4vh;
   left: 57vw;
   background-color: coral;
 }
-.carta5 {
-  transform: rotate(13deg);
+.carta3 {
+  transform: rotate(-3.5deg);
   transition: transform 1s ease, bottom 1s ease;
   position: absolute;
-  bottom: 0;
+  bottom: 4vh;
+  left: 43vw;
+  background-color: bisque;
+}
+.carta4 {
+  transform: rotate(7deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 2.5vh;
   left: 65vw;
   background-color: yellow;
 }
-.carta1:hover {
-  transform: rotate(0deg);
-  bottom: 6vh;
+.carta5 {
+  transform: rotate(-7deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 2.5vh;
+  left: 35vw;
+  background-color: aqua;
 }
-
-.carta2:hover {
-  transform: rotate(0deg);
-  bottom: 12vh;
+.carta6 {
+  transform: rotate(10.5deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 0vh;
+  left: 73vw;
+  background-color: palevioletred;
 }
-.carta3:hover {
+.carta7 {
+  transform: rotate(-10.5deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 0vh;
+  left: 28vw;
+  background-color: tan;
+}
+.carta8 {
+  transform: rotate(14deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: -3vh;
+  left: 80vw;
+  background-color: cadetblue;
+}
+.carta9 {
+  transform: rotate(-14deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: -3vh;
+  left: 21vw;
+  background-color: firebrick;
+}
+.cartaG:hover {
   transform: rotate(0deg);
   bottom: 10vh;
 }
-.carta4:hover {
-  transform: rotate(0deg);
-  bottom: 12vh;
-}
-.carta5:hover {
-  transform: rotate(0deg);
-  bottom: 6vh;
-}
+
 .personaje {
   background-color: blue;
   width: 100%;

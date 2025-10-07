@@ -42,8 +42,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let carta = document.createElement("div");
     carta.classList.add(`carta${contadorCartas}`, "cartaG");
-    abajo.appendChild(carta);
+    carta.id = `C${contadorCartas}`;
 
+    // Si es la carta 1, le ponemos el click para restar 10 de vida
+    if (contadorCartas === 1) {
+      carta.addEventListener("click", () => {
+        menosVida(10);
+        console.log("-10 de vida");
+      });
+    }
+
+    abajo.appendChild(carta);
     contadorCartas++;
   }
 
@@ -55,6 +64,19 @@ window.addEventListener("DOMContentLoaded", () => {
     let cartaAEliminar = abajo.querySelector(`.carta${contadorCartas}`);
     if (cartaAEliminar) {
       cartaAEliminar.remove();
+    }
+  }
+
+  function menosVida(cantidad) {
+    info.vida -= cantidad;
+
+    if (info.vida < 0) info.vida = 0;
+
+    mostrarVida();
+
+    // Si la vida llega a 0, vamos a Game Over
+    if (info.vida <= 0) {
+      window.location.href = "../Game_over/index.html";
     }
   }
 

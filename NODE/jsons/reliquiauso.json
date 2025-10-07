@@ -28,5 +28,20 @@
     "nombre": "Escudo de Hierro",
     "efecto": "Cada vez que termina el combate se cura 6 de vida",
     "obtencion": "Inicial"
+  },
+  {
+    "nombre": "Escudo de Hierro",
+    "efecto": "Cada vez que termina el combate se cura 6 de vida",
+    "obtencion": "Inicial"
+  },
+  {
+    "nombre": "Báculo del Archimago",
+    "efecto": "Incrementa tu maná máximo en 1",
+    "obtencion": "Inicial"
+  },
+  {
+    "nombre": "Escudo de Hierro",
+    "efecto": "Cada vez que termina el combate se cura 6 de vida",
+    "obtencion": "Inicial"
   }
 ]

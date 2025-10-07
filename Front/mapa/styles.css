@@ -71,28 +71,30 @@ h1{
   cursor: var(--pointer);
 }
 
+.nodoBear{
+  background-color: burlywood;
+  border-radius: 50%;
+}
 /* Tipos de nodo */
 .nodo.M {
-  background-image: url("../Cosas/balar.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 64%;
   background-position-x: right;
 } /* Monstruo */
 .nodo.E {
-  background-color: red;
+
   border-radius: 50%;
 } /* Elite */
 .nodo.T {
-  background-color: yellow;
+
   border-radius: 50%;
 } /* Tesoro */
 .nodo.S {
-  background-color: #ddffdd;
+
   border-radius: 50%;
 } /* Descanso */
 .nodo.F {
-  background-color: orange;
+
   border-radius: 50%;
 } /* Evento / vacíos */
 

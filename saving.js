@@ -21,36 +21,6 @@ subscribeGETEvent("mapa",(query) => {
   return mapa
 });
 
-subscribePOSTEvent("personaje",(data) => {
-  console.log("POST recibido:", data);
-  info.personaje.personaje = data
-  if(data === "bear"){
-    info.personaje.reliquia_inicial = "reliquia bear"
-    info.personaje.vidamax = 80
-    info.personaje.vida = 80
-    info.personaje.oro = 99
-}
-  else if(data === "pick"){
-    info.personaje.reliquia_inicial = "reliquia pick"
-    info.personaje.vidamax = 75
-    info.personaje.vida = 75
-    info.personaje.oro = 50
-  }
-  else if(data === "mago"){
-    info.personaje.reliquia_inicial = "reliquia mago"
-    info.personaje.vidamax = 70
-    info.personaje.vida = 70
-    info.personaje.oro = 150
-  }
-  else if(data === "jon"){
-    info.personaje.reliquia_inicial = "reliquia jon"
-    info.personaje.vidamax = 80
-    info.personaje.vida = 80
-    info.personaje.oro = 125
-  }
-  return info.personaje
-});
-
 subscribeGETEvent("personaje", () => {
   console.log("GET solicitado. Personaje actual: ", info.personaje.personaje);
   return info.personaje.personaje;
@@ -120,6 +90,15 @@ subscribePOSTEvent("modificar-mazo", (data) => {
   return mazo;
 });
 
+subscribePOSTEvent("vaciar-mazo",(data)=>{
+  if(data){
+    let mazo = JSON.parse(fs.readFileSync("./NODE/jsons/mazo.json", "utf-8"));
+    mazo = []
+    fs.writeFileSync("./NODE/jsons/mazo.json", JSON.stringify(mazo, null, 2));
+  return mazo;
+  }
+});
+
 subscribeGETEvent("reliquia",() => {
     let reliquias = JSON.parse(fs.readFileSync("./NODE/jsons/reliquiauso.json","utf-8"))
     info.reliquias = reliquias
@@ -145,6 +124,49 @@ subscribePOSTEvent("agregar-reliquia", (data) => {
   }
   fs.writeFileSync("./NODE/jsons/reliquiauso.json", JSON.stringify(reliquiasuso, null, 2));
   return reliquiasuso;
+});
+
+subscribePOSTEvent("vaciar-reliquias",(data)=>{
+  if(data){
+    console.log("POST event: vaciar-reliquias recibido con data =", data);
+    let reliquiasuso = JSON.parse(fs.readFileSync("./NODE/jsons/reliquiauso.json", "utf-8"));
+    reliquiasuso = []
+    fs.writeFileSync("./NODE/jsons/reliquiauso.json", JSON.stringify(reliquiasuso, null, 2));
+    return reliquiasuso
+  }
+});
+
+subscribePOSTEvent("personaje",(data) => {
+  console.log("POST recibido:", data);
+  info.personaje.personaje = data
+  let reliquiasuso = JSON.parse(fs.readFileSync("./NODE/jsons/reliquiauso.json", "utf-8"));
+  let reliquias = JSON.parse(fs.readFileSync("./NODE/jsons/reliquias.json", "utf-8"))
+  if(data === "bear"){
+    reliquiasuso.push(reliquias[15])
+    info.personaje.vidamax = 80
+    info.personaje.vida = 80
+    info.personaje.oro = 99
+}
+  else if(data === "pick"){
+    reliquiasuso.push(reliquias[16])
+    info.personaje.vidamax = 75
+    info.personaje.vida = 75
+    info.personaje.oro = 50
+  }
+  else if(data === "mago"){
+    reliquiasuso.push(reliquias[17])
+    info.personaje.vidamax = 70
+    info.personaje.vida = 70
+    info.personaje.oro = 150
+  }
+  else if(data === "jon"){
+    info.personaje.reliquia_inicial = "reliquia jon"
+    info.personaje.vidamax = 80
+    info.personaje.vida = 80
+    info.personaje.oro = 125
+  }
+  fs.writeFileSync("./NODE/jsons/reliquiauso.json", JSON.stringify(reliquiasuso, null, 2));
+  return info.personaje
 });
 
 subscribeGETEvent("mercado",cartas_mercado)

@@ -165,6 +165,8 @@ bear.addEventListener("click", mostrarBear);
 pick.addEventListener("click", mostrarPick);
 atras.addEventListener("click", volver);
 let personaje = "";
+  postEvent("vaciar-reliquias",true);
+  postEvent("vaciar-mazo",true);
 avanzar.addEventListener("click", () => {
   if (siMago) {
     personaje = "mago";

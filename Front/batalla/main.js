@@ -6,6 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let boton = document.getElementById("buton");
   let botonSacar = document.getElementById("butonSacar");
   let abajo = document.getElementById("abajo");
+  let titulo = document.getElementById("titulo");
 
   let contadorCartas = 1; // empieza en carta1
 
@@ -35,6 +36,11 @@ window.addEventListener("DOMContentLoaded", () => {
     window.location.href = "../mapa/index.html";
   }
 
+  function volver(){
+    window.location.href = "../2/index2.html";
+  }
+  
+  titulo.addEventListener("click", volver);
   mapa.addEventListener("click", irMapa);
 
   function sumarCarta() {
@@ -80,6 +86,12 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Botones para sumar o sacar cartas manualmente
   boton.addEventListener("click", sumarCarta);
   botonSacar.addEventListener("click", sacarCarta);
+
+  // --- Inicializamos el juego con 5 cartas ---
+  for (let i = 0; i < 5; i++) {
+    sumarCarta();
+  }
 });

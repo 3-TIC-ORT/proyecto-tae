@@ -18,6 +18,9 @@ body {
 .letra {
   font-family: "Inknut Antiqua", serif;
 }
+.letra2{
+  font-family: "Galdeano", sans-serif;
+}
 
 html {
   cursor: var(--mouse);

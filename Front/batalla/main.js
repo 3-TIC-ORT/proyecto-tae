@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
   let oro = document.getElementById("oro");
   let vida = document.getElementById("vida");
-  let vidaP = document.getElementById("vida-personaje")
+  let vidaP = document.getElementById("vida-personaje");
   let vidaM = document.getElementById("vida-monstruo");
   let info = {};
   let mapa = document.getElementById("mapa");
@@ -9,16 +9,18 @@ window.addEventListener("DOMContentLoaded", () => {
   let botonSacar = document.getElementById("butonSacar");
   let abajo = document.getElementById("abajo");
   let titulo = document.getElementById("titulo");
+  let reliquias = document.getElementById("reliquias");
+  let cartas = document.getElementById("cartas");
 
   let contadorCartas = 1; // empieza en carta1
 
   connect2Server();
-  
+
   let monstruo = {};
-  getEvent(`mounstro?${"normal"}`, (data) =>{
+  getEvent(`mounstro?${"normal"}`, (data) => {
     monstruo = data;
     console.log(monstruo);
-  })
+  });
   getEvent("fogata", (data) => {
     info = {
       oro: data.oro,
@@ -45,10 +47,18 @@ window.addEventListener("DOMContentLoaded", () => {
     window.location.href = "../mapa/index.html";
   }
 
-  function volver(){
+  function volver() {
     window.location.href = "../2/index2.html";
   }
-  
+  function irReliquia() {
+    window.location.href = "../menureliquias/reliquias.html";
+  }
+  function irCarta() {
+    window.location.href = "../cartas/index.html";
+  }
+  cartas.addEventListener("click", irCarta);
+  reliquias.addEventListener("click", irReliquia);
+
   titulo.addEventListener("click", volver);
   mapa.addEventListener("click", irMapa);
 
@@ -104,16 +114,16 @@ window.addEventListener("DOMContentLoaded", () => {
     sumarCarta();
   }
   const imagenes = [
-  "../Cosas/fondo1.png",
-  "../Cosas/fondo2.jpg",
-  "../Cosas/fondo3.jpg",
-  "../Cosas/fondo4.jpg",
-];
+    "../Cosas/fondo1.png",
+    "../Cosas/fondo2.jpg",
+    "../Cosas/fondo3.jpg",
+    "../Cosas/fondo4.jpg",
+  ];
 
-const random = Math.floor(Math.random() * imagenes.length);
+  const random = Math.floor(Math.random() * imagenes.length);
 
-document.body.style.backgroundImage = `url(${imagenes[random]})`;
-document.body.style.backgroundSize = "cover";
-document.body.style.backgroundPosition 
-document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundImage = `url(${imagenes[random]})`;
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundPosition;
+  document.body.style.backgroundRepeat = "no-repeat";
 });

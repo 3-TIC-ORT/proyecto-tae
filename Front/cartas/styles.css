@@ -2,27 +2,33 @@
   --mouse: url("../Cosas/mouse.png") 16 16, auto;
   --pointer: url("../Cosas/pointer.png") 16 16, pointer;
 }
+* {
+  box-sizing: border-box;
+}
 body {
-  min-height: 100vh;
-  background-repeat: no-repeat;
-  background-size: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  max-width: 100vw;
+}
+.letra {
+  font-family: "Inknut Antiqua", serif;
 }
 html {
   cursor: var(--mouse);
 }
 .arriba {
-  min-height: 15vh;
-  max-height: 20vh;
+  min-height: 15%;
+  max-height: 20%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   background-color: white;
-  width: 100vw;
+  width: 100%;
   padding: 0;
-  border: solid 2px black;
 }
 .titulo {
-  font-family: "Dela Gothic One", sans-serif;
+   font-family: "Dela Gothic One", sans-serif;
   font-weight: 400;
   font-style: normal;
   margin: 0;
@@ -64,7 +70,7 @@ html {
   gap: 5vh;
   width: 40%;
   justify-content: flex-end;
-  padding-right: 10vh;
+  padding-right: 10%;
   align-items: center;
 }
 .icon {
@@ -111,39 +117,38 @@ html {
   align-items: center;
   justify-content: center;
 }
-
-h2 {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-top: 5rem;
+.container{
+    padding: 0 15vh 0 15vh;
+    width: 100vw;
 }
-.container {
-  font-family: "Galdeano", sans-serif;
-  height: 80vh;
+.caja {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8vh;
+  justify-items: center;
+  padding-top: 10vh;
 }
-.cajas {
+.cartaG {
+  width: 12vw;
+  height: 28vh;
+  border: 0.2rem solid white;
+  cursor: var(--pointer);
+  border-radius: 10px;
+  background-color: gray;
+}
+.atras {
+  height: 13vh;
+  aspect-ratio: 4/3;
+  cursor: var(--pointer);
+  padding: 1rem;
+  font-size: 4vh;
+  background-image: url(../Cosas/image34.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   display: flex;
-  justify-content: center;
   align-items: center;
-  justify-content: space-evenly;
 }
-.cama {
-  border: 2px solid black;
-  height: 12vh;
-  aspect-ratio: 5/3;
-  cursor: var(--pointer);
-}
-.mina {
-  border: 2px solid black;
-  height: 12vh;
-  aspect-ratio: 5/3;
-  cursor: var(--pointer);
-}
-P {
-  margin-top: 0.5rem;
-  text-align: center;
-  font-size: 1.5rem;
-}
-#axion {
-  font-weight: 500;
+.abajo {
+  padding-top: 7vh;
 }

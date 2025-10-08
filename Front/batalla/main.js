@@ -6,6 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let boton = document.getElementById("buton");
   let botonSacar = document.getElementById("butonSacar");
   let abajo = document.getElementById("abajo");
+  let titulo = document.getElementById("titulo");
 
   let contadorCartas = 1; // empieza en carta1
 
@@ -35,6 +36,11 @@ window.addEventListener("DOMContentLoaded", () => {
     window.location.href = "../mapa/index.html";
   }
 
+  function volver(){
+    window.location.href = "../2/index2.html";
+  }
+  
+  titulo.addEventListener("click", volver);
   mapa.addEventListener("click", irMapa);
 
   function sumarCarta() {
@@ -42,8 +48,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let carta = document.createElement("div");
     carta.classList.add(`carta${contadorCartas}`, "cartaG");
-    abajo.appendChild(carta);
+    carta.id = `C${contadorCartas}`;
 
+    // Si es la carta 1, le ponemos el click para restar 10 de vida
+    if (contadorCartas === 1) {
+      carta.addEventListener("click", () => {
+        menosVida(10);
+        console.log("-10 de vida");
+      });
+    }
+
+    abajo.appendChild(carta);
     contadorCartas++;
   }
 
@@ -58,6 +73,25 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function menosVida(cantidad) {
+    info.vida -= cantidad;
+
+    if (info.vida < 0) info.vida = 0;
+
+    mostrarVida();
+
+    // Si la vida llega a 0, vamos a Game Over
+    if (info.vida <= 0) {
+      window.location.href = "../Game_over/index.html";
+    }
+  }
+
+  // Botones para sumar o sacar cartas manualmente
   boton.addEventListener("click", sumarCarta);
   botonSacar.addEventListener("click", sacarCarta);
+
+  // --- Inicializamos el juego con 5 cartas ---
+  for (let i = 0; i < 5; i++) {
+    sumarCarta();
+  }
 });

@@ -1,6 +1,8 @@
 window.addEventListener("DOMContentLoaded", () => {
   let oro = document.getElementById("oro");
   let vida = document.getElementById("vida");
+  let vidaP = document.getElementById("vida-personaje")
+  let vidaM = document.getElementById("vida-monstruo");
   let info = {};
   let mapa = document.getElementById("mapa");
   let boton = document.getElementById("buton");
@@ -11,7 +13,12 @@ window.addEventListener("DOMContentLoaded", () => {
   let contadorCartas = 1; // empieza en carta1
 
   connect2Server();
-
+  
+  let monstruo = {};
+  getEvent(`mounstro?${"normal"}`, (data) =>{
+    monstruo = data;
+    console.log(monstruo);
+  })
   getEvent("fogata", (data) => {
     info = {
       oro: data.oro,
@@ -26,6 +33,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function mostrarVida() {
     vida.textContent = "PV: " + info.vida + "/" + info.vidamax;
+    vidaP.textContent = "PV: " + info.vida + "/" + info.vidamax;
+    vidaM.textContent = "PV: " + monstruo.vida + "/" + monstruo.vidamax;
   }
 
   function mostrarOro() {
@@ -94,4 +103,17 @@ window.addEventListener("DOMContentLoaded", () => {
   for (let i = 0; i < 5; i++) {
     sumarCarta();
   }
+  const imagenes = [
+  "../Cosas/fondo1.png",
+  "../Cosas/fondo2.jpg",
+  "../Cosas/fondo3.jpg",
+  "../Cosas/fondo4.jpg",
+];
+
+const random = Math.floor(Math.random() * imagenes.length);
+
+document.body.style.backgroundImage = `url(${imagenes[random]})`;
+document.body.style.backgroundSize = "cover";
+document.body.style.backgroundPosition 
+document.body.style.backgroundRepeat = "no-repeat";
 });

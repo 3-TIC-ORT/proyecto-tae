@@ -1,55 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Adventure of Emptiness</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="main.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.2/soquetic-client.js"></script>
+    <link rel="icon" href="../Cosas/Screenshot 2025-08-14 131918.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Adventure of Emptiness</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="main.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.2/soquetic-client.js"></script>
-  <link rel="icon" href="../Cosas/Screenshot 2025-08-14 131918.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet" />
-</head>
-
-<body>
-  <header class="arriba">
-    <div class="izq">
-      <h1 class="titulo" id="titulo">TAE</h1>
-      <h4 class="vida" id="vida"></h4>
-      <h4 class="oro" id="oro"></h4>
-    </div>
-    <div class="der">
-      <div class="icon reliquias">
-        <div class="circulo-reliquias" id="circulo-reliquias">X</div>
+  <body>
+    <header class="arriba">
+      <div class="izq">
+        <h1 class="titulo" id="titulo">TAE</h1>
+        <h4 class="vida" id="vida"></h4>
+        <h4 class="oro" id="oro"></h4>
       </div>
-      <div class="icon mapa" id="mapa"></div>
-      <div class="icon cartas">
-        <div class="circulo-cartas" id="circulo-cartas">X</div>
+      <div class="der">
+        <div class="icon reliquias">
+          <div class="circulo-reliquias" id="circulo-reliquias">X</div>
+        </div>
+        <div class="icon mapa" id="mapa"></div>
+        <div class="icon cartas">
+          <div class="circulo-cartas" id="circulo-cartas">X</div>
+        </div>
       </div>
-    </div>
-  </header>
-  <main class="container">
-    <div class="caja">
-      <div class="caja-personaje">
-        <div class="personaje" id="personaje"></div>
-        <div class="vida1" id="vida1"></div>
+    </header>
+    <main class="container">
+      <div class="caja">
+        <div class="caja-personaje">
+          <div class="personaje" id="personaje"></div>
+          <div class="vida1" id="vida-personaje"></div>
+        </div>
+        <div class="caja-monstruo">
+          <div class="monstruo" id="monstruo"></div>
+          <div class="vida2" id="vida-monstruo"></div>
+        </div>
       </div>
-      <div class="caja-monstruo">
-        <div class="vida2" id="vida2"></div>
-      </div>
-    </div>
-  </main>
-  <footer class="abajo" id="abajo">
-    <!--div class="carta9 cartaG">9</!--div>
+    </main>
+    <footer class="abajo" id="abajo">
+      <!--div class="carta9 cartaG">9</!--div>
     <div class="carta8 cartaG">8</div>
     <div class="carta7 cartaG">7</div>
     <div class="carta6 cartaG">6</div>
@@ -58,9 +63,10 @@
     <div class="carta3 cartaG">3</div>
     <div class="carta2 cartaG">2</div>
     <div-- class="carta1 cartaG">1</div-->
-  </footer>
-  <div id="buton" class="boton">carta</div>
-  <div id="butonSacar" class="boton">sacar</div>
-</body>
-
+      <div class="b">
+        <div id="buton" class="boton">carta</div>
+        <div id="butonSacar" class="boton">sacar</div>
+      </div>
+    </footer>
+  </body>
 </html>

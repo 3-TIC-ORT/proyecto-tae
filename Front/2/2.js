@@ -191,14 +191,12 @@ avanzar.addEventListener("click", () => {
   postEvent("modificar-mazo", { accion: "agregar", carta: "escudo" });
   postEvent("modificar-mazo", { accion: "agregar", carta: "Garrote" });
 });
-window.addEventListener("DOMContentLoaded", () => {
-  connect2Server().then(() => {
+window.addEventListener("DOMContentLoaded",() => {
     console.log("✅ Conectado a Soquetic correctamente.");
-
-    // 🔹 ahora sí podés enviar eventos
-    postEvent("vaciar-reliquias", true);
-    postEvent("vaciar-mazo", true);
-  }).catch((err) => {
-    console.error("❌ Error al conectar con Soquetic:", err);
-  });
+    setTimeout(() => {
+      postEvent("vaciar-reliquias", true);
+      postEvent("vaciar-mazo", true);
+      console.log("🧹 Pedidos de vaciar enviados al servidor");
+    }, 500);
 });
+connect2Server();

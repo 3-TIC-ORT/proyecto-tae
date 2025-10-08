@@ -1,6 +1,6 @@
 import { subscribeGETEvent, subscribePOSTEvent, realTimeEvent, startServer } from "soquetic";
 import { generarmapa } from './NODE/mapa/generarmapa.js';
-import {cartas_mercado,cartas_eleccion, mounstro} from "./NODE/mercado.js"
+import {cartas_mercado,cartas_eleccion} from "./NODE/mercado.js"
 import fs from "fs";
 let info = {
     personaje:{
@@ -172,6 +172,31 @@ subscribeGETEvent("mercado",cartas_mercado)
 
 subscribeGETEvent("eleccion",cartas_eleccion)
 
-subscribeGETEvent("mounstro",mounstro)
+subscribeGETEvent("mounstro", (query) => {
+  let mounstros = JSON.parse(fs.readFileSync("./NODE/jsons/mounstros.json", "utf-8"));
+
+  let tipoSolicitado = "normal";
+
+  if (typeof query === "string") {
+    tipoSolicitado = query.toLowerCase();
+  } else if (typeof query === "object" && query !== null) {
+    tipoSolicitado = (query.tipo || "normal").toLowerCase();
+  }
+
+  let posibles = mounstros.filter(m => m.tipo.toLowerCase() === tipoSolicitado);
+
+  if (posibles.length === 0) {
+    posibles = mounstros;
+  }
+
+  let indice = Math.floor(Math.random() * posibles.length);
+  let mounstro = posibles[indice];
+
+  console.log(`GET mounstro (${tipoSolicitado}) → ${mounstro.nombre}`);
+  return mounstro;
+});
+
+
+
 
 startServer();

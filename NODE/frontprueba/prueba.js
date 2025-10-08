@@ -15,7 +15,8 @@ function mapa(data){
     console.log(data)
 } 
 mercado.addEventListener("click",() => {
-    getEvent("mercado",(data)=>{
+    getEvent(`mounstro?${"normal"}`,(data)=>{
+        
         salida.innerText = JSON.stringify(data,null,2)
     })
 })

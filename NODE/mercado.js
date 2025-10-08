@@ -26,3 +26,12 @@ let eleccion = {
 }
 return eleccion
 }
+
+export function mounstro(){
+  let mounstros = JSON.parse(fs.readFileSync("./NODE/jsons/mounstros.json","utf-8"))
+function numeroAleatorio() {
+  return Math.floor(Math.random() * (mounstros.length + 1));
+}
+let mounstro = mounstros[numeroAleatorio]
+return mounstro
+}

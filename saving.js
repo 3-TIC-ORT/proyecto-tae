@@ -1,6 +1,6 @@
 import { subscribeGETEvent, subscribePOSTEvent, realTimeEvent, startServer } from "soquetic";
 import { generarmapa } from './NODE/mapa/generarmapa.js';
-import {cartas_mercado,cartas_eleccion} from "./NODE/mercado.js"
+import {cartas_mercado,cartas_eleccion, mounstro} from "./NODE/mercado.js"
 import fs from "fs";
 let info = {
     personaje:{
@@ -171,5 +171,7 @@ subscribePOSTEvent("personaje",(data) => {
 subscribeGETEvent("mercado",cartas_mercado)
 
 subscribeGETEvent("eleccion",cartas_eleccion)
+
+subscribeGETEvent("mounstro",mounstro)
 
 startServer();

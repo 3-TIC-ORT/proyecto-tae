@@ -51,7 +51,7 @@ window.addEventListener("DOMContentLoaded", () => {
     window.location.href = "../2/index2.html";
   }
   function irReliquia() {
-    window.location.href = "../menureliquias/reliquias.html";
+    window.location.href = "../menu-reliquias/reliquias.html";
   }
   function irCarta() {
     window.location.href = "../cartas/index.html";

@@ -343,3 +343,43 @@ html {
   display: none;
   width: 100vw;
 }
+
+.reliqias{
+  display: none;
+}
+.container-reliquias {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fondo {
+  background-image: url(../Cosas/Fondo.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 50vw; 
+}
+
+.caja-reliquias {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 3vh;
+justify-items: center;
+padding-top: 10vh;
+height: 100vh;
+overflow-y: auto; 
+}
+
+.todas {
+  background-color: blue; 
+  width: 50%;
+  height: 20vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}

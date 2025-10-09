@@ -50,15 +50,8 @@ window.addEventListener("DOMContentLoaded", () => {
   function volver() {
     window.location.href = "../2/index2.html";
   }
-  function irReliquia() {
-    window.location.href = "../menu-reliquias/reliquias.html";
-  }
-  /*
-  function irCarta() {
-    window.location.href = "../cartas/index.html";
-  }
-  cartas.addEventListener("click", irCarta); */
-  reliquias.addEventListener("click", irReliquia);
+
+
 
   titulo.addEventListener("click", volver);
   mapa.addEventListener("click", irMapa);
@@ -134,20 +127,35 @@ window.addEventListener("DOMContentLoaded", () => {
 
   let cajaCartas = document.getElementById("LugarCartas");
   let atras = document.getElementById("atras");
+  let atras2 = document.getElementById("atras2");
   let cajaBatalla = document.getElementById("batalla");
+  let cajaReliquias = document.getElementById("LugarReliquias");
 
   function mostrarCartas() {
     cajaCartas.style.display = "block";
     console.log("mostrar");
     cajaBatalla.style.display = "none";
     cajaCartas.style.backgroundColor = "black";
+    cajaReliquias.style.display = "none";
+    cajaReliquias.style.background = "none";
+  }
+  function mostrarReliquias(){
+    cajaReliquias.style.display = "block";
+    cajaReliquias.style.backgroundColor = "black";
+    cajaBatalla.style.display = "none";
+    cajaCartas.style.display = "none";
+    cajaCartas.style.background = "none";
   }
   function volverBatalla() {
     cajaBatalla.style.display = "block";
     cajaCartas.style.display = "none";
     cajaCartas.style.background = "none";
+    cajaReliquias.style.display = "none";
+    cajaReliquias.style.backgroundColor = "none";
   }
 
   cartas.addEventListener("click", mostrarCartas);
   atras.addEventListener("click", volverBatalla);
+  atras2.addEventListener("click", volverBatalla);
+  reliquias.addEventListener("click", mostrarReliquias);
 });

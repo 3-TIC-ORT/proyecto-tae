@@ -2,6 +2,7 @@ import { subscribeGETEvent, subscribePOSTEvent, realTimeEvent, startServer } fro
 import { generarmapa } from './NODE/mapa/generarmapa.js';
 import {cartas_mercado,cartas_eleccion} from "./NODE/mercado.js"
 import fs from "fs";
+import { verestado } from "./NODE/ia/ia.js";
 let info = {
     personaje:{
       personaje:"",
@@ -168,10 +169,6 @@ subscribePOSTEvent("personaje",(data) => {
   return info.personaje
 });
 
-subscribeGETEvent("mercado",cartas_mercado)
-
-subscribeGETEvent("eleccion",cartas_eleccion)
-
 subscribeGETEvent("mounstro", (query) => {
   let mounstros = JSON.parse(fs.readFileSync("./NODE/jsons/mounstros.json", "utf-8"));
 
@@ -196,7 +193,10 @@ subscribeGETEvent("mounstro", (query) => {
   return mounstro;
 });
 
+subscribeGETEvent("mercado",cartas_mercado)
 
+subscribeGETEvent("eleccion",cartas_eleccion)
 
+subscribeGETEvent("estado",verestado)
 
 startServer();

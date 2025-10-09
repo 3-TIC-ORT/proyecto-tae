@@ -1,4 +1,5 @@
-export {verestado, estado}
+export {verestado}
+function verestado(monstruo, dañorecibido, cartasjugadas, buffeosjugador, condicionhabilidad){
 let estado = {
     muerto: "muerto",
     curarse: "curarse",
@@ -8,9 +9,6 @@ let estado = {
     debuffeo: "debuffeo",
     atacar: "atacar"
 }
-
-function verestado(monstruo, dañorecibido, cartasjugadas, buffeosjugador, condicionhabilidad){
-
   monstruo.vida = monstruo.vida -dañorecibido;
     if (monstruo.vida <= 0) {
         return estado.muerto

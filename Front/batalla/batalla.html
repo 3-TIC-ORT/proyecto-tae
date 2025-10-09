@@ -25,6 +25,7 @@
   </head>
 
   <body>
+    <!--SECCION PANTALLA BATALLA-->
     <header class="arriba">
       <div class="izq">
         <h1 class="titulo" id="titulo">TAE</h1>
@@ -41,20 +42,21 @@
         </div>
       </div>
     </header>
-    <main class="container">
-      <div class="caja">
-        <div class="caja-personaje">
-          <div class="personaje" id="personaje"></div>
-          <div class="vida1 letra2" id="vida-personaje"></div>
+    <section class="batalla" id="batalla">
+      <main class="container">
+        <div class="caja">
+          <div class="caja-personaje">
+            <div class="personaje" id="personaje"></div>
+            <div class="vida1 letra2" id="vida-personaje"></div>
+          </div>
+          <div class="caja-monstruo">
+            <div class="monstruo" id="monstruo"></div>
+            <div class="vida2 letra2" id="vida-monstruo"></div>
+          </div>
         </div>
-        <div class="caja-monstruo">
-          <div class="monstruo" id="monstruo"></div>
-          <div class="vida2 letra2" id="vida-monstruo"></div>
-        </div>
-      </div>
-    </main>
-    <footer class="abajo" id="abajo">
-      <!--div class="carta9 cartaG">9</!--div>
+      </main>
+      <footer class="abajo" id="abajo">
+        <!--div class="carta9 cartaG">9</!--div>
     <div class="carta8 cartaG">8</div>
     <div class="carta7 cartaG">7</div>
     <div class="carta6 cartaG">6</div>
@@ -63,10 +65,35 @@
     <div class="carta3 cartaG">3</div>
     <div class="carta2 cartaG">2</div>
     <div-- class="carta1 cartaG">1</div-->
-      <div class="b">
-        <div id="buton" class="boton">carta</div>
-        <div id="butonSacar" class="boton">sacar</div>
-      </div>
-    </footer>
+        <div class="b">
+          <div id="buton" class="boton">carta</div>
+          <div id="butonSacar" class="boton">sacar</div>
+        </div>
+      </footer>
+    </section>
+
+    <!--SECCION PANTALLA CARTAS-->
+    <section class="cartasS" id="LugarCartas">
+      <main class="container-cartas">
+        <div class="cajaCartas">
+          <div class="cartaGC" id="carta1"></div>
+          <div class="cartaGC" id="carta2"></div>
+          <div class="cartaGC" id="carta3"></div>
+          <div class="cartaGC" id="carta4"></div>
+          <div class="cartaGC" id="carta5"></div>
+          <div class="cartaGC" id="carta6"></div>
+          <div class="cartaGC" id="carta7"></div>
+          <div class="cartaGC" id="carta8"></div>
+          <div class="cartaGC" id="carta9"></div>
+          <div class="cartaGC" id="carta10"></div>
+          <div class="cartaGC" id="carta11"></div>
+          <div class="cartaGC" id="carta12"></div>
+          <div class="cartaGC" id="carta13"></div>
+        </div>
+      </main>
+      <footer class="abajo-cartas">
+        <div class="atras" id="atras">Atras</div>
+      </footer>
+    </section>
   </body>
 </html>

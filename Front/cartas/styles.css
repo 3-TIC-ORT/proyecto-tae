@@ -117,7 +117,7 @@ html {
   align-items: center;
   justify-content: center;
 }
-.container{
+.container-cartas{
     padding: 0 15vh 0 15vh;
     width: 100vw;
 }
@@ -149,6 +149,6 @@ html {
   display: flex;
   align-items: center;
 }
-.abajo {
+.abajo-cartas {
   padding-top: 7vh;
 }

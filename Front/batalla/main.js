@@ -51,12 +51,13 @@ window.addEventListener("DOMContentLoaded", () => {
     window.location.href = "../2/index2.html";
   }
   function irReliquia() {
-    window.location.href = "../menureliquias/reliquias.html";
+    window.location.href = "../menu-reliquias/reliquias.html";
   }
+  /*
   function irCarta() {
     window.location.href = "../cartas/index.html";
   }
-  cartas.addEventListener("click", irCarta);
+  cartas.addEventListener("click", irCarta); */
   reliquias.addEventListener("click", irReliquia);
 
   titulo.addEventListener("click", volver);
@@ -120,10 +121,33 @@ window.addEventListener("DOMContentLoaded", () => {
     "../Cosas/fondo4.jpg",
   ];
 
-  const random = Math.floor(Math.random() * imagenes.length);
+  function Fondos() {
+    const random = Math.floor(Math.random() * imagenes.length);
 
-  document.body.style.backgroundImage = `url(${imagenes[random]})`;
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundPosition;
-  document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundImage = `url(${imagenes[random]})`;
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition;
+    document.body.style.backgroundRepeat = "no-repeat";
+  }
+  
+  Fondos();
+
+  let cajaCartas = document.getElementById("LugarCartas");
+  let atras = document.getElementById("atras");
+  let cajaBatalla = document.getElementById("batalla");
+
+  function mostrarCartas() {
+    cajaCartas.style.display = "block";
+    console.log("mostrar");
+    cajaBatalla.style.display = "none";
+    cajaCartas.style.backgroundColor = "black";
+  }
+  function volverBatalla() {
+    cajaBatalla.style.display = "block";
+    cajaCartas.style.display = "none";
+    cajaCartas.style.background = "none";
+  }
+
+  cartas.addEventListener("click", mostrarCartas);
+  atras.addEventListener("click", volverBatalla);
 });

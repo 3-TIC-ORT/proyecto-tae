@@ -8,6 +8,7 @@
 body {
     margin: 0;
     padding: 0;
+        background-color: black;
 }
 .letra{
       font-family: "Inknut Antiqua", serif;
@@ -119,7 +120,6 @@ html{
 .container {
     height: 100vh;
     width: 100%;
-    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,12 +153,9 @@ html{
     align-items: center;
 
 }
-#atras{
+.atras{
   height: 13vh;
   aspect-ratio: 4/3;
-  position: fixed;
-  bottom: -2rem;
-  left: 0;
   padding: 1rem;
   font-size: 4vh;
   background-image: url(../Cosas/image34.png);
@@ -167,11 +164,4 @@ html{
   background-size: contain;
   display: flex;
   align-items: center;
-}
-#atras:hover{
-    
-    transform: scale(1.05);
-}
-#atras:active{
-    transform: scale(0.95);
 }

@@ -12,7 +12,6 @@ body {
   max-height: 100vh;
   margin: 0;
   padding: 0;
-  background-image: url("../Cosas/fondo1.png");
 }
 
 .letra {
@@ -304,4 +303,43 @@ html {
   position: fixed;
   bottom: 0;
   left: 0;
+}
+.container-cartas{
+    padding: 0 15vh 0 15vh;
+    width: 100vw;
+}
+.cajaCartas {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8vh;
+  justify-items: center;
+  padding-top: 10vh;
+}
+.cartaGC {
+  width: 12vw;
+  height: 28vh;
+  border: 0.2rem solid white;
+  cursor: var(--pointer);
+  border-radius: 10px;
+  background-color: gray;
+}
+.atras {
+  height: 13vh;
+  aspect-ratio: 4/3;
+  cursor: var(--pointer);
+  padding: 1rem;
+  font-size: 4vh;
+  background-image: url(../Cosas/image34.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  align-items: center;
+}
+.abajo-cartas {
+  padding-top: 7vh;
+}
+.cartasS{
+  display: none;
+  width: 100vw;
 }

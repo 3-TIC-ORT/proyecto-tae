@@ -152,6 +152,7 @@ window.addEventListener("DOMContentLoaded", () => {
     cajaCartas.style.background = "none";
     cajaReliquias.style.display = "none";
     cajaReliquias.style.backgroundColor = "none";
+    window.scrollTo(0,0);
   }
 
   cartas.addEventListener("click", mostrarCartas);

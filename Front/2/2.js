@@ -14,7 +14,7 @@ let poder = document.getElementById("poder");
 let descpoder = document.getElementById("descpoder");
 let foto = document.getElementById("simbolo");
 let elige = document.getElementById("elige");
-let conjunto = document.getElementById("conjunto");
+let conjunto = document.getElementById("derecha");
 let avanzar = document.getElementById("avanzar");
 let siMago = false;
 let siBear = false;
@@ -35,7 +35,6 @@ function mostrarMago() {
   oro.textContent = "150";
   oro.style.color = "white";
   poder.style.color = "white";
-  descpoder.style.color = "white";
   imagen.src = "../Cosas/mago.png";
   imagen.style.marginTop = "3rem";
   imagen.style.height = "90vh";
@@ -134,14 +133,28 @@ function mostrarPick() {
 
 function mostrarJon() {
   avanzar.style.opacity = "1";
-  body.style.backgroundColor = "gold";
+  conjunto.style.marginTop = "1rem";
+  body.style.backgroundColor = "#81171B";
   imagen.style.height = "90vh";
-  h1.textContent = "Jon the Brave";
+  h1.textContent = "The Lawyer";
+    h1.style.fontFamily = "Galdeano, sans-serif";
+    h1.style.color = "white";
+    h1.style.fontSize = "15vh";
+    oro.textContent = "Oro: 150";
+    oro.style.color = "white";
+    vida.textContent = "70 PV"
+    poder.textContent = "Lanza de Odin";
+    poder.style.color = "white";
+    descpoder.textContent = "Tus ataques tienen un 20% de probabilidad de causar daño adicional de “Sangrado” que hace 3 puntos de daño por turno durante 2 turnos.";
   parrafo.textContent =
-    "Jon es un guerrero audaz que nunca teme enfrentarse a dragones y demonios.";
+    "Queria arreglar el mundo de la buena forma, pero se dio cuenta que armar un vaso roto es imposible.";
   imagen.src =
-    "../Cosas/pngtree-mine-cave-entrance-with-railway-in-cartoon-style-isolated-on-white-background-picture-image_7836835.png";
-  imagen.alt = "foto john";
+    "../Cosas/lawyer.png";
+  imagen.alt = "foto jon";
+  imagen.style.height = "100vh";
+  imagen.style.marginTop = "0";
+  foto.src = "../Cosas/lanza.png";
+  elige.style.color = "white";
   titulo.textContent = "";
   mago.style.filter = "none";
   bear.style.filter = "none";

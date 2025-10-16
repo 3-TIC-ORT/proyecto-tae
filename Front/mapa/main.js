@@ -111,7 +111,9 @@ window.addEventListener("DOMContentLoaded", () => {
       h1.style.color = "black";
       h1.style.fontSize = "12rem";
     } else if (personaje === "jon") {
-      h1.textContent = "Warrior";
+      h1.textContent = "The Lawyer";
+      h1.style.fontSize = "13rem";
+      h1.style.fontFamily = "Galdeano, sans-serif";
     } else if (personaje === "bear") {
       h1.textContent = "The Bear";
       h1.style.fontFamily = "Sedgwick Ave Display, cursive";

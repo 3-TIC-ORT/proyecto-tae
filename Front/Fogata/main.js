@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function hoverMina() {
-    act.textContent = "Minar";
+    act.textContent = "Forjar";
   }
 
   function nada() {

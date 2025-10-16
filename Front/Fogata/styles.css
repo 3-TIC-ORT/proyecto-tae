@@ -3,16 +3,17 @@
   --pointer: url("../Cosas/pointer.png") 16 16, pointer;
 }
 body {
-  min-height: 100vh;
+  max-height: 100vh;
+  width: 100vw;
   background-repeat: no-repeat;
   background-size: 100%;
+  margin: 0;
 }
 html {
   cursor: var(--mouse);
 }
 .arriba {
-  min-height: 15vh;
-  max-height: 20vh;
+  height: 20vh;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -113,36 +114,59 @@ html {
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 5rem;
   text-align: center;
-  margin-top: 5rem;
+  margin: 0;
+  color: white;
 }
 .container {
+  padding: 0;
   font-family: "Galdeano", sans-serif;
   height: 80vh;
+  background-image: url(../Cosas/fondo-fogata.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
 .cajas {
   display: flex;
   justify-content: center;
   align-items: center;
-  justify-content: space-evenly;
+}
+.cosas{
 }
 .cama {
-  border: 2px solid black;
-  height: 12vh;
-  aspect-ratio: 5/3;
+  height: 33vh;
+  aspect-ratio: 1/1;
   cursor: var(--pointer);
+  background-image: url(../Cosas/cama.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 20px;
+}
+.camaT{
+  margin-right: 7vw;
 }
 .mina {
-  border: 2px solid black;
-  height: 12vh;
-  aspect-ratio: 5/3;
+  background-image: url(../Cosas/mina.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 20px;
+  height: 33vh;
+  aspect-ratio: 1/1;
   cursor: var(--pointer);
 }
 P {
   margin-top: 0.5rem;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 3.5rem;
+  color: #c3aa64;
 }
 #axion {
   font-weight: 500;

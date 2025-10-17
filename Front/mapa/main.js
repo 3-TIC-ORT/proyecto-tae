@@ -24,6 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
   pisosContainer.innerHTML = "";
   svg.innerHTML = "";
 
+  // 🔸 cambiá el número si querés más pisos
   getEvent(`mapa?cantidadpisos=${7}`, (data) => {
     salida.innerText = JSON.stringify(data, null, 2);
     rendermapa(data);
@@ -42,7 +43,7 @@ window.addEventListener("DOMContentLoaded", () => {
       piso.forEach((nodo, nodoIndex) => {
         let div = document.createElement("div");
         div.classList.add("nodo");
-        div.dataset.nodo = nodo; // para identificarlo
+        div.dataset.nodo = nodo;
 
         let tipo = "M";
         let texto = nodo;
@@ -61,6 +62,17 @@ window.addEventListener("DOMContentLoaded", () => {
             texto = nodo;
           }
         }
+
+        // ✅ evento click en cada nodo según tipo
+        div.addEventListener("click", () => {
+          if (tipo === "M") {
+            // Monstruo → batalla
+            window.location.href = "../batalla/batalla.html";
+          } else if (tipo === "F") {
+            // Fogata → fogata
+            window.location.href = "../fogata/index.html";
+          }
+        });
 
         fila.appendChild(div);
 
@@ -82,7 +94,10 @@ window.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       data.conexiones.forEach(([origen, destino]) => {
         if (posiciones[origen] && posiciones[destino]) {
-          let line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          let line = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "line"
+          );
           line.setAttribute("x1", posiciones[origen].x);
           line.setAttribute("y1", posiciones[origen].y);
           line.setAttribute("x2", posiciones[destino].x);
@@ -98,8 +113,14 @@ window.addEventListener("DOMContentLoaded", () => {
   let fogata = document.getElementById("fogata");
   let batalla = document.getElementById("batalla");
 
-  fogata.addEventListener("click", () => window.location.href = "../fogata/index.html");
-  batalla.addEventListener("click", () => window.location.href = "../batalla/batalla.html");
+  fogata.addEventListener(
+    "click",
+    () => (window.location.href = "../fogata/index.html")
+  );
+  batalla.addEventListener(
+    "click",
+    () => (window.location.href = "../batalla/batalla.html")
+  );
 
   // evento personaje
   getEvent("personaje", (data) => {
@@ -120,9 +141,8 @@ window.addEventListener("DOMContentLoaded", () => {
       h1.style.color = "#D52CB0";
       h1.style.fontSize = "13rem";
 
-      // agregar clase a todos los nodos
       let nodos = document.querySelectorAll(".nodo");
-      nodos.forEach(n => n.classList.add("nodoBear"));
+      nodos.forEach((n) => n.classList.add("nodoBear"));
     } else if (personaje === "pick") {
       h1.style.fontFamily = "EB Garamond, serif";
       h1.textContent = "The Pickpocket";
@@ -130,7 +150,7 @@ window.addEventListener("DOMContentLoaded", () => {
       h1.style.fontSize = "6rem";
       h1.style.backgroundImage = "url('../Cosas/bala.png')";
       let nodos = document.querySelectorAll(".nodo");
-      nodos.forEach(n => n.classList.add("nodoPick"));
+      nodos.forEach((n) => n.classList.add("nodoPick"));
     } else {
       h1.textContent = personaje;
     }

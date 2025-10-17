@@ -38,42 +38,42 @@
     "nombre": "Escudo",
     "bloqueo": 6,
     "elixir": 1,
-    "efecto": null,
-    "tipo": "defensa"
+    "tipo": "defensa",
+    "efecto": null
   },
   {
     "nombre": "Escudo",
     "bloqueo": 6,
     "elixir": 1,
-    "efecto": null,
-    "tipo": "defensa"
+    "tipo": "defensa",
+    "efecto": null
   },
   {
     "nombre": "Escudo",
     "bloqueo": 6,
     "elixir": 1,
-    "efecto": null,
-    "tipo": "defensa"
+    "tipo": "defensa",
+    "efecto": null
   },
   {
     "nombre": "Escudo",
     "bloqueo": 6,
     "elixir": 1,
-    "efecto": null,
-    "tipo": "defensa"
+    "tipo": "defensa",
+    "efecto": null
   },
   {
     "nombre": "Escudo",
     "bloqueo": 6,
     "elixir": 1,
-    "efecto": null,
-    "tipo": "defensa"
+    "tipo": "defensa",
+    "efecto": null
   },
   {
     "nombre": "Garrote",
     "daño": 14,
-    "efecto": "mounstro.mejoras.push('vulnerable'); mounstro.mejoras.push('vulnerable');",
     "elixir": 2,
-    "tipo": "ataque"
+    "tipo": "ataque",
+    "efecto": "Aplica 2 de vulnerabilidad al enemigo"
   }
 ]

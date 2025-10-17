@@ -11,6 +11,8 @@ window.addEventListener("DOMContentLoaded", () => {
   let titulo = document.getElementById("titulo");
   let reliquias = document.getElementById("reliquias");
   let cartas = document.getElementById("cartas");
+  let circCartas = document.getElementById("circulo-cartas");
+  let circReliquias = document.getElementById("circulo-reliquias");
 
   let contadorCartas = 1; // empieza en carta1
 
@@ -29,17 +31,32 @@ window.addEventListener("DOMContentLoaded", () => {
       mapa: data.mapa,
       reliquias: data.reliquias,
     };
-    mostrarOro();
-    mostrarVida();
+    mostrar();
   });
+  let reliquia = [];
+  let cajaReliquias = document.getElementById("cajaReliquias");
+  getEvent("reliquia", (data) => {
+    reliquia = data;
+    mostrarReliquia();
+    console.log(reliquia);
+    console.log(reliquia.length);
+  });
+  function mostrarReliquia() {
+    for (let i = 0; i < reliquia.length; i++) {
+      let nuevaReliquia = document.createElement("div");
+      nuevaReliquia.classList.add("todas");
+      nuevaReliquia.id = "reliquia" + i;
+      nuevaReliquia.innerHTML = `
+      <p>${reliquia[i].nombre}</p> `;
+      cajaReliquias.appendChild(nuevaReliquia);
+      circReliquias.textContent = reliquia.length;
+    }
+  }
 
-  function mostrarVida() {
+  function mostrar() {
     vida.textContent = "PV: " + info.vida + "/" + info.vidamax;
     vidaP.textContent = "PV: " + info.vida + "/" + info.vidamax;
     vidaM.textContent = "PV: " + monstruo.vida + "/" + monstruo.vidamax;
-  }
-
-  function mostrarOro() {
     oro.textContent = "Oro: " + info.oro;
   }
 
@@ -50,8 +67,6 @@ window.addEventListener("DOMContentLoaded", () => {
   function volver() {
     window.location.href = "../2/index2.html";
   }
-
-
 
   titulo.addEventListener("click", volver);
   mapa.addEventListener("click", irMapa);
@@ -91,7 +106,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (info.vida < 0) info.vida = 0;
 
-    mostrarVida();
+    mostrar();
 
     // Si la vida llega a 0, vamos a Game Over
     if (info.vida <= 0) {
@@ -122,26 +137,26 @@ window.addEventListener("DOMContentLoaded", () => {
     document.body.style.backgroundPosition;
     document.body.style.backgroundRepeat = "no-repeat";
   }
-  
+
   Fondos();
 
   let cajaCartas = document.getElementById("LugarCartas");
   let atras = document.getElementById("atras");
   let atras2 = document.getElementById("atras2");
   let cajaBatalla = document.getElementById("batalla");
-  let cajaReliquias = document.getElementById("LugarReliquias");
+  let lugarReliquias = document.getElementById("LugarReliquias");
 
   function mostrarCartas() {
     cajaCartas.style.display = "block";
     console.log("mostrar");
     cajaBatalla.style.display = "none";
     cajaCartas.style.backgroundColor = "black";
-    cajaReliquias.style.display = "none";
-    cajaReliquias.style.background = "none";
+    lugarReliquias.style.display = "none";
+    lugarReliquias.style.background = "none";
   }
-  function mostrarReliquias(){
-    cajaReliquias.style.display = "block";
-    cajaReliquias.style.backgroundColor = "black";
+  function mostrarReliquias() {
+    lugarReliquias.style.display = "block";
+    lugarReliquias.style.backgroundColor = "black";
     cajaBatalla.style.display = "none";
     cajaCartas.style.display = "none";
     cajaCartas.style.background = "none";
@@ -150,9 +165,9 @@ window.addEventListener("DOMContentLoaded", () => {
     cajaBatalla.style.display = "block";
     cajaCartas.style.display = "none";
     cajaCartas.style.background = "none";
-    cajaReliquias.style.display = "none";
-    cajaReliquias.style.backgroundColor = "none";
-    window.scrollTo(0,0);
+    lugarReliquias.style.display = "none";
+    lugarReliquias.style.backgroundColor = "none";
+    window.scrollTo(0, 0);
   }
 
   cartas.addEventListener("click", mostrarCartas);

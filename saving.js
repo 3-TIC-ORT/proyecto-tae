@@ -14,6 +14,13 @@ let info = {
     mapa:null,
     reliquias:null
 }
+let infoia = {
+  monstruo: null,
+  dañorecibido: 0,
+  cartasjugadas: null,
+  buffeosjugador: 0,
+  condicionhabilidad: null
+}
 
 subscribeGETEvent("mapa",(query) => {
   const mapa = generarmapa(query)
@@ -190,6 +197,7 @@ subscribeGETEvent("mounstro", (query) => {
   let mounstro = posibles[indice];
 
   console.log(`GET mounstro (${tipoSolicitado}) → ${mounstro.nombre}`);
+  infoia.monstruo = mounstro.nombre
   return mounstro;
 });
 
@@ -197,6 +205,17 @@ subscribeGETEvent("mercado",cartas_mercado)
 
 subscribeGETEvent("eleccion",cartas_eleccion)
 
-subscribeGETEvent("estado",verestado)
+subscribeGETEvent("estado",()=>{
+  let estado = verestado(infoia.monstruo,infoia.dañorecibido,infoia.cartasjugadas,infoia.buffeosjugador,infoia.condicionhabilidad)
+  console.log(`el estado del mounstro es: ${estado}`)
+  return estado
+})
+
+subscribePOSTEvent("final-turno",(data) => {
+  infoia.dañorecibido = data.dañorecibido
+  infoia.buffeosjugador
+  infoia.condicionhabilidad = data.habilidad
+  infoia.cartasjugadas = data.cartasjugadas
+})
 
 startServer();

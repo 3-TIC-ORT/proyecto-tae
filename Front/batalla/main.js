@@ -30,6 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
       vidamax: data.vidamax,
       mapa: data.mapa,
       reliquias: data.reliquias,
+      mazo: data.mazo
     };
     mostrar();
   });

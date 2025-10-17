@@ -144,3 +144,13 @@ line {
 #batalla{
   font-size: 10rem;
 }
+.nodo.bloqueado {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nodo.desbloqueado {
+  opacity: 1;
+  cursor: var(--pointer);
+}

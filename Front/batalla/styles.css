@@ -12,12 +12,13 @@ body {
   max-height: 100vh;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 .letra {
   font-family: "Inknut Antiqua", serif;
 }
-.letra2{
+.letra2 {
   font-family: "Galdeano", sans-serif;
 }
 
@@ -253,7 +254,6 @@ html {
   z-index: 100;
 }
 
-
 .personaje {
   background-color: blue;
   width: 100%;
@@ -290,14 +290,14 @@ html {
 .boton {
   font-size: 5rem;
 }
-.b{
+.b {
   position: fixed;
   bottom: 0;
   left: 0;
 }
-.container-cartas{
-    padding: 0 15vh 0 15vh;
-    width: 100vw;
+.container-cartas {
+  padding: 0 15vh 0 15vh;
+  width: 100vw;
 }
 .cajaCartas {
   display: grid;
@@ -330,12 +330,12 @@ html {
 .abajo-cartas {
   padding-top: 7vh;
 }
-.cartasS{
+.cartasS {
   display: none;
   width: 100vw;
 }
 
-.reliqias{
+.reliqias {
   display: none;
 }
 .container-reliquias {
@@ -352,34 +352,33 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
-  width: 50vw; 
+  width: 50vw;
 }
 
 .caja-reliquias {
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-gap: 3vh;
-justify-items: center;
-padding-top: 10vh;
-min-height: 100%;
-overflow-y: auto; 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3vh;
+  justify-items: center;
+  padding-top: 10vh;
+  min-height: 100%;
+  overflow-y: auto;
 }
 
 .todas {
-  background-color: blue; 
+  background-color: blue;
   width: 50%;
-  height: 20vh; 
+  height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
-.carta-golpe{
+.carta-golpe {
   background-color: red;
 }
-.carta-escudo{
+.carta-escudo {
   background-color: lightblue;
 }
-.carta-garrote{
+.carta-garrote {
   background-color: orange;
 }

@@ -181,7 +181,6 @@ html {
   position: absolute;
   bottom: 5vh;
   left: 50vw;
-  background-color: blueviolet;
   z-index: 100;
 }
 .carta2 {
@@ -190,7 +189,6 @@ html {
   position: absolute;
   bottom: 4vh;
   left: 57vw;
-  background-color: coral;
   z-index: 90;
 }
 .carta3 {
@@ -199,7 +197,6 @@ html {
   position: absolute;
   bottom: 4vh;
   left: 43vw;
-  background-color: bisque;
   z-index: 90;
 }
 .carta4 {
@@ -208,7 +205,6 @@ html {
   position: absolute;
   bottom: 2.5vh;
   left: 65vw;
-  background-color: yellow;
   z-index: 80;
 }
 .carta5 {
@@ -217,7 +213,6 @@ html {
   position: absolute;
   bottom: 2.5vh;
   left: 35vw;
-  background-color: aqua;
   z-index: 80;
 }
 .carta6 {
@@ -226,7 +221,6 @@ html {
   position: absolute;
   bottom: 0vh;
   left: 73vw;
-  background-color: palevioletred;
   z-index: 70;
 }
 .carta7 {
@@ -235,7 +229,6 @@ html {
   position: absolute;
   bottom: 0vh;
   left: 28vw;
-  background-color: tan;
   z-index: 70;
 }
 .carta8 {
@@ -244,7 +237,6 @@ html {
   position: absolute;
   bottom: -3vh;
   left: 80vw;
-  background-color: cadetblue;
   z-index: 60;
 }
 .carta9 {
@@ -253,7 +245,6 @@ html {
   position: absolute;
   bottom: -3vh;
   left: 21vw;
-  background-color: firebrick;
   z-index: 60;
 }
 .cartaG:hover {
@@ -382,4 +373,13 @@ overflow-y: auto;
   justify-content: center;
   align-items: center;
 
+}
+.carta-golpe{
+  background-color: red;
+}
+.carta-escudo{
+  background-color: lightblue;
+}
+.carta-garrote{
+  background-color: orange;
 }

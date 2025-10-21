@@ -1,5 +1,4 @@
 window.addEventListener("DOMContentLoaded", () => {
-  // Referencias DOM
   let oro = document.getElementById("oro");
   let vida = document.getElementById("vida");
   let vidaP = document.getElementById("vida-personaje");
@@ -20,6 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let atras2 = document.getElementById("atras2");
   let cajaBatalla = document.getElementById("batalla");
   let lugarReliquias = document.getElementById("LugarReliquias");
+  let cartasmano = []
 
   let info = {};
   let monstruo = {};
@@ -27,13 +27,12 @@ window.addEventListener("DOMContentLoaded", () => {
   let mazo = [];
   let contadorCartas = 1;
 
-  // Conectar al servidor y obtener eventos
   connect2Server();
 
   getEvent(`mounstro?normal`, (data) => {
     monstruo = data;
     console.log("Monstruo recibido:", monstruo);
-    mostrar(); // actualizar vida monstruo
+    mostrar(); 
   });
 
   getEvent("fogata", (data) => {
@@ -74,7 +73,6 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function mostrarMazo() {
-    if (!cajaCartas) return console.warn("No se encontró cajaCartas");
     cajaCartas.innerHTML = "";
     for (let i = 0; i < mazo.length; i++) {
       let nuevaCarta = document.createElement("div");
@@ -90,7 +88,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function mostrar() {
     vida.textContent = `PV: ${info.vida}/${info.vidamax}`;
     vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
-    vidaM.textContent = monstruo.vida ? `PV: ${monstruo.vida}/${monstruo.vidamax}` : "PV: --";
+    vidaM.textContent = "PV:" + monstruo.vida +"/"+ monstruo.vidamax;
     oro.textContent = `Oro: ${info.oro}`;
   }
 
@@ -107,15 +105,47 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function sumarCarta() {
     if (contadorCartas > 9) return;
-    let cartaAleatoria = mazo[Math.floor(Math.random() * mazo.length)];
+    if (mazo.length === 0) return console.warn("No hay más cartas en el mazo");
+    
+    // elegir un índice aleatorio del mazo
+    let indiceAleatorio = Math.floor(Math.random() * mazo.length);
+    
+    // sacar esa carta del mazo
+    let cartaRobada = mazo.splice(indiceAleatorio, 1)[0];
+    
+    // agregarla a la mano
+    cartasmano.push(cartaRobada);
+    
+    // crear el elemento visual
     let carta = document.createElement("div");
     carta.classList.add(`carta${contadorCartas}`, "cartaG");
     carta.id = `C${contadorCartas}`;
-    carta.innerHTML = `<p>${cartaAleatoria.nombre}</p>`;
+    carta.innerHTML = `<p>${cartaRobada.nombre}</p>`;
+    
+    function garrote(daño){
+      monstruo.vida -= daño;
+      if (monstruo.vida < 0) monstruo.vida = 0;
+      vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+    }
+
+    if (cartaRobada.nombre === "Golpe") {
+      carta.classList.add("carta-golpe");
+    };
+    if (cartaRobada.nombre === "Escudo"){
+      carta.classList.add("carta-escudo");
+    };
+    if(cartaRobada.nombre === "Garrote"){
+      carta.classList.add("carta-garrote");
+      //carta.addEventListener("click", garrote());
+    };
+    
+    // agregar la carta al área de abajo
     abajo.appendChild(carta);
+    
     contadorCartas++;
   }
-
+  
+  
   function sacarCarta() {
     if (contadorCartas <= 1) return;
     contadorCartas--;
@@ -132,9 +162,6 @@ window.addEventListener("DOMContentLoaded", () => {
       sumarCarta();
     }
   }
-
-  boton.addEventListener("click", sumarCarta);
-  botonSacar.addEventListener("click", sacarCarta);
 
   let imagenes = [
     "../Cosas/fondo1.png",
@@ -181,4 +208,16 @@ window.addEventListener("DOMContentLoaded", () => {
   atras.addEventListener("click", volverBatalla);
   atras2.addEventListener("click", volverBatalla);
   reliquias.addEventListener("click", mostrarReliquias);
-});
+
+ /* 
+  let cartasmano = []
+  //cada turno haces esto 5 veces
+  cartasmano.push(mazo.pop)
+  //final de turno
+  mazo = mazo.concate(cartasmano)
+  //robar una carta
+  cartasmano.push(mazo.pop)*/
+
+
+});  
+

@@ -2,56 +2,113 @@
   --mouse: url("../Cosas/mouse.png") 16 16, auto;
   --pointer: url("../Cosas/pointer.png") 16 16, pointer;
 }
-.inter-hola {
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  height: 100vh;
+  background-color: #007691;
   font-family: "DM Serif Text", serif;
+  cursor: var(--mouse);
+}
+
+.lado {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.lado-izquierdo {
+  background-image: url("../Cosas/fondito 1.png");
+  position: relative;
+}
+
+.flecha-arriba {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: auto;
+  z-index: 10;
+  cursor: var(--pointer);
+}
+
+.lado-derecho {
+  background-image: url("../Cosas/fondito\ 2.png");
+}
+
+.letrasizq {
+  font-size: 8rem;
+  color: black;
+  display: flex;
+  justify-content: center;
+  margin-right: 280px;
+  font-family: "Dela Gothic One", sans-serif;
+}
+
+.letrasder {
+  font-size: 8rem;
+  color: black;
+  display: flex;
+  justify-content: center;
+  margin-left: 280px;
+  font-family: "Dela Gothic One", sans-serif;
+}
+
+.x-decorizq {
+  width: 130px;
+  height: auto;
+  margin-right: 280px;
+}
+
+.x-decorder {
+  width: 130px;
+  height: auto;
+  margin-left: 280px;
+}
+
+main {
+  flex: 1;
+  background-color: #007691;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 8rem;
+  margin-bottom: 2rem;
+  font-family: "Galdeano", sans-serif;
+}
+
+.contenedor-texto {
+max-width: 700px;
+text-align: center;
+}
+
+.contenedor-texto p {
+font-size: 1.5rem;
+width: 100%;
+}
+.dela-gothic-one-regular {
+  font-family: "Dela Gothic One", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
-#main {
-  display: flex;
-  justify-content: center;
-  padding: 2rem 5rem 5rem 5rem;
-  height: 50rem;
-  margin-top: 0px;
-}
-
-h1 {
-  font-size: 9rem;
-  text-align: center;
-  position: relative;
-  bottom: 200px;
-}
-
-.credit {
-  font-size: 2rem;
-  margin: 4.3%;
-  color: white;
-  position: relative;
-  bottom: 200px;
-  text-align: center;
-  
-}
-
-#rrtt {
-  margin-top: 0rem;
-}
-.fondo {
-  position: absolute;
-  z-index: -1;
-  width: 100vw;
-}
-.flecha1{
-  transform: scale(0.8);
-}
-.flecha1:hover{
-  cursor: var(--pointer);
-}
-main {
-  padding: 1rem;
-}
-body {
-  background: linear-gradient(180deg, #121212 0%, #100A43 100%);
-  overflow: hidden;
-  cursor: var(--mouse);
+.galdeano-regular {
+  font-family: "Galdeano", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

@@ -1,9 +1,9 @@
 window.addEventListener("DOMContentLoaded", () => {
+  // Referencias DOM
   let oro = document.getElementById("oro");
   let vida = document.getElementById("vida");
   let vidaP = document.getElementById("vida-personaje");
   let vidaM = document.getElementById("vida-monstruo");
-  let info = {};
   let mapa = document.getElementById("mapa");
   let boton = document.getElementById("buton");
   let botonSacar = document.getElementById("butonSacar");
@@ -13,16 +13,29 @@ window.addEventListener("DOMContentLoaded", () => {
   let cartas = document.getElementById("cartas");
   let circCartas = document.getElementById("circulo-cartas");
   let circReliquias = document.getElementById("circulo-reliquias");
+  let cajaReliquias = document.getElementById("cajaReliquias");
+  let cajaCartas = document.getElementById("cajaCartas");
+  let LugarCartas = document.getElementById("LugarCartas");
+  let atras = document.getElementById("atras");
+  let atras2 = document.getElementById("atras2");
+  let cajaBatalla = document.getElementById("batalla");
+  let lugarReliquias = document.getElementById("LugarReliquias");
 
-  let contadorCartas = 1; // empieza en carta1
+  let info = {};
+  let monstruo = {};
+  let reliquia = [];
+  let mazo = [];
+  let contadorCartas = 1;
 
+  // Conectar al servidor y obtener eventos
   connect2Server();
 
-  let monstruo = {};
-  getEvent(`mounstro?${"normal"}`, (data) => {
+  getEvent(`mounstro?normal`, (data) => {
     monstruo = data;
-    console.log(monstruo);
+    console.log("Monstruo recibido:", monstruo);
+    mostrar(); // actualizar vida monstruo
   });
+
   getEvent("fogata", (data) => {
     info = {
       oro: data.oro,
@@ -30,52 +43,55 @@ window.addEventListener("DOMContentLoaded", () => {
       vidamax: data.vidamax,
       mapa: data.mapa,
     };
+    console.log("Info fogata:", info);
     mostrar();
   });
-  let reliquia = [];
-  let cajaReliquias = document.getElementById("cajaReliquias");
+
   getEvent("reliquia", (data) => {
     reliquia = data;
+    console.log("Reliquias recibidas:", reliquia);
     mostrarReliquia();
-    console.log(reliquia);
-    console.log(reliquia.length);
   });
+
+  getEvent("mazo", (data) => {
+    mazo = data;
+    console.log("Mazo recibido:", mazo);
+    mostrarMazo();
+    iniciarCartas();
+  });
+
   function mostrarReliquia() {
+    if (!cajaReliquias) return console.warn("No se encontró cajaReliquias");
+    cajaReliquias.innerHTML = ""; 
     for (let i = 0; i < reliquia.length; i++) {
       let nuevaReliquia = document.createElement("div");
       nuevaReliquia.classList.add("todas");
       nuevaReliquia.id = "reliquia" + i;
-      nuevaReliquia.innerHTML = `
-      <p>${reliquia[i].nombre}</p> `;
+      nuevaReliquia.innerHTML = `<p>${reliquia[i].nombre}</p>`;
       cajaReliquias.appendChild(nuevaReliquia);
-      circReliquias.textContent = reliquia.length;
     }
+    circReliquias.textContent = reliquia.length;
   }
-  let mazo = [];
-  let cajaCartas = document.getElementById("cajaCartas");
 
-  getEvent("mazo", (data) => {
-    mazo = data;
-    mostrarMazo();
-    console.log(mazo);
-    console.log(mazo.length);
-  });
- function mostrarMazo() {
+  function mostrarMazo() {
+    if (!cajaCartas) return console.warn("No se encontró cajaCartas");
+    cajaCartas.innerHTML = "";
     for (let i = 0; i < mazo.length; i++) {
       let nuevaCarta = document.createElement("div");
       nuevaCarta.classList.add("cartaGC");
       nuevaCarta.id = "carta" + i;
-      nuevaCarta.innerHTML = `
-      <p>${mazo[i].nombre}</p> `;
+      nuevaCarta.innerHTML = `<p>${mazo[i].nombre}</p>`;
       cajaCartas.appendChild(nuevaCarta);
-      circCartas.textContent = mazo.length;
     }
+    circCartas.textContent = mazo.length;
   }
+
+
   function mostrar() {
-    vida.textContent = "PV: " + info.vida + "/" + info.vidamax;
-    vidaP.textContent = "PV: " + info.vida + "/" + info.vidamax;
-    vidaM.textContent = "PV: " + monstruo.vida + "/" + monstruo.vidamax;
-    oro.textContent = "Oro: " + info.oro;
+    vida.textContent = `PV: ${info.vida}/${info.vidamax}`;
+    vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
+    vidaM.textContent = monstruo.vida ? `PV: ${monstruo.vida}/${monstruo.vidamax}` : "PV: --";
+    oro.textContent = `Oro: ${info.oro}`;
   }
 
   function irMapa() {
@@ -91,56 +107,36 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function sumarCarta() {
     if (contadorCartas > 9) return;
-
+    let cartaAleatoria = mazo[Math.floor(Math.random() * mazo.length)];
     let carta = document.createElement("div");
     carta.classList.add(`carta${contadorCartas}`, "cartaG");
     carta.id = `C${contadorCartas}`;
-
-    // Si es la carta 1, le ponemos el click para restar 10 de vida
-    if (contadorCartas === 1) {
-      carta.addEventListener("click", () => {
-        menosVida(10);
-        console.log("-10 de vida");
-      });
-    }
-
+    carta.innerHTML = `<p>${cartaAleatoria.nombre}</p>`;
     abajo.appendChild(carta);
     contadorCartas++;
   }
 
   function sacarCarta() {
     if (contadorCartas <= 1) return;
-
     contadorCartas--;
-
     let cartaAEliminar = abajo.querySelector(`.carta${contadorCartas}`);
     if (cartaAEliminar) {
       cartaAEliminar.remove();
     }
   }
 
-  function menosVida(cantidad) {
-    info.vida -= cantidad;
-
-    if (info.vida < 0) info.vida = 0;
-
-    mostrar();
-
-    // Si la vida llega a 0, vamos a Game Over
-    if (info.vida <= 0) {
-      window.location.href = "../Game_over/index.html";
+  function iniciarCartas() {
+    abajo.innerHTML = "";
+    contadorCartas = 1;
+    for (let i = 0; i < 5; i++) {
+      sumarCarta();
     }
   }
 
-  // Botones para sumar o sacar cartas manualmente
   boton.addEventListener("click", sumarCarta);
   botonSacar.addEventListener("click", sacarCarta);
 
-  // --- Inicializamos el juego con 5 cartas ---
-  for (let i = 0; i < 5; i++) {
-    sumarCarta();
-  }
-  const imagenes = [
+  let imagenes = [
     "../Cosas/fondo1.png",
     "../Cosas/fondo2.jpg",
     "../Cosas/fondo3.jpg",
@@ -149,29 +145,21 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function Fondos() {
     const random = Math.floor(Math.random() * imagenes.length);
-
     document.body.style.backgroundImage = `url(${imagenes[random]})`;
     document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundPosition;
     document.body.style.backgroundRepeat = "no-repeat";
   }
-
   Fondos();
 
-  let LugarCartas = document.getElementById("LugarCartas");
-  let atras = document.getElementById("atras");
-  let atras2 = document.getElementById("atras2");
-  let cajaBatalla = document.getElementById("batalla");
-  let lugarReliquias = document.getElementById("LugarReliquias");
-
   function mostrarCartas() {
+    console.log("mostrarCartas triggered");
     LugarCartas.style.display = "block";
-    console.log("mostrar");
-    cajaBatalla.style.display = "none";
     LugarCartas.style.backgroundColor = "black";
+    cajaBatalla.style.display = "none";
     lugarReliquias.style.display = "none";
     lugarReliquias.style.background = "none";
   }
+
   function mostrarReliquias() {
     lugarReliquias.style.display = "block";
     lugarReliquias.style.backgroundColor = "black";
@@ -179,6 +167,7 @@ window.addEventListener("DOMContentLoaded", () => {
     LugarCartas.style.display = "none";
     LugarCartas.style.background = "none";
   }
+
   function volverBatalla() {
     cajaBatalla.style.display = "block";
     LugarCartas.style.display = "none";

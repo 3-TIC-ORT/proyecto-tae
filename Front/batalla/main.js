@@ -2,10 +2,10 @@ window.addEventListener("DOMContentLoaded", () => {
   let oro = document.getElementById("oro");
   let vida = document.getElementById("vida");
   let vidaP = document.getElementById("vida-personaje");
+  let cantidadEscudo = 0;
   let vidaM = document.getElementById("vida-monstruo");
   let mapa = document.getElementById("mapa");
-  let boton = document.getElementById("buton");
-  let botonSacar = document.getElementById("butonSacar");
+  let boton = document.getElementById("boton");
   let abajo = document.getElementById("abajo");
   let titulo = document.getElementById("titulo");
   let reliquias = document.getElementById("reliquias");
@@ -19,13 +19,16 @@ window.addEventListener("DOMContentLoaded", () => {
   let atras2 = document.getElementById("atras2");
   let cajaBatalla = document.getElementById("batalla");
   let lugarReliquias = document.getElementById("LugarReliquias");
+  let lugarEscudo = document.getElementById("escudo");
+  let cajaMana = document.getElementById("cajamana")
+  let mana = 3;
   let cartasmano = [];
-
   let info = {};
   let monstruo = {};
   let reliquia = [];
   let mazo = [];
   let contadorCartas = 1;
+  let turno = 1; // personaje = 1 monstruo = 2
 
   connect2Server();
 
@@ -85,6 +88,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function mostrar() {
+    lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
     vida.textContent = `PV: ${info.vida}/${info.vidamax}`;
     vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
@@ -119,42 +123,70 @@ window.addEventListener("DOMContentLoaded", () => {
     carta.classList.add(`carta${contadorCartas}`, "cartaG");
     carta.id = `C${contadorCartas}`;
     carta.innerHTML = `<p>${cartaRobada.nombre}</p>`;
+    
+  }
 
-    function garrote(daño) {
+
+  function actualizarMana() {
+    console.log(mana);
+    mana = mana - cartaRobada.elixir;
+    cajaMana.textContent = mana + "/3";
+    console.log(mana);
+  }
+
+  function garrote(daño) {
+    console.log(cartaRobada.elixir);
+    if (cartaRobada.elixir <= mana) {
       monstruo.vida -= daño;
       if (monstruo.vida < 0) monstruo.vida = 0;
       vidaM.textContent = "PV" + monstruo.vida + "/" + monstruo.vidamax;
+      actualizarMana();
       sacarCarta();
     }
-
-    if (cartaRobada.nombre === "Golpe") {
-      carta.classList.add("carta-golpe");
+    else {
+      alert("no hay mana suficiente");
     }
-    if (cartaRobada.nombre === "Escudo") {
-      carta.classList.add("carta-escudo");
-    }
-    if (cartaRobada.nombre === "Garrote") {
-      carta.classList.add("carta-garrote");
-      carta.addEventListener("click", () => garrote(10));
-    }
-
-    abajo.appendChild(carta);
-
-    contadorCartas++;
   }
+  function golpe(daño) {
+    console.log(cartaRobada.elixir);
+    if (mana >= cartaRobada.elixir) {
+      monstruo.vida -= daño;
+      if (monstruo.vida < 0) monstruo.vida = 0;
+      vidaM.textContent = "PV" + monstruo.vida + "/" + monstruo.vidamax;
+      actualizarMana();
+      sacarCarta();
+    }
+    else {
+      alert("no hay mana suficiente");
+    }
+  }
+  function escudo() {
+    if (mana >= cartaRobada.elixir) {
+      cantidadEscudo = cantidadEscudo + 10;
+      lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      actualizarMana();
+      sacarCarta();
+    }
+    else {
+      alert("no hay mana suficiente");
+    }
+  }
+  abajo.appendChild(carta);
 
+  contadorCartas++;
   function sacarCarta() {
     let cartaEliminar = event.target;
     console.log(cartaEliminar.classList[0]);
     if (cartaEliminar.classList[0] === "carta1") {
-      const carta2 = document.getElementsByClassName("carta2");
-      const carta3 = document.getElementsByClassName("carta3");
-      const carta4 = document.getElementsByClassName("carta4");
-      const carta5 = document.getElementsByClassName("carta5");
-      const carta6 = document.getElementsByClassName("carta6");
-      const carta7 = document.getElementsByClassName("carta7");
-      const carta8 = document.getElementsByClassName("carta8");
-      const carta9 = document.getElementsByClassName("carta9");
+      let carta2 = document.getElementsByClassName("carta2");
+      let carta3 = document.getElementsByClassName("carta3");
+      let carta4 = document.getElementsByClassName("carta4");
+      let carta5 = document.getElementsByClassName("carta5");
+      let carta6 = document.getElementsByClassName("carta6");
+      let carta7 = document.getElementsByClassName("carta7");
+      let carta8 = document.getElementsByClassName("carta8");
+      let carta9 = document.getElementsByClassName("carta9");
       Array.from(carta2).forEach(element => {
         element.classList.remove("carta2");
         element.classList.add("carta1");
@@ -171,7 +203,7 @@ window.addEventListener("DOMContentLoaded", () => {
         element.classList.remove("carta8");
         element.classList.add("carta6");
       });
-    
+
       /*carta2.classList.remove("carta2");
       carta2.classlist.add("carta1");
       carta4.classlist.remove("carta4");
@@ -181,16 +213,141 @@ window.addEventListener("DOMContentLoaded", () => {
       carta8.classList.remove("carta8");
       carta8.classList.add("carta6");*/
     }
-    /*if (cartaEliminar.classList[0] === "carta2")
-      if (cartaEliminar.classList[0] === "carta3")
-        if (cartaEliminar.classList[0] === "carta4")
-          if (cartaEliminar.classList[0] === "carta5")
-            if (cartaEliminar.classList[0] === "carta6")
-              if (cartaEliminar.classList[0] === "carta7")
-                if (cartaEliminar.classList[0] === "carta8")
-                  if (cartaEliminar.classList[0] === "carta9")*/
-                    cartaEliminar.remove();
+    if (cartaEliminar.classList[0] === "carta2") {
+      let carta1 = document.getElementsByClassName("carta1");
+      let carta3 = document.getElementsByClassName("carta3");
+      let carta4 = document.getElementsByClassName("carta4");
+      let carta5 = document.getElementsByClassName("carta5");
+      let carta6 = document.getElementsByClassName("carta6");
+      let carta7 = document.getElementsByClassName("carta7");
+      let carta8 = document.getElementsByClassName("carta8");
+      let carta9 = document.getElementsByClassName("carta9");
+      Array.from(carta4).forEach(element => {
+        element.classList.remove("carta4");
+        element.classList.add("carta2");
+      });
+      Array.from(carta6).forEach(element => {
+        element.classList.remove("carta4");
+        element.classList.add("carta2");
+      });
+      Array.from(carta8).forEach(element => {
+        element.classList.remove("carta8");
+        element.classList.add("carta6");
+      });
+    }
+    if (cartaEliminar.classList[0] === "carta3") {
+      let carta1 = document.getElementsByClassName("carta1");
+      let carta2 = document.getElementsByClassName("carta2");
+      let carta4 = document.getElementsByClassName("carta4");
+      let carta5 = document.getElementsByClassName("carta5");
+      let carta6 = document.getElementsByClassName("carta6");
+      let carta7 = document.getElementsByClassName("carta7");
+      let carta8 = document.getElementsByClassName("carta8");
+      let carta9 = document.getElementsByClassName("carta9");
+      Array.from(carta5).forEach(element => {
+        element.classList.remove("carta5");
+        element.classList.add("carta3");
+      });
+      Array.from(carta7).forEach(element => {
+        element.classList.remove("carta7");
+        element.classList.add("carta5");
+      });
+      Array.from(carta9).forEach(element => {
+        element.classList.remove("carta9");
+        element.classList.add("carta7");
+      });
+    }
+    if (cartaEliminar.classList[0] === "carta4") {
+      let carta1 = document.getElementsByClassName("carta1");
+      let carta2 = document.getElementsByClassName("carta2");
+      let carta3 = document.getElementsByClassName("carta3");
+      let carta5 = document.getElementsByClassName("carta5");
+      let carta6 = document.getElementsByClassName("carta6");
+      let carta7 = document.getElementsByClassName("carta7");
+      let carta8 = document.getElementsByClassName("carta8");
+      let carta9 = document.getElementsByClassName("carta9");
+      Array.from(carta6).forEach(element => {
+        element.classList.remove("carta6");
+        element.classList.add("carta4");
+      });
+      Array.from(carta8).forEach(element => {
+        element.classList.remove("carta8");
+        element.classList.add("carta6");
+      });
+    }
+    if (cartaEliminar.classList[0] === "carta5") {
+      let carta1 = document.getElementsByClassName("carta1");
+      let carta2 = document.getElementsByClassName("carta2");
+      let carta3 = document.getElementsByClassName("carta3");
+      let carta4 = document.getElementsByClassName("carta4");
+      let carta6 = document.getElementsByClassName("carta6");
+      let carta7 = document.getElementsByClassName("carta7");
+      let carta8 = document.getElementsByClassName("carta8");
+      let carta9 = document.getElementsByClassName("carta9");
+      Array.from(carta7).forEach(element => {
+        element.classList.remove("carta7");
+        element.classList.add("carta5");
+      });
+      Array.from(carta6).forEach(element => {
+        element.classList.remove("carta9");
+        element.classList.add("carta7");
+      });
+    }
+    if (cartaEliminar.classList[0] === "carta6") {
+      let carta1 = document.getElementsByClassName("carta1");
+      let carta2 = document.getElementsByClassName("carta2");
+      let carta3 = document.getElementsByClassName("carta3");
+      let carta4 = document.getElementsByClassName("carta4");
+      let carta5 = document.getElementsByClassName("carta5");
+      let carta7 = document.getElementsByClassName("carta7");
+      let carta8 = document.getElementsByClassName("carta8");
+      let carta9 = document.getElementsByClassName("carta9");
+      Array.from(carta8).forEach(element => {
+        element.classList.remove("carta8");
+        element.classList.add("carta6");
+      });
+    }
+    if (cartaEliminar.classList[0] === "carta7") {
+      let carta1 = document.getElementsByClassName("carta1");
+      let carta2 = document.getElementsByClassName("carta2");
+      let carta3 = document.getElementsByClassName("carta3");
+      let carta4 = document.getElementsByClassName("carta4");
+      let carta5 = document.getElementsByClassName("carta5");
+      let carta6 = document.getElementsByClassName("carta6");
+      let carta8 = document.getElementsByClassName("carta8");
+      let carta9 = document.getElementsByClassName("carta9");
+      Array.from(carta9).forEach(element => {
+        element.classList.remove("carta9");
+        element.classList.add("carta7");
+      });
+    }
+
+    cartaEliminar.remove();
   }
+
+
+  if (turno === 1) {
+    if (cartaRobada.nombre === "Golpe") {
+      carta.classList.add("carta-golpe");
+      carta.addEventListener("click", () => golpe(5));
+    }
+    if (cartaRobada.nombre === "Escudo") {
+      carta.classList.add("carta-escudo");
+      carta.addEventListener("click", () => escudo());
+    }
+    if (cartaRobada.nombre === "Garrote") {
+      carta.classList.add("carta-garrote");
+      carta.addEventListener("click", () => garrote(10));
+    }
+    console.log("deshabilitar")
+    boton.disabled = false;
+  } //turno
+
+  function finalizarTurno() {
+    turno = 2;
+  }
+
+  boton.addEventListener("click", finalizarTurno);
 
   function iniciarCartas() {
     abajo.innerHTML = "";

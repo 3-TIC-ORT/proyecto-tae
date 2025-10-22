@@ -26,15 +26,19 @@ top: 50px;
 font-family: "Dela Gothic One", sans-serif;
 font-size: 12rem;
 color: white;
+-webkit-text-stroke-width: 5px;
+-webkit-text-stroke-color: #000;
 z-index: 1;
 margin: 0;
 }
 
 button {
-  color: #000;
-  font-family: "Inknut Antiqua", serif;
-  background: none;
-  border: none;
+  color: white;
+  font-family: "Dela Gothic One", sans-serif;
+  background-color: #004f5a;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border: 30px solid black;
+  border-radius: 20px;
   outline: none;
   display: flex;
   justify-content: center;
@@ -55,13 +59,6 @@ margin-bottom: 1rem;
 
 #boton2 {
   /*margin: 0px 513px 279px 512px;*/
-flex-shrink: 0;
-font-size: 2.625rem;
-width: 24.8898125rem;
-height: 5.1875rem;
-}
-
-#boton3 {
 flex-shrink: 0;
 font-size: 2.625rem;
 width: 24.8898125rem;

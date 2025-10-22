@@ -10,8 +10,7 @@ body {
     padding: 0;
     width: 110vw;
     height: 100vh;
-   
-    
+    overflow: hidden;
 }
 .letra{
       font-family: "Inknut Antiqua", serif;
@@ -134,7 +133,8 @@ html{
   background-image: url("../Cosas/eb223c4034a1c48c8bc140e0a14ae7ecd0cbf9de.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 145vw 145vh;
-  height: 100%;
+  background-size: 125% 138%;
+  width: 100vw;
+  height: calc(100vh - 15vh);
   padding-top: 2rem;
   }

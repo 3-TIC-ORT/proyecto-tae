@@ -1,5 +1,6 @@
 {
     "liveServer.settings.ignoreFiles": [
         "**/jsons/**"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }

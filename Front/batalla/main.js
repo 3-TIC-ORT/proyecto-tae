@@ -22,6 +22,8 @@ window.addEventListener("DOMContentLoaded", () => {
   let lugarEscudo = document.getElementById("escudo");
   let cajaMana = document.getElementById("cajamana")
   let mana = 3;
+  let cartaRobada = {};
+  let carta = {};
   let cartasmano = [];
   let info = {};
   let monstruo = {};
@@ -106,6 +108,13 @@ window.addEventListener("DOMContentLoaded", () => {
   titulo.addEventListener("click", volver);
   mapa.addEventListener("click", irMapa);
 
+
+  function finalizarTurno() {
+    console.log("finalizar turno")
+    turno = 2;
+    console.log(turno);
+  }
+
   function sumarCarta() {
     if (contadorCartas > 9) return;
     if (mazo.length === 0) return console.warn("No hay más cartas en el mazo");
@@ -114,18 +123,69 @@ window.addEventListener("DOMContentLoaded", () => {
     let indiceAleatorio = Math.floor(Math.random() * mazo.length);
 
     // sacar esa carta del mazo
-    let cartaRobada = mazo.splice(indiceAleatorio, 1)[0];
+    cartaRobada = mazo.splice(indiceAleatorio, 1)[0];
 
     // agregarla a la mano
     cartasmano.push(cartaRobada);
 
-    let carta = document.createElement("div");
+    carta = document.createElement("div");
     carta.classList.add(`carta${contadorCartas}`, "cartaG");
     carta.id = `C${contadorCartas}`;
     carta.innerHTML = `<p>${cartaRobada.nombre}</p>`;
-    
-  }
+    abajo.appendChild(carta);
 
+    contadorCartas++;
+    if (cartaRobada.nombre === "Golpe") {
+      carta.classList.add("carta-golpe");
+    }
+    if (cartaRobada.nombre === "Escudo") {
+      carta.classList.add("carta-escudo");
+    }
+    if (cartaRobada.nombre === "Garrote") {
+      carta.classList.add("carta-garrote");
+    }
+  }
+  abajo.addEventListener("click", (event) => {
+    let carta = event.target.closest(".cartaG");
+    if (!carta) return;
+
+    if (turno !== 1) {
+      alert("No es tu turno");
+      return;
+    }
+    let cartaG = document.getElementsByClassName("cartaG");
+    cartas.addEventListener("click", ()=>{
+      turno = 1;
+      console.log(turno);
+      cartaG.remove();
+      sumarCarta();
+    })
+
+    // Buscar la carta robada en la mano según el nombre (o usar dataset)
+    let nombreCarta = carta.textContent;
+    // Aquí podrías usar un mapa o simplemente condicionales:
+    if (mana < cartaRobada.elixir) {
+      alert("No tienes suficiente mana");
+      return;
+    }
+
+    if (nombreCarta === "Golpe") {
+      golpe(5);
+    } else if (nombreCarta === "Escudo") {
+      escudo();
+    } else if (nombreCarta === "Garrote") {
+      garrote(10);
+    }
+    sacarCarta();
+  });
+
+  function iniciarCartas() {
+    abajo.innerHTML = "";
+    contadorCartas = 1;
+    for (let i = 0; i < 5; i++) {
+      sumarCarta();
+    }
+  }
 
   function actualizarMana() {
     console.log(mana);
@@ -172,9 +232,8 @@ window.addEventListener("DOMContentLoaded", () => {
       alert("no hay mana suficiente");
     }
   }
-  abajo.appendChild(carta);
 
-  contadorCartas++;
+
   function sacarCarta() {
     let cartaEliminar = event.target;
     console.log(cartaEliminar.classList[0]);
@@ -227,8 +286,8 @@ window.addEventListener("DOMContentLoaded", () => {
         element.classList.add("carta2");
       });
       Array.from(carta6).forEach(element => {
-        element.classList.remove("carta4");
-        element.classList.add("carta2");
+        element.classList.remove("carta6");
+        element.classList.add("carta4");
       });
       Array.from(carta8).forEach(element => {
         element.classList.remove("carta8");
@@ -324,38 +383,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     cartaEliminar.remove();
   }
-
-
-  if (turno === 1) {
-    if (cartaRobada.nombre === "Golpe") {
-      carta.classList.add("carta-golpe");
-      carta.addEventListener("click", () => golpe(5));
-    }
-    if (cartaRobada.nombre === "Escudo") {
-      carta.classList.add("carta-escudo");
-      carta.addEventListener("click", () => escudo());
-    }
-    if (cartaRobada.nombre === "Garrote") {
-      carta.classList.add("carta-garrote");
-      carta.addEventListener("click", () => garrote(10));
-    }
-    console.log("deshabilitar")
-    boton.disabled = false;
-  } //turno
-
-  function finalizarTurno() {
-    turno = 2;
-  }
-
+  console.log(boton);
   boton.addEventListener("click", finalizarTurno);
 
-  function iniciarCartas() {
-    abajo.innerHTML = "";
-    contadorCartas = 1;
-    for (let i = 0; i < 5; i++) {
-      sumarCarta();
-    }
-  }
+
 
   let imagenes = [
     "../Cosas/fondo1.png",

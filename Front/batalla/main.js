@@ -109,12 +109,39 @@ window.addEventListener("DOMContentLoaded", () => {
   mapa.addEventListener("click", irMapa);
 
 
+  function turnoRival(){
+    alert("rival hace algo");
+    iniciarTurnoJugador();
+  }
+  function iniciarTurnoJugador(){
+    turno = 1;
+    abajo.style.display = "flex";
+    iniciarCartas();
+  }
+  function ganar(){
+    alert("ganaste");
+    setTimeout(() => {
+      window.location.href = "../mapa/index.html"
+    }, 1000);
+    
+  }
+  console.log(monstruo.vida);
+  if(monstruo.vida <= 0){
+    ganar();
+    console.log("ganaste");
+  }
   function finalizarTurno() {
     console.log("finalizar turno")
+    abajo.style.display = "none";
+    alert("TURNO RIVAL");
     turno = 2;
     console.log(turno);
-  }
 
+    setTimeout(()=>{
+      turnoRival();
+
+    },2000);
+  }
   function sumarCarta() {
     if (contadorCartas > 9) return;
     if (mazo.length === 0) return console.warn("No hay más cartas en el mazo");
@@ -146,91 +173,74 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
   abajo.addEventListener("click", (event) => {
-    let carta = event.target.closest(".cartaG");
-    if (!carta) return;
-
+    let cartaDiv = event.target.closest(".cartaG");
+    if (!cartaDiv) return;
+  
     if (turno !== 1) {
       alert("No es tu turno");
       return;
     }
-    let cartaG = document.getElementsByClassName("cartaG");
-    cartas.addEventListener("click", ()=>{
-      turno = 1;
-      console.log(turno);
-      cartaG.remove();
-      sumarCarta();
-    })
-
-    // Buscar la carta robada en la mano según el nombre (o usar dataset)
-    let nombreCarta = carta.textContent;
-    // Aquí podrías usar un mapa o simplemente condicionales:
-    if (mana < cartaRobada.elixir) {
+  
+    let nombreCarta = cartaDiv.textContent.trim();
+    let cartaActual = cartasmano.find(c => c.nombre === nombreCarta);
+  
+    if (!cartaActual) {
+      console.warn("Carta no encontrada en la mano:", nombreCarta);
+      return;
+    }
+  
+    if (mana < cartaActual.elixir) {
       alert("No tienes suficiente mana");
       return;
     }
-
+  
     if (nombreCarta === "Golpe") {
-      golpe(5);
+      golpe(cartaActual);
     } else if (nombreCarta === "Escudo") {
-      escudo();
+      escudo(cartaActual);
     } else if (nombreCarta === "Garrote") {
-      garrote(10);
+      garrote(cartaActual);
     }
+  
+    cartasmano = cartasmano.filter(c => c !== cartaActual);
     sacarCarta();
   });
-
   function iniciarCartas() {
     abajo.innerHTML = "";
     contadorCartas = 1;
+    mana = 3;
+    cajaMana.textContent = "3/3";
     for (let i = 0; i < 5; i++) {
       sumarCarta();
     }
   }
 
-  function actualizarMana() {
-    console.log(mana);
-    mana = mana - cartaRobada.elixir;
-    cajaMana.textContent = mana + "/3";
-    console.log(mana);
-  }
 
-  function garrote(daño) {
-    console.log(cartaRobada.elixir);
-    if (cartaRobada.elixir <= mana) {
-      monstruo.vida -= daño;
-      if (monstruo.vida < 0) monstruo.vida = 0;
-      vidaM.textContent = "PV" + monstruo.vida + "/" + monstruo.vidamax;
-      actualizarMana();
-      sacarCarta();
-    }
-    else {
-      alert("no hay mana suficiente");
-    }
+  function golpe(carta) {
+    monstruo.vida -= carta.daño;
+    if (monstruo.vida < 0) monstruo.vida = 0;
+    vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+    mana -= carta.elixir;
+    cajaMana.textContent = mana + "/3";
+    mazo.push(carta)
   }
-  function golpe(daño) {
-    console.log(cartaRobada.elixir);
-    if (mana >= cartaRobada.elixir) {
-      monstruo.vida -= daño;
-      if (monstruo.vida < 0) monstruo.vida = 0;
-      vidaM.textContent = "PV" + monstruo.vida + "/" + monstruo.vidamax;
-      actualizarMana();
-      sacarCarta();
-    }
-    else {
-      alert("no hay mana suficiente");
-    }
+  
+  function escudo(carta) {
+    cantidadEscudo += 10;
+    lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mana -= carta.elixir;
+    cajaMana.textContent = mana + "/3";
+    mazo.push(carta)
   }
-  function escudo() {
-    if (mana >= cartaRobada.elixir) {
-      cantidadEscudo = cantidadEscudo + 10;
-      lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
-      actualizarMana();
-      sacarCarta();
-    }
-    else {
-      alert("no hay mana suficiente");
-    }
+  
+  function garrote(carta) {
+    monstruo.vida -= carta.daño;
+    if (monstruo.vida < 0) monstruo.vida = 0;
+    vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+    mana -= carta.elixir;
+    cajaMana.textContent = mana + "/3";
+    mazo.push(carta)
   }
 
 
@@ -384,6 +394,7 @@ window.addEventListener("DOMContentLoaded", () => {
     cartaEliminar.remove();
   }
   console.log(boton);
+  
   boton.addEventListener("click", finalizarTurno);
 
 

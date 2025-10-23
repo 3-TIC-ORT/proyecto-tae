@@ -34,11 +34,25 @@ window.addEventListener("DOMContentLoaded", () => {
 
   connect2Server();
 
+  function ganar() {
+    alert("ganaste");
+    setTimeout(() => {
+      window.location.href = "../mapa/index.html"
+    }, 1000);
+
+  }
+
   getEvent(`mounstro?normal`, (data) => {
     monstruo = data;
     console.log("Monstruo recibido:", monstruo);
     mostrar();
+    console.log(monstruo.vida);
+    if (monstruo.vida === 0) {
+      ganar();
+      console.log("ganaste");
+    }
   });
+ 
 
   getEvent("fogata", (data) => {
     info = {
@@ -109,27 +123,17 @@ window.addEventListener("DOMContentLoaded", () => {
   mapa.addEventListener("click", irMapa);
 
 
-  function turnoRival(){
+  function turnoRival() {
     alert("rival hace algo");
     iniciarTurnoJugador();
   }
-  function iniciarTurnoJugador(){
+  function iniciarTurnoJugador() {
     turno = 1;
     abajo.style.display = "flex";
     iniciarCartas();
   }
-  function ganar(){
-    alert("ganaste");
-    setTimeout(() => {
-      window.location.href = "../mapa/index.html"
-    }, 1000);
-    
-  }
-  console.log(monstruo.vida);
-  if(monstruo.vida <= 0){
-    ganar();
-    console.log("ganaste");
-  }
+  
+  
   function finalizarTurno() {
     console.log("finalizar turno")
     abajo.style.display = "none";
@@ -137,10 +141,10 @@ window.addEventListener("DOMContentLoaded", () => {
     turno = 2;
     console.log(turno);
 
-    setTimeout(()=>{
+    setTimeout(() => {
       turnoRival();
 
-    },2000);
+    }, 2000);
   }
   function sumarCarta() {
     if (contadorCartas > 9) return;
@@ -175,25 +179,25 @@ window.addEventListener("DOMContentLoaded", () => {
   abajo.addEventListener("click", (event) => {
     let cartaDiv = event.target.closest(".cartaG");
     if (!cartaDiv) return;
-  
+
     if (turno !== 1) {
       alert("No es tu turno");
       return;
     }
-  
+
     let nombreCarta = cartaDiv.textContent.trim();
     let cartaActual = cartasmano.find(c => c.nombre === nombreCarta);
-  
+
     if (!cartaActual) {
       console.warn("Carta no encontrada en la mano:", nombreCarta);
       return;
     }
-  
+
     if (mana < cartaActual.elixir) {
       alert("No tienes suficiente mana");
       return;
     }
-  
+
     if (nombreCarta === "Golpe") {
       golpe(cartaActual);
     } else if (nombreCarta === "Escudo") {
@@ -201,7 +205,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if (nombreCarta === "Garrote") {
       garrote(cartaActual);
     }
-  
+
     cartasmano = cartasmano.filter(c => c !== cartaActual);
     sacarCarta();
   });
@@ -224,7 +228,7 @@ window.addEventListener("DOMContentLoaded", () => {
     cajaMana.textContent = mana + "/3";
     mazo.push(carta)
   }
-  
+
   function escudo(carta) {
     cantidadEscudo += 10;
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
@@ -233,7 +237,7 @@ window.addEventListener("DOMContentLoaded", () => {
     cajaMana.textContent = mana + "/3";
     mazo.push(carta)
   }
-  
+
   function garrote(carta) {
     monstruo.vida -= carta.daño;
     if (monstruo.vida < 0) monstruo.vida = 0;
@@ -394,7 +398,7 @@ window.addEventListener("DOMContentLoaded", () => {
     cartaEliminar.remove();
   }
   console.log(boton);
-  
+
   boton.addEventListener("click", finalizarTurno);
 
 

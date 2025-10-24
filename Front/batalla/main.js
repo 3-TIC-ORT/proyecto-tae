@@ -30,28 +30,29 @@ window.addEventListener("DOMContentLoaded", () => {
   let monstruo = {};
   let reliquia = [];
   let mazo = [];
+  let mazorobar = [];
   let contadorCartas = 1;
   let siEscudo = false
   let turno = 1; // personaje = impar monstruo = par
   let batallaFinalizada = false;
-  let ganancia = 0; 
+  let ganancia = 0;
   let gananciaInicial = 0;
   let reliquiaInicial = {};
 
   connect2Server();
 
   const tipoMonstruo = sessionStorage.getItem("tipoMonstruo") || "normal";
-  sessionStorage.removeItem("tipoMonstruo"); 
+  sessionStorage.removeItem("tipoMonstruo");
 
-getEvent(`mounstro?tipo=${tipoMonstruo}`, (data) => {
-  monstruo = data;
-  console.log(`Monstruo ${tipoMonstruo} recibido:`, monstruo);
-  mostrar();
-  console.log(monstruo.vida);
-  gananciaInicial = monstruo.recompenzas; 
-  ganancia = gananciaInicial;
-  console.log('Recompenza:', ganancia);
-});
+  getEvent(`mounstro?tipo=${tipoMonstruo}`, (data) => {
+    monstruo = data;
+    console.log(`Monstruo ${tipoMonstruo} recibido:`, monstruo);
+    mostrar();
+    console.log(monstruo.vida);
+    gananciaInicial = monstruo.recompenzas;
+    ganancia = gananciaInicial;
+    console.log('Recompenza:', ganancia);
+  });
 
 
 
@@ -74,7 +75,7 @@ getEvent(`mounstro?tipo=${tipoMonstruo}`, (data) => {
     console.log(reliquiaInicial);
     usoReliquia()
   });
-  
+
 
   getEvent("mazo", (data) => {
     mazo = data;
@@ -88,9 +89,13 @@ getEvent(`mounstro?tipo=${tipoMonstruo}`, (data) => {
     if (batallaFinalizada) return;
     batallaFinalizada = true;
     alert("ganaste");
-    info.oro += ganancia; 
+    info.oro += ganancia;
     alert(`¡Has ganado ${ganancia} de oro!`);
     mostrar();
+    postEvent("fogata", {
+      oro:info.oro,
+      vida:info.vida
+    });
     setTimeout(() => {
       window.location.href = "../mapa/index.html";
     }, 2000);
@@ -129,55 +134,46 @@ getEvent(`mounstro?tipo=${tipoMonstruo}`, (data) => {
     oro.textContent = `Oro: ${info.oro}`;
   }
 
-  function irMapa() {
-    window.location.href = "../mapa/index.html";
-  }
+ 
 
-  function volver() {
-    window.location.href = "../2/index2.html";
-  }
+  function usoReliquia() {
+    if (reliquiaInicial === "Escudo de Hierro") {
+      console.log("Reliquia activa:" + reliquiaInicial);
+      // Solo curar si no estamos al máximo de vida
+      if (info.vida < info.vidamax) {
+        info.vida = Math.min(info.vida + 6, info.vidamax); // No exceder la vida máxima
+        alert("¡El Escudo de Hierro te cura 6 de vida!");
+        mostrar(); // Actualizar la interfaz
+      }
+    }
+    else if (reliquiaInicial === "Trébol de Oro") {
+      console.log("Reliquia activa:" + reliquiaInicial);
 
-  titulo.addEventListener("click", volver);
-  mapa.addEventListener("click", irMapa);
+      if (ganancia < gananciaInicial * 2) {
+        ganancia = ganancia * 2;
+      }
+      else return;
+      console.log(ganancia);
+    }
+    else if (reliquiaInicial === "Báculo del Archimago") {
+      console.log("Reliquia activa:" + reliquiaInicial);
+      manaMax = 4;
+      mana = 4;
+      console.log(mana);
+      console.log(manaMax);
+    }
+    else if (reliquiaInicial === "Lanza de Odin") {
 
-function usoReliquia(){
-  if(reliquiaInicial === "Escudo de Hierro"){
-    console.log("Reliquia activa:" + reliquiaInicial);
-    // Solo curar si no estamos al máximo de vida
-    if(info.vida < info.vidamax) {
-      info.vida = Math.min(info.vida + 6, info.vidamax); // No exceder la vida máxima
-      alert("¡El Escudo de Hierro te cura 6 de vida!");
-      mostrar(); // Actualizar la interfaz
     }
   }
-  else if(reliquiaInicial === "Trébol de Oro"){
-    console.log("Reliquia activa:" + reliquiaInicial);
-    
-    if(ganancia < gananciaInicial*2){
-      ganancia = ganancia * 2;
-    }
-    else return;
-    console.log(ganancia);
-  }
-  else if(reliquiaInicial === "Báculo del Archimago"){
-    console.log("Reliquia activa:" + reliquiaInicial);
-    manaMax = 4;
-    mana = 4;
-    console.log(mana);
-    console.log(manaMax);
-  }
-  else if(reliquiaInicial === "Lanza de Odin"){
-
-  }
-}
 
   function turnoRival() {
-    const daño = 20; 
+    const daño = 20;
     alert(`El monstruo ataca por ${daño} de daño!`);
 
-    if(siEscudo && cantidadEscudo > 0) {
+    if (siEscudo && cantidadEscudo > 0) {
       // Si hay escudo, el daño lo recibe primero el ecudo
-      if(cantidadEscudo >= daño) {
+      if (cantidadEscudo >= daño) {
         // El escudo absorbe todo el daño
         cantidadEscudo -= daño;
         alert(`Tu escudo absorbe ${daño} de daño!`);
@@ -199,11 +195,11 @@ function usoReliquia(){
     }
 
     // Actualizar vida y mostrar
-    if(info.vida < 0) info.vida = 0;
+    if (info.vida < 0) info.vida = 0;
     mostrar();
 
     // Si la vida llega a 0, game over (podrías añadir una función perder() aquí)
-    if(info.vida <= 0) {
+    if (info.vida <= 0) {
       alert("Has sido derrotado!");
       window.location.href = "../Game_over/index.html";
       return;
@@ -216,15 +212,15 @@ function usoReliquia(){
     usoReliquia();
     iniciarCartas();
   }
-  
-  
+
+
   function finalizarTurno() {
     console.log("finalizar turno")
     abajo.style.display = "none";
     alert("TURNO RIVAL");
     turno = turno + 1;
     console.log(turno);
-
+    mazo = mazo.concat(mazorobar);
     setTimeout(() => {
       turnoRival();
 
@@ -239,7 +235,7 @@ function usoReliquia(){
 
     // sacar esa carta del mazo
     cartaRobada = mazo.splice(indiceAleatorio, 1)[0];
-
+    mazorobar.push(cartaRobada)
     // agregarla a la mano
     cartasmano.push(cartaRobada);
 
@@ -544,5 +540,5 @@ function usoReliquia(){
   atras2.addEventListener("click", volverBatalla);
   reliquias.addEventListener("click", mostrarReliquias);
 
-  postEvent("oro", oro);
+  
 });

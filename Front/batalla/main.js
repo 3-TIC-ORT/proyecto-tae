@@ -20,8 +20,9 @@ window.addEventListener("DOMContentLoaded", () => {
   let cajaBatalla = document.getElementById("batalla");
   let lugarReliquias = document.getElementById("LugarReliquias");
   let lugarEscudo = document.getElementById("escudo");
-  let cajaMana = document.getElementById("cajamana");
+  let cajaMana = document.getElementById("cajamana")
   let mana = 3;
+  let manaMax = 3;
   let cartaRobada = {};
   let carta = {};
   let cartasmano = [];
@@ -30,79 +31,29 @@ window.addEventListener("DOMContentLoaded", () => {
   let reliquia = [];
   let mazo = [];
   let contadorCartas = 1;
-  let siEscudo = false;
-  let turno = 1; // personaje = 1 monstruo = 2
+  let siEscudo = false
+  let turno = 1; // personaje = impar monstruo = par
   let batallaFinalizada = false;
-  let ganancia = 0;
-  let habilidad = {};
-  let ataques = [];
-  let dañoCausado = 0;
-  let dañoRecibido = 0;
+  let ganancia = 0; 
+  let gananciaInicial = 0;
+  let reliquiaInicial = {};
 
   connect2Server();
 
   const tipoMonstruo = sessionStorage.getItem("tipoMonstruo") || "normal";
-  sessionStorage.removeItem("tipoMonstruo");
+  sessionStorage.removeItem("tipoMonstruo"); 
 
-  getEvent(`mounstro?tipo=${tipoMonstruo}`, (data) => {
-    monstruo = data;
-    console.log(`Monstruo ${tipoMonstruo} recibido:`, monstruo);
-    mostrar();
-    console.log(monstruo.vida);
-    ganancia = monstruo.recompenzas;
+getEvent(`mounstro?tipo=${tipoMonstruo}`, (data) => {
+  monstruo = data;
+  console.log(`Monstruo ${tipoMonstruo} recibido:`, monstruo);
+  mostrar();
+  console.log(monstruo.vida);
+  gananciaInicial = monstruo.recompenzas; 
+  ganancia = gananciaInicial;
+  console.log('Recompenza:', ganancia);
+});
 
-    // --- HABILIDADES DE MONSTRUOS ---
-    if (monstruo.nombre.toLowerCase() === "rata hambrienta") {
-      ataques.push({
-        uno: 100,
-        dos: 50,
-      });
-    } else if (monstruo.nombre.toLowerCase() === "murcielago sangriento") {
-      habilidad = () => {
-        const robo = Math.floor(dañoCausado * 0.3);
-        monstruo.vida = Math.min(monstruo.vida + robo, monstruo.vidamax);
-        alert(`El murciélago sangriento se cura ${robo} de vida.`);
-      };
-    } else if (monstruo.nombre.toLowerCase() === "guerrero caido") {
-      habilidad = () => {
-        if (dañoRecibido > 0) {
-          alert("El Guerrero Caído contraataca con furia!");
-        }
-      };
-    } else if (monstruo.nombre.toLowerCase() === "carroñero putrefacto") {
-      habilidad = () => {
-        if (monstruo.vida < monstruo.vidamax) {
-          const cura = Math.floor(monstruo.vidamax * 0.2);
-          monstruo.vida = Math.min(monstruo.vida + cura, monstruo.vidamax);
-          alert(`El Carroñero Putrefacto se regenera ${cura} de vida!`);
-        }
-      };
-    } else if (monstruo.nombre.toLowerCase() === "slime") {
-      habilidad = () => {
-        if (monstruo.vida < monstruo.vidamax) {
-          alert("El Slime se divide y ataca dos veces!");
-        }
-      };
-    } else if (monstruo.nombre.toLowerCase() === "el centinela") {
-      habilidad = () => {
-        alert("El Centinela reduce el daño recibido un 20% durante este turno!");
-      };
-    }
-    console.log("Recompensa:", ganancia);
-  });
 
-  function ganar() {
-    if (batallaFinalizada) return;
-    batallaFinalizada = true;
-    alert("¡Ganaste!");
-    info.oro += ganancia;
-    alert(`¡Has ganado ${ganancia} de oro!`);
-    mostrar();
-    setTimeout(() => {
-      window.location.href = "../mapa/index.html";
-    }, 2000);
-    postEvent("oro", oro);
-  }
 
   getEvent("fogata", (data) => {
     info = {
@@ -119,7 +70,11 @@ window.addEventListener("DOMContentLoaded", () => {
     reliquia = data;
     console.log("Reliquias recibidas:", reliquia);
     mostrarReliquia();
+    reliquiaInicial = reliquia[0].nombre;
+    console.log(reliquiaInicial);
+    usoReliquia()
   });
+  
 
   getEvent("mazo", (data) => {
     mazo = data;
@@ -127,6 +82,19 @@ window.addEventListener("DOMContentLoaded", () => {
     mostrarMazo();
     iniciarCartas();
   });
+
+  console.log("numero turno: " + turno);
+  function ganar() {
+    if (batallaFinalizada) return;
+    batallaFinalizada = true;
+    alert("ganaste");
+    info.oro += ganancia; 
+    alert(`¡Has ganado ${ganancia} de oro!`);
+    mostrar();
+    setTimeout(() => {
+      window.location.href = "../mapa/index.html";
+    }, 2000);
+  }
 
   function mostrarReliquia() {
     if (!cajaReliquias) return console.warn("No se encontró cajaReliquias");
@@ -172,27 +140,51 @@ window.addEventListener("DOMContentLoaded", () => {
   titulo.addEventListener("click", volver);
   mapa.addEventListener("click", irMapa);
 
-  function usoReliquia() {
-    if (reliquia[0]?.nombre === "Escudo de Hierro") {
-      if (info.vida < info.vidamax) {
-        info.vida = Math.min(info.vida + 6, info.vidamax);
-        alert("¡El Escudo de Hierro te cura 6 de vida!");
-        mostrar();
-      }
+function usoReliquia(){
+  if(reliquiaInicial === "Escudo de Hierro"){
+    console.log("Reliquia activa:" + reliquiaInicial);
+    // Solo curar si no estamos al máximo de vida
+    if(info.vida < info.vidamax) {
+      info.vida = Math.min(info.vida + 6, info.vidamax); // No exceder la vida máxima
+      alert("¡El Escudo de Hierro te cura 6 de vida!");
+      mostrar(); // Actualizar la interfaz
     }
   }
+  else if(reliquiaInicial === "Trébol de Oro"){
+    console.log("Reliquia activa:" + reliquiaInicial);
+    
+    if(ganancia < gananciaInicial*2){
+      ganancia = ganancia * 2;
+    }
+    else return;
+    console.log(ganancia);
+  }
+  else if(reliquiaInicial === "Báculo del Archimago"){
+    console.log("Reliquia activa:" + reliquiaInicial);
+    manaMax = 4;
+    mana = 4;
+    console.log(mana);
+    console.log(manaMax);
+  }
+  else if(reliquiaInicial === "Lanza de Odin"){
+
+  }
+}
 
   function turnoRival() {
-    const daño = 20;
+    const daño = 20; 
     alert(`El monstruo ataca por ${daño} de daño!`);
 
-    if (siEscudo && cantidadEscudo > 0) {
-      if (cantidadEscudo >= daño) {
+    if(siEscudo && cantidadEscudo > 0) {
+      // Si hay escudo, el daño lo recibe primero el ecudo
+      if(cantidadEscudo >= daño) {
+        // El escudo absorbe todo el daño
         cantidadEscudo -= daño;
         alert(`Tu escudo absorbe ${daño} de daño!`);
       } else {
+        // El escudo se rompe y el resto va a la vida
         let dañoRestante = daño - cantidadEscudo;
-        alert(`Tu escudo absorbe ${cantidadEscudo} y se rompe! Recibes ${dañoRestante} de daño.`);
+        alert(`Tu escudo absorbe ${cantidadEscudo} de daño y se rompe! ${dañoRestante} de daño pasa a tu vida!`);
         info.vida -= dañoRestante;
         cantidadEscudo = 0;
         siEscudo = false;
@@ -200,53 +192,44 @@ window.addEventListener("DOMContentLoaded", () => {
       vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
     } else {
+      // Sin escudo, el daño va directo a la vida
       info.vida -= daño;
       alert(`Recibes ${daño} de daño directo!`);
       vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
     }
 
-    dañoRecibido = daño;
+    // Actualizar vida y mostrar
+    if(info.vida < 0) info.vida = 0;
     mostrar();
 
-    if (monstruo.nombre && habilidad && typeof habilidad === "function") {
-      habilidad();
-    }
-
-    if (info.vida <= 0) {
+    // Si la vida llega a 0, game over (podrías añadir una función perder() aquí)
+    if(info.vida <= 0) {
       alert("Has sido derrotado!");
       window.location.href = "../Game_over/index.html";
       return;
     }
-
     iniciarTurnoJugador();
   }
-
   function iniciarTurnoJugador() {
-    turno = 1;
+    turno = turno + 1;
     abajo.style.display = "flex";
     usoReliquia();
     iniciarCartas();
   }
-
+  
+  
   function finalizarTurno() {
+    console.log("finalizar turno")
     abajo.style.display = "none";
     alert("TURNO RIVAL");
-    turno = 2;
+    turno = turno + 1;
+    console.log(turno);
 
     setTimeout(() => {
       turnoRival();
+
     }, 2000);
   }
-
-  // --- RESTO DE FUNCIONES ---
-  // (cartas, escudo, garrote, sacarCarta, fondos, mostrarCartas, etc.)
-  // ⬇️ se mantiene igual que en tu versión original
-
-  // ... (mantiene todas las funciones exactamente igual que tu código)
-  // para no repetir 400 líneas, solo se corrigieron los errores de casing y referencias.
-  // El resto permanece idéntico y funcional.
-
-
   function sumarCarta() {
     if (contadorCartas > 9) return;
     if (mazo.length === 0) return console.warn("No hay más cartas en el mazo");
@@ -281,7 +264,7 @@ window.addEventListener("DOMContentLoaded", () => {
     let cartaDiv = event.target.closest(".cartaG");
     if (!cartaDiv) return;
 
-    if (turno !== 1) {
+    if (turno % 2 === 0) {
       alert("No es tu turno");
       return;
     }
@@ -313,8 +296,8 @@ window.addEventListener("DOMContentLoaded", () => {
   function iniciarCartas() {
     abajo.innerHTML = "";
     contadorCartas = 1;
-    mana = 3;
-    cajaMana.textContent = "3/3";
+    mana = manaMax;
+    cajaMana.textContent = `${mana} / ${manaMax}`;
     for (let i = 0; i < 5; i++) {
       sumarCarta();
     }
@@ -326,7 +309,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     mana -= carta.elixir;
-    cajaMana.textContent = mana + "/3";
+    cajaMana.textContent = mana + " / " + manaMax;
     mazo.push(carta)
     // Comprobar si se derrotó al monstruo
     if (monstruo.vida <= 0) {
@@ -341,7 +324,7 @@ window.addEventListener("DOMContentLoaded", () => {
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
     vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
     mana -= carta.elixir;
-    cajaMana.textContent = mana + "/3";
+    cajaMana.textContent = mana + " / " + manaMax;
     mazo.push(carta)
   }
 
@@ -350,7 +333,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     mana -= carta.elixir;
-    cajaMana.textContent = mana + "/3";
+    cajaMana.textContent = mana + " / " + manaMax;
     mazo.push(carta)
     // Comprobar si se derrotó al monstruo
     if (monstruo.vida <= 0) {
@@ -560,4 +543,6 @@ window.addEventListener("DOMContentLoaded", () => {
   atras.addEventListener("click", volverBatalla);
   atras2.addEventListener("click", volverBatalla);
   reliquias.addEventListener("click", mostrarReliquias);
+
+  postEvent("oro", oro);
 });

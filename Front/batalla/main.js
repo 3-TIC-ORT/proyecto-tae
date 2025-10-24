@@ -30,29 +30,37 @@ window.addEventListener("DOMContentLoaded", () => {
   let reliquia = [];
   let mazo = [];
   let contadorCartas = 1;
+  let siEscudo = false
   let turno = 1; // personaje = 1 monstruo = 2
+  let batallaFinalizada = false;
+  let ganancia = 0; 
 
   connect2Server();
 
-  function ganar() {
+  const tipoMonstruo = sessionStorage.getItem("tipoMonstruo") || "normal";
+  sessionStorage.removeItem("tipoMonstruo"); 
+
+getEvent(`mounstro?tipo=${tipoMonstruo}`, (data) => {
+  monstruo = data;
+  console.log(`Monstruo ${tipoMonstruo} recibido:`, monstruo);
+  mostrar();
+  console.log(monstruo.vida);
+  ganancia = monstruo.recompenzas; 
+  console.log('Recompenza:', ganancia);
+});
+
+function ganar() {
+    if (batallaFinalizada) return;
+    batallaFinalizada = true;
     alert("ganaste");
-    setTimeout(() => {
-      window.location.href = "../mapa/index.html"
-    }, 1000);
-
-  }
-
-  getEvent(`mounstro?normal`, (data) => {
-    monstruo = data;
-    console.log("Monstruo recibido:", monstruo);
+    info.oro += ganancia; 
+    alert(`¡Has ganado ${ganancia} de oro!`);
     mostrar();
-    console.log(monstruo.vida);
-    if (monstruo.vida === 0) {
-      ganar();
-      console.log("ganaste");
-    }
-  });
- 
+    setTimeout(() => {
+      window.location.href = "../mapa/index.html";
+    }, 2000);
+    // postEvent("personaje", info.oro);
+  }
 
   getEvent("fogata", (data) => {
     info = {
@@ -69,6 +77,7 @@ window.addEventListener("DOMContentLoaded", () => {
     reliquia = data;
     console.log("Reliquias recibidas:", reliquia);
     mostrarReliquia();
+    console.log(reliquia[0].nombre);
   });
 
   getEvent("mazo", (data) => {
@@ -122,14 +131,65 @@ window.addEventListener("DOMContentLoaded", () => {
   titulo.addEventListener("click", volver);
   mapa.addEventListener("click", irMapa);
 
+function usoReliquia(){
+  if(reliquia[0].nombre === "Escudo de Hierro"){
+    // Solo curar si no estamos al máximo de vida
+    if(info.vida < info.vidamax) {
+      info.vida = Math.min(info.vida + 6, info.vidamax); // No exceder la vida máxima
+      alert("¡El Escudo de Hierro te cura 6 de vida!");
+      mostrar(); // Actualizar la interfaz
+    }
+  }
+  if(reliquia[0].nombre === "Trébol de Oro"){
+    if(batallaFinalizada === true){
+      
+    }
+  }
+}
 
   function turnoRival() {
-    alert("rival hace algo");
+    const daño = 20; 
+    alert(`El monstruo ataca por ${daño} de daño!`);
+
+    if(siEscudo && cantidadEscudo > 0) {
+      // Si hay escudo, el daño lo recibe primero el escudo
+      if(cantidadEscudo >= daño) {
+        // El escudo absorbe todo el daño
+        cantidadEscudo -= daño;
+        alert(`Tu escudo absorbe ${daño} de daño!`);
+      } else {
+        // El escudo se rompe y el resto va a la vida
+        let dañoRestante = daño - cantidadEscudo;
+        alert(`Tu escudo absorbe ${cantidadEscudo} de daño y se rompe! ${dañoRestante} de daño pasa a tu vida!`);
+        info.vida -= dañoRestante;
+        cantidadEscudo = 0;
+        siEscudo = false;
+      }
+      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+    } else {
+      // Sin escudo, el daño va directo a la vida
+      info.vida -= daño;
+      alert(`Recibes ${daño} de daño directo!`);
+      vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
+    }
+
+    // Actualizar vida y mostrar
+    if(info.vida < 0) info.vida = 0;
+    mostrar();
+
+    // Si la vida llega a 0, game over (podrías añadir una función perder() aquí)
+    if(info.vida <= 0) {
+      alert("Has sido derrotado!");
+      window.location.href = "../Game_over/index.html";
+      return;
+    }
     iniciarTurnoJugador();
   }
   function iniciarTurnoJugador() {
     turno = 1;
     abajo.style.display = "flex";
+    usoReliquia();
     iniciarCartas();
   }
   
@@ -227,9 +287,15 @@ window.addEventListener("DOMContentLoaded", () => {
     mana -= carta.elixir;
     cajaMana.textContent = mana + "/3";
     mazo.push(carta)
+    // Comprobar si se derrotó al monstruo
+    if (monstruo.vida <= 0) {
+      console.log('Monstruo derrotado por Golpe');
+      ganar();
+    }
   }
 
   function escudo(carta) {
+    siEscudo = true;
     cantidadEscudo += 10;
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
     vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
@@ -245,6 +311,11 @@ window.addEventListener("DOMContentLoaded", () => {
     mana -= carta.elixir;
     cajaMana.textContent = mana + "/3";
     mazo.push(carta)
+    // Comprobar si se derrotó al monstruo
+    if (monstruo.vida <= 0) {
+      console.log('Monstruo derrotado por Garrote');
+      ganar();
+    }
   }
 
 
@@ -449,12 +520,4 @@ window.addEventListener("DOMContentLoaded", () => {
   atras2.addEventListener("click", volverBatalla);
   reliquias.addEventListener("click", mostrarReliquias);
 
-  /* 
-  let cartasmano = []
-  //cada turno haces esto 5 veces
-  cartasmano.push(mazo.pop)
-  //final de turno
-  mazo = mazo.concate(cartasmano)
-  //robar una carta
-  cartasmano.push(mazo.pop)*/
 });

@@ -25,31 +25,81 @@ window.addEventListener("DOMContentLoaded", () => {
   let dataMapa = {}; // para almacenar datos del mapa
   let nodosDesbloqueados = new Set(); // nodos desbloqueados inicialmente
 
+  // Restaurar nodos desbloqueados previos si existen
+  const nodosGuardados = sessionStorage.getItem("nodosDesbloqueados");
+  if (nodosGuardados) {
+    try {
+      const arr = JSON.parse(nodosGuardados);
+      arr.forEach(n => nodosDesbloqueados.add(n));
+    } catch (e) {
+      console.warn("No se pudo parsear nodosDesbloqueados:", e);
+      sessionStorage.removeItem("nodosDesbloqueados");
+    }
+  }
+
   pisosContainer.innerHTML = "";
   svg.innerHTML = "";
 
-  // 🔸 Cargar mapa desde servidor
-  getEvent(`mapa?cantidadpisos=${7}`, (data) => {
-    dataMapa = data;
-    inicializarMapa(data);
-    rendermapa(data);
-    salida.innerText = JSON.stringify(data, null, 2);
+  // Si hay un mapa guardado en sessionStorage (venimos de batalla), úsalo
+  const mapaGuardado = sessionStorage.getItem("mapData");
+  if (mapaGuardado) {
+    try {
+      dataMapa = JSON.parse(mapaGuardado);
+      inicializarMapa(dataMapa);
+      rendermapa(dataMapa);
+      salida.innerText = JSON.stringify(dataMapa, null, 2);
 
-    // ✅ Revisar si venimos de batalla y desbloquear nodos
-    let nodoGanado = sessionStorage.getItem("nodoGanado");
-    if (nodoGanado) {
-      desbloquearConectados(nodoGanado);
-      sessionStorage.removeItem("nodoGanado");
+      // Revisar si venimos de batalla y desbloquear nodos
+      let nodoGanado = sessionStorage.getItem("nodoGanado");
+      if (nodoGanado) {
+        desbloquearConectados(nodoGanado);
+        sessionStorage.removeItem("nodoGanado");
+      }
+    } catch (e) {
+      console.warn("Error parseando mapaGuardado, se pedirá al servidor:", e);
+      sessionStorage.removeItem("mapData");
     }
-  });
+  }
+
+  // 🔸 Cargar mapa desde servidor (y persistirlo) solo si no hay uno en sessionStorage
+  if (!mapaGuardado) {
+    getEvent(`mapa?cantidadpisos=${7}`, (data) => {
+      dataMapa = data;
+      // almacenar snapshot para mantener coherencia al volver desde batalla
+      try {
+        sessionStorage.setItem("mapData", JSON.stringify(dataMapa));
+      } catch (e) {
+        console.warn("No se pudo guardar mapData en sessionStorage:", e);
+      }
+      inicializarMapa(data);
+      rendermapa(data);
+      salida.innerText = JSON.stringify(data, null, 2);
+
+      // ✅ Revisar si venimos de batalla y desbloquear nodos
+      let nodoGanado = sessionStorage.getItem("nodoGanado");
+      if (nodoGanado) {
+        desbloquearConectados(nodoGanado);
+        sessionStorage.removeItem("nodoGanado");
+      }
+    });
+  }
 
   // Inicializar nodos desbloqueados (primer piso)
   function inicializarMapa(data) {
     data.grafo.forEach((piso, pisoIndex) => {
       piso.forEach((nodo) => {
+        // asegurar que el primer piso siempre está desbloqueado (al menos)
         if (pisoIndex === 0) nodosDesbloqueados.add(nodo);
       });
     });
+    // persistir si aún no existía en sessionStorage
+    try {
+      if (!sessionStorage.getItem("nodosDesbloqueados")) {
+        sessionStorage.setItem("nodosDesbloqueados", JSON.stringify([...nodosDesbloqueados]));
+      }
+    } catch (e) {
+      console.warn("No se pudo guardar nodosDesbloqueados:", e);
+    }
   }
 
   // Renderizar mapa
@@ -86,7 +136,28 @@ window.addEventListener("DOMContentLoaded", () => {
         // ✅ Evento solo si está desbloqueado
         if (nodosDesbloqueados.has(nodo)) {
           div.classList.add("desbloqueado");
+          // decidir destino según el tipo/nombre del nodo
           div.addEventListener("click", () => {
+            // seguridad: solo permitir si está desbloqueado
+            if (!nodosDesbloqueados.has(nodo)) return;
+            const nodoLow = String(nodo).toLowerCase();
+            // si el nodo corresponde a Fogata (nodoF)
+            if (tipo === "F" || nodoLow === "nodof" || nodoLow.includes("nodof") || tipo.toLowerCase() === "fogata") {
+              window.location.href = "../fogata/index.html";
+              return;
+            }
+            // si el nodo corresponde a Mercado/Tienda (nodoT)
+            if (tipo === "T" || nodoLow === "nodot" || nodoLow.includes("nodot") || tipo.toLowerCase() === "mercado" || tipo.toLowerCase() === "tienda") {
+              window.location.href = "../Mercado/Mercado.html";
+              return;
+            }
+            // Si es nodo elite (E), marcar tipo de monstruo
+            if (tipo === "E") {
+              sessionStorage.setItem("tipoMonstruo", "elite");
+            } else {
+              sessionStorage.setItem("tipoMonstruo", "normal");
+            }
+            // marcar nodo ganado y ir a batalla
             sessionStorage.setItem("nodoGanado", nodo);
             window.location.href = "../batalla/batalla.html";
           });
@@ -130,10 +201,25 @@ window.addEventListener("DOMContentLoaded", () => {
   // Desbloquear nodos conectados al nodo ganado
   function desbloquearConectados(nodoGanado) {
     if (!dataMapa.conexiones) return; // evita error si aún no hay conexiones
+    let changed = false;
     dataMapa.conexiones.forEach(([origen, destino]) => {
-      if (origen === nodoGanado) nodosDesbloqueados.add(destino);
-      if (destino === nodoGanado) nodosDesbloqueados.add(origen);
+      if (origen === nodoGanado && !nodosDesbloqueados.has(destino)) {
+        nodosDesbloqueados.add(destino);
+        changed = true;
+      }
+      if (destino === nodoGanado && !nodosDesbloqueados.has(origen)) {
+        nodosDesbloqueados.add(origen);
+        changed = true;
+      }
     });
+    // persistir cambios en nodos desbloqueados
+    if (changed) {
+      try {
+        sessionStorage.setItem("nodosDesbloqueados", JSON.stringify([...nodosDesbloqueados]));
+      } catch (e) {
+        console.warn("No se pudo persistir nodosDesbloqueados:", e);
+      }
+    }
     rendermapa(dataMapa);
   }
 

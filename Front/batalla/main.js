@@ -93,8 +93,8 @@ window.addEventListener("DOMContentLoaded", () => {
     alert(`¡Has ganado ${ganancia} de oro!`);
     mostrar();
     postEvent("fogata", {
-      oro:info.oro,
-      vida:info.vida
+      oro: info.oro,
+      vida: info.vida
     });
     setTimeout(() => {
       window.location.href = "../mapa/index.html";
@@ -134,7 +134,7 @@ window.addEventListener("DOMContentLoaded", () => {
     oro.textContent = `Oro: ${info.oro}`;
   }
 
- 
+
 
   function usoReliquia() {
     if (reliquiaInicial === "Escudo de Hierro") {
@@ -255,6 +255,70 @@ window.addEventListener("DOMContentLoaded", () => {
     if (cartaRobada.nombre === "Garrote") {
       carta.classList.add("carta-garrote");
     }
+    if (cartaRobada.nombre === "Espada pesada") {
+      carta.classList.add("carta-espadaPesada");
+    }
+    if (cartaRobada.nombre === "Ira") {
+      carta.classList.add("carta-ira");
+    }
+    if (cartarobada.nombre === "Ráfaga") {
+      carta.classlist.add("carta-rafaga");
+    }
+    if (cartarobada.nombre === "Festín") {
+      carta.classlist.add("carta-festin");
+    }
+    if (cartarobada.nombre === "Ataque rápido") {
+      carta.classlist.add("carta-ataqueRapido");
+    }
+    if (cartarobada.nombre === "Chapiadora.com") {
+      carta.classlist.add("carta-chapiadora");
+    }
+    if (cartarobada.nombre === "Promo 2027") {
+      carta.classlist.add("carta-promo");
+    }
+    if (cartarobada.nombre === "Choque") {
+      carta.classlist.add("carta-choque");
+    }
+    if (cartarobada.nombre === "Zip") {
+      carta.classlist.add("carta-zip");
+    }
+    if (cartarobada.nombre === "Uppercut") {
+      carta.classlist.add("carta-uppercut");
+    }
+    if (cartarobada.nombre === "Trinchera") {
+      carta.classlist.add("carta-trinchera");
+    }
+    if (cartarobada.nombre === "Protector") {
+      carta.classlist.add("carta-protector");
+    }
+    if (cartarobada.nombre === "Heroico") {
+      carta.classlist.add("carta-heroico");
+    }
+    if (cartarobada.nombre === "Verdadero Valor") {
+      carta.classlist.add("carta-verdaderoValor");
+    }
+    if (cartarobada.nombre === "Segundo Aliento") {
+      carta.classlist.add("carta-segundoAliento");
+    }
+    if (cartarobada.nombre === "Defensa en Placas") {
+      carta.classlist.add("carta-defensaEnPlacas");
+    }
+    if (cartarobada.nombre === "Estrategia Defensiva") {
+      carta.classlist.add("carta-estrategiaDefensiva");
+    }
+    if (cartarobada.nombre === "Copa") {
+      carta.classlist.add("carta-copa");
+    }
+    if (cartarobada.nombre === "Auto-escudo") {
+      carta.classlist.add("carta-autoEscudo");
+    }
+    if (cartarobada.nombre === "Mutación") {
+      carta.classlist.add("carta-mutacion");
+    }
+    if (cartarobada.nombre === "Espadas orbitantes") {
+      carta.classlist.add("carta-espadasOrbitantes");
+    }
+
   }
   abajo.addEventListener("click", (event) => {
     let cartaDiv = event.target.closest(".cartaG");
@@ -540,5 +604,5 @@ window.addEventListener("DOMContentLoaded", () => {
   atras2.addEventListener("click", volverBatalla);
   reliquias.addEventListener("click", mostrarReliquias);
 
-  
+
 });

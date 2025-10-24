@@ -112,7 +112,6 @@ html {
   align-items: center;
   justify-content: center;
 }
-
 h2 {
   font-size: 5rem;
   text-align: center;
@@ -137,8 +136,6 @@ h2 {
   justify-content: center;
   align-items: center;
 }
-.cosas{
-}
 .cama {
   height: 33vh;
   aspect-ratio: 1/1;
@@ -149,7 +146,7 @@ h2 {
   background-position: center;
   border-radius: 20px;
 }
-.camaT{
+.camaT {
   margin-right: 7vw;
 }
 .mina {
@@ -170,4 +167,451 @@ P {
 }
 #axion {
   font-weight: 500;
+}
+.cartasS {
+  display: none;
+  width: 100vw;
+}
+.reliqias {
+  display: none;
+}
+.container-reliquias {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fondo {
+  background-image: url(../Cosas/Fondo.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 50vw;
+}
+.caja-reliquias {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3vh;
+  justify-items: center;
+  padding-top: 10vh;
+  min-height: 100%;
+  overflow-y: auto;
+}
+.todas {
+  background-color: blue;
+  width: 50%;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cartaGC {
+  width: 12vw;
+  height: 28vh;
+  border: 0.2rem solid white;
+  cursor: var(--pointer);
+  border-radius: 10px;
+  background-color: gray;
+}
+.atras {
+  height: 13vh;
+  aspect-ratio: 4/3;
+  cursor: var(--pointer);
+  padding: 1rem;
+  font-size: 4vh;
+  background-image: url(../Cosas/image34.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  align-items: center;
+}
+.abajo-cartas {
+  padding-top: 7vh;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+.letra {
+  font-family: "Inknut Antiqua", serif;
+}
+.letra2 {
+  font-family: "Galdeano", sans-serif;
+}
+html {
+  cursor: var(--mouse);
+}
+.arriba {
+  min-height: 15%;
+  max-height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: white;
+  width: 100%;
+  padding: 0;
+}
+.titulo {
+  font-family: "Dela Gothic One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  font-size: 8vh;
+  cursor: var(--pointer);
+}
+.izq {
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+  align-items: center;
+}
+.vida {
+  background-image: url("../Cosas/Vector.png");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: 15%;
+  background-position-y: center;
+  font-size: 4vh;
+  color: red;
+  width: 23%;
+  height: 5vh;
+}
+.oro {
+  font-size: 4vh;
+  width: 20%;
+  height: 5vh;
+  background-image: url("../Cosas/image\ 42.png");
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: 15%;
+}
+.der {
+  display: flex;
+  gap: 5vh;
+  width: 40%;
+  justify-content: flex-end;
+  padding-right: 10%;
+  align-items: center;
+}
+.icon {
+  height: 7vh;
+  aspect-ratio: 1/1;
+  cursor: var(--pointer);
+}
+.mapa {
+  background-image: url("../Cosas/images-removebg-preview\ 1.png");
+  background-size: contain;
+}
+.reliquias {
+  background-image: url("../Cosas/image\ 44.png");
+  background-size: contain;
+  display: flex;
+  align-items: end;
+}
+.cartas {
+  background-image: url("../Cosas/cartasicon.png");
+  background-repeat: no-repeat;
+  background-size: 90%;
+  display: flex;
+  align-items: end;
+}
+.circulo-reliquias {
+  height: 3.6vh;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: lightgray;
+  text-align: center;
+  font-size: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.circulo-cartas {
+  height: 3.6vh;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: lightgray;
+  text-align: center;
+  font-size: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  min-height: 50vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.abajo {
+  position: relative;
+  min-height: 35vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5vh;
+  flex-wrap: wrap;
+}
+.caja-monstruo {
+  height: 20vh;
+  aspect-ratio: 1/1;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+.caja-personaje {
+  height: 30vh;
+  aspect-ratio: 2/3;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  justify-content: end;
+}
+.caja {
+  display: flex;
+  align-items: end;
+  gap: 55vh;
+  position: relative;
+  top: 5vh;
+}
+.cartaG {
+  width: 9vw;
+  height: 25vh;
+  border: 2px solid black;
+  cursor: var(--pointer);
+}
+.carta1 {
+  transform: translateX(-50%) rotate(0deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 5vh;
+  left: 50vw;
+  z-index: 100;
+}
+.carta2 {
+  transform: translateX(-50%) rotate(3.5deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 4vh;
+  left: 57vw;
+  z-index: 90;
+}
+.carta3 {
+  transform: translateX(-50%) rotate(-3.5deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 4vh;
+  left: 43vw;
+  z-index: 90;
+}
+.carta4 {
+  transform: translateX(-50%) rotate(7deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 2.5vh;
+  left: 65vw;
+  z-index: 80;
+}
+.carta5 {
+  transform: translateX(-50%) rotate(-7deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 2.5vh;
+  left: 35vw;
+  z-index: 80;
+}
+.carta6 {
+  transform: translateX(-50%) rotate(10.5deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 0vh;
+  left: 73vw;
+  z-index: 70;
+}
+.carta7 {
+  transform: translateX(-50%) rotate(-10.5deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: 0vh;
+  left: 28vw;
+  z-index: 70;
+}
+.carta8 {
+  transform: translateX(-50%) rotate(14deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: -3vh;
+  left: 80vw;
+  z-index: 60;
+}
+.carta9 {
+  transform: translateX(-50%) rotate(-14deg);
+  transition: transform 1s ease, bottom 1s ease;
+  position: absolute;
+  bottom: -3vh;
+  left: 21vw;
+  z-index: 60;
+}
+.cartaG:hover {
+  transform: translateX(-40%) rotate(0deg) scale(1.1);
+  bottom: 10vh;
+  z-index: 100;
+}
+.personaje {
+  background-color: blue;
+  width: 100%;
+  height: 90%;
+}
+.monstruo {
+  background-color: orange;
+  width: 100%;
+  height: 100%;
+}
+.vida1 {
+  height: 1.35vh;
+  width: 100%;
+  border-radius: 5px;
+  background: #bb090e;
+  box-shadow: 0 -10px 20px -5px rgba(0, 0, 0, 0.5) inset;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2vh;
+  color: white;
+}
+.vida2 {
+  height: 1.35vh;
+  width: 100%;
+  border-radius: 5px;
+  background: #bb090e;
+  box-shadow: 0 -10px 20px -5px rgba(0, 0, 0, 0.5) inset;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2vh;
+  color: white;
+}
+.b {
+  font-size: 2rem;
+  background-color: beige;
+  width: 20vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 5vw;
+  bottom: 23vh;
+  z-index: 110;
+}
+.b:hover{
+  cursor: var(--pointer);
+}
+.container-cartas {
+  padding: 0 15vh 0 15vh;
+  width: 100vw;
+}
+.cajaCartas {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8vh;
+  justify-items: center;
+  padding-top: 10vh;
+}
+.cartaGC {
+  width: 12vw;
+  height: 28vh;
+  border: 0.2rem solid white;
+  cursor: var(--pointer);
+  border-radius: 10px;
+  background-color: gray;
+}
+.atras {
+  height: 13vh;
+  aspect-ratio: 4/3;
+  cursor: var(--pointer);
+  padding: 1rem;
+  font-size: 4vh;
+  background-image: url(../Cosas/image34.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  align-items: center;
+}
+.abajo-cartas {
+  padding-top: 7vh;
+}
+.reliqias {
+  display: none;
+}
+.container-reliquias {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fondo {
+  background-image: url(../Cosas/Fondo.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 50vw;
+}
+.caja-reliquias {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3vh;
+  justify-items: center;
+  padding-top: 10vh;
+  min-height: 100%;
+  overflow-y: auto;
+}
+.todas {
+  background-color: blue;
+  width: 50%;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carta-golpe {
+  background-color: red;
+}
+.carta-escudo {
+  background-color: lightblue;
+}
+.carta-garrote {
+  background-color: orange;
+}
+.escudo {
+  font-size: 1.2vh;
+}
+.mana {
+  height: 15vh;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  background-color: blueviolet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vh;
+  position: absolute;
+  bottom: 20vh;
+  left: 15vw;
 }

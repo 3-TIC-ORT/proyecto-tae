@@ -63,7 +63,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 🔸 Cargar mapa desde servidor (y persistirlo) solo si no hay uno en sessionStorage
   if (!mapaGuardado) {
-    getEvent(`mapa?cantidadpisos=${7}`, (data) => {
+    getEvent(`mapa?cantidadpisos=${5}`, (data) => {
       dataMapa = data;
       // almacenar snapshot para mantener coherencia al volver desde batalla
       try {

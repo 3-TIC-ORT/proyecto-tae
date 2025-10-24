@@ -1,7 +1,7 @@
 [
   {
-    "nombre": "Trébol de Oro",
-    "efecto": "Cada vez que termina un combate consigues dos veces más oro. También cada 5 ataques consigues 10 de oro",
+    "nombre": "Escudo de Hierro",
+    "efecto": "Cada vez que termina el combate se cura 6 de vida",
     "obtencion": "Inicial"
   }
 ]

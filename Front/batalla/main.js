@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let cajaBatalla = document.getElementById("batalla");
   let lugarReliquias = document.getElementById("LugarReliquias");
   let lugarEscudo = document.getElementById("escudo");
-  let cajaMana = document.getElementById("cajamana")
+  let cajaMana = document.getElementById("cajamana");
   let mana = 3;
   let manaMax = 3;
   let cartaRobada = {};
@@ -32,7 +32,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let mazo = [];
   let mazorobar = [];
   let contadorCartas = 1;
-  let siEscudo = false
+  let siEscudo = false;
   let turno = 1; // personaje = impar monstruo = par
   let batallaFinalizada = false;
   let ganancia = 0;
@@ -51,10 +51,8 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(monstruo.vida);
     gananciaInicial = monstruo.recompenzas;
     ganancia = gananciaInicial;
-    console.log('Recompenza:', ganancia);
+    console.log("Recompenza:", ganancia);
   });
-
-
 
   getEvent("fogata", (data) => {
     info = {
@@ -73,9 +71,8 @@ window.addEventListener("DOMContentLoaded", () => {
     mostrarReliquia();
     reliquiaInicial = reliquia[0].nombre;
     console.log(reliquiaInicial);
-    usoReliquia()
+    usoReliquia();
   });
-
 
   getEvent("mazo", (data) => {
     mazo = data;
@@ -94,7 +91,7 @@ window.addEventListener("DOMContentLoaded", () => {
     mostrar();
     postEvent("fogata", {
       oro: info.oro,
-      vida: info.vida
+      vida: info.vida,
     });
     setTimeout(() => {
       window.location.href = "../mapa/index.html";
@@ -134,8 +131,6 @@ window.addEventListener("DOMContentLoaded", () => {
     oro.textContent = `Oro: ${info.oro}`;
   }
 
-
-
   function usoReliquia() {
     if (reliquiaInicial === "Escudo de Hierro") {
       console.log("Reliquia activa:" + reliquiaInicial);
@@ -145,25 +140,20 @@ window.addEventListener("DOMContentLoaded", () => {
         alert("¡El Escudo de Hierro te cura 6 de vida!");
         mostrar(); // Actualizar la interfaz
       }
-    }
-    else if (reliquiaInicial === "Trébol de Oro") {
+    } else if (reliquiaInicial === "Trébol de Oro") {
       console.log("Reliquia activa:" + reliquiaInicial);
 
       if (ganancia < gananciaInicial * 2) {
         ganancia = ganancia * 2;
-      }
-      else return;
+      } else return;
       console.log(ganancia);
-    }
-    else if (reliquiaInicial === "Báculo del Archimago") {
+    } else if (reliquiaInicial === "Báculo del Archimago") {
       console.log("Reliquia activa:" + reliquiaInicial);
       manaMax = 4;
       mana = 4;
       console.log(mana);
       console.log(manaMax);
-    }
-    else if (reliquiaInicial === "Lanza de Odin") {
-
+    } else if (reliquiaInicial === "Lanza de Odin") {
     }
   }
 
@@ -180,7 +170,9 @@ window.addEventListener("DOMContentLoaded", () => {
       } else {
         // El escudo se rompe y el resto va a la vida
         let dañoRestante = daño - cantidadEscudo;
-        alert(`Tu escudo absorbe ${cantidadEscudo} de daño y se rompe! ${dañoRestante} de daño pasa a tu vida!`);
+        alert(
+          `Tu escudo absorbe ${cantidadEscudo} de daño y se rompe! ${dañoRestante} de daño pasa a tu vida!`
+        );
         info.vida -= dañoRestante;
         cantidadEscudo = 0;
         siEscudo = false;
@@ -213,9 +205,8 @@ window.addEventListener("DOMContentLoaded", () => {
     iniciarCartas();
   }
 
-
   function finalizarTurno() {
-    console.log("finalizar turno")
+    console.log("finalizar turno");
     abajo.style.display = "none";
     alert("TURNO RIVAL");
     turno = turno + 1;
@@ -223,7 +214,6 @@ window.addEventListener("DOMContentLoaded", () => {
     mazo = mazo.concat(mazorobar);
     setTimeout(() => {
       turnoRival();
-
     }, 2000);
   }
   function sumarCarta() {
@@ -235,7 +225,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // sacar esa carta del mazo
     cartaRobada = mazo.splice(indiceAleatorio, 1)[0];
-    mazorobar.push(cartaRobada)
+    mazorobar.push(cartaRobada);
     // agregarla a la mano
     cartasmano.push(cartaRobada);
 
@@ -255,7 +245,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (cartaRobada.nombre === "Garrote") {
       carta.classList.add("carta-garrote");
     }
-    if (cartaRobada.nombre === "Espada pesada") {
+    /*if (cartaRobada.nombre === "Espada pesada") {
       carta.classList.add("carta-espadaPesada");
     }
     if (cartaRobada.nombre === "Ira") {
@@ -318,7 +308,42 @@ window.addEventListener("DOMContentLoaded", () => {
     if (cartarobada.nombre === "Espadas orbitantes") {
       carta.classlist.add("carta-espadasOrbitantes");
     }
-
+    if (cartarobada.nombre === "Flexionar") {
+      carta.classList.add("carta-");
+    }
+    if (cartarobada.nombre === "") {
+      carta.classList.add("carta-flexionar");
+    }
+    if (cartarobada.nombre === "Ritual") {
+      carta.classList.add("carta-ritual");
+    }
+    if (cartarobada.nombre === "Doble ataque") {
+      carta.classList.add("carta-dobleAtaque");
+    }
+    if (cartarobada.nombre === "Furia") {
+      carta.classList.add("carta-furia");
+    }
+    if (cartarobada.nombre === "Columna Suertuda") {
+      carta.classList.add("carta-columnaSuertuda");
+    }
+    if (cartarobada.nombre === "Ataque ancestral") {
+      carta.classList.add("carta-ataqueAncestral");
+    }
+    if (cartarobada.nombre === "Debilidad") {
+      carta.classList.add("carta-debilidad");
+    }
+    if (cartarobada.nombre === "Barricada") {
+      carta.classList.add("carta-barricada");
+    }
+    if (cartarobada.nombre === "Golpe de cuerpo") {
+      carta.classList.add("carta-golpeDeCuerpo");
+    }
+    if (cartarobada.nombre === "Ignorar") {
+      carta.classList.add("carta-ignorar");
+    }
+    if (cartarobada.nombre === "Lamento penetrante") {
+      carta.classList.add("carta-lamentoPenetrante");
+    }*/
   }
   abajo.addEventListener("click", (event) => {
     let cartaDiv = event.target.closest(".cartaG");
@@ -330,7 +355,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     let nombreCarta = cartaDiv.textContent.trim();
-    let cartaActual = cartasmano.find(c => c.nombre === nombreCarta);
+    let cartaActual = cartasmano.find((c) => c.nombre === nombreCarta);
 
     if (!cartaActual) {
       console.warn("Carta no encontrada en la mano:", nombreCarta);
@@ -350,7 +375,7 @@ window.addEventListener("DOMContentLoaded", () => {
       garrote(cartaActual);
     }
 
-    cartasmano = cartasmano.filter(c => c !== cartaActual);
+    cartasmano = cartasmano.filter((c) => c !== cartaActual);
     sacarCarta();
   });
   function iniciarCartas() {
@@ -363,17 +388,16 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-
   function golpe(carta) {
     monstruo.vida -= carta.daño;
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     mana -= carta.elixir;
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push(carta)
+    mazo.push(carta);
     // Comprobar si se derrotó al monstruo
     if (monstruo.vida <= 0) {
-      console.log('Monstruo derrotado por Golpe');
+      console.log("Monstruo derrotado por Golpe");
       ganar();
     }
   }
@@ -385,7 +409,7 @@ window.addEventListener("DOMContentLoaded", () => {
     vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
     mana -= carta.elixir;
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push(carta)
+    mazo.push(carta);
   }
 
   function garrote(carta) {
@@ -394,14 +418,13 @@ window.addEventListener("DOMContentLoaded", () => {
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     mana -= carta.elixir;
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push(carta)
+    // mazo.push(carta);
     // Comprobar si se derrotó al monstruo
     if (monstruo.vida <= 0) {
-      console.log('Monstruo derrotado por Garrote');
+      console.log("Monstruo derrotado por Garrote");
       ganar();
     }
   }
-
 
   function sacarCarta() {
     let cartaEliminar = event.target;
@@ -415,19 +438,19 @@ window.addEventListener("DOMContentLoaded", () => {
       let carta7 = document.getElementsByClassName("carta7");
       let carta8 = document.getElementsByClassName("carta8");
       let carta9 = document.getElementsByClassName("carta9");
-      Array.from(carta2).forEach(element => {
+      Array.from(carta2).forEach((element) => {
         element.classList.remove("carta2");
         element.classList.add("carta1");
       });
-      Array.from(carta4).forEach(element => {
+      Array.from(carta4).forEach((element) => {
         element.classList.remove("carta4");
         element.classList.add("carta2");
       });
-      Array.from(carta6).forEach(element => {
+      Array.from(carta6).forEach((element) => {
         element.classList.remove("carta6");
         element.classList.add("carta4");
       });
-      Array.from(carta8).forEach(element => {
+      Array.from(carta8).forEach((element) => {
         element.classList.remove("carta8");
         element.classList.add("carta6");
       });
@@ -450,15 +473,15 @@ window.addEventListener("DOMContentLoaded", () => {
       let carta7 = document.getElementsByClassName("carta7");
       let carta8 = document.getElementsByClassName("carta8");
       let carta9 = document.getElementsByClassName("carta9");
-      Array.from(carta4).forEach(element => {
+      Array.from(carta4).forEach((element) => {
         element.classList.remove("carta4");
         element.classList.add("carta2");
       });
-      Array.from(carta6).forEach(element => {
+      Array.from(carta6).forEach((element) => {
         element.classList.remove("carta6");
         element.classList.add("carta4");
       });
-      Array.from(carta8).forEach(element => {
+      Array.from(carta8).forEach((element) => {
         element.classList.remove("carta8");
         element.classList.add("carta6");
       });
@@ -472,15 +495,15 @@ window.addEventListener("DOMContentLoaded", () => {
       let carta7 = document.getElementsByClassName("carta7");
       let carta8 = document.getElementsByClassName("carta8");
       let carta9 = document.getElementsByClassName("carta9");
-      Array.from(carta5).forEach(element => {
+      Array.from(carta5).forEach((element) => {
         element.classList.remove("carta5");
         element.classList.add("carta3");
       });
-      Array.from(carta7).forEach(element => {
+      Array.from(carta7).forEach((element) => {
         element.classList.remove("carta7");
         element.classList.add("carta5");
       });
-      Array.from(carta9).forEach(element => {
+      Array.from(carta9).forEach((element) => {
         element.classList.remove("carta9");
         element.classList.add("carta7");
       });
@@ -494,11 +517,11 @@ window.addEventListener("DOMContentLoaded", () => {
       let carta7 = document.getElementsByClassName("carta7");
       let carta8 = document.getElementsByClassName("carta8");
       let carta9 = document.getElementsByClassName("carta9");
-      Array.from(carta6).forEach(element => {
+      Array.from(carta6).forEach((element) => {
         element.classList.remove("carta6");
         element.classList.add("carta4");
       });
-      Array.from(carta8).forEach(element => {
+      Array.from(carta8).forEach((element) => {
         element.classList.remove("carta8");
         element.classList.add("carta6");
       });
@@ -512,11 +535,11 @@ window.addEventListener("DOMContentLoaded", () => {
       let carta7 = document.getElementsByClassName("carta7");
       let carta8 = document.getElementsByClassName("carta8");
       let carta9 = document.getElementsByClassName("carta9");
-      Array.from(carta7).forEach(element => {
+      Array.from(carta7).forEach((element) => {
         element.classList.remove("carta7");
         element.classList.add("carta5");
       });
-      Array.from(carta6).forEach(element => {
+      Array.from(carta6).forEach((element) => {
         element.classList.remove("carta9");
         element.classList.add("carta7");
       });
@@ -530,7 +553,7 @@ window.addEventListener("DOMContentLoaded", () => {
       let carta7 = document.getElementsByClassName("carta7");
       let carta8 = document.getElementsByClassName("carta8");
       let carta9 = document.getElementsByClassName("carta9");
-      Array.from(carta8).forEach(element => {
+      Array.from(carta8).forEach((element) => {
         element.classList.remove("carta8");
         element.classList.add("carta6");
       });
@@ -544,7 +567,7 @@ window.addEventListener("DOMContentLoaded", () => {
       let carta6 = document.getElementsByClassName("carta6");
       let carta8 = document.getElementsByClassName("carta8");
       let carta9 = document.getElementsByClassName("carta9");
-      Array.from(carta9).forEach(element => {
+      Array.from(carta9).forEach((element) => {
         element.classList.remove("carta9");
         element.classList.add("carta7");
       });
@@ -555,8 +578,6 @@ window.addEventListener("DOMContentLoaded", () => {
   console.log(boton);
 
   boton.addEventListener("click", finalizarTurno);
-
-
 
   let imagenes = [
     "../Cosas/fondo1.png",
@@ -603,6 +624,4 @@ window.addEventListener("DOMContentLoaded", () => {
   atras.addEventListener("click", volverBatalla);
   atras2.addEventListener("click", volverBatalla);
   reliquias.addEventListener("click", mostrarReliquias);
-
-
 });

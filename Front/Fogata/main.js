@@ -8,6 +8,17 @@ window.addEventListener("DOMContentLoaded", () => {
   let reliquias = document.getElementById("reliquias");
   let cartas = document.getElementById("cartas");
   let titulo = document.getElementById("titulo");
+  let cajaBatalla = document.getElementById("batalla");
+  let lugarReliquias = document.getElementById("LugarReliquias");
+  let atras = document.getElementById("atras");
+  let atras2 = document.getElementById("atras2");
+  let vidaPersonaje;
+  mina.disabled = false;
+  cama.disabled = false;
+  const min = 20;
+  const max = 50;
+  const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+  console.log(randomNumber);
 
   let info = {};
 
@@ -19,19 +30,57 @@ window.addEventListener("DOMContentLoaded", () => {
       vida: data.vida,
       vidamax: data.vidamax,
       mapa: data.mapa,
-      reliquias: data.reliquias,
     };
-
-    mostrarOro();
-    mostrarVida();
+    if (typeof vidaPersonaje === "undefined") {
+      vidaPersonaje = data.vida;
+    }
+    info.vida = vidaPersonaje;
+    mostrar()
+    console.log(info.vida); 
   });
-
-  function mostrarVida() {
-    vida.textContent = "PV: " + info.vida + "/" + info.vidamax;
+  function mostrarReliquia() {
+    cajaReliquias.innerHTML = "";
+    for (let i = 0; i < reliquia.length; i++) {
+      let nuevaReliquia = document.createElement("div");
+      nuevaReliquia.classList.add("todas");
+      nuevaReliquia.id = "reliquia" + i;
+      nuevaReliquia.innerHTML = `<p>${reliquia[i].nombre}</p>`;
+      cajaReliquias.appendChild(nuevaReliquia);
+    }
+    circReliquias.textContent = reliquia.length;
   }
 
-  function mostrarOro() {
-    oro.textContent = "Oro: " + info.oro;
+  function mostrarMazo() {
+    cajaCartas.innerHTML = "";
+    for (let i = 0; i < mazo.length; i++) {
+      let nuevaCarta = document.createElement("div");
+      nuevaCarta.classList.add("cartaGC");
+      nuevaCarta.id = "carta" + i;
+      nuevaCarta.innerHTML = `<p>${mazo[i].nombre}</p>`;
+      cajaCartas.appendChild(nuevaCarta);
+    }
+    circCartas.textContent = mazo.length;
+  }
+
+  getEvent("reliquia", (data) => {
+    reliquia = data;
+    console.log("Reliquias recibidas:", reliquia);
+    mostrarReliquia();
+    reliquiaInicial = reliquia[0].nombre;
+    console.log(reliquiaInicial);
+  });
+
+  getEvent("mazo", (data) => {
+    mazo = data;
+    console.log("Mazo recibido:", mazo);
+    mostrarMazo();
+  });
+
+  
+
+  function mostrar() {
+    vida.textContent = `PV: ${info.vida}/${info.vidamax}`;
+    oro.textContent = `Oro: ${info.oro}`;
   }
 
   function hoverCama() {
@@ -43,12 +92,43 @@ window.addEventListener("DOMContentLoaded", () => {
     act.textContent = "Forjar";
   }
 
-  function nada() {
-    act.textContent = "";
-  }
-
   function irMapa() {
     window.location.href = "../mapa/index.html";
+  }
+
+  function clickMina() {
+    info.oro = info.oro += randomNumber;
+    postEvent("fogata", {
+      oro: info.oro,
+      vida: info.vida,
+    });
+    mostrar();
+    mina.disabled = true;
+    setTimeout(() => {
+      irMapa();
+    }, 1000);
+  }
+
+  function clickCama() {
+    console.log(vidaPersonaje);
+    if (vidaPersonaje < info.vidamax) {
+      vidaPersonaje = vidaPersonaje + vidaPersonaje * 0.3;
+      postEvent("fogata", {
+        oro: info.oro,
+        vida: info.vida,
+      });
+      mostrar();
+      cama.disabled = true;
+      setTimeout(() => {
+        irMapa();
+      }, 1000);
+    } else {
+      alert("Vida maxima, no se puede curar.");
+    }
+  }
+
+  function nada() {
+    act.textContent = "";
   }
 
   function irReliquia() {
@@ -57,16 +137,43 @@ window.addEventListener("DOMContentLoaded", () => {
   function irCarta() {
     window.location.href = "../cartas/index.html";
   }
-  function volver() {
-    window.location.href = "../2/index2.html";
-  }
-  titulo.addEventListener("click", volver);
-  cartas.addEventListener("click", irCarta);
-  reliquias.addEventListener("click", irReliquia);
+  
+  
   cama.addEventListener("mouseover", hoverCama);
   mina.addEventListener("mouseover", hoverMina);
   cama.addEventListener("mouseleave", nada);
   mina.addEventListener("mouseleave", nada);
-  vida.addEventListener("click", mostrarVida);
-  mapa.addEventListener("click", irMapa);
+  cama.addEventListener("click", clickCama);
+  mina.addEventListener("click", clickMina);
+
+  function mostrarCartas() {
+    console.log("mostrarCartas triggered");
+    LugarCartas.style.display = "block";
+    LugarCartas.style.backgroundColor = "black";
+    cajaBatalla.style.display = "none";
+    lugarReliquias.style.display = "none";
+    lugarReliquias.style.background = "none";
+  }
+
+  function mostrarReliquias() {
+    lugarReliquias.style.display = "block";
+    lugarReliquias.style.backgroundColor = "black";
+    cajaBatalla.style.display = "none";
+    LugarCartas.style.display = "none";
+    LugarCartas.style.background = "none";
+  }
+
+  function volverBatalla() {
+    cajaBatalla.style.display = "block";
+    LugarCartas.style.display = "none";
+    LugarCartas.style.background = "none";
+    lugarReliquias.style.display = "none";
+    lugarReliquias.style.backgroundColor = "none";
+    window.scrollTo(0, 0);
+  }
+
+  cartas.addEventListener("click", mostrarCartas);
+  atras.addEventListener("click", volverBatalla);
+  atras2.addEventListener("click", volverBatalla);
+  reliquias.addEventListener("click", mostrarReliquias);
 });

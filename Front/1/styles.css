@@ -33,7 +33,7 @@ margin: 0;
 button {
   color: white;
   margin: 0;
-  font-family: "Dela Gothic One", sans-serif;
+  font-family: "Dela Gothic One", sans-serif !important;
   background-color: #004f5a;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   border-radius: 50px;
@@ -43,29 +43,34 @@ button {
   align-items: center;
   transition: transform 0.2s ease;
   margin-top: 1rem;
+  position: relative;
   z-index: 2;
   clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
 }
-.buttonContainer{
+
+button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: black;
   clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
-  background-color: black ;
-  height: fit-content;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px
+  z-index: -1;
 }
-.buttonContainer:hover{
-  cursor: var(--pointer);
-  transform: scale(1.05);
-  transition: transform 0.2s ease;
+
+button::after {
+  content: "";
+  position: absolute;
+  inset: 10px; 
+  background: #004f5a;
+  clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
+  z-index: -1;
 }
 
 
 #boton1 {
-  height: 5.125rem;
-  font-size: 3.15rem;
-  width: 24.8125rem;
+  font-size: 2.625rem;
+  width: 24.8898125rem;
+  height: 5.1875rem;
 }
 
 #boton2 {

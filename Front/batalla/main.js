@@ -625,3 +625,315 @@ window.addEventListener("DOMContentLoaded", () => {
   atras2.addEventListener("click", volverBatalla);
   reliquias.addEventListener("click", mostrarReliquias);
 });
+/* joaco o ivo aca hice las funciones para las cartas de ataque (no se si andan)
+function cartaGolpe() {
+  monstruo.vida -= 7;
+  if (monstruo.vida < 0) monstruo.vida = 0;
+  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+  mana -= 1;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Golpe");
+}
+
+function cartaEspadaPesada() {
+  monstruo.vida -= 15;
+  if (monstruo.vida < 0) monstruo.vida = 0;
+  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+  mana -= 2;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Espada pesada");
+}
+
+function cartaIra() {
+  monstruo.vida -= 8;
+  if (monstruo.vida < 0) monstruo.vida = 0;
+  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+  mana -= 0;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Ira");
+}
+
+function cartaRafaga() {
+  monstruo.vida -= 5;
+  if (monstruo.vida < 0) monstruo.vida = 0;
+  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+  mana -= 1;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Ráfaga");
+}
+
+function cartaFestin() {
+  monstruo.vida -= 15;
+  if (monstruo.vida <= 0) info.vida = Math.min(info.vida + 3, info.vidamax);
+  if (monstruo.vida < 0) monstruo.vida = 0;
+  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+  vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
+  mana -= 2;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Festín");
+}
+
+function cartaAtaqueRapido() {
+  monstruo.vida -= 9;
+  if (monstruo.vida < 0) monstruo.vida = 0;
+  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+  mana -= 1;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Ataque rápido");
+}
+
+function cartaChapiadora() {
+  monstruo.vida -= 32;
+  if (monstruo.vida < 0) monstruo.vida = 0;
+  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+  mana -= 3;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Chapiadora.com");
+}
+
+function cartaPromo2027() {
+  monstruo.vida -= 10;
+  if (monstruo.vida < 0) monstruo.vida = 0;
+  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+  mana -= 1;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Promo 2027");
+}
+
+function cartaChoque() {
+  monstruo.vida -= 14;
+  if (monstruo.vida < 0) monstruo.vida = 0;
+  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+  mana -= 0;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Choque");
+}
+
+function cartaGarrote() {
+  monstruo.vida -= 14;
+  if (monstruo.vida < 0) monstruo.vida = 0;
+  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+  mana -= 2;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Garrote");
+}
+
+function cartaZip() {
+  monstruo.vida -= 5;
+  if (monstruo.vida < 0) monstruo.vida = 0;
+  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+  mana -= 2;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Zip");
+}
+
+function cartaUppercut() {
+  monstruo.vida -= 20;
+  if (monstruo.vida < 0) monstruo.vida = 0;
+  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+  mana -= 2;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Uppercut");
+}
+
+function cartaEscudo() {
+  siEscudo = true;
+  cantidadEscudo += 6;
+  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+  mana -= 1;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Escudo");
+}
+
+function cartaTrinchera() {
+  siEscudo = true;
+  cantidadEscudo *= 2;
+  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+  mana -= 2;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Trinchera");
+}
+
+function cartaProtector() {
+  siEscudo = true;
+  cantidadEscudo += 11;
+  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+  mana -= 2;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Protector");
+}
+
+function cartaHeroico() {
+  siEscudo = true;
+  cantidadEscudo += 30;
+  info.vida -= 6;
+  if (info.vida < 0) info.vida = 0;
+  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+  mana -= 2;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Heroico");
+}
+
+function cartaVerdaderoValor() {
+  mana -= 1;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Verdadero valor");
+}
+
+function cartaSegundoAliento() {
+  let noAtaque = cartasmano.filter(c => c.tipo !== "ataque");
+  mana += 5 * noAtaque.length;
+  if (mana > manaMax) mana = manaMax;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Segundo aliento");
+}
+
+function cartaDefensaEnPlacas() {
+  siEscudo = true;
+  cantidadEscudo += 5;
+  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+  mana -= 2;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Defensa en placas");
+}
+
+function cartaEstrategiaDefensiva() {
+  siEscudo = true;
+  cantidadEscudo += 3;
+  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+  mana -= 2;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Estrategia defensiva");
+}
+
+function cartaCopa() {
+  siEscudo = true;
+  cantidadEscudo += 3;
+  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+  mana -= 2;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Copa");
+}
+
+function cartaAutoEscudo() {
+  if (cantidadEscudo === 0) cantidadEscudo += 11;
+  siEscudo = true;
+  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+  mana -= 1;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Auto-escudo");
+}
+
+function cartaMutacion() {
+  cantidadEscudo += 1;
+  siEscudo = true;
+  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+  mana -= 1;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Mutación");
+}
+
+function cartaEspadasOrbitantes() {
+  siEscudo = true;
+  cantidadEscudo += 10;
+  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+  mana -= 2;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Espadas orbitantes");
+}
+
+function cartaFlexionar() {
+  fuerza += 2;
+  mana -= 0;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Flexionar");
+}
+
+function cartaRitual() {
+  info.vida -= 6;
+  if (info.vida < 0) info.vida = 0;
+  mana += 2;
+  if (mana > manaMax) mana = manaMax;
+  vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Ritual");
+}
+
+function cartaDobleAtaque() {
+  dobleSiguiente = true;
+  mana -= 1;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Doble ataque");
+}
+
+function cartaFuria() {
+  furiaActiva = true;
+  mana -= 0;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Furia");
+}
+
+function cartaColumnaSuertuda() {
+  robarCartas(3);
+  noRobarMas = true;
+  mana -= 0;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Columna suertuda");
+}
+
+function cartaAtaqueAncestral() {
+  agregarAtaqueGratis();
+  mana -= 1;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Ataque ancestral");
+}
+
+function cartaDebilidad() {
+  enemigoVulnerable(2);
+  mana -= 0;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Debilidad");
+}
+
+function cartaBarricada() {
+  bloqueNoDesvanece = true;
+  mana -= 1;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Barricada");
+}
+
+function cartaGolpeDeCuerpo() {
+  monstruo.vida -= cantidadEscudo;
+  if (monstruo.vida < 0) monstruo.vida = 0;
+  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+  mana -= 0;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Golpe de cuerpo");
+}
+
+function cartaIgnorar() {
+  cantidadEscudo += 8;
+  siEscudo = true;
+  robarCartas(1);
+  mana -= 1;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Ignorar");
+}
+
+function cartaLamentoPenetrante() {
+  reducirDanioEnemigos(6);
+  mana -= 1;
+  cajaMana.textContent = mana + " / " + manaMax;
+  mazo.push("Lamento penetrante");
+}
+*/

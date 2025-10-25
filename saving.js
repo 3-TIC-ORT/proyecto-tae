@@ -213,7 +213,7 @@ subscribeGETEvent("estado",()=>{
 
 subscribeGETEvent("estado-basico",()=>{
   let random = Math.random();
-  let estado = undefined
+  let estado = {}
   let numero = Math.floor(Math.random() * (35 - 15 + 1)) + 15;
 if (random < 0.6) {
   estado = {

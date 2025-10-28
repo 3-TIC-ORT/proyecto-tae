@@ -116,19 +116,18 @@ window.addEventListener("DOMContentLoaded", () => {
       irMapa();
     }, 1000);
   }
-
-  vidaPersonaje = 10;
   function clickCama() {
     console.log(vidaPersonaje);
     if (vidaPersonaje < info.vidamax) {
       vidaPersonaje = vidaPersonaje + vidaPersonaje * 0.3;
-      vidaPersonaje = Math.floor(vidaPersonaje); 
-      info.vida = vidaPersonaje; 
-      console.log(vidaPersonaje)
-      if(vidaPersonaje >= info.vidamax){
+      vidaPersonaje = Math.floor(vidaPersonaje);
+      info.vida = vidaPersonaje;
+      console.log(vidaPersonaje);
+      if (vidaPersonaje >= info.vidamax) {
         console.log(vidaPersonaje);
         vidaPersonaje = info.vidamax;
-        console.log(vidaPersonaje)
+        info.vida = vidaPersonaje;
+        console.log(vidaPersonaje);
       }
       postEvent("fogata", {
         oro: info.oro,
@@ -137,16 +136,16 @@ window.addEventListener("DOMContentLoaded", () => {
       cama.disabled = true;
       mina.disabled = true;
       console.log(vidaPersonaje + "/" + info.vidamax);
-      mostrar(); 
+      mostrar();
 
       const nodoActual = sessionStorage.getItem("nodoGanado");
       if (nodoActual) {
         sessionStorage.setItem("nodoGanado", nodoActual);
       }
-      
+
       setTimeout(() => {
         irMapa();
-      }, 1000); 
+      }, 1000);
     } else {
       alert("Vida maxima, no se puede curar.");
     }

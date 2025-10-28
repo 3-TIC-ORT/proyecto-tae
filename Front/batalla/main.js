@@ -17,10 +17,15 @@ window.addEventListener("DOMContentLoaded", () => {
   let LugarCartas = document.getElementById("LugarCartas");
   let atras = document.getElementById("atras");
   let atras2 = document.getElementById("atras2");
+  let atras3 = document.getElementById("atras3");
   let cajaBatalla = document.getElementById("batalla");
   let lugarReliquias = document.getElementById("LugarReliquias");
   let lugarEscudo = document.getElementById("escudo");
   let cajaMana = document.getElementById("cajamana");
+  let lugarRecompensas = document.getElementById("lugarRecompensas");
+  let recompensa1 = document.getElementById("recompensa1");
+  let recompensa2 = document.getElementById("recompensa2");
+  let recompensa3 = document.getElementById("recompensa3");
   let mana = 3;
   let manaMax = 3;
   let cartaRobada = {};
@@ -87,15 +92,14 @@ window.addEventListener("DOMContentLoaded", () => {
     batallaFinalizada = true;
     alert("ganaste");
     info.oro += ganancia;
-    alert(`¡Has ganado ${ganancia} de oro!`);
     mostrar();
     postEvent("fogata", {
       oro: info.oro,
       vida: info.vida,
     });
     setTimeout(() => {
-      window.location.href = "../mapa/index.html";
-    }, 2000);
+      mostrarRecompensas();
+    }, 200);
   }
 
   function mostrarReliquia() {
@@ -610,6 +614,19 @@ window.addEventListener("DOMContentLoaded", () => {
     LugarCartas.style.display = "none";
     LugarCartas.style.background = "none";
   }
+  function mostrarRecompensas() {
+    lugarRecompensas.style.display = "block";
+    lugarRecompensas.style.backgroundColor = "white";
+    cajaBatalla.style.display = "none";
+    LugarCartas.style.display = "none";
+    LugarCartas.style.background = "none";
+    lugarReliquias.style.display = "none";
+    lugarReliquias.style.background = "none";
+    document.body.style.background = "none";
+    recompensa1.textContent = `Oro: ${ganancia}`;
+    recompensa2.textContent = `Recompensa 2`;
+    recompensa3.textContent = `Recompensa 3`;
+  }
 
   function volverBatalla() {
     cajaBatalla.style.display = "block";
@@ -617,12 +634,14 @@ window.addEventListener("DOMContentLoaded", () => {
     LugarCartas.style.background = "none";
     lugarReliquias.style.display = "none";
     lugarReliquias.style.backgroundColor = "none";
+    lugarRecompensas.style.background = "None";
+    lugarRecompensas.style.display = "none";
     window.scrollTo(0, 0);
   }
-
   cartas.addEventListener("click", mostrarCartas);
   atras.addEventListener("click", volverBatalla);
   atras2.addEventListener("click", volverBatalla);
+  atras3.addEventListener("click", volverBatalla);
   reliquias.addEventListener("click", mostrarReliquias);
 });
 /* joaco o ivo aca hice las funciones para las cartas de ataque (no se si andan)

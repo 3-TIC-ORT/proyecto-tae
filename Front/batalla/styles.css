@@ -313,7 +313,6 @@ html {
   color: white;
 }
 
-
 .b {
   font-size: 2rem;
   background-color: beige;
@@ -327,7 +326,7 @@ html {
   bottom: 23vh;
   z-index: 110;
 }
-.b:hover{
+.b:hover {
   cursor: var(--pointer);
 }
 
@@ -363,6 +362,21 @@ html {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  display: flex;
+  align-items: center;
+}
+.omitir {
+  position: fixed;
+  right: 0;
+  height: 13vh;
+  aspect-ratio: 4/3;
+  cursor: var(--pointer);
+  padding: 1rem;
+  font-size: 4vh;
+  background-image: url(../Cosas/pinturaizquierda.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 130%;
   display: flex;
   align-items: center;
 }
@@ -444,4 +458,50 @@ html {
   position: absolute;
   bottom: 20vh;
   left: 15vw;
+}
+.contenedor-recompensas {
+  padding: 1.25rem;
+  border-radius: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  height: 50vh;
+  width: 20vw;
+  border: solid black 2px;
+}
+.lugarRecompensas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+.titel {
+  font-size: 2rem;
+  font-family: "Fira Sans", sans-serif;
+  color: #333;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recompensa {
+  background-color: black;
+  color: white;
+  height: 2.375rem;
+  margin: 1.25rem 0;
+  border: 0.125rem solid white;
+  width: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: var(--pointer);
+}
+.fira-sans-extrabold {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 800;
+  font-style: normal;
 }

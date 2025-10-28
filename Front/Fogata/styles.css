@@ -132,16 +132,19 @@ h2 {
   align-content: center;
 }
 .cajas {
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: fit-content;
 }
 .cama {
   height: 33vh;
-  aspect-ratio: 1/1;
+  aspect-ratio: 6/5;
   cursor: var(--pointer);
   background-image: url(../Cosas/cama.png);
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 20px;
@@ -151,22 +154,25 @@ h2 {
 }
 .mina {
   background-image: url(../Cosas/mina.png);
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 20px;
   height: 33vh;
-  aspect-ratio: 1/1;
+  aspect-ratio: 6/5;
   cursor: var(--pointer);
 }
-P {
+#p {
   margin-top: 0.5rem;
   text-align: center;
   font-size: 3.5rem;
   color: #c3aa64;
 }
 #axion {
+  position: fixed;
+  bottom: 10vh;
   font-weight: 500;
+  font-size: 3.5rem;
 }
 .cartasS {
   display: none;
@@ -354,8 +360,9 @@ html {
   min-height: 50vh;
   width: 100vw;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  gap: 5vh;
 }
 .abajo {
   position: relative;
@@ -517,7 +524,7 @@ html {
   bottom: 23vh;
   z-index: 110;
 }
-.b:hover{
+.b:hover {
   cursor: var(--pointer);
 }
 .container-cartas {

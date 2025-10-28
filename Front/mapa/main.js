@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
   if (nodosGuardados) {
     try {
       const arr = JSON.parse(nodosGuardados);
-      arr.forEach(n => nodosDesbloqueados.add(n));
+      arr.forEach((n) => nodosDesbloqueados.add(n));
     } catch (e) {
       console.warn("No se pudo parsear nodosDesbloqueados:", e);
       sessionStorage.removeItem("nodosDesbloqueados");
@@ -95,7 +95,10 @@ window.addEventListener("DOMContentLoaded", () => {
     // persistir si aún no existía en sessionStorage
     try {
       if (!sessionStorage.getItem("nodosDesbloqueados")) {
-        sessionStorage.setItem("nodosDesbloqueados", JSON.stringify([...nodosDesbloqueados]));
+        sessionStorage.setItem(
+          "nodosDesbloqueados",
+          JSON.stringify([...nodosDesbloqueados])
+        );
       }
     } catch (e) {
       console.warn("No se pudo guardar nodosDesbloqueados:", e);
@@ -142,12 +145,23 @@ window.addEventListener("DOMContentLoaded", () => {
             if (!nodosDesbloqueados.has(nodo)) return;
             const nodoLow = String(nodo).toLowerCase();
             // si el nodo corresponde a Fogata (nodoF)
-            if (tipo === "F" || nodoLow === "nodof" || nodoLow.includes("nodof") || tipo.toLowerCase() === "fogata") {
+            if (
+              tipo === "F" ||
+              nodoLow === "nodof" ||
+              nodoLow.includes("nodof") ||
+              tipo.toLowerCase() === "fogata"
+            ) {
               window.location.href = "../fogata/index.html";
               return;
             }
             // si el nodo corresponde a Mercado/Tienda (nodoT)
-            if (tipo === "T" || nodoLow === "nodot" || nodoLow.includes("nodot") || tipo.toLowerCase() === "mercado" || tipo.toLowerCase() === "tienda") {
+            if (
+              tipo === "T" ||
+              nodoLow === "nodot" ||
+              nodoLow.includes("nodot") ||
+              tipo.toLowerCase() === "mercado" ||
+              tipo.toLowerCase() === "tienda"
+            ) {
               window.location.href = "../Mercado/Mercado.html";
               return;
             }
@@ -185,7 +199,10 @@ window.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       data.conexiones.forEach(([origen, destino]) => {
         if (posiciones[origen] && posiciones[destino]) {
-          let line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          let line = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "line"
+          );
           line.setAttribute("x1", posiciones[origen].x);
           line.setAttribute("y1", posiciones[origen].y);
           line.setAttribute("x2", posiciones[destino].x);
@@ -215,7 +232,10 @@ window.addEventListener("DOMContentLoaded", () => {
     // persistir cambios en nodos desbloqueados
     if (changed) {
       try {
-        sessionStorage.setItem("nodosDesbloqueados", JSON.stringify([...nodosDesbloqueados]));
+        sessionStorage.setItem(
+          "nodosDesbloqueados",
+          JSON.stringify([...nodosDesbloqueados])
+        );
       } catch (e) {
         console.warn("No se pudo persistir nodosDesbloqueados:", e);
       }
@@ -227,8 +247,14 @@ window.addEventListener("DOMContentLoaded", () => {
   let fogata = document.getElementById("fogata");
   let batalla = document.getElementById("batalla");
 
-  fogata.addEventListener("click", () => window.location.href = "../fogata/index.html");
-  batalla.addEventListener("click", () => window.location.href = "../batalla/batalla.html");
+  fogata.addEventListener(
+    "click",
+    () => (window.location.href = "../fogata/index.html")
+  );
+  batalla.addEventListener(
+    "click",
+    () => (window.location.href = "../batalla/batalla.html")
+  );
 
   // Evento personaje
   getEvent("personaje", (data) => {
@@ -250,7 +276,7 @@ window.addEventListener("DOMContentLoaded", () => {
       h1.style.fontSize = "13rem";
 
       let nodos = document.querySelectorAll(".nodo");
-      nodos.forEach(n => n.classList.add("nodoBear"));
+      nodos.forEach((n) => n.classList.add("nodoBear"));
     } else if (personaje === "pick") {
       h1.style.fontFamily = "EB Garamond, serif";
       h1.textContent = "The Pickpocket";
@@ -258,7 +284,7 @@ window.addEventListener("DOMContentLoaded", () => {
       h1.style.fontSize = "6rem";
       h1.style.backgroundImage = "url('../Cosas/bala.png')";
       let nodos = document.querySelectorAll(".nodo");
-      nodos.forEach(n => n.classList.add("nodoPick"));
+      nodos.forEach((n) => n.classList.add("nodoPick"));
     } else {
       h1.textContent = personaje;
     }

@@ -12,7 +12,11 @@ window.addEventListener("DOMContentLoaded", () => {
   let lugarReliquias = document.getElementById("LugarReliquias");
   let atras = document.getElementById("atras");
   let atras2 = document.getElementById("atras2");
+  let circCartas = document.getElementById("circulo-cartas");
+  let circReliquias = document.getElementById("circulo-reliquias");
   let vidaPersonaje;
+  let reliquiaInicial = {};
+  let reliquia = [];
   mina.disabled = false;
   cama.disabled = false;
   const min = 20;
@@ -35,8 +39,8 @@ window.addEventListener("DOMContentLoaded", () => {
       vidaPersonaje = data.vida;
     }
     info.vida = vidaPersonaje;
-    mostrar()
-    console.log(info.vida); 
+    mostrar();
+    console.log(info.vida);
   });
   function mostrarReliquia() {
     cajaReliquias.innerHTML = "";
@@ -65,6 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
   getEvent("reliquia", (data) => {
     reliquia = data;
     console.log("Reliquias recibidas:", reliquia);
+    console.log(reliquia[0]);
     mostrarReliquia();
     reliquiaInicial = reliquia[0].nombre;
     console.log(reliquiaInicial);
@@ -76,20 +81,17 @@ window.addEventListener("DOMContentLoaded", () => {
     mostrarMazo();
   });
 
-  
-
   function mostrar() {
-    vida.textContent = `PV: ${info.vida}/${info.vidamax}`;
+    vida.textContent = `PV: ${vidaPersonaje}/${info.vidamax}`;
     oro.textContent = `Oro: ${info.oro}`;
   }
 
   function hoverCama() {
-    console.log("hola");
     act.textContent = "Cura un 30% de tu PV";
   }
 
   function hoverMina() {
-    act.textContent = "Forjar";
+    act.textContent = "Consigue oro, la cantidad puede ser entre 20 y 50";
   }
 
   function irMapa() {
@@ -104,24 +106,47 @@ window.addEventListener("DOMContentLoaded", () => {
     });
     mostrar();
     mina.disabled = true;
+    cama.disabled = true;
+    const nodoActual = sessionStorage.getItem("nodoGanado");
+    if (nodoActual) {
+      // Mantener el mismo valor, el mapa lo usará al recargar
+      sessionStorage.setItem("nodoGanado", nodoActual);
+    }
     setTimeout(() => {
       irMapa();
     }, 1000);
   }
 
+  vidaPersonaje = 10;
   function clickCama() {
     console.log(vidaPersonaje);
     if (vidaPersonaje < info.vidamax) {
       vidaPersonaje = vidaPersonaje + vidaPersonaje * 0.3;
+      vidaPersonaje = Math.floor(vidaPersonaje); 
+      info.vida = vidaPersonaje; 
+      console.log(vidaPersonaje)
+      if(vidaPersonaje >= info.vidamax){
+        console.log(vidaPersonaje);
+        vidaPersonaje = info.vidamax;
+        console.log(vidaPersonaje)
+      }
       postEvent("fogata", {
         oro: info.oro,
         vida: info.vida,
       });
-      mostrar();
       cama.disabled = true;
+      mina.disabled = true;
+      console.log(vidaPersonaje + "/" + info.vidamax);
+      mostrar(); 
+
+      const nodoActual = sessionStorage.getItem("nodoGanado");
+      if (nodoActual) {
+        sessionStorage.setItem("nodoGanado", nodoActual);
+      }
+      
       setTimeout(() => {
         irMapa();
-      }, 1000);
+      }, 1000); 
     } else {
       alert("Vida maxima, no se puede curar.");
     }
@@ -137,8 +162,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function irCarta() {
     window.location.href = "../cartas/index.html";
   }
-  
-  
+
   cama.addEventListener("mouseover", hoverCama);
   mina.addEventListener("mouseover", hoverMina);
   cama.addEventListener("mouseleave", nada);

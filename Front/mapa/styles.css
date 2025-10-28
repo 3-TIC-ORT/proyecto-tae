@@ -154,3 +154,6 @@ line {
   opacity: 1;
   cursor: var(--pointer);
 }
+.afuera{
+  display: none;
+}

@@ -44,21 +44,22 @@ html{
     transform: scale(0.95);
 }
 .arriba {
-  min-height: 15vh;
-  max-height: 20vh;
+  height: 20vh;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   background-color: white;
   width: 100vw;
   padding: 0;
+  border: solid 2px black;
 }
 .titulo {
   font-family: "Dela Gothic One", sans-serif;
   font-weight: 400;
   font-style: normal;
   margin: 0;
-  font-size: 4rem;
+  font-size: 8vh;
+  cursor: var(--pointer);
 }
 .izq {
   display: flex;
@@ -67,14 +68,28 @@ html{
   align-items: center;
 }
 .vida {
-  border: 2px red solid;
-  width: 20%;
+  background-image: url("../Cosas/Vector.png");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: 15%;
+  background-position-y: center;
+  font-size: 4vh;
+  color: red;
+  width: 23%;
   height: 5vh;
 }
 .oro {
-  border: 2px gold solid;
+  font-size: 4vh;
   width: 20%;
   height: 5vh;
+  background-image: url("../Cosas/image\ 42.png");
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: 15%;
 }
 .der {
   display: flex;

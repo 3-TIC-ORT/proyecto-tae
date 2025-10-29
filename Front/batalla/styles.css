@@ -9,10 +9,11 @@
 
 body {
   max-width: 100vw;
-  max-height: 100vh;
+  height: 100vh;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  background-position: bottom;
 }
 
 .letra {
@@ -29,7 +30,7 @@ html {
 
 .arriba {
   min-height: 15%;
-  max-height: 20%;
+  max-height: 15%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -43,7 +44,7 @@ html {
   font-weight: 400;
   font-style: normal;
   margin: 0;
-  font-size: 8vh;
+  font-size: 6vh;
   cursor: var(--pointer);
 }
 
@@ -60,24 +61,24 @@ html {
   align-items: center;
   justify-content: center;
   background-repeat: no-repeat;
-  background-size: 15%;
+  background-size: 10%;
   background-position-y: center;
-  font-size: 4vh;
+  font-size: 3vh;
   color: red;
   width: 23%;
-  height: 5vh;
+  height: 3vh;
 }
 
 .oro {
-  font-size: 4vh;
+  font-size: 3vh;
   width: 20%;
-  height: 5vh;
+  height: 3vh;
   background-image: url("../Cosas/image\ 42.png");
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-size: 15%;
+  background-size: 10%;
 }
 
 .der {
@@ -90,7 +91,7 @@ html {
 }
 
 .icon {
-  height: 7vh;
+  height: 6vh;
   aspect-ratio: 1/1;
   cursor: var(--pointer);
 }
@@ -116,7 +117,7 @@ html {
 }
 
 .circulo-reliquias {
-  height: 3.6vh;
+  height: 3vh;
   aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: lightgray;
@@ -128,7 +129,7 @@ html {
 }
 
 .circulo-cartas {
-  height: 3.6vh;
+  height: 3vh;
   aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: lightgray;
@@ -184,10 +185,14 @@ html {
 }
 
 .cartaG {
-  width: 9vw;
-  height: 25vh;
-  border: 2px solid black;
+  font-size: 0;
+  height: 25.5vh;
+  width: 17.5vh;
   cursor: var(--pointer);
+  background-size: 24vh;
+  background-position-x: center;
+  background-position-y: top;
+  background-repeat: no-repeat;
 }
 
 .carta1 {
@@ -278,9 +283,11 @@ html {
 }
 
 .personaje {
-  background-color: blue;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 100%;
-  height: 90%;
+  height: 100%;
 }
 
 .monstruo {
@@ -430,18 +437,6 @@ html {
   align-items: center;
 }
 
-.carta-golpe {
-  background-color: red;
-}
-
-.carta-escudo {
-  background-color: lightblue;
-}
-
-.carta-garrote {
-  background-color: orange;
-}
-
 .escudo {
   font-size: 1.2vh;
 }
@@ -504,4 +499,149 @@ html {
   font-family: "Fira Sans", sans-serif;
   font-weight: 800;
   font-style: normal;
+}
+
+/* CARTAS */
+
+/* --- ATAQUE --- */
+.carta-golpe {
+  background-image: url("../Cosas/cartas/ataque/golpe.png");
+}
+
+.carta-garrote {
+  background-image: url("../Cosas/cartas/ataque/garrote.png");
+}
+
+.carta-espadaPesada {
+  background-image: url("../Cosas/cartas/ataque/espada-pesada.png");
+}
+
+.carta-ira {
+  background-image: url("../Cosas/cartas/ataque/ira.png");
+}
+
+.carta-rafaga {
+  background-image: url("../Cosas/cartas/ataque/rafaga.png");
+}
+
+.carta-festin {
+  background-image: url("../Cosas/cartas/ataque/festin.png");
+}
+
+.carta-ataqueRapido {
+  background-image: url("../Cosas/cartas/ataque/ataque-rapido.png");
+}
+
+.carta-chapiadora {
+  background-image: url("../Cosas/cartas/ataque/chipiadora.com.png");
+}
+
+.carta-promo {
+  background-image: url("../Cosas/cartas/ataque/promo-2027.png");
+}
+
+.carta-choque {
+  background-image: url("../Cosas/cartas/ataque/coque.png");
+}
+
+.carta-zip {
+  background-image: url("../Cosas/cartas/ataque/zip.png");
+}
+
+.carta-uppercut {
+  background-image: url("../Cosas/cartas/ataque/uppercut.png");
+}
+
+/* --- DEFENSA --- */
+.carta-trinchera {
+  background-image: url("../Cosas/cartas/defensa/trinchera.png");
+}
+
+.carta-protector {
+  background-image: url("../Cosas/cartas/defensa/protector.png");
+}
+
+.carta-heroico {
+  background-image: url("../Cosas/cartas/defensa/heroico.png");
+}
+
+.carta-verdaderoValor {
+  background-image: url("../Cosas/cartas/defensa/verdadero-valor.png");
+}
+
+.carta-segundoAliento {
+  background-image: url("../Cosas/cartas/defensa/segundo-aliento.png");
+}
+
+.carta-defensaEnPlacas {
+  background-image: url("../Cosas/cartas/defensa/defensa-en-placas.png");
+}
+
+.carta-estrategiaDefensiva {
+  background-image: url("../Cosas/cartas/defensa/estrategia-defensiva.png");
+}
+
+.carta-copa {
+  background-image: url("../Cosas/cartas/defensa/5-de-copa.png");
+}
+
+.carta-autoEscudo {
+  background-image: url("../Cosas/cartas/defensa/auto-escudo.png");
+}
+
+.carta-mutacion {
+  background-image: url("../Cosas/cartas/defensa/mutacion.png");
+}
+
+.carta-espadasOrbitantes {
+  background-image: url("../Cosas/cartas/defensa/espadas orbitantes.png");
+}
+
+.carta-escudo {
+  background-image: url("../Cosas/cartas/defensa/escudo.png");
+}
+
+/* --- APOYO --- */
+.carta-flexionar {
+  background-image: url("../Cosas/cartas/apoyo/flexionar.png");
+}
+
+.carta-ritual {
+  background-image: url("../Cosas/cartas/apoyo/ritual.png");
+}
+
+.carta-dobleAtaque {
+  background-image: url("../Cosas/cartas/apoyo/doble-ataque.png");
+}
+
+.carta-furia {
+  background-image: url("../Cosas/cartas/apoyo/furia.png");
+}
+
+.carta-columnaSuertuda {
+  background-image: url("../Cosas/cartas/apoyo/columna-suertuda.png");
+}
+
+.carta-ataqueAncestral {
+  background-image: url("../Cosas/cartas/apoyo/ataque-ancestral.png");
+}
+
+.carta-debilidad {
+  background-image: url("../Cosas/cartas/apoyo/debilidad.png");
+}
+
+.carta-barricada {
+  background-image: url("../Cosas/cartas/apoyo/barricada.png");
+}
+
+.carta-golpeDeCuerpo {
+  background-image: url("../Cosas/cartas/apoyo/golpe-doble.png");
+}
+
+.carta-ignorar {
+  background-image: url("../Cosas/cartas/apoyo/ignorar.png");
+}
+
+.carta-lamentoPenetrante {
+  background-image: url("../Cosas/cartas/apoyo/lamento-penetrable.png");
 }

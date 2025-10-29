@@ -13,76 +13,85 @@ html {
   cursor: var(--mouse);
 }
 .arriba {
-  height: 20vh;
+  min-height: 15%;
+  max-height: 15%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   background-color: white;
-  width: 100vw;
+  width: 100%;
   padding: 0;
-  border: solid 2px black;
 }
+
 .titulo {
   font-family: "Dela Gothic One", sans-serif;
   font-weight: 400;
   font-style: normal;
   margin: 0;
-  font-size: 8vh;
+  font-size: 6vh;
   cursor: var(--pointer);
 }
+
 .izq {
   display: flex;
   justify-content: space-evenly;
   width: 60%;
   align-items: center;
 }
+
 .vida {
   background-image: url("../Cosas/Vector.png");
   display: flex;
   align-items: center;
   justify-content: center;
   background-repeat: no-repeat;
-  background-size: 15%;
+  background-size: 10%;
   background-position-y: center;
-  font-size: 4vh;
+  font-size: 3vh;
   color: red;
   width: 23%;
-  height: 5vh;
+  height: 3vh;
 }
+
 .oro {
-  font-size: 4vh;
+  font-size: 3vh;
   width: 20%;
-  height: 5vh;
+  height: 3vh;
   background-image: url("../Cosas/image\ 42.png");
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-size: 15%;
+  background-size: 10%;
 }
+
 .der {
   display: flex;
   gap: 5vh;
   width: 40%;
   justify-content: flex-end;
-  padding-right: 10vh;
+  padding-right: 10%;
   align-items: center;
 }
+
 .icon {
-  height: 7vh;
+  height: 6vh;
   aspect-ratio: 1/1;
   cursor: var(--pointer);
 }
+
 .mapa {
   background-image: url("../Cosas/images-removebg-preview\ 1.png");
   background-size: contain;
 }
+
 .reliquias {
   background-image: url("../Cosas/image\ 44.png");
   background-size: contain;
   display: flex;
   align-items: end;
 }
+
 .cartas {
   background-image: url("../Cosas/cartasicon.png");
   background-repeat: no-repeat;
@@ -90,8 +99,9 @@ html {
   display: flex;
   align-items: end;
 }
+
 .circulo-reliquias {
-  height: 3.6vh;
+  height: 3vh;
   aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: lightgray;
@@ -101,8 +111,9 @@ html {
   align-items: center;
   justify-content: center;
 }
+
 .circulo-cartas {
-  height: 3.6vh;
+  height: 3vh;
   aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: lightgray;

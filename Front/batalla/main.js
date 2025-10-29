@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let LugarCartas = document.getElementById("LugarCartas");
   let atras = document.getElementById("atras");
   let atras2 = document.getElementById("atras2");
-  let atras3 = document.getElementById("atras3");
+  let omitir = document.getElementById("omitir");
   let cajaBatalla = document.getElementById("batalla");
   let lugarReliquias = document.getElementById("LugarReliquias");
   let lugarEscudo = document.getElementById("escudo");
@@ -26,6 +26,9 @@ window.addEventListener("DOMContentLoaded", () => {
   let recompensa1 = document.getElementById("recompensa1");
   let recompensa2 = document.getElementById("recompensa2");
   let recompensa3 = document.getElementById("recompensa3");
+  let fotoP = document.getElementById("personaje");
+  let fotoM = document.getElementById("monstruo");
+  let contenedor = document.getElementById("container");
   let mana = 3;
   let manaMax = 3;
   let cartaRobada = {};
@@ -46,8 +49,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   connect2Server();
 
-  const tipoMonstruo = sessionStorage.getItem("tipoMonstruo") || "normal";
-  sessionStorage.removeItem("tipoMonstruo");
+  //const tipoMonstruo = sessionStorage.getItem("tipoMonstruo") || "normal";
+  //sessionStorage.removeItem("tipoMonstruo");
 
   getEvent(`mounstro?tipo=${tipoMonstruo}`, (data) => {
     monstruo = data;
@@ -57,6 +60,22 @@ window.addEventListener("DOMContentLoaded", () => {
     gananciaInicial = monstruo.recompenzas;
     ganancia = gananciaInicial;
     console.log("Recompenza:", ganancia);
+  });
+
+  getEvent("personaje", (data) => {
+    let personaje = data;
+
+    if (personaje === "mago") {
+      fotoP.style.backgroundImage = "Url(../Cosas/mago.png)";
+    } else if (personaje === "jon") {
+      fotoP.style.backgroundImage = "Url(../Cosas/lawyer.png)";
+    } else if (personaje === "bear") {
+      fotoP.style.backgroundImage = "Url(../Cosas/bear.png)";
+    } else if (personaje === "pick") {
+      fotoP.style.backgroundImage = "Url(../Cosas/pick.png)";
+    } else {
+      fotoP.style.backgroundColor = "blue";
+    }
   });
 
   getEvent("fogata", (data) => {
@@ -408,7 +427,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function escudo(carta) {
     siEscudo = true;
-    cantidadEscudo += 10;
+    cantidadEscudo += 5;
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
     vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
     mana -= carta.elixir;
@@ -638,10 +657,13 @@ window.addEventListener("DOMContentLoaded", () => {
     lugarRecompensas.style.display = "none";
     window.scrollTo(0, 0);
   }
+  function irSeleccion() {
+    window.location.href = "../seleccion-cartas/index.html";
+  }
   cartas.addEventListener("click", mostrarCartas);
   atras.addEventListener("click", volverBatalla);
   atras2.addEventListener("click", volverBatalla);
-  atras3.addEventListener("click", volverBatalla);
+  omitir.addEventListener("click", irSeleccion);
   reliquias.addEventListener("click", mostrarReliquias);
 });
 /* joaco o ivo aca hice las funciones para las cartas de ataque (no se si andan)

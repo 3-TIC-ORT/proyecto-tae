@@ -11,7 +11,6 @@ function abajo() {
 window.onload = abajo;
 
 window.addEventListener("DOMContentLoaded", () => {
-  // Obtener h1 para el nombre del personaje
   let h1 = document.querySelector("h1");
   if (!h1) return console.error("No se encontró el elemento <h1>");
 
@@ -22,10 +21,9 @@ window.addEventListener("DOMContentLoaded", () => {
   let svg = document.getElementById("conecciones");
   let container = document.getElementById("container-mapa");
 
-  let dataMapa = {}; // para almacenar datos del mapa
-  let nodosDesbloqueados = new Set(); // nodos desbloqueados inicialmente
+  let dataMapa = {};
+  let nodosDesbloqueados = new Set();
 
-  // Restaurar nodos desbloqueados previos si existen
   const nodosGuardados = sessionStorage.getItem("nodosDesbloqueados");
   if (nodosGuardados) {
     try {
@@ -40,7 +38,6 @@ window.addEventListener("DOMContentLoaded", () => {
   pisosContainer.innerHTML = "";
   svg.innerHTML = "";
 
-  // Si hay un mapa guardado en sessionStorage (venimos de batalla), úsalo
   const mapaGuardado = sessionStorage.getItem("mapData");
   if (mapaGuardado) {
     try {
@@ -49,11 +46,16 @@ window.addEventListener("DOMContentLoaded", () => {
       rendermapa(dataMapa);
       salida.innerText = JSON.stringify(dataMapa, null, 2);
 
-      // Revisar si venimos de batalla y desbloquear nodos
       let nodoGanado = sessionStorage.getItem("nodoGanado");
       if (nodoGanado) {
         desbloquearConectados(nodoGanado);
         sessionStorage.removeItem("nodoGanado");
+      }
+
+      let nodoFogata = sessionStorage.getItem("nodoFogata");
+      if (nodoFogata) {
+        desbloquearConectados(nodoFogata);
+        sessionStorage.removeItem("nodoFogata");
       }
     } catch (e) {
       console.warn("Error parseando mapaGuardado, se pedirá al servidor:", e);
@@ -61,11 +63,9 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 🔸 Cargar mapa desde servidor (y persistirlo) solo si no hay uno en sessionStorage
   if (!mapaGuardado) {
     getEvent(`mapa?cantidadpisos=${5}`, (data) => {
       dataMapa = data;
-      // almacenar snapshot para mantener coherencia al volver desde batalla
       try {
         sessionStorage.setItem("mapData", JSON.stringify(dataMapa));
       } catch (e) {
@@ -75,7 +75,6 @@ window.addEventListener("DOMContentLoaded", () => {
       rendermapa(data);
       salida.innerText = JSON.stringify(data, null, 2);
 
-      // ✅ Revisar si venimos de batalla y desbloquear nodos
       let nodoGanado = sessionStorage.getItem("nodoGanado");
       if (nodoGanado) {
         desbloquearConectados(nodoGanado);
@@ -84,15 +83,12 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Inicializar nodos desbloqueados (primer piso)
   function inicializarMapa(data) {
     data.grafo.forEach((piso, pisoIndex) => {
       piso.forEach((nodo) => {
-        // asegurar que el primer piso siempre está desbloqueado (al menos)
         if (pisoIndex === 0) nodosDesbloqueados.add(nodo);
       });
     });
-    // persistir si aún no existía en sessionStorage
     try {
       if (!sessionStorage.getItem("nodosDesbloqueados")) {
         sessionStorage.setItem(
@@ -105,7 +101,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Renderizar mapa
+  // 🔥 ACÁ ESTÁ LA MODIFICACIÓN
   function rendermapa(data) {
     pisosContainer.innerHTML = "";
     svg.innerHTML = "";
@@ -121,12 +117,11 @@ window.addEventListener("DOMContentLoaded", () => {
         div.classList.add("nodo");
         div.dataset.nodo = nodo;
 
-        // Tipo de nodo
         let tipo = "M";
         if (nodo === "Final Boss") {
           div.classList.add("finalBoss");
           div.textContent = "B";
-          tipo = "final";
+          tipo = "B";
         } else {
           let partes = nodo.split(" ");
           if (partes.length === 2) {
@@ -136,25 +131,26 @@ window.addEventListener("DOMContentLoaded", () => {
           }
         }
 
-        // ✅ Evento solo si está desbloqueado
         if (nodosDesbloqueados.has(nodo)) {
           div.classList.add("desbloqueado");
-          // decidir destino según el tipo/nombre del nodo
+
           div.addEventListener("click", () => {
-            // seguridad: solo permitir si está desbloqueado
             if (!nodosDesbloqueados.has(nodo)) return;
             const nodoLow = String(nodo).toLowerCase();
-            // si el nodo corresponde a Fogata (nodoF)
+
+            // 🔥 Fogata
             if (
               tipo === "F" ||
               nodoLow === "nodof" ||
               nodoLow.includes("nodof") ||
               tipo.toLowerCase() === "fogata"
             ) {
+              sessionStorage.setItem("nodoFogata", nodo);
               window.location.href = "../fogata/index.html";
               return;
             }
-            // si el nodo corresponde a Mercado/Tienda (nodoT)
+
+            // 💰 Mercado / Tienda
             if (
               tipo === "T" ||
               nodoLow === "nodot" ||
@@ -165,13 +161,29 @@ window.addEventListener("DOMContentLoaded", () => {
               window.location.href = "../Mercado/Mercado.html";
               return;
             }
-            // Si es nodo elite (E), marcar tipo de monstruo
-            if (tipo === "E") {
+
+            // ⚔️ Batallas
+            /*if (tipo === "E") {
               sessionStorage.setItem("tipoMonstruo", "elite");
+            } else if (tipo === "B" || tipo.toLowerCase().includes("jefe")) {
+              sessionStorage.setItem("tipoMonstruo", "jefe");
             } else {
               sessionStorage.setItem("tipoMonstruo", "normal");
+            } */
+            if (tipo === "E") {
+              postEvent("mounstro", {
+                tipo: elite,
+              });
+            } else if (tipo === "B" || "jefe") {
+              postEvent("mounstro", {
+                tipo: jefe,
+              });
+            } else {
+              postEvent("mounstro", {
+                tipo: normal,
+              });
             }
-            // marcar nodo ganado y ir a batalla
+
             sessionStorage.setItem("nodoGanado", nodo);
             window.location.href = "../batalla/batalla.html";
           });
@@ -181,7 +193,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
         fila.appendChild(div);
 
-        // Posición para conexiones
         setTimeout(() => {
           let rect = div.getBoundingClientRect();
           let parentRect = container.getBoundingClientRect();
@@ -195,7 +206,6 @@ window.addEventListener("DOMContentLoaded", () => {
       container.appendChild(fila);
     });
 
-    // Dibujar conexiones
     setTimeout(() => {
       data.conexiones.forEach(([origen, destino]) => {
         if (posiciones[origen] && posiciones[destino]) {
@@ -215,9 +225,8 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 100);
   }
 
-  // Desbloquear nodos conectados al nodo ganado
   function desbloquearConectados(nodoGanado) {
-    if (!dataMapa.conexiones) return; // evita error si aún no hay conexiones
+    if (!dataMapa.conexiones) return;
     let changed = false;
     dataMapa.conexiones.forEach(([origen, destino]) => {
       if (origen === nodoGanado && !nodosDesbloqueados.has(destino)) {
@@ -229,7 +238,6 @@ window.addEventListener("DOMContentLoaded", () => {
         changed = true;
       }
     });
-    // persistir cambios en nodos desbloqueados
     if (changed) {
       try {
         sessionStorage.setItem(
@@ -241,9 +249,9 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     }
     rendermapa(dataMapa);
+    location.reload();
   }
 
-  // Botones fogata y batalla
   let fogata = document.getElementById("fogata");
   let batalla = document.getElementById("batalla");
 
@@ -256,7 +264,6 @@ window.addEventListener("DOMContentLoaded", () => {
     () => (window.location.href = "../batalla/batalla.html")
   );
 
-  // Evento personaje
   getEvent("personaje", (data) => {
     let personaje = data;
 
@@ -274,17 +281,18 @@ window.addEventListener("DOMContentLoaded", () => {
       h1.style.fontFamily = "Sedgwick Ave Display, cursive";
       h1.style.color = "#D52CB0";
       h1.style.fontSize = "13rem";
-
-      let nodos = document.querySelectorAll(".nodo");
-      nodos.forEach((n) => n.classList.add("nodoBear"));
+      document
+        .querySelectorAll(".nodo")
+        .forEach((n) => n.classList.add("nodoBear"));
     } else if (personaje === "pick") {
       h1.style.fontFamily = "EB Garamond, serif";
       h1.textContent = "The Pickpocket";
       h1.style.color = "black";
       h1.style.fontSize = "6rem";
       h1.style.backgroundImage = "url('../Cosas/bala.png')";
-      let nodos = document.querySelectorAll(".nodo");
-      nodos.forEach((n) => n.classList.add("nodoPick"));
+      document
+        .querySelectorAll(".nodo")
+        .forEach((n) => n.classList.add("nodoPick"));
     } else {
       h1.textContent = personaje;
     }

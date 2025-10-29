@@ -52,9 +52,25 @@ return {
 }
 });
 
+subscribeGETEvent("estado-basico",()=>{
+  let random = Math.random();
+  let estado = {}
+if (random < 0.6) {
+  estado = {
+    tipo:"ataque",
+  }
+} else {
+  estado = {
+    tipo:"defensa",
+  }
+}
+return estado
+})
+
 subscribePOSTEvent("fogata",(data) => {
   info.personaje.oro = data.oro
   info.personaje.vida = data.vida
+  info.personaje.vidamax = data.vidamax
 });
 
 subscribePOSTEvent("guardar",(data) => {
@@ -209,23 +225,6 @@ subscribeGETEvent("estado",()=>{
   let estado = verestado(infoia.monstruo,infoia.dañorecibido,infoia.cartasjugadas,infoia.buffeosjugador,infoia.condicionhabilidad)
   console.log(`el estado del mounstro es: ${estado}`)
   return estado
-})
-
-subscribeGETEvent("estado-basico",()=>{
-  let random = Math.random();
-  let estado = {}
-  let numero = Math.floor(Math.random() * (35 - 15 + 1)) + 15;
-if (random < 0.6) {
-  estado = {
-    tipo:"ataque",
-    daño:numero
-  }
-} else {
-  estado = {
-    tipo:"defensa",
-    daño:numero
-  }
-}
 })
 
 subscribePOSTEvent("final-turno",(data) => {

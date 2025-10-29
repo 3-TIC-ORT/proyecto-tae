@@ -1,3 +1,5 @@
+let avanzar1 = document.getElementById ("avanzar");
+
 connect2Server(); 
 
 function cargarMercado() {
@@ -12,12 +14,12 @@ function cargarMercado() {
 
 function dibujarCartas(cartas) {
     console.log("Cartas: ", cartas);
-    const cartasAMostrar = Object.entries(cartas).slice(0, 6);
+    let cartasAMostrar = Object.entries(cartas).slice(0, 6);
     console.log (cartasAMostrar);
 
     cartasAMostrar.forEach((carta, index) => {
-        const idDiv = `#carta${index + 1}`; 
-        const divCarta = document.querySelector(idDiv);
+        let idDiv = `#carta${index + 1}`; 
+        let divCarta = document.querySelector(idDiv);
 
         console.log(carta[1])
         
@@ -25,7 +27,6 @@ function dibujarCartas(cartas) {
             divCarta.innerHTML = `
                 <div class="card-nombre">${carta[1].nombre}</div>
                 <div class="card-costo">ORO: ${carta[1].elixir}</div>
-                <div class="card-desc">${carta[1].efecto}</div>
                 <img class="card-img" src="${carta[1].ruta}"> </img>
             `;
         }
@@ -35,3 +36,9 @@ function dibujarCartas(cartas) {
 document.addEventListener('DOMContentLoaded', () => {
     cargarMercado(); 
 });
+
+function avanzar (){
+    window.location.href = "../mapa/index.html";
+}
+
+avanzar1.addEventListener ("click",avanzar);

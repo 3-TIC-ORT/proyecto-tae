@@ -25,17 +25,12 @@ function dibujarCartas(cartas) {
         
         if (divCarta) {
             divCarta.innerHTML = `
-                <div class="card-nombre">${carta[1].nombre}</div>
                 <div class="card-costo">ORO: ${carta[1].elixir}</div>
                 <img class="card-img" src="${carta[1].ruta}"> </img>
             `;
         }
     });
 }
-        if (divreliquia){
-            divreliquia.innerHTML = `
-            <div class= "card-"`
-        }
 
 document.addEventListener('DOMContentLoaded', () => {
     cargarMercado(); 

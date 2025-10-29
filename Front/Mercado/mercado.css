@@ -166,6 +166,10 @@ html{
   }
 
 .card-img{
-  width: 100px;
-  height: 100px;
+  width: 8vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }

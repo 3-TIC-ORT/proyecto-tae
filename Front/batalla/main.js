@@ -23,9 +23,6 @@ window.addEventListener("DOMContentLoaded", () => {
   let lugarEscudo = document.getElementById("escudo");
   let cajaMana = document.getElementById("cajamana");
   let lugarRecompensas = document.getElementById("lugarRecompensas");
-  let recompensa1 = document.getElementById("recompensa1");
-  let recompensa2 = document.getElementById("recompensa2");
-  let recompensa3 = document.getElementById("recompensa3");
   let fotoP = document.getElementById("personaje");
   let fotoM = document.getElementById("monstruo");
   let contenedor = document.getElementById("container");
@@ -46,6 +43,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let ganancia = 0;
   let gananciaInicial = 0;
   let reliquiaInicial = {};
+  let cartaElegida = {};
 
   connect2Server();
 
@@ -157,11 +155,10 @@ window.addEventListener("DOMContentLoaded", () => {
   function usoReliquia() {
     if (reliquiaInicial === "Escudo de Hierro") {
       console.log("Reliquia activa:" + reliquiaInicial);
-      // Solo curar si no estamos al máximo de vida
       if (info.vida < info.vidamax) {
-        info.vida = Math.min(info.vida + 6, info.vidamax); // No exceder la vida máxima
-        alert("¡El Escudo de Hierro te cura 6 de vida!");
-        mostrar(); // Actualizar la interfaz
+        info.vida = Math.min(info.vida + 6, info.vidamax);
+        alert("Escudo de Hierro te cura 6 de vida");
+        mostrar();
       }
     } else if (reliquiaInicial === "Trébol de Oro") {
       console.log("Reliquia activa:" + reliquiaInicial);
@@ -179,9 +176,10 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if (reliquiaInicial === "Lanza de Odin") {
     }
   }
+  usoReliquia();
 
   function turnoRival() {
-    const daño = 20;
+    const daño = 10;
     alert(`El monstruo ataca por ${daño} de daño!`);
 
     if (siEscudo && cantidadEscudo > 0) {
@@ -224,7 +222,6 @@ window.addEventListener("DOMContentLoaded", () => {
   function iniciarTurnoJugador() {
     turno = turno + 1;
     abajo.style.display = "flex";
-    usoReliquia();
     iniciarCartas();
   }
 
@@ -268,105 +265,102 @@ window.addEventListener("DOMContentLoaded", () => {
     if (cartaRobada.nombre === "Garrote") {
       carta.classList.add("carta-garrote");
     }
-    /*if (cartaRobada.nombre === "Espada pesada") {
+    if (cartaRobada.nombre === "Espada pesada") {
       carta.classList.add("carta-espadaPesada");
     }
     if (cartaRobada.nombre === "Ira") {
       carta.classList.add("carta-ira");
     }
-    if (cartarobada.nombre === "Ráfaga") {
-      carta.classlist.add("carta-rafaga");
+    if (cartaRobada.nombre === "Rafaga") {
+      carta.classList.add("carta-rafaga");
     }
-    if (cartarobada.nombre === "Festín") {
-      carta.classlist.add("carta-festin");
+    if (cartaRobada.nombre === "Festin") {
+      carta.classList.add("carta-festin");
     }
-    if (cartarobada.nombre === "Ataque rápido") {
-      carta.classlist.add("carta-ataqueRapido");
+    if (cartaRobada.nombre === "Ataque rapido") {
+      carta.classList.add("carta-ataqueRapido");
     }
-    if (cartarobada.nombre === "Chapiadora.com") {
-      carta.classlist.add("carta-chapiadora");
+    if (cartaRobada.nombre === "Chapiadora.com") {
+      carta.classList.add("carta-chapiadora");
     }
-    if (cartarobada.nombre === "Promo 2027") {
-      carta.classlist.add("carta-promo");
+    if (cartaRobada.nombre === "Promo 2027") {
+      carta.classList.add("carta-promo");
     }
-    if (cartarobada.nombre === "Choque") {
-      carta.classlist.add("carta-choque");
+    if (cartaRobada.nombre === "Choque") {
+      carta.classList.add("carta-choque");
     }
-    if (cartarobada.nombre === "Zip") {
-      carta.classlist.add("carta-zip");
+    if (cartaRobada.nombre === "Zip") {
+      carta.classList.add("carta-zip");
     }
-    if (cartarobada.nombre === "Uppercut") {
-      carta.classlist.add("carta-uppercut");
+    if (cartaRobada.nombre === "Uppercut") {
+      carta.classList.add("carta-uppercut");
     }
-    if (cartarobada.nombre === "Trinchera") {
-      carta.classlist.add("carta-trinchera");
+    if (cartaRobada.nombre === "Trinchera") {
+      carta.classList.add("carta-trinchera");
     }
-    if (cartarobada.nombre === "Protector") {
-      carta.classlist.add("carta-protector");
+    if (cartaRobada.nombre === "Protector") {
+      carta.classList.add("carta-protector");
     }
-    if (cartarobada.nombre === "Heroico") {
-      carta.classlist.add("carta-heroico");
+    if (cartaRobada.nombre === "Heroico") {
+      carta.classList.add("carta-heroico");
     }
-    if (cartarobada.nombre === "Verdadero Valor") {
-      carta.classlist.add("carta-verdaderoValor");
+    if (cartaRobada.nombre === "Verdadero Valor") {
+      carta.classList.add("carta-verdaderoValor");
     }
-    if (cartarobada.nombre === "Segundo Aliento") {
-      carta.classlist.add("carta-segundoAliento");
+    if (cartaRobada.nombre === "Segundo Aliento") {
+      carta.classList.add("carta-segundoAliento");
     }
-    if (cartarobada.nombre === "Defensa en Placas") {
-      carta.classlist.add("carta-defensaEnPlacas");
+    if (cartaRobada.nombre === "Defensa en Placas") {
+      carta.classList.add("carta-defensaEnPlacas");
     }
-    if (cartarobada.nombre === "Estrategia Defensiva") {
-      carta.classlist.add("carta-estrategiaDefensiva");
+    if (cartaRobada.nombre === "Estrategia Defensiva") {
+      carta.classList.add("carta-estrategiaDefensiva");
     }
-    if (cartarobada.nombre === "Copa") {
-      carta.classlist.add("carta-copa");
+    if (cartaRobada.nombre === "Copa") {
+      carta.classList.add("carta-copa");
     }
-    if (cartarobada.nombre === "Auto-escudo") {
-      carta.classlist.add("carta-autoEscudo");
+    if (cartaRobada.nombre === "Auto-escudo") {
+      carta.classList.add("carta-autoEscudo");
     }
-    if (cartarobada.nombre === "Mutación") {
-      carta.classlist.add("carta-mutacion");
+    if (cartaRobada.nombre === "Mutacion") {
+      carta.classList.add("carta-mutacion");
     }
-    if (cartarobada.nombre === "Espadas orbitantes") {
-      carta.classlist.add("carta-espadasOrbitantes");
+    if (cartaRobada.nombre === "Espadas orbitantes") {
+      carta.classList.add("carta-espadasOrbitantes");
     }
-    if (cartarobada.nombre === "Flexionar") {
-      carta.classList.add("carta-");
-    }
-    if (cartarobada.nombre === "") {
+    if (cartaRobada.nombre === "Flexionar") {
       carta.classList.add("carta-flexionar");
     }
-    if (cartarobada.nombre === "Ritual") {
+    if (cartaRobada.nombre === "Ritual") {
       carta.classList.add("carta-ritual");
     }
-    if (cartarobada.nombre === "Doble ataque") {
+    if (cartaRobada.nombre === "Doble ataque") {
       carta.classList.add("carta-dobleAtaque");
     }
-    if (cartarobada.nombre === "Furia") {
+    if (cartaRobada.nombre === "Furia") {
       carta.classList.add("carta-furia");
     }
-    if (cartarobada.nombre === "Columna Suertuda") {
+    if (cartaRobada.nombre === "Columna Suertuda") {
       carta.classList.add("carta-columnaSuertuda");
     }
-    if (cartarobada.nombre === "Ataque ancestral") {
+    if (cartaRobada.nombre === "Ataque ancestral") {
       carta.classList.add("carta-ataqueAncestral");
     }
-    if (cartarobada.nombre === "Debilidad") {
+    if (cartaRobada.nombre === "Debilidad") {
       carta.classList.add("carta-debilidad");
     }
-    if (cartarobada.nombre === "Barricada") {
+    if (cartaRobada.nombre === "Barricada") {
       carta.classList.add("carta-barricada");
     }
-    if (cartarobada.nombre === "Golpe de cuerpo") {
+    if (cartaRobada.nombre === "Golpe de cuerpo") {
       carta.classList.add("carta-golpeDeCuerpo");
     }
-    if (cartarobada.nombre === "Ignorar") {
+    if (cartaRobada.nombre === "Ignorar") {
       carta.classList.add("carta-ignorar");
     }
-    if (cartarobada.nombre === "Lamento penetrante") {
+    if (cartaRobada.nombre === "Lamento penetrante") {
       carta.classList.add("carta-lamentoPenetrante");
-    }*/
+    }
   }
   abajo.addEventListener("click", (event) => {
     let cartaDiv = event.target.closest(".cartaG");
@@ -477,15 +471,6 @@ window.addEventListener("DOMContentLoaded", () => {
         element.classList.remove("carta8");
         element.classList.add("carta6");
       });
-
-      /*carta2.classList.remove("carta2");
-      carta2.classlist.add("carta1");
-      carta4.classlist.remove("carta4");
-      carta4.classList.add("carta2");
-      carta6.classList.remove("carta6");
-      carta6.classList.add("carta4");
-      carta8.classList.remove("carta8");
-      carta8.classList.add("carta6");*/
     }
     if (cartaEliminar.classList[0] === "carta2") {
       let carta1 = document.getElementsByClassName("carta1");
@@ -618,7 +603,6 @@ window.addEventListener("DOMContentLoaded", () => {
   Fondos();
 
   function mostrarCartas() {
-    console.log("mostrarCartas triggered");
     LugarCartas.style.display = "block";
     LugarCartas.style.backgroundColor = "black";
     cajaBatalla.style.display = "none";
@@ -643,21 +627,20 @@ window.addEventListener("DOMContentLoaded", () => {
     lugarReliquias.style.background = "none";
     document.body.style.background = "none";
     for (let i = 1; i <= 3; i++) {
-      let contenedorRecompensa = document.getElementById("contenedorRecompensas");
+      let contenedorRecompensa = document.getElementById(
+        "contenedorRecompensas"
+      );
       let nuevaRecompensa = document.createElement("div");
       nuevaRecompensa.classList.add("recompensa");
       nuevaRecompensa.id = `recompensa${i}`;
-  
+
       if (i === 1) nuevaRecompensa.textContent = `Oro: ${ganancia}`;
       else if (i === 2) nuevaRecompensa.textContent = `Recompensa 2`;
-      else nuevaRecompensa.textContent = `Recompensa 3`;
-    
+      else nuevaRecompensa.textContent = `Escoge una carta`;
       contenedorRecompensa.appendChild(nuevaRecompensa);
     }
-    
-
-
-
+    let recompensa3 = document.getElementById("recompensa3");
+    recompensa3.addEventListener("click", irSeleccion);
   }
 
   function volverBatalla() {
@@ -679,6 +662,7 @@ window.addEventListener("DOMContentLoaded", () => {
   omitir.addEventListener("click", irSeleccion);
   reliquias.addEventListener("click", mostrarReliquias);
 });
+
 /* joaco o ivo aca hice las funciones para las cartas de ataque (no se si andan)
 function cartaGolpe() {
   monstruo.vida -= 7;

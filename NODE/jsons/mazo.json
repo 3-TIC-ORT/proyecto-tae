@@ -86,5 +86,21 @@
     "tipo": "ataque",
     "efecto": "Aplica 2 de vulnerabilidad al enemigo",
     "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
+  },
+  {
+    "nombre": "Estrategia defensiva",
+    "bloqueo": 3,
+    "elixir": 2,
+    "tipo": "defensa",
+    "efecto": "El ataque de tu rival baja un 25%",
+    "ruta": "/Front/Cosas/cartas/defensa/Estrategia-defensiva.png"
+  },
+  {
+    "nombre": "Uppercut",
+    "daño": 20,
+    "elixir": 2,
+    "tipo": "ataque",
+    "efecto": "El enemigo gana 3 de vulnerabilidad",
+    "ruta": "/Front/Cosas/cartas/ataque/Uppercut.png"
   }
 ]

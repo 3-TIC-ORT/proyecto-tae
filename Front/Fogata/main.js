@@ -170,7 +170,6 @@ window.addEventListener("DOMContentLoaded", () => {
   mina.addEventListener("click", clickMina);
 
   function mostrarCartas() {
-    console.log("mostrarCartas triggered");
     LugarCartas.style.display = "block";
     LugarCartas.style.backgroundColor = "black";
     cajaBatalla.style.display = "none";

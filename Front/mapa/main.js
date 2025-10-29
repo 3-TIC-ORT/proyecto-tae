@@ -163,13 +163,13 @@ window.addEventListener("DOMContentLoaded", () => {
             }
 
             // ⚔️ Batallas
-            /*if (tipo === "E") {
+            if (tipo === "E") {
               sessionStorage.setItem("tipoMonstruo", "elite");
             } else if (tipo === "B" || tipo.toLowerCase().includes("jefe")) {
               sessionStorage.setItem("tipoMonstruo", "jefe");
             } else {
               sessionStorage.setItem("tipoMonstruo", "normal");
-            } */
+            } /*
             if (tipo === "E") {
               postEvent("mounstro", {
                 tipo: elite,
@@ -182,7 +182,7 @@ window.addEventListener("DOMContentLoaded", () => {
               postEvent("mounstro", {
                 tipo: normal,
               });
-            }
+            }*/
 
             sessionStorage.setItem("nodoGanado", nodo);
             window.location.href = "../batalla/batalla.html";

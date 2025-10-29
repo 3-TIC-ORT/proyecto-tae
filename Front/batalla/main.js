@@ -49,8 +49,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   connect2Server();
 
-  //const tipoMonstruo = sessionStorage.getItem("tipoMonstruo") || "normal";
-  //sessionStorage.removeItem("tipoMonstruo");
+  const tipoMonstruo = sessionStorage.getItem("tipoMonstruo") || "normal";
+  sessionStorage.removeItem("tipoMonstruo");
 
   getEvent(`mounstro?tipo=${tipoMonstruo}`, (data) => {
     monstruo = data;
@@ -642,9 +642,22 @@ window.addEventListener("DOMContentLoaded", () => {
     lugarReliquias.style.display = "none";
     lugarReliquias.style.background = "none";
     document.body.style.background = "none";
-    recompensa1.textContent = `Oro: ${ganancia}`;
-    recompensa2.textContent = `Recompensa 2`;
-    recompensa3.textContent = `Recompensa 3`;
+    for (let i = 1; i <= 3; i++) {
+      let contenedorRecompensa = document.getElementById("contenedorRecompensas");
+      let nuevaRecompensa = document.createElement("div");
+      nuevaRecompensa.classList.add("recompensa");
+      nuevaRecompensa.id = `recompensa${i}`;
+  
+      if (i === 1) nuevaRecompensa.textContent = `Oro: ${ganancia}`;
+      else if (i === 2) nuevaRecompensa.textContent = `Recompensa 2`;
+      else nuevaRecompensa.textContent = `Recompensa 3`;
+    
+      contenedorRecompensa.appendChild(nuevaRecompensa);
+    }
+    
+
+
+
   }
 
   function volverBatalla() {

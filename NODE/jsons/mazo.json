@@ -1,1 +1,90 @@
-[]
+[
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
+  },
+  {
+    "nombre": "Golpe",
+    "daño": 7,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "tipo": "defensa",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "tipo": "defensa",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "tipo": "defensa",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "tipo": "defensa",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "tipo": "defensa",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
+  },
+  {
+    "nombre": "Garrote",
+    "daño": 14,
+    "elixir": 2,
+    "tipo": "ataque",
+    "efecto": "Aplica 2 de vulnerabilidad al enemigo",
+    "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
+  }
+]

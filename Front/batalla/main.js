@@ -21,6 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let cajaBatalla = document.getElementById("batalla");
   let lugarReliquias = document.getElementById("LugarReliquias");
   let lugarEscudo = document.getElementById("escudo");
+  let lugarEscudoRival = document.getElementById("escudoRival");
   let cajaMana = document.getElementById("cajamana");
   let lugarRecompensas = document.getElementById("lugarRecompensas");
   let fotoP = document.getElementById("personaje");
@@ -44,6 +45,8 @@ window.addEventListener("DOMContentLoaded", () => {
   let gananciaInicial = 0;
   let reliquiaInicial = {};
   let cartaElegida = {};
+  let dañoRival;
+  let escudoRival;
 
   connect2Server();
 
@@ -103,6 +106,49 @@ window.addEventListener("DOMContentLoaded", () => {
     iniciarCartas();
   });
 
+  getEvent("estado-basico", (data) => {
+    if (data.tipo === "ataque") {
+      console.log(monstruo.tipo);
+      if (monstruo.tipo === "normal") {
+        const minNormal = 5;
+        const maxNormal = 20;
+        dañoRival =
+          Math.floor(Math.random() * (maxNormal - minNormal + 1)) + minNormal;
+      } else if (monstruo.tipo === "elite") {
+        const minElite = 15;
+        const maxElite = 35;
+        dañoRival =
+          Math.floor(Math.random() * (maxElite - minElite + 1)) + minElite;
+      } else {
+        const minBoss = 15;
+        const maxBoss = 45;
+        dañoRival =
+          Math.floor(Math.random() * (maxBoss - minBoss + 1)) + minBoss;
+      }
+      console.log(dañoRival);
+    }
+    if (data.tipo === "defensa") {
+      if (monstruo.tipo === "normal") {
+        const minNormal = 5;
+        const maxNormal = 15;
+        escudoRival =
+          Math.floor(Math.random() * (maxNormal - minNormal + 1)) + minNormal;
+      } else if (monstruo.tipo === "elite") {
+        const minElite = 7;
+        const maxElite = 20;
+        escudoRival =
+          Math.floor(Math.random() * (maxElite - minElite + 1)) + minElite;
+      } else {
+        const minBoss = 10;
+        const maxBoss = 25;
+        escuroRival =
+          Math.floor(Math.random() * (maxBoss - minBoss + 1)) + minBoss;
+      }
+    }
+  });
+  function contarCartasAtaque() {
+    return cartasmano.filter((carta) => carta.tipo === "ataque").length;
+  }
   console.log("numero turno: " + turno);
   function ganar() {
     if (batallaFinalizada) return;
@@ -113,6 +159,7 @@ window.addEventListener("DOMContentLoaded", () => {
     postEvent("fogata", {
       oro: info.oro,
       vida: info.vida,
+      vidamax: info.vidamax,
     });
     setTimeout(() => {
       mostrarRecompensas();
@@ -146,6 +193,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function mostrar() {
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+    lugarEscudoRival.textContent = "Escudo:" + escudoRival;
     vida.textContent = `PV: ${info.vida}/${info.vidamax}`;
     vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
@@ -179,18 +227,18 @@ window.addEventListener("DOMContentLoaded", () => {
   usoReliquia();
 
   function turnoRival() {
-    const daño = 10;
-    alert(`El monstruo ataca por ${daño} de daño!`);
+    console.log(dañoRival);
+    alert(`El monstruo ataca por ${dañoRival} de daño!`);
 
     if (siEscudo && cantidadEscudo > 0) {
       // Si hay escudo, el daño lo recibe primero el ecudo
-      if (cantidadEscudo >= daño) {
+      if (cantidadEscudo >= dañoRival) {
         // El escudo absorbe todo el daño
-        cantidadEscudo -= daño;
-        alert(`Tu escudo absorbe ${daño} de daño!`);
+        cantidadEscudo -= dañoRival;
+        alert(`Tu escudo absorbe ${dañoRival} de daño!`);
       } else {
         // El escudo se rompe y el resto va a la vida
-        let dañoRestante = daño - cantidadEscudo;
+        let dañoRestante = dañoRival - cantidadEscudo;
         alert(
           `Tu escudo absorbe ${cantidadEscudo} de daño y se rompe! ${dañoRestante} de daño pasa a tu vida!`
         );
@@ -202,8 +250,8 @@ window.addEventListener("DOMContentLoaded", () => {
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
     } else {
       // Sin escudo, el daño va directo a la vida
-      info.vida -= daño;
-      alert(`Recibes ${daño} de daño directo!`);
+      info.vida -= dañoRival;
+      alert(`Recibes ${dañoRival} de daño directo!`);
       vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
     }
 
@@ -237,6 +285,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 2000);
   }
   function sumarCarta() {
+    contarCartasAtaque();
     if (contadorCartas > 9) return;
     if (mazo.length === 0) return console.warn("No hay más cartas en el mazo");
 
@@ -390,12 +439,29 @@ window.addEventListener("DOMContentLoaded", () => {
       escudo(cartaActual);
     } else if (nombreCarta === "Garrote") {
       garrote(cartaActual);
+    } else if (nombreCarta === "Espada pesada") {
+      cartaEspadaPesada(cartaActual);
+    } else if (nombreCarta === "Ira") {
+      cartaIra(cartaActual);
+    } else if (nombreCarta === "Rafaga") {
+      cartaRafaga(cartaActual);
+    } else if (nombreCarta === "Festin") {
+      cartaFestin(cartaActual);
+    } else if (nombreCarta === "Ataque rápido") {
+      cartaAtaqueRapido(cartaActual);
+    } else if (nombreCarta === "Chapiadora.com") {
+      cartaChapiadora(cartaActual);
+    } else if (nombreCarta === "Promo 2027") {
+      cartaPromo2027(cartaActual);
+    } else if (nombreCarta === "Coque") {
+      cartaCoque(cartaActual);
     }
 
     cartasmano = cartasmano.filter((c) => c !== cartaActual);
     sacarCarta();
   });
   function iniciarCartas() {
+    contarCartasAtaque();
     abajo.innerHTML = "";
     contadorCartas = 1;
     mana = manaMax;
@@ -403,6 +469,7 @@ window.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < 5; i++) {
       sumarCarta();
     }
+    console.log("🃏 Cartas de ataque en mano:", contarCartasAtaque());
   }
 
   function golpe(carta) {
@@ -442,8 +509,87 @@ window.addEventListener("DOMContentLoaded", () => {
       ganar();
     }
   }
+  function cartaEspadaPesada(carta) {
+    monstruo.vida -= 15;
+    if (monstruo.vida < 0) monstruo.vida = 0;
+    vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+    mana -= 2;
+    cajaMana.textContent = mana + " / " + manaMax;
+    mazo.push("Espada pesada");
+  }
+
+  function cartaIra(carta) {
+    monstruo.vida -= 8;
+    if (monstruo.vida < 0) monstruo.vida = 0;
+    vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+    mana -= 0;
+    cajaMana.textContent = mana + " / " + manaMax;
+    mazo.push("Ira");
+  }
+
+  function cartaRafaga(carta) {
+    monstruo.vida -= 5;
+    if (monstruo.vida < 0) monstruo.vida = 0;
+    vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+    mana -= 1;
+    cajaMana.textContent = mana + " / " + manaMax;
+    mazo.push("Rafaga");
+  }
+
+  function cartaFestin(carta) {
+    monstruo.vida -= 15;
+    if (monstruo.vida <= 0) info.vidamax += 3;
+    if (monstruo.vida < 0) monstruo.vida = 0;
+    vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+    vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
+    vida.textContent = `PV: ${info.vida}/${info.vidamax}`;
+    mana -= 3;
+    cajaMana.textContent = mana + " / " + manaMax;
+    mazo.push("Festin");
+  }
+
+  function cartaAtaqueRapido(carta) {
+    monstruo.vida -= 9;
+    if (monstruo.vida < 0) monstruo.vida = 0;
+    vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+    mana -= 1;
+    cajaMana.textContent = mana + " / " + manaMax;
+    mazo.push("Ataque rápido");
+  }
+
+  function cartaChapiadora(carta) {
+    monstruo.vida -= 32;
+    if (monstruo.vida < 0) monstruo.vida = 0;
+    vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+    mana -= 3;
+    cajaMana.textContent = mana + " / " + manaMax;
+    mazo.push("Chapiadora.com");
+  }
+
+  function cartaPromo2027(carta) {
+    monstruo.vida -= 10;
+    if (monstruo.vida < 0) monstruo.vida = 0;
+    vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+    mana -= 1;
+    cajaMana.textContent = mana + " / " + manaMax;
+    mazo.push("Promo 2027");
+  }
+
+  function cartaCoque(carta) {
+    if (contarCartasAtaque() === 0) {
+      monstruo.vida -= 14;
+      if (monstruo.vida < 0) monstruo.vida = 0;
+      vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+      mana -= 0;
+      cajaMana.textContent = mana + " / " + manaMax;
+      mazo.push("Coque");
+    } else {
+      alert("Tienes cartas de ataque en la mano, no la puedes usar");
+    }
+  }
 
   function sacarCarta() {
+    contarCartasAtaque();
     let cartaEliminar = event.target;
     console.log(cartaEliminar.classList[0]);
     if (cartaEliminar.classList[0] === "carta1") {
@@ -582,6 +728,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     cartaEliminar.remove();
+    console.log("🃏 Cartas de ataque en mano:", contarCartasAtaque());
   }
   console.log(boton);
 
@@ -663,99 +810,7 @@ window.addEventListener("DOMContentLoaded", () => {
   reliquias.addEventListener("click", mostrarReliquias);
 });
 
-/* joaco o ivo aca hice las funciones para las cartas de ataque (no se si andan)
-function cartaGolpe() {
-  monstruo.vida -= 7;
-  if (monstruo.vida < 0) monstruo.vida = 0;
-  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
-  mana -= 1;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Golpe");
-}
-
-function cartaEspadaPesada() {
-  monstruo.vida -= 15;
-  if (monstruo.vida < 0) monstruo.vida = 0;
-  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
-  mana -= 2;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Espada pesada");
-}
-
-function cartaIra() {
-  monstruo.vida -= 8;
-  if (monstruo.vida < 0) monstruo.vida = 0;
-  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
-  mana -= 0;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Ira");
-}
-
-function cartaRafaga() {
-  monstruo.vida -= 5;
-  if (monstruo.vida < 0) monstruo.vida = 0;
-  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
-  mana -= 1;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Ráfaga");
-}
-
-function cartaFestin() {
-  monstruo.vida -= 15;
-  if (monstruo.vida <= 0) info.vida = Math.min(info.vida + 3, info.vidamax);
-  if (monstruo.vida < 0) monstruo.vida = 0;
-  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
-  vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
-  mana -= 2;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Festín");
-}
-
-function cartaAtaqueRapido() {
-  monstruo.vida -= 9;
-  if (monstruo.vida < 0) monstruo.vida = 0;
-  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
-  mana -= 1;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Ataque rápido");
-}
-
-function cartaChapiadora() {
-  monstruo.vida -= 32;
-  if (monstruo.vida < 0) monstruo.vida = 0;
-  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
-  mana -= 3;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Chapiadora.com");
-}
-
-function cartaPromo2027() {
-  monstruo.vida -= 10;
-  if (monstruo.vida < 0) monstruo.vida = 0;
-  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
-  mana -= 1;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Promo 2027");
-}
-
-function cartaChoque() {
-  monstruo.vida -= 14;
-  if (monstruo.vida < 0) monstruo.vida = 0;
-  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
-  mana -= 0;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Choque");
-}
-
-function cartaGarrote() {
-  monstruo.vida -= 14;
-  if (monstruo.vida < 0) monstruo.vida = 0;
-  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
-  mana -= 2;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Garrote");
-}
-
+/*
 function cartaZip() {
   monstruo.vida -= 5;
   if (monstruo.vida < 0) monstruo.vida = 0;
@@ -772,16 +827,6 @@ function cartaUppercut() {
   mana -= 2;
   cajaMana.textContent = mana + " / " + manaMax;
   mazo.push("Uppercut");
-}
-
-function cartaEscudo() {
-  siEscudo = true;
-  cantidadEscudo += 6;
-  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
-  mana -= 1;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Escudo");
 }
 
 function cartaTrinchera() {

@@ -165,20 +165,6 @@ html{
   padding-top: 2rem;
   }
 
-  .mercader > div[id^="carta"] {
-    display: flex;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto;
-    gap: 2vw 2vw;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 10vw;
-    height: auto;
-    margin: 1vw;
-    text-align: center;
-    }
-
   .card-img {
     width: 12vw;
     height: auto;
@@ -187,12 +173,27 @@ html{
   }
 
   .mercader {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 2vw;
-  }
-  #carta5, #carta6 {
-    grid-row: 2;
-  }
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  grid-auto-rows: auto !important;
+  gap: 2vw !important;
+  justify-items: flex-start !important;
+  align-items: start !important;
+  width: 90% !important;
+  margin: 0 auto !important;
+}
+
+
+#carta1 { grid-column: 1; grid-row: 1; }
+#carta2 { grid-column: 2; grid-row: 1; }
+#carta3 { grid-column: 3; grid-row: 1; }
+#carta4 { grid-column: 4; grid-row: 1; }
+#carta5 { grid-column: 1; grid-row: 2; }
+#carta6 { grid-column: 2; grid-row: 2; }
+
+.card-costo{
+  text-align: center;
+  order: 3;
+  margin-top: 0.3vh;
+  font-size: 1rem;
+}

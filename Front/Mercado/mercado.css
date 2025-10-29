@@ -167,6 +167,9 @@ html{
 
   .mercader > div[id^="carta"] {
     display: flex;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+    gap: 2vw 2vw;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -190,4 +193,6 @@ html{
     flex-wrap: wrap;
     gap: 2vw;
   }
-  
+  #carta5, #carta6 {
+    grid-row: 2;
+  }

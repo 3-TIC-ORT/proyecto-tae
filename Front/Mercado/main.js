@@ -32,6 +32,10 @@ function dibujarCartas(cartas) {
         }
     });
 }
+        if (divreliquia){
+            divreliquia.innerHTML = `
+            <div class= "card-"`
+        }
 
 document.addEventListener('DOMContentLoaded', () => {
     cargarMercado(); 

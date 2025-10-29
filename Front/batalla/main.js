@@ -107,6 +107,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   getEvent("estado-basico", (data) => {
+    data.tipo = "ataque";
     if (data.tipo === "ataque") {
       console.log(monstruo.tipo);
       if (monstruo.tipo === "normal") {
@@ -141,9 +142,11 @@ window.addEventListener("DOMContentLoaded", () => {
       } else {
         const minBoss = 10;
         const maxBoss = 25;
-        escuroRival =
+        escudoRival =
           Math.floor(Math.random() * (maxBoss - minBoss + 1)) + minBoss;
       }
+      console.log("defensa");
+      console.log(escudoRival);
     }
   });
   function contarCartasAtaque() {

@@ -26,9 +26,7 @@ export function cartas_mercado() {
     reliquia1: reliquias[indicesReliquias[0]],
     reliquia2: reliquias[indicesReliquias[1]],
     reliquia3: reliquias[indicesReliquias[2]],
-    reliquia4: reliquias[indicesReliquias[3]],
-    reliquia5: reliquias[indicesReliquias[4]],
-    reliquia6: reliquias[indicesReliquias[5]],
+    reliquia4: reliquias[indicesReliquias[3]]
   }
 
   return mercado;

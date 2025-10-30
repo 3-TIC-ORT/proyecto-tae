@@ -108,26 +108,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   getEvent("estado-basico", (data) => {
     data.tipo = "ataque";
-    if (data.tipo === "ataque") {
-      console.log(monstruo.tipo);
-      if (monstruo.tipo === "normal") {
-        const minNormal = 5;
-        const maxNormal = 20;
-        dañoRival =
-          Math.floor(Math.random() * (maxNormal - minNormal + 1)) + minNormal;
-      } else if (monstruo.tipo === "elite") {
-        const minElite = 15;
-        const maxElite = 35;
-        dañoRival =
-          Math.floor(Math.random() * (maxElite - minElite + 1)) + minElite;
-      } else {
-        const minBoss = 15;
-        const maxBoss = 45;
-        dañoRival =
-          Math.floor(Math.random() * (maxBoss - minBoss + 1)) + minBoss;
-      }
-      console.log(dañoRival);
-    }
     if (data.tipo === "defensa") {
       if (monstruo.tipo === "normal") {
         const minNormal = 5;
@@ -196,11 +176,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function mostrar() {
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    lugarEscudoRival.textContent = "Escudo:" + escudoRival;
+    //lugarEscudoRival.textContent = "Escudo:" + escudoRival;
     vida.textContent = `PV: ${info.vida}/${info.vidamax}`;
     vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     oro.textContent = `Oro: ${info.oro}`;
+  }
+  function mostrarEscudoRestante() {
+    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
   }
 
   function usoReliquia() {
@@ -230,7 +213,23 @@ window.addEventListener("DOMContentLoaded", () => {
   usoReliquia();
 
   function turnoRival() {
-    console.log(dañoRival);
+    console.log(monstruo.tipo);
+    if (monstruo.tipo === "normal") {
+      const minNormal = 5;
+      const maxNormal = 18;
+      dañoRival =
+        Math.floor(Math.random() * (maxNormal - minNormal + 1)) + minNormal;
+    } else if (monstruo.tipo === "elite") {
+      const minElite = 10;
+      const maxElite = 35;
+      dañoRival =
+        Math.floor(Math.random() * (maxElite - minElite + 1)) + minElite;
+    } else {
+      const minBoss = 15;
+      const maxBoss = 45;
+      dañoRival = Math.floor(Math.random() * (maxBoss - minBoss + 1)) + minBoss;
+    }
+    console.log("Daño del rival en este turno: " + dañoRival);
     alert(`El monstruo ataca por ${dañoRival} de daño!`);
 
     if (siEscudo && cantidadEscudo > 0) {
@@ -249,22 +248,18 @@ window.addEventListener("DOMContentLoaded", () => {
         cantidadEscudo = 0;
         siEscudo = false;
       }
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
     } else {
-      // Sin escudo, el daño va directo a la vida
       info.vida -= dañoRival;
       alert(`Recibes ${dañoRival} de daño directo!`);
       vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
     }
 
-    // Actualizar vida y mostrar
     if (info.vida < 0) info.vida = 0;
     mostrar();
 
-    // Si la vida llega a 0, game over (podrías añadir una función perder() aquí)
     if (info.vida <= 0) {
-      alert("Has sido derrotado!");
       window.location.href = "../Game_over/index.html";
       return;
     }
@@ -273,6 +268,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function iniciarTurnoJugador() {
     turno = turno + 1;
     abajo.style.display = "flex";
+    if (siEscudo === true) mostrarEscudoRestante();
     iniciarCartas();
   }
 
@@ -281,7 +277,7 @@ window.addEventListener("DOMContentLoaded", () => {
     abajo.style.display = "none";
     alert("TURNO RIVAL");
     turno = turno + 1;
-    console.log(turno);
+    console.log("Turno numero " + turno / 2);
     mazo = mazo.concat(mazorobar);
     setTimeout(() => {
       turnoRival();
@@ -472,7 +468,7 @@ window.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < 5; i++) {
       sumarCarta();
     }
-    console.log("🃏 Cartas de ataque en mano:", contarCartasAtaque());
+    console.log("Cartas de ataque en mano:", contarCartasAtaque());
   }
 
   function golpe(carta) {
@@ -482,9 +478,8 @@ window.addEventListener("DOMContentLoaded", () => {
     mana -= carta.elixir;
     cajaMana.textContent = mana + " / " + manaMax;
     mazo.push(carta);
-    // Comprobar si se derrotó al monstruo
     if (monstruo.vida <= 0) {
-      console.log("Monstruo derrotado por Golpe");
+      console.log(`Rival matado por ${carta.nombre}`);
       ganar();
     }
   }
@@ -505,10 +500,10 @@ window.addEventListener("DOMContentLoaded", () => {
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     mana -= carta.elixir;
     cajaMana.textContent = mana + " / " + manaMax;
-    // mazo.push(carta);
-    // Comprobar si se derrotó al monstruo
+    //mazo.push(carta);
+    console.log(carta.nombre);
     if (monstruo.vida <= 0) {
-      console.log("Monstruo derrotado por Garrote");
+      console.log(`Rival matado por ${carta.nombre}`);
       ganar();
     }
   }
@@ -519,6 +514,10 @@ window.addEventListener("DOMContentLoaded", () => {
     mana -= 2;
     cajaMana.textContent = mana + " / " + manaMax;
     mazo.push("Espada pesada");
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${carta.nombre}`);
+      ganar();
+    }
   }
 
   function cartaIra(carta) {
@@ -528,6 +527,10 @@ window.addEventListener("DOMContentLoaded", () => {
     mana -= 0;
     cajaMana.textContent = mana + " / " + manaMax;
     mazo.push("Ira");
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${carta.nombre}`);
+      ganar();
+    }
   }
 
   function cartaRafaga(carta) {
@@ -537,6 +540,10 @@ window.addEventListener("DOMContentLoaded", () => {
     mana -= 1;
     cajaMana.textContent = mana + " / " + manaMax;
     mazo.push("Rafaga");
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${carta.nombre}`);
+      ganar();
+    }
   }
 
   function cartaFestin(carta) {
@@ -548,7 +555,11 @@ window.addEventListener("DOMContentLoaded", () => {
     vida.textContent = `PV: ${info.vida}/${info.vidamax}`;
     mana -= 3;
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Festin");
+    //mazo.push("Festin");
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${carta.nombre}`);
+      ganar();
+    }
   }
 
   function cartaAtaqueRapido(carta) {
@@ -558,6 +569,10 @@ window.addEventListener("DOMContentLoaded", () => {
     mana -= 1;
     cajaMana.textContent = mana + " / " + manaMax;
     mazo.push("Ataque rápido");
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${carta.nombre}`);
+      ganar();
+    }
   }
 
   function cartaChapiadora(carta) {
@@ -566,7 +581,11 @@ window.addEventListener("DOMContentLoaded", () => {
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     mana -= 3;
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Chapiadora.com");
+    //mazo.push("Chapiadora.com");
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${carta.nombre}`);
+      ganar();
+    }
   }
 
   function cartaPromo2027(carta) {
@@ -576,6 +595,10 @@ window.addEventListener("DOMContentLoaded", () => {
     mana -= 1;
     cajaMana.textContent = mana + " / " + manaMax;
     mazo.push("Promo 2027");
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${carta.nombre}`);
+      ganar();
+    }
   }
 
   function cartaCoque(carta) {
@@ -588,6 +611,11 @@ window.addEventListener("DOMContentLoaded", () => {
       mazo.push("Coque");
     } else {
       alert("Tienes cartas de ataque en la mano, no la puedes usar");
+    }
+
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${carta.nombre}`);
+      ganar();
     }
   }
 
@@ -731,7 +759,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     cartaEliminar.remove();
-    console.log("🃏 Cartas de ataque en mano:", contarCartasAtaque());
+    console.log("Cartas de ataque en mano:", contarCartasAtaque());
   }
   console.log(boton);
 
@@ -743,6 +771,15 @@ window.addEventListener("DOMContentLoaded", () => {
     "../Cosas/fondo3.jpg",
     "../Cosas/fondo4.jpg",
   ];
+  let monstruosNormal = [
+    "--/Cosas/Monstruos/slime.png",
+    "--/Cosas/Monstruos/huevo.png",
+  ];
+  let monstruosElite = [
+    "--/Cosas/Monstruos/elite-1.png",
+    "--/Cosas/Monstruos/elite-2.png",
+  ];
+  let monstruosBoss = ["--/Cosas/Monstruos/boss.png"];
 
   function Fondos() {
     const random = Math.floor(Math.random() * imagenes.length);
@@ -750,6 +787,30 @@ window.addEventListener("DOMContentLoaded", () => {
     document.body.style.backgroundSize = "cover";
     document.body.style.backgroundRepeat = "no-repeat";
   }
+  function fotoMonstruos() {
+    const random = Math.floor(Math.random() * monstruosNormal.length);
+    fotoM.style.backgroundImage = `url(${monstruosNormal[random]})`;
+    fotoM.style.backgroundSize = "cover";
+    fotoM.style.backgroundRepeat = "no-repeat";
+  }
+  function fotoMonstruosElite() {
+    const random = Math.floor(Math.random() * monstruosElite.length);
+    fotoM.style.backgroundImage = `url(${monstruosElite[random]})`;
+    fotoM.style.backgroundSize = "cover";
+    fotoM.style.backgroundRepeat = "no-repeat";
+  }
+  if(monstruo.tipo === "normal"){
+    fotoMonstruos()
+  }
+  if(monstruo.tipo === "elite"){
+    fotoMonstruosElite()
+  }
+  if(monstruo.tipo === "boss"){
+    fotoM.style.backgroundImage = `url("../Cosas/Monstruos/boss")`;
+    fotoM.style.backgroundSize = "cover";
+    fotoM.style.backgroundRepeat = "no-repeat";
+  }
+  
   Fondos();
 
   function mostrarCartas() {

@@ -86,5 +86,13 @@
     "tipo": "ataque",
     "efecto": "Aplica 2 de vulnerabilidad al enemigo",
     "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
+  },
+  {
+    "nombre": "Espada pesada",
+    "daño": 15,
+    "elixir": 2,
+    "tipo": "ataque",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/ataque/Espada-pesada.png"
   }
 ]

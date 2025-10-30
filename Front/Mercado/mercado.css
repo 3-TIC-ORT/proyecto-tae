@@ -170,6 +170,14 @@ html{
     height: auto;
     object-fit: contain;
     margin: 0 auto;
+    cursor: var(--pointer);
+    position: relative;
+    bottom: 0;
+    transition: transform 1s ease, bottom 1s ease;
+  }
+  .card-img:hover{
+    transform: scale(1.4);
+    bottom: 2vh;
   }
 
   .mercader {
@@ -181,6 +189,7 @@ html{
   align-items: start !important;
   width: 90% !important;
   margin: 0 auto !important;
+  padding-top: 2rem;
 }
 
 

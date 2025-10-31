@@ -35,12 +35,8 @@ window.addEventListener("DOMContentLoaded", () => {
       vidamax: data.vidamax,
       mapa: data.mapa,
     };
-    if (typeof vidaPersonaje === "undefined") {
-      vidaPersonaje = data.vida;
-    }
-    info.vida = vidaPersonaje;
+    console.log(info);
     mostrar();
-    console.log(info.vida);
   });
   function mostrarReliquia() {
     cajaReliquias.innerHTML = "";
@@ -82,7 +78,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   function mostrar() {
-    vida.textContent = `PV: ${vidaPersonaje}/${info.vidamax}`;
+    vida.textContent = `PV: ${info.vida}/${info.vidamax}`;
     oro.textContent = `Oro: ${info.oro}`;
   }
 
@@ -103,7 +99,7 @@ window.addEventListener("DOMContentLoaded", () => {
     postEvent("fogata", {
       oro: info.oro,
       vida: info.vida,
-      vidamax: info.vidamax
+      vidamax: info.vidamax,
     });
     mostrar();
     mina.disabled = true;
@@ -118,25 +114,26 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   }
   function clickCama() {
-    console.log(vidaPersonaje);
-    if (vidaPersonaje < info.vidamax) {
-      vidaPersonaje = vidaPersonaje + vidaPersonaje * 0.3;
-      vidaPersonaje = Math.floor(vidaPersonaje);
-      info.vida = vidaPersonaje;
-      console.log(vidaPersonaje);
-      if (vidaPersonaje >= info.vidamax) {
-        console.log(vidaPersonaje);
-        vidaPersonaje = info.vidamax;
-        info.vida = vidaPersonaje;
-        console.log(vidaPersonaje);
+    console.log(info.vida);
+    if (info.vida < info.vidamax) {
+      info.vida = info.vida + info.vida * 0.3;
+      info.vida = Math.floor(info.vida);
+      info.vida = info.vida;
+      console.log(info.vida);
+      if (info.vida >= info.vidamax) {
+        console.log(info.vida);
+        info.vida = info.vidamax;
+        info.vida = info.vida;
+        console.log(info.vida);
       }
       postEvent("fogata", {
         oro: info.oro,
         vida: info.vida,
+        vidamax: info.vidamax,
       });
       cama.disabled = true;
       mina.disabled = true;
-      console.log(vidaPersonaje + "/" + info.vidamax);
+      console.log(info.vida + "/" + info.vidamax);
       mostrar();
 
       const nodoActual = sessionStorage.getItem("nodoGanado");

@@ -88,27 +88,10 @@
     "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
   },
   {
-    "nombre": "Espada pesada",
-    "daño": 15,
-    "elixir": 2,
-    "tipo": "ataque",
-    "efecto": null,
-    "ruta": "/Front/Cosas/cartas/ataque/Espada-pesada.png"
-  },
-  {
-    "nombre": "Promo 2027",
-    "daño": 10,
-    "elixir": 1,
-    "tipo": "ataque",
-    "efecto": "Roba 2 cartas",
-    "ruta": "/Front/Cosas/cartas/ataque/Promo-2027.png"
-  },
-  {
-    "nombre": "Ira",
-    "daño": 8,
+    "nombre": "Furia",
     "elixir": 0,
-    "tipo": "ataque",
-    "efecto": null,
-    "ruta": "/Front/Cosas/cartas/ataque/Ira.png"
+    "tipo": "apoyo",
+    "efecto": "Cada vez que juegas una carta de ataque, obtienes 3 puntos de defensa para la vida",
+    "ruta": "/Front/Cosas/cartas/apoyo/Furia.png"
   }
 ]

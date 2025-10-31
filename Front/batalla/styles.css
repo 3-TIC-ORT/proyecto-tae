@@ -160,11 +160,11 @@ html {
 }
 
 .caja-monstruo {
-  height: 20vh;
-  aspect-ratio: 1/1;
+  height: 30vh;
   display: flex;
   flex-direction: column;
   gap: 1vh;
+  align-items: center;
 }
 
 .caja-personaje {
@@ -179,9 +179,9 @@ html {
 .caja {
   display: flex;
   align-items: end;
-  gap: 55vh;
   position: relative;
-  top: 5vh;
+  justify-content: space-around;
+  width: 80%;
 }
 
 .cartaG {
@@ -293,6 +293,8 @@ html {
 .monstruo {
   width: 100%;
   height: 100%;
+  background-size: contain;
+  background-position: center;
 }
 
 .vida1 {
@@ -328,8 +330,8 @@ html {
   justify-content: center;
   align-items: center;
   position: absolute;
-  right: 5vw;
-  bottom: 23vh;
+  right: 3.5vw;
+  bottom: 18vh;
   z-index: 110;
 }
 .b:hover {
@@ -445,13 +447,14 @@ html {
   aspect-ratio: 1/1;
   border-radius: 100%;
   background-color: blueviolet;
+  border: solid .5rem gold;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 3vh;
   position: absolute;
-  bottom: 20vh;
-  left: 15vw;
+  bottom: 16vh;
+  left: 12vw;
 }
 .contenedor-recompensas {
   padding: 1.25rem;
@@ -494,7 +497,7 @@ html {
   align-items: center;
   cursor: var(--pointer);
 }
-#recompensa3{
+#recompensa3 {
   cursor: var(--pointer);
 }
 .fira-sans-extrabold {

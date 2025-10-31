@@ -26,7 +26,8 @@ window.addEventListener("DOMContentLoaded", () => {
   let lugarRecompensas = document.getElementById("lugarRecompensas");
   let fotoP = document.getElementById("personaje");
   let fotoM = document.getElementById("monstruo");
-  let contenedor = document.getElementById("container");
+  let contenedor = document.getElementById("caja");
+  let cajaMonstruo = document.getElementById("caja-monstruo");
   let mana = 3;
   let manaMax = 3;
   let cartaRobada = {};
@@ -61,17 +62,22 @@ window.addEventListener("DOMContentLoaded", () => {
     gananciaInicial = monstruo.recompenzas;
     ganancia = gananciaInicial;
     console.log("Recompensa:", ganancia);
-    if(monstruo.tipo === "normal"){
-    fotoMonstruos()
-  }
-  if(monstruo.tipo === "elite"){
-    fotoMonstruosElite()
-  }
-  if(monstruo.tipo === "boss"){
-    fotoM.style.backgroundImage = `url("../Cosas/Monstruos/boss")`;
-    fotoM.style.backgroundSize = "cover";
-    fotoM.style.backgroundRepeat = "no-repeat";
-  }
+    if (monstruo.tipo === "normal") {
+      fotoMonstruos();
+    }
+    if (monstruo.tipo === "elite") {
+      fotoMonstruosElite();
+    }
+    if (monstruo.tipo === "jefe") {
+      fotoM.style.backgroundImage = `url("../Cosas/Monstruos/boss.png")`;
+      fotoM.style.backgroundSize = "contain";
+      fotoM.style.backgroundRepeat = "no-repeat";
+      cajaMonstruo.style.height = "50vh";
+      cajaMonstruo.style.aspectRatio = "9/14";
+      cajaMonstruo.style.width = "none";
+      contenedor.style.top = "1.5vh"
+
+    }
   });
 
   getEvent("personaje", (data) => {
@@ -202,7 +208,6 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log("Reliquia activa:" + reliquiaInicial);
       if (info.vida < info.vidamax) {
         info.vida = Math.min(info.vida + 6, info.vidamax);
-        alert("Escudo de Hierro te cura 6 de vida");
         mostrar();
       }
     } else if (reliquiaInicial === "Trébol de Oro") {
@@ -800,17 +805,30 @@ window.addEventListener("DOMContentLoaded", () => {
   function fotoMonstruos() {
     const random = Math.floor(Math.random() * monstruosNormal.length);
     fotoM.style.backgroundImage = `url(${monstruosNormal[random]})`;
-    fotoM.style.backgroundSize = "cover";
+    fotoM.style.backgroundSize = "contain";
     fotoM.style.backgroundRepeat = "no-repeat";
+    cajaMonstruo.style.aspectRatio = "1";
+    cajaMonstruo.style.width = "none";
+    contenedor.style.top = "6vh";
   }
   function fotoMonstruosElite() {
     const random = Math.floor(Math.random() * monstruosElite.length);
     fotoM.style.backgroundImage = `url(${monstruosElite[random]})`;
-    fotoM.style.backgroundSize = "cover";
+    fotoM.style.backgroundSize = "contain";
     fotoM.style.backgroundRepeat = "no-repeat";
+    contenedor.style.top = "5.5vh";
+    console.log("monstruo N " + random);
+    if (random === 1) {
+      cajaMonstruo.style.aspectRatio = "none";
+      cajaMonstruo.style.width = "44%";
+    }
+    else{
+      cajaMonstruo.style.aspectRatio = "8/12";
+      cajaMonstruo.style.width = "none";
+      cajaMonstruo.style.height = "40vh";
+    }
   }
-  
-  
+
   Fondos();
 
   function mostrarCartas() {

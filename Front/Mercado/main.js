@@ -12,6 +12,10 @@ function cargarMercado() {
         mostrarReliquias(cartasRecibidas);
     });
 }
+function valorAleatorio() {
+    return Math.floor(Math.random() * (150 - 120 + 1)) + 120;
+  }
+  
 
 function dibujarCartas(cartas) {
     console.log("Cartas: ", cartas);
@@ -27,11 +31,12 @@ function dibujarCartas(cartas) {
         if (divCarta) {
             divCarta.innerHTML = `
                 <img class="card-img" src="${carta[1].ruta}"> </img>
-                <div class="card-costo">ORO: ${carta[1].elixir}</div>
+                <div class= "card-oro"> <p> <img class = "foto-oro" src= "../Cosas/image 43.png">:</img> ${valorAleatorio()} </p> </div>
             `;
         }
     });
 }
+
 
 function mostrarReliquias(mercado) {
   let reliquiasAMostrar = Object.entries(mercado)
@@ -43,6 +48,7 @@ function mostrarReliquias(mercado) {
       if (divReliquia) {
           divReliquia.innerHTML = `
               <img class="reliquia-img" src="${reliquia.ruta}">
+              <div class= "card-oro"> <p> <img class = "foto-oro" src= "../Cosas/image 43.png">:</img> ${valorAleatorio()} </p> </div>
           `;
       }
   });

@@ -28,6 +28,10 @@ window.addEventListener("DOMContentLoaded", () => {
   let fotoM = document.getElementById("monstruo");
   let contenedor = document.getElementById("caja");
   let cajaMonstruo = document.getElementById("caja-monstruo");
+  let siMutacion = false;
+  let siEstrategia = false;
+  let tengoEscudo = false;
+  let vul = 0;
   let mana = 3;
   let manaMax = 3;
   let cartaRobada = {};
@@ -225,6 +229,7 @@ window.addEventListener("DOMContentLoaded", () => {
   usoReliquia();
 
   function turnoRival() {
+    console.log("Mutacion: " + siMutacion);
     console.log(monstruo.tipo);
     if (monstruo.tipo === "normal") {
       const minNormal = 5;
@@ -241,6 +246,28 @@ window.addEventListener("DOMContentLoaded", () => {
       const maxBoss = 45;
       dañoRival = Math.floor(Math.random() * (maxBoss - minBoss + 1)) + minBoss;
     }
+    console.log("Daño sin cambiar " + dañoRival);
+    if (vul === 1) {
+      dañoRival = dañoRival * 0.9;
+    } else if (vul === 2) {
+      dañoRival = dañoRival * 0.8;
+    } else if (vul === 3) {
+      dañoRival = dañoRival * 0.7;
+    } else if (vul === 4) {
+      dañoRival = dañoRival * 0.6;
+    } else if (vul >= 5) {
+      dañoRival = dañoRival * 0.5;
+    }
+    if (vul < 5) {
+      console.log("Vulnerabilidad: " + vul * 10 + "%");
+    } else {
+      console.log("Vulnerabilidad: 50%");
+    }
+
+    if (siEstrategia) {
+      dañoRival = dañoRival * 0.75;
+    }
+    dañoRival = Math.floor(dañoRival);
     console.log("Daño del rival en este turno: " + dañoRival);
     alert(`El monstruo ataca por ${dañoRival} de daño!`);
 
@@ -278,6 +305,7 @@ window.addEventListener("DOMContentLoaded", () => {
     iniciarTurnoJugador();
   }
   function iniciarTurnoJugador() {
+    console.log(cantidadEscudo);
     turno = turno + 1;
     abajo.style.display = "flex";
     if (siEscudo === true) mostrarEscudoRestante();
@@ -445,76 +473,246 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (nombreCarta === "Golpe") {
       golpe(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Escudo") {
       escudo(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Garrote") {
       garrote(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Espada pesada") {
       cartaEspadaPesada(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Ira") {
       cartaIra(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Rafaga") {
       cartaRafaga(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Festin") {
       cartaFestin(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Ataque rapido") {
       cartaAtaqueRapido(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Chapiadora.com") {
       cartaChapiadora(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Promo 2027") {
       cartaPromo2027(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Coque") {
       cartaCoque(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Zip") {
       cartaZip(cartaActual);
-    } /*else if (nombreCarta === "Uppercut") {
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
+    } else if (nombreCarta === "Uppercut") {
       cartaUppercut(cartaActual);
-    }*/ else if (nombreCarta === "Trinchera") {
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
+    } else if (nombreCarta === "Trinchera") {
       cartaTrinchera(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Protector") {
       cartaProtector(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Heroico") {
       cartaHeroico(cartaActual);
-    } /*else if (nombreCarta === "Verdadero valor") {
-      cartaVerdaderoValor(cartaActual);
-    } else if (nombreCarta === "Segundo aliento") {
-      cartaSegundoAliento(cartaActual);
-    } else if (nombreCarta === "Defensa en placas") {
-      cartaDefensaEnPlacas(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
+    } else if (nombreCarta === "Auto-escudo") {
+      cartaAutoEscudo(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
+    } else if (nombreCarta === "Mutacion") {
+      cartaMutacion(cartaActual);
     } else if (nombreCarta === "Estrategia defensiva") {
       cartaEstrategiaDefensiva(cartaActual);
-    } /*else if (nombreCarta === "Copa") {
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
+    } /*else if (nombreCarta === "Verdadero valor") {
+      cartaVerdaderoValor(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
+    } else if (nombreCarta === "Segundo aliento") {
+      cartaSegundoAliento(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
+    } else if (nombreCarta === "Defensa en placas") {
+      cartaDefensaEnPlacas(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
+    } else if (nombreCarta === "Copa") {
       cartaCopa(cartaActual);
-    }*/ else if (nombreCarta === "Auto-escudo") {
-      cartaAutoEscudo(cartaActual);
-    } /*else if (nombreCarta === "Mutacion") {
-      cartaMutacion(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Espadas orbitantes") {
       cartaEspadasOrbitantes(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Flexionar") {
       cartaFlexionar(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Ritual") {
       cartaRitual(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Doble ataque") {
       cartaDobleAtaque(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Furia") {
       cartaFuria(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Columna suertuda") {
       cartaColumnaSuertuda(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Ataque ancestral") {
       cartaAtaqueAncestral(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Debilidad") {
       cartaDebilidad(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Barricada") {
       cartaBarricada(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Golpe de cuerpo") {
       cartaGolpeDeCuerpo(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Ignorar") {
       cartaIgnorar(cartaActual);
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
     } else if (nombreCarta === "Lamento penetrante") {
       cartaLamentoPenetrante(cartaActual);
-    }*/
-
+      if (siMutacion === true) {
+        cantidadEscudo += 1;
+        lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      }
+    }
+*/
     cartasmano = cartasmano.filter((c) => c !== cartaActual);
     sacarCarta();
   });
@@ -527,7 +725,7 @@ window.addEventListener("DOMContentLoaded", () => {
       sumarCarta();
     }
   }
-
+  // CARTAS ATAQUE
   function golpe(carta) {
     monstruo.vida -= carta.daño;
     if (monstruo.vida < 0) monstruo.vida = 0;
@@ -541,16 +739,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function escudo(carta) {
-    siEscudo = true;
-    cantidadEscudo += 5;
-    lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
-    mana -= carta.elixir;
-    cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push(carta);
-  }
-
   function garrote(carta) {
     monstruo.vida -= carta.daño;
     if (monstruo.vida < 0) monstruo.vida = 0;
@@ -558,6 +746,7 @@ window.addEventListener("DOMContentLoaded", () => {
     mana -= carta.elixir;
     cajaMana.textContent = mana + " / " + manaMax;
     //mazo.push(carta);
+    vul = vul + 2;
     console.log(carta.nombre);
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
@@ -682,218 +871,274 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
   function cartaZip(carta) {
-  monstruo.vida -= 5;
-  if (monstruo.vida < 0) monstruo.vida = 0;
-  vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
-  mana -= 2;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Zip");
-  console.log("turno" + turno);
-  if (monstruo.vida <= 0) {
-    console.log(`Rival matado por ${"Zip"}`);
-    ganar();
+    monstruo.vida -= 5;
+    if (monstruo.vida < 0) monstruo.vida = 0;
+    vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+    mana -= 2;
+    cajaMana.textContent = mana + " / " + manaMax;
+    mazo.push("Zip");
+    console.log("turno" + turno);
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${"Zip"}`);
+      ganar();
+    }
   }
-}
-function cartaTrinchera(carta) {
-  siEscudo = true;
-  cantidadEscudo *= 2;
-  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
-  mana -= 2;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Trinchera");
+  function cartaUppercut(carta) {
+    monstruo.vida -= 20;
+    if (monstruo.vida < 0) monstruo.vida = 0;
+    vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
+    mana -= 2;
+    cajaMana.textContent = mana + " / " + manaMax;
+    mazo.push("Uppercut");
+    vul = vul + 3;
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${"Uppercut"}`);
+      ganar();
+    }
+  }
+  //CARTAS DEFENSA
+  function escudo(carta) {
+    siEscudo = true;
+    cantidadEscudo += 5;
+    lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mana -= carta.elixir;
+    cajaMana.textContent = mana + " / " + manaMax;
+    mazo.push(carta);
+  }
+  function cartaTrinchera(carta) {
+    siEscudo = true;
+    cantidadEscudo *= 2;
+    lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mana -= 2;
+    cajaMana.textContent = mana + " / " + manaMax;
+    mazo.push("Trinchera");
 
-  if (monstruo.vida <= 0) {
-    console.log(`Rival matado por ${"Trinchera"}`);
-    ganar();
-  }}
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${"Trinchera"}`);
+      ganar();
+    }
+  }
   function cartaAutoEscudo(carta) {
-  if (cantidadEscudo === 0) cantidadEscudo += 11;
-  siEscudo = true;
-  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
-  mana -= 1;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Auto-escudo");
+    if (cantidadEscudo === 0) cantidadEscudo += 11;
+    else if (cantidadEscudo > 0) tengoEscudo = true;
+    siEscudo = true;
+    lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mana -= 1;
+    cajaMana.textContent = mana + " / " + manaMax;
+    mazo.push("Auto-escudo");
 
-  if (monstruo.vida <= 0) {
-    console.log(`Rival matado por ${"Auto-escudo"}`);
-    ganar();
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${"Auto-escudo"}`);
+      ganar();
+    }
   }
-}
-function cartaProtector(carta) {
-  siEscudo = true;
-  cantidadEscudo += 11;
-  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
-  mana -= 3;
-  cajaMana.textContent = mana + " / " + manaMax;
-  sumarCarta();
-  mazo.push("Protector");
+  function cartaProtector(carta) {
+    siEscudo = true;
+    cantidadEscudo += 11;
+    lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mana -= 3;
+    cajaMana.textContent = mana + " / " + manaMax;
+    sumarCarta();
+    mazo.push("Protector");
 
-  if (monstruo.vida <= 0) {
-    console.log(`Rival matado por ${"Protector"}`);
-    ganar();
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${"Protector"}`);
+      ganar();
+    }
   }
-}
 
-function cartaHeroico(carta) {
-  siEscudo = true;
-  cantidadEscudo += 30;
-  info.vida -= 6;
-  if (info.vida < 0) info.vida = 0;
-  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
-  mana -= 2;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Heroico");
+  function cartaHeroico(carta) {
+    siEscudo = true;
+    cantidadEscudo += 30;
+    info.vida -= 6;
+    if (info.vida < 0) info.vida = 0;
+    lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mana -= 2;
+    cajaMana.textContent = mana + " / " + manaMax;
+    mazo.push("Heroico");
 
-  if (monstruo.vida <= 0) {
-    console.log(`Rival matado por ${"Heroico"}`);
-    ganar();
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${"Heroico"}`);
+      ganar();
+    }
   }
-}
+  function cartaMutacion(carta) {
+    cantidadEscudo += 1;
+    siEscudo = true;
+    siMutacion = true;
+    lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mana -= 1;
+    cajaMana.textContent = mana + " / " + manaMax;
+    //mazo.push("Mutación");
 
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${"Mutación"}`);
+      ganar();
+    }
+  }
+  function cartaEstrategiaDefensiva(carta) {
+    siEscudo = true;
+    cantidadEscudo += 3;
+    lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mana -= 2;
+    siEstrategia = true;
+    cajaMana.textContent = mana + " / " + manaMax;
+    mazo.push("Estrategia defensiva");
+
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${"Estrategia defensiva"}`);
+      ganar();
+    }
+  }
 
   function sacarCarta() {
-    let cartaEliminar = event.target;
-    console.log(cartaEliminar.classList[0]);
-    if (cartaEliminar.classList[0] === "carta1") {
-      let carta2 = document.getElementsByClassName("carta2");
-      let carta3 = document.getElementsByClassName("carta3");
-      let carta4 = document.getElementsByClassName("carta4");
-      let carta5 = document.getElementsByClassName("carta5");
-      let carta6 = document.getElementsByClassName("carta6");
-      let carta7 = document.getElementsByClassName("carta7");
-      let carta8 = document.getElementsByClassName("carta8");
-      let carta9 = document.getElementsByClassName("carta9");
-      Array.from(carta2).forEach((element) => {
-        element.classList.remove("carta2");
-        element.classList.add("carta1");
-      });
-      Array.from(carta4).forEach((element) => {
-        element.classList.remove("carta4");
-        element.classList.add("carta2");
-      });
-      Array.from(carta6).forEach((element) => {
-        element.classList.remove("carta6");
-        element.classList.add("carta4");
-      });
-      Array.from(carta8).forEach((element) => {
-        element.classList.remove("carta8");
-        element.classList.add("carta6");
-      });
-    }
-    if (cartaEliminar.classList[0] === "carta2") {
-      let carta1 = document.getElementsByClassName("carta1");
-      let carta3 = document.getElementsByClassName("carta3");
-      let carta4 = document.getElementsByClassName("carta4");
-      let carta5 = document.getElementsByClassName("carta5");
-      let carta6 = document.getElementsByClassName("carta6");
-      let carta7 = document.getElementsByClassName("carta7");
-      let carta8 = document.getElementsByClassName("carta8");
-      let carta9 = document.getElementsByClassName("carta9");
-      Array.from(carta4).forEach((element) => {
-        element.classList.remove("carta4");
-        element.classList.add("carta2");
-      });
-      Array.from(carta6).forEach((element) => {
-        element.classList.remove("carta6");
-        element.classList.add("carta4");
-      });
-      Array.from(carta8).forEach((element) => {
-        element.classList.remove("carta8");
-        element.classList.add("carta6");
-      });
-    }
-    if (cartaEliminar.classList[0] === "carta3") {
-      let carta1 = document.getElementsByClassName("carta1");
-      let carta2 = document.getElementsByClassName("carta2");
-      let carta4 = document.getElementsByClassName("carta4");
-      let carta5 = document.getElementsByClassName("carta5");
-      let carta6 = document.getElementsByClassName("carta6");
-      let carta7 = document.getElementsByClassName("carta7");
-      let carta8 = document.getElementsByClassName("carta8");
-      let carta9 = document.getElementsByClassName("carta9");
-      Array.from(carta5).forEach((element) => {
-        element.classList.remove("carta5");
-        element.classList.add("carta3");
-      });
-      Array.from(carta7).forEach((element) => {
-        element.classList.remove("carta7");
-        element.classList.add("carta5");
-      });
-      Array.from(carta9).forEach((element) => {
-        element.classList.remove("carta9");
-        element.classList.add("carta7");
-      });
-    }
-    if (cartaEliminar.classList[0] === "carta4") {
-      let carta1 = document.getElementsByClassName("carta1");
-      let carta2 = document.getElementsByClassName("carta2");
-      let carta3 = document.getElementsByClassName("carta3");
-      let carta5 = document.getElementsByClassName("carta5");
-      let carta6 = document.getElementsByClassName("carta6");
-      let carta7 = document.getElementsByClassName("carta7");
-      let carta8 = document.getElementsByClassName("carta8");
-      let carta9 = document.getElementsByClassName("carta9");
-      Array.from(carta6).forEach((element) => {
-        element.classList.remove("carta6");
-        element.classList.add("carta4");
-      });
-      Array.from(carta8).forEach((element) => {
-        element.classList.remove("carta8");
-        element.classList.add("carta6");
-      });
-    }
-    if (cartaEliminar.classList[0] === "carta5") {
-      let carta1 = document.getElementsByClassName("carta1");
-      let carta2 = document.getElementsByClassName("carta2");
-      let carta3 = document.getElementsByClassName("carta3");
-      let carta4 = document.getElementsByClassName("carta4");
-      let carta6 = document.getElementsByClassName("carta6");
-      let carta7 = document.getElementsByClassName("carta7");
-      let carta8 = document.getElementsByClassName("carta8");
-      let carta9 = document.getElementsByClassName("carta9");
-      Array.from(carta7).forEach((element) => {
-        element.classList.remove("carta7");
-        element.classList.add("carta5");
-      });
-      Array.from(carta6).forEach((element) => {
-        element.classList.remove("carta9");
-        element.classList.add("carta7");
-      });
-    }
-    if (cartaEliminar.classList[0] === "carta6") {
-      let carta1 = document.getElementsByClassName("carta1");
-      let carta2 = document.getElementsByClassName("carta2");
-      let carta3 = document.getElementsByClassName("carta3");
-      let carta4 = document.getElementsByClassName("carta4");
-      let carta5 = document.getElementsByClassName("carta5");
-      let carta7 = document.getElementsByClassName("carta7");
-      let carta8 = document.getElementsByClassName("carta8");
-      let carta9 = document.getElementsByClassName("carta9");
-      Array.from(carta8).forEach((element) => {
-        element.classList.remove("carta8");
-        element.classList.add("carta6");
-      });
-    }
-    if (cartaEliminar.classList[0] === "carta7") {
-      let carta1 = document.getElementsByClassName("carta1");
-      let carta2 = document.getElementsByClassName("carta2");
-      let carta3 = document.getElementsByClassName("carta3");
-      let carta4 = document.getElementsByClassName("carta4");
-      let carta5 = document.getElementsByClassName("carta5");
-      let carta6 = document.getElementsByClassName("carta6");
-      let carta8 = document.getElementsByClassName("carta8");
-      let carta9 = document.getElementsByClassName("carta9");
-      Array.from(carta9).forEach((element) => {
-        element.classList.remove("carta9");
-        element.classList.add("carta7");
-      });
-    }
+    if (tengoEscudo === false) {
+      let cartaEliminar = event.target;
+      console.log(cartaEliminar.classList[0]);
+      if (cartaEliminar.classList[0] === "carta1") {
+        let carta2 = document.getElementsByClassName("carta2");
+        let carta3 = document.getElementsByClassName("carta3");
+        let carta4 = document.getElementsByClassName("carta4");
+        let carta5 = document.getElementsByClassName("carta5");
+        let carta6 = document.getElementsByClassName("carta6");
+        let carta7 = document.getElementsByClassName("carta7");
+        let carta8 = document.getElementsByClassName("carta8");
+        let carta9 = document.getElementsByClassName("carta9");
+        Array.from(carta2).forEach((element) => {
+          element.classList.remove("carta2");
+          element.classList.add("carta1");
+        });
+        Array.from(carta4).forEach((element) => {
+          element.classList.remove("carta4");
+          element.classList.add("carta2");
+        });
+        Array.from(carta6).forEach((element) => {
+          element.classList.remove("carta6");
+          element.classList.add("carta4");
+        });
+        Array.from(carta8).forEach((element) => {
+          element.classList.remove("carta8");
+          element.classList.add("carta6");
+        });
+      }
+      if (cartaEliminar.classList[0] === "carta2") {
+        let carta1 = document.getElementsByClassName("carta1");
+        let carta3 = document.getElementsByClassName("carta3");
+        let carta4 = document.getElementsByClassName("carta4");
+        let carta5 = document.getElementsByClassName("carta5");
+        let carta6 = document.getElementsByClassName("carta6");
+        let carta7 = document.getElementsByClassName("carta7");
+        let carta8 = document.getElementsByClassName("carta8");
+        let carta9 = document.getElementsByClassName("carta9");
+        Array.from(carta4).forEach((element) => {
+          element.classList.remove("carta4");
+          element.classList.add("carta2");
+        });
+        Array.from(carta6).forEach((element) => {
+          element.classList.remove("carta6");
+          element.classList.add("carta4");
+        });
+        Array.from(carta8).forEach((element) => {
+          element.classList.remove("carta8");
+          element.classList.add("carta6");
+        });
+      }
+      if (cartaEliminar.classList[0] === "carta3") {
+        let carta1 = document.getElementsByClassName("carta1");
+        let carta2 = document.getElementsByClassName("carta2");
+        let carta4 = document.getElementsByClassName("carta4");
+        let carta5 = document.getElementsByClassName("carta5");
+        let carta6 = document.getElementsByClassName("carta6");
+        let carta7 = document.getElementsByClassName("carta7");
+        let carta8 = document.getElementsByClassName("carta8");
+        let carta9 = document.getElementsByClassName("carta9");
+        Array.from(carta5).forEach((element) => {
+          element.classList.remove("carta5");
+          element.classList.add("carta3");
+        });
+        Array.from(carta7).forEach((element) => {
+          element.classList.remove("carta7");
+          element.classList.add("carta5");
+        });
+        Array.from(carta9).forEach((element) => {
+          element.classList.remove("carta9");
+          element.classList.add("carta7");
+        });
+      }
+      if (cartaEliminar.classList[0] === "carta4") {
+        let carta1 = document.getElementsByClassName("carta1");
+        let carta2 = document.getElementsByClassName("carta2");
+        let carta3 = document.getElementsByClassName("carta3");
+        let carta5 = document.getElementsByClassName("carta5");
+        let carta6 = document.getElementsByClassName("carta6");
+        let carta7 = document.getElementsByClassName("carta7");
+        let carta8 = document.getElementsByClassName("carta8");
+        let carta9 = document.getElementsByClassName("carta9");
+        Array.from(carta6).forEach((element) => {
+          element.classList.remove("carta6");
+          element.classList.add("carta4");
+        });
+        Array.from(carta8).forEach((element) => {
+          element.classList.remove("carta8");
+          element.classList.add("carta6");
+        });
+      }
+      if (cartaEliminar.classList[0] === "carta5") {
+        let carta1 = document.getElementsByClassName("carta1");
+        let carta2 = document.getElementsByClassName("carta2");
+        let carta3 = document.getElementsByClassName("carta3");
+        let carta4 = document.getElementsByClassName("carta4");
+        let carta6 = document.getElementsByClassName("carta6");
+        let carta7 = document.getElementsByClassName("carta7");
+        let carta8 = document.getElementsByClassName("carta8");
+        let carta9 = document.getElementsByClassName("carta9");
+        Array.from(carta7).forEach((element) => {
+          element.classList.remove("carta7");
+          element.classList.add("carta5");
+        });
+        Array.from(carta6).forEach((element) => {
+          element.classList.remove("carta9");
+          element.classList.add("carta7");
+        });
+      }
+      if (cartaEliminar.classList[0] === "carta6") {
+        let carta1 = document.getElementsByClassName("carta1");
+        let carta2 = document.getElementsByClassName("carta2");
+        let carta3 = document.getElementsByClassName("carta3");
+        let carta4 = document.getElementsByClassName("carta4");
+        let carta5 = document.getElementsByClassName("carta5");
+        let carta7 = document.getElementsByClassName("carta7");
+        let carta8 = document.getElementsByClassName("carta8");
+        let carta9 = document.getElementsByClassName("carta9");
+        Array.from(carta8).forEach((element) => {
+          element.classList.remove("carta8");
+          element.classList.add("carta6");
+        });
+      }
+      if (cartaEliminar.classList[0] === "carta7") {
+        let carta1 = document.getElementsByClassName("carta1");
+        let carta2 = document.getElementsByClassName("carta2");
+        let carta3 = document.getElementsByClassName("carta3");
+        let carta4 = document.getElementsByClassName("carta4");
+        let carta5 = document.getElementsByClassName("carta5");
+        let carta6 = document.getElementsByClassName("carta6");
+        let carta8 = document.getElementsByClassName("carta8");
+        let carta9 = document.getElementsByClassName("carta9");
+        Array.from(carta9).forEach((element) => {
+          element.classList.remove("carta9");
+          element.classList.add("carta7");
+        });
+      }
 
-    cartaEliminar.remove();
+      cartaEliminar.remove();
+    }
   }
   console.log(boton);
 
@@ -1009,9 +1254,6 @@ function cartaHeroico(carta) {
   reliquias.addEventListener("click", mostrarReliquias);
 });
 
-
-
-/*
 function cartaUppercut() {
   monstruo.vida -= 20;
   if (monstruo.vida < 0) monstruo.vida = 0;
@@ -1019,15 +1261,12 @@ function cartaUppercut() {
   mana -= 2;
   cajaMana.textContent = mana + " / " + manaMax;
   mazo.push("Uppercut");
-  vul = vul + 3;
+  vul = vul += 3;
   if (monstruo.vida <= 0) {
     console.log(`Rival matado por ${"Uppercut"}`);
     ganar();
   }
-}*/
-
-
-
+}
 
 /*function cartaVerdaderoValor() {
   mana -= 1;
@@ -1068,21 +1307,6 @@ function cartaDefensaEnPlacas() {
   }
 }
 
-function cartaEstrategiaDefensiva() {
-  siEscudo = true;
-  cantidadEscudo += 3;
-  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
-  mana -= 2;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Estrategia defensiva");
-
-  if (monstruo.vida <= 0) {
-    console.log(`Rival matado por ${"Estrategia defensiva"}`);
-    ganar();
-  }
-}
-
 function cartaCopa() {
   siEscudo = true;
   cantidadEscudo += 3;
@@ -1098,23 +1322,7 @@ function cartaCopa() {
   }
 }*/
 
-
-
-/*function cartaMutacion() {
-  cantidadEscudo += 1;
-  siEscudo = true;
-  lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-  vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
-  mana -= 1;
-  cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Mutación");
-
-  if (monstruo.vida <= 0) {
-    console.log(`Rival matado por ${"Mutación"}`);
-    ganar();
-  }
-}
-
+/*
 function cartaEspadasOrbitantes() {
   siEscudo = true;
   cantidadEscudo += 10;

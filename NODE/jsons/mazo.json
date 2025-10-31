@@ -96,44 +96,12 @@
     "ruta": "/Front/Cosas/cartas/ataque/Ataque-rápido.png"
   },
   {
-    "nombre": "Promo 2027",
-    "daño": 10,
-    "elixir": 1,
-    "tipo": "ataque",
-    "efecto": "Roba 2 cartas",
-    "ruta": "/Front/Cosas/cartas/ataque/Promo-2027.png"
-  },
-  {
-    "nombre": "Choque",
+    "nombre": "Garrote",
     "daño": 14,
-    "elixir": 0,
-    "tipo": "ataque",
-    "efecto": "Si solo tienes cartas de ataque en tu mano, ataca con 14 de daño",
-    "ruta": "/Front/Cosas/cartas/ataque/Choque.png"
-  },
-  {
-    "nombre": "Choque",
-    "daño": 14,
-    "elixir": 0,
-    "tipo": "ataque",
-    "efecto": "Si solo tienes cartas de ataque en tu mano, ataca con 14 de daño",
-    "ruta": "/Front/Cosas/cartas/ataque/Choque.png"
-  },
-  {
-    "nombre": "Zip",
-    "daño": 5,
     "elixir": 2,
     "tipo": "ataque",
-    "efecto": "Saltea el turno del contrincante",
-    "ruta": "/Front/Cosas/cartas/ataque/Zip.png"
-  },
-  {
-    "nombre": "Protector",
-    "bloqueo": 11,
-    "elixir": 2,
-    "tipo": "defensa",
-    "efecto": "Roba una carta",
-    "ruta": "/Front/Cosas/cartas/defensa/Protector.png"
+    "efecto": "Aplica 2 de vulnerabilidad al enemigo",
+    "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
   },
   {
     "nombre": "Heroico",
@@ -144,11 +112,59 @@
     "ruta": "/Front/Cosas/cartas/defensa/Heroico.png"
   },
   {
-    "nombre": "Auto-escudo",
-    "bloqueo": 11,
+    "nombre": "Mutacion",
+    "bloqueo": 1,
     "elixir": 1,
     "tipo": "defensa",
-    "efecto": "Si no tienes escudo, te da 11 de escudo",
-    "ruta": "/Front/Cosas/cartas/defensa/Auto-escudo.png"
+    "efecto": "Cada vez que la juegas, mejora +1 de bloqueo",
+    "ruta": "/Front/Cosas/cartas/defensa/Mutación.png"
+  },
+  {
+    "nombre": "Ataque rapido",
+    "daño": 9,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": "Roba una carta",
+    "ruta": "/Front/Cosas/cartas/ataque/Ataque-rápido.png"
+  },
+  {
+    "nombre": "Espada pesada",
+    "daño": 15,
+    "elixir": 2,
+    "tipo": "ataque",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/ataque/Espada-pesada.png"
+  },
+  {
+    "nombre": "Uppercut",
+    "daño": 20,
+    "elixir": 2,
+    "tipo": "ataque",
+    "efecto": "El enemigo gana 3 de vulnerabilidad",
+    "ruta": "/Front/Cosas/cartas/ataque/Uppercut.png"
+  },
+  {
+    "nombre": "Heroico",
+    "bloqueo": null,
+    "elixir": 2,
+    "tipo": "defensa",
+    "efecto": "Pierdes 6 puntos de vida y ganas 30 de escudo",
+    "ruta": "/Front/Cosas/cartas/defensa/Heroico.png"
+  },
+  {
+    "nombre": "Festin",
+    "daño": 15,
+    "elixir": 2,
+    "tipo": "ataque",
+    "efecto": "Si mata un enemigo, gana 3 puntos de vida",
+    "ruta": "/Front/Cosas/cartas/ataque/Festín.png"
+  },
+  {
+    "nombre": "Mutacion",
+    "bloqueo": 1,
+    "elixir": 1,
+    "tipo": "defensa",
+    "efecto": "Cada vez que la juegas, mejora +1 de bloqueo",
+    "ruta": "/Front/Cosas/cartas/defensa/Mutación.png"
   }
 ]

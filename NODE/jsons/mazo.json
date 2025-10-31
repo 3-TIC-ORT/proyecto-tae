@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [
   {
     "nombre": "Golpe",
@@ -95,8 +94,21 @@
     "tipo": "ataque",
     "efecto": null,
     "ruta": "/Front/Cosas/cartas/ataque/Espada-pesada.png"
+  },
+  {
+    "nombre": "Promo 2027",
+    "daño": 10,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": "Roba 2 cartas",
+    "ruta": "/Front/Cosas/cartas/ataque/Promo-2027.png"
+  },
+  {
+    "nombre": "Ira",
+    "daño": 8,
+    "elixir": 0,
+    "tipo": "ataque",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/ataque/Ira.png"
   }
 ]
-=======
-[]
->>>>>>> b9fe0b038b50d5b9502ead95ade8ac6844baed70

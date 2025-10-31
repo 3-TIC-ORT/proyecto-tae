@@ -60,7 +60,18 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(monstruo.vida);
     gananciaInicial = monstruo.recompenzas;
     ganancia = gananciaInicial;
-    console.log("Recompenza:", ganancia);
+    console.log("Recompensa:", ganancia);
+    if(monstruo.tipo === "normal"){
+    fotoMonstruos()
+  }
+  if(monstruo.tipo === "elite"){
+    fotoMonstruosElite()
+  }
+  if(monstruo.tipo === "boss"){
+    fotoM.style.backgroundImage = `url("../Cosas/Monstruos/boss")`;
+    fotoM.style.backgroundSize = "cover";
+    fotoM.style.backgroundRepeat = "no-repeat";
+  }
   });
 
   getEvent("personaje", (data) => {
@@ -772,14 +783,13 @@ window.addEventListener("DOMContentLoaded", () => {
     "../Cosas/fondo4.jpg",
   ];
   let monstruosNormal = [
-    "--/Cosas/Monstruos/slime.png",
-    "--/Cosas/Monstruos/huevo.png",
+    "../Cosas/Monstruos/slime.png",
+    "../Cosas/Monstruos/huevo.png",
   ];
   let monstruosElite = [
-    "--/Cosas/Monstruos/elite-1.png",
-    "--/Cosas/Monstruos/elite-2.png",
+    "../Cosas/Monstruos/elite-1.png",
+    "../Cosas/Monstruos/elite-2.png",
   ];
-  let monstruosBoss = ["--/Cosas/Monstruos/boss.png"];
 
   function Fondos() {
     const random = Math.floor(Math.random() * imagenes.length);
@@ -799,17 +809,7 @@ window.addEventListener("DOMContentLoaded", () => {
     fotoM.style.backgroundSize = "cover";
     fotoM.style.backgroundRepeat = "no-repeat";
   }
-  if(monstruo.tipo === "normal"){
-    fotoMonstruos()
-  }
-  if(monstruo.tipo === "elite"){
-    fotoMonstruosElite()
-  }
-  if(monstruo.tipo === "boss"){
-    fotoM.style.backgroundImage = `url("../Cosas/Monstruos/boss")`;
-    fotoM.style.backgroundSize = "cover";
-    fotoM.style.backgroundRepeat = "no-repeat";
-  }
+  
   
   Fondos();
 

@@ -103,6 +103,7 @@ window.addEventListener("DOMContentLoaded", () => {
     postEvent("fogata", {
       oro: info.oro,
       vida: info.vida,
+      vidamax: info.vidamax
     });
     mostrar();
     mina.disabled = true;

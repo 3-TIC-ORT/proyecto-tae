@@ -88,10 +88,11 @@
     "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
   },
   {
-    "nombre": "Furia",
-    "elixir": 0,
-    "tipo": "apoyo",
-    "efecto": "Cada vez que juegas una carta de ataque, obtienes 3 puntos de defensa para la vida",
-    "ruta": "/Front/Cosas/cartas/apoyo/Furia.png"
+    "nombre": "Garrote",
+    "daño": 14,
+    "elixir": 2,
+    "tipo": "ataque",
+    "efecto": "Aplica 2 de vulnerabilidad al enemigo",
+    "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
   }
 ]

@@ -272,6 +272,14 @@ window.addEventListener("DOMContentLoaded", () => {
       h1.textContent = "The Magician";
       h1.style.color = "black";
       h1.style.fontSize = "12rem";
+      h1.style.backgroundImage = "url('../Cosas/meteorite-or-fire-ball-illustration-png_1-removebg-preview.png')";
+
+      document
+        .querySelectorAll(".nodo")
+        .forEach((n) => n.classList.add("nodoMago"));
+         document.body.classList.add("mago-background-global");
+        let containerMapa = document.getElementById("container-mapa");
+    containerMapa.classList.add("mago-imagen-container");
     } else if (personaje === "jon") {
       h1.textContent = "The Lawyer";
       h1.style.fontSize = "13rem";
@@ -287,12 +295,15 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if (personaje === "pick") {
       h1.style.fontFamily = "EB Garamond, serif";
       h1.textContent = "The Pickpocket";
-      h1.style.color = "black";
+      h1.style.color = "white";
       h1.style.fontSize = "6rem";
-      h1.style.backgroundImage = "url('../Cosas/bala.png')";
+      h1.style.backgroundImage = "url('../Cosas/pickpocket.png')";
       document
         .querySelectorAll(".nodo")
         .forEach((n) => n.classList.add("nodoPick"));
+        document.body.classList.add("pick-background-global");
+        let containerMapa = document.getElementById("container-mapa");
+    containerMapa.classList.add("pick-imagen-container");
     } else {
       h1.textContent = personaje;
     }

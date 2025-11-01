@@ -76,11 +76,43 @@ h1{
   border-radius: 50%;
 }
 .nodoPick{
-  background-image: url("../Cosas/balar.png");
+  background-image: url("../Cosas/image\ 50.png");
    background-position: center;
   background-repeat: no-repeat;
-  background-position-x: right;
   background-size: contain;
+  color: white;
+
+}
+
+body.pick-background-global {
+    background-color: #49311C;;
+    background-image: none; 
+}
+
+#container-mapa.pick-imagen-container {
+    background-image: url("../Cosas/download_1-removebg-preview.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.nodoMago{
+  background-image: url("../Cosas/image\ 36.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
+
+body.mago-background-global {
+    background-color: #FF0000;
+    background-image: none; 
+}
+#container-mapa.mago-imagen-container {
+    background-image: url("../Cosas/image\ 24.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 /* Tipos de nodo */
 .nodo.M {

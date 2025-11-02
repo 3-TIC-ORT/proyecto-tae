@@ -3,6 +3,7 @@ import { generarmapa } from './NODE/mapa/generarmapa.js';
 import {cartas_mercado,cartas_eleccion} from "./NODE/mercado.js"
 import fs from "fs";
 import { verestado } from "./NODE/ia/ia.js";
+import { reliquia_elite } from "./NODE/funciondereliquia.js";
 let info = {
     personaje:{
       personaje:"",
@@ -27,6 +28,15 @@ subscribeGETEvent("mapa",(query) => {
   info.mapa = mapa
   return mapa
 });
+
+subscribePOSTEvent("reinicio-reliquias",(data)=>{
+  if(data){
+let reliquias = JSON.parse(fs.readFileSync("./NODE/jsons/reliquias.json"))
+let adquiridas = JSON.parse(fs.readFileSync("./NODE/jsons/reliquiauso.json"))
+reliquias = reliquias.concat(adquiridas)
+fs.writeFileSync("./NODE/jsons/reliquias.json",JSON.stringify(reliquias,null,2),"utf-8")
+  }
+})
 
 subscribeGETEvent("personaje", () => {
   console.log("GET solicitado. Personaje actual: ", info.personaje.personaje);
@@ -233,5 +243,7 @@ subscribePOSTEvent("final-turno",(data) => {
   infoia.condicionhabilidad = data.habilidad
   infoia.cartasjugadas = data.cartasjugadas
 })
+
+subscribeGETEvent("reliquia-elite",reliquia_elite)
 
 startServer();

@@ -133,7 +133,6 @@ h2 {
   padding: 0;
   font-family: "Galdeano", sans-serif;
   height: 80vh;
-  background-image: url(../Cosas/fondo-fogata.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -151,7 +150,7 @@ h2 {
   height: fit-content;
 }
 .cama {
-  height: 33vh;
+  height: 28vh;
   aspect-ratio: 6/5;
   cursor: var(--pointer);
   background-image: url(../Cosas/cama.png);
@@ -164,14 +163,14 @@ h2 {
   margin-right: 7vw;
 }
 .mina {
+ height: 28vh;
+  aspect-ratio: 6/5;
+  cursor: var(--pointer);
   background-image: url(../Cosas/mina.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 20px;
-  height: 33vh;
-  aspect-ratio: 6/5;
-  cursor: var(--pointer);
 }
 #p {
   margin-top: 0.5rem;
@@ -253,10 +252,16 @@ h2 {
 }
 body {
   max-width: 100vw;
-  max-height: 100vh;
+  height: 100vh;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+}
+#section{
+  height: 100%;
+}
+.batalla{
+  height: 85%;
 }
 .letra {
   font-family: "Inknut Antiqua", serif;
@@ -268,8 +273,7 @@ html {
   cursor: var(--mouse);
 }
 .arriba {
-  min-height: 15%;
-  max-height: 20%;
+  height: 15%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -282,7 +286,7 @@ html {
   font-weight: 400;
   font-style: normal;
   margin: 0;
-  font-size: 8vh;
+  font-size: 6vh;
   cursor: var(--pointer);
 }
 .izq {
@@ -297,23 +301,23 @@ html {
   align-items: center;
   justify-content: center;
   background-repeat: no-repeat;
-  background-size: 15%;
+  background-size: 10%;
   background-position-y: center;
-  font-size: 4vh;
+  font-size: 3vh;
   color: red;
   width: 23%;
-  height: 5vh;
+  height: 3vh;
 }
 .oro {
-  font-size: 4vh;
+  font-size: 3vh;
   width: 20%;
-  height: 5vh;
+  height: 3vh;
   background-image: url("../Cosas/image\ 42.png");
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-size: 15%;
+  background-size: 10%;
 }
 .der {
   display: flex;
@@ -324,7 +328,7 @@ html {
   align-items: center;
 }
 .icon {
-  height: 7vh;
+  height: 6vh;
   aspect-ratio: 1/1;
   cursor: var(--pointer);
 }
@@ -346,7 +350,7 @@ html {
   align-items: end;
 }
 .circulo-reliquias {
-  height: 3.6vh;
+  height: 3vh;
   aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: lightgray;
@@ -357,7 +361,7 @@ html {
   justify-content: center;
 }
 .circulo-cartas {
-  height: 3.6vh;
+  height: 3vh;
   aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: lightgray;
@@ -368,7 +372,7 @@ html {
   justify-content: center;
 }
 .container {
-  min-height: 50vh;
+  height: 100%;
   width: 100vw;
   display: flex;
   justify-content: flex-start;

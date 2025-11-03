@@ -75,6 +75,7 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(`Monstruo ${tipoMonstruo} recibido:`, monstruo);
     mostrar();
     console.log(monstruo.vida);
+    monstruo.vida = 1;
     gananciaInicial = monstruo.recompenzas;
     ganancia = gananciaInicial;
     console.log("Recompensa:", ganancia);
@@ -130,6 +131,11 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(reliquiaInicial);
     usoReliquia();
   });
+  /*
+  getEvent("reliquia-elite", (data) => {
+    reliquiaElite = data;
+    console.log("Reliquia de Elite ganada: " + reliquiaElite);
+  });*/
 
   getEvent("mazo", (data) => {
     mazo = data;
@@ -165,7 +171,6 @@ window.addEventListener("DOMContentLoaded", () => {
   function ganar() {
     if (batallaFinalizada) return;
     batallaFinalizada = true;
-    alert("ganaste");
     info.oro += ganancia;
     mostrar();
     postEvent("fogata", {
@@ -919,7 +924,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function golpe(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
     if (fuerza <= 0) {
-      carta.daño = carta.daño;
+      carta.daño = 100;
     } else if (fuerza === 1) {
       carta.daño *= 1.1;
     } else if (fuerza === 2) {
@@ -958,7 +963,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if (!dobleSiguiente) mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push(carta);
+    mazorobar.push(carta);
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
       ganar();
@@ -1005,7 +1010,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    //mazo.push(carta);
+    //mazorobar.push(carta);
     vul = vul + 2;
     console.log(carta.nombre);
     if (monstruo.vida <= 0) {
@@ -1053,7 +1058,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Espada pesada");
+    mazorobar.push("Espada pesada");
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
       ganar();
@@ -1100,7 +1105,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Ira");
+    mazorobar.push("Ira");
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
       ganar();
@@ -1147,7 +1152,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Rafaga");
+    mazorobar.push("Rafaga");
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
       ganar();
@@ -1197,7 +1202,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    //mazo.push("Festin");
+    //mazorobar.push("Festin");
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
       ganar();
@@ -1244,7 +1249,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Ataque rápido");
+    mazorobar.push("Ataque rápido");
 
     if (!noRobarMas) {
       sumarCarta();
@@ -1297,7 +1302,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    //mazo.push("Chapiadora.com");
+    //mazorobar.push("Chapiadora.com");
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
       ganar();
@@ -1344,7 +1349,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Promo 2027");
+    mazorobar.push("Promo 2027");
     if (!noRobarMas) {
       sumarCarta();
       sumarCarta();
@@ -1397,7 +1402,7 @@ window.addEventListener("DOMContentLoaded", () => {
       } else mana -= carta.elixir;
       //mana = Math.floor(mana);
       cajaMana.textContent = mana + " / " + manaMax;
-      mazo.push("Coque");
+      mazorobar.push("Coque");
     } else {
       alert("Tienes mas de la mitad de tu vida");
       return;
@@ -1449,7 +1454,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Zip");
+    mazorobar.push("Zip");
     console.log("turno" + turno);
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Zip"}`);
@@ -1496,7 +1501,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Uppercut");
+    mazorobar.push("Uppercut");
     vul = vul + 3;
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Uppercut"}`);
@@ -1522,7 +1527,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push(carta);
+    mazorobar.push(carta);
   }
   function cartaTrinchera(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
@@ -1542,7 +1547,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Trinchera");
+    mazorobar.push("Trinchera");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Trinchera"}`);
@@ -1570,7 +1575,7 @@ window.addEventListener("DOMContentLoaded", () => {
     vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Auto-escudo");
+    mazorobar.push("Auto-escudo");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Auto-escudo"}`);
@@ -1599,7 +1604,7 @@ window.addEventListener("DOMContentLoaded", () => {
       sumarCarta();
       noRobarMas = false;
     }
-    mazo.push("Protector");
+    mazorobar.push("Protector");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Protector"}`);
@@ -1627,7 +1632,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Heroico");
+    mazorobar.push("Heroico");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Heroico"}`);
@@ -1647,7 +1652,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    //mazo.push("Mutación");
+    //mazorobar.push("Mutación");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Mutación"}`);
@@ -1673,7 +1678,7 @@ window.addEventListener("DOMContentLoaded", () => {
     siEstrategia = true;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Estrategia defensiva");
+    mazorobar.push("Estrategia defensiva");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Estrategia defensiva"}`);
@@ -1702,7 +1707,7 @@ window.addEventListener("DOMContentLoaded", () => {
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
     console.log(cantidadEscudo);
-    mazo.push("Defensa en placas");
+    mazorobar.push("Defensa en placas");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Defensa en placas"}`);
@@ -1728,7 +1733,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Copa");
+    mazorobar.push("Copa");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Copa"}`);
@@ -1755,7 +1760,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Espadas orbitantes");
+    mazorobar.push("Espadas orbitantes");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Espadas orbitantes"}`);
@@ -1772,7 +1777,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Flexionar");
+    mazorobar.push("Flexionar");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Flexionar"}`);
@@ -1790,7 +1795,7 @@ window.addEventListener("DOMContentLoaded", () => {
     vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Ritual");
+    mazorobar.push("Ritual");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Ritual"}`);
@@ -1805,7 +1810,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Doble ataque");
+    mazorobar.push("Doble ataque");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Doble ataque"}`);
@@ -1820,7 +1825,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Furia");
+    mazorobar.push("Furia");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Furia"}`);
@@ -1843,7 +1848,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Columna suertuda");
+    mazorobar.push("Columna suertuda");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Columna suertuda"}`);
@@ -1859,7 +1864,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Ataque ancestral");
+    mazorobar.push("Ataque ancestral");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Ataque ancestral"}`);
@@ -1875,7 +1880,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Debilidad");
+    mazorobar.push("Debilidad");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Debilidad"}`);
@@ -1891,7 +1896,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Barricada");
+    mazorobar.push("Barricada");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Barricada"}`);
@@ -1909,7 +1914,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Golpe de cuerpo");
+    mazorobar.push("Golpe de cuerpo");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Golpe de cuerpo"}`);
@@ -1936,7 +1941,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Ignorar");
+    mazorobar.push("Ignorar");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Ignorar"}`);
@@ -1952,7 +1957,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.textContent = mana + " / " + manaMax;
-    mazo.push("Lamento penetrante");
+    mazorobar.push("Lamento penetrante");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Lamento penetrante"}`);
@@ -2217,7 +2222,20 @@ window.addEventListener("DOMContentLoaded", () => {
     fotoM.style.backgroundImage = "url(../Cosas/cofre-abierto.png)";
   }
   function cofre() {
+    cajaMonstruo.style.height = "40vh";
+    cajaMonstruo.style.aspectRatio = "1/1";
+    cajaMonstruo.style.position = "relative";
+    cajaMonstruo.style.top = "15vh";
     fotoM.style.backgroundImage = "url(../Cosas/cofre.png)";
+    fotoM.style.backgroundSize = "67%";
+    vidaP.style.display = "none";
+    vidaM.style.display = "none";
+    setTimeout(() => {
+      fotoM.style.backgroundSize = "contain";
+      cajaMonstruo.style.top = "6.5vh";
+      cajaMonstruo.style.left = "5vh";
+      fotoM.style.backgroundImage = "url(../Cosas/cofre-abierto.png)";
+    }, 800);
     fotoM.addEventListener("click", abrirCofre);
   }
 
@@ -2245,7 +2263,7 @@ window.addEventListener("DOMContentLoaded", () => {
 function cartaVerdaderoValor() {
   mana -= 1;
   cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Verdadero valor");
+  mazorobar.push("Verdadero valor");
 
   if (monstruo.vida <= 0) {
     console.log(`Rival matado por ${"Verdadero valor"}`);
@@ -2258,7 +2276,7 @@ function cartaSegundoAliento() {
   mana += 5 * noAtaque.length;
   if (mana > manaMax) mana = manaMax;
   cajaMana.textContent = mana + " / " + manaMax;
-  mazo.push("Segundo aliento");
+  mazorobar.push("Segundo aliento");
 
   if (monstruo.vida <= 0) {
     console.log(`Rival matado por ${"Segundo aliento"}`);

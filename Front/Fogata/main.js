@@ -14,6 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let atras2 = document.getElementById("atras2");
   let circCartas = document.getElementById("circulo-cartas");
   let circReliquias = document.getElementById("circulo-reliquias");
+  let container = document.getElementById("container");
   let vidaPersonaje;
   let reliquiaInicial = {};
   let reliquia = [];
@@ -37,6 +38,22 @@ window.addEventListener("DOMContentLoaded", () => {
     };
     console.log(info);
     mostrar();
+  });
+
+  getEvent("personaje", (data) => {
+    let personaje = data;
+
+    if (personaje === "mago") {
+      container.style.backgroundImage = "Url(../Cosas/fogata-mago.png)";
+    } else if (personaje === "jon") {
+      container.style.backgroundImage = "Url(../Cosas/fogata-lawyer.png)";
+    } else if (personaje === "bear") {
+      container.style.backgroundImage = "Url(../Cosas/fogata-bear.png)";
+    } else if (personaje === "pick") {
+      container.style.backgroundImage = "Url(../Cosas/fogata-pick.png)";
+    } else {
+      container.style.backgroundColor = "blue";
+    }
   });
   function mostrarReliquia() {
     cajaReliquias.innerHTML = "";

@@ -114,10 +114,17 @@
     "ruta": "/Front/Cosas/reliquias-iniciales/lanza-de-odin.png"
   },
   {
+<<<<<<< HEAD
     "nombre": "Báculo del Archimago",
     "efecto": "Incrementa tu maná máximo en 1",
     "obtencion": "Inicial",
     "ruta": "/Front/Cosas/reliquias-iniciales/baculo-del-archimago.png"
+=======
+    "nombre": "Escudo de Hierro",
+    "efecto": "Cada vez que termina el combate se cura 6 de vida",
+    "obtencion": "Inicial",
+    "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
+>>>>>>> 49ddbc7 (arreglos + cofre)
   },
   {
     "nombre": "Báculo del Archimago",
@@ -126,10 +133,29 @@
     "ruta": "/Front/Cosas/reliquias-iniciales/baculo-del-archimago.png"
   },
   {
+<<<<<<< HEAD
     "nombre": "Báculo del Archimago",
     "efecto": "Incrementa tu maná máximo en 1",
     "obtencion": "Inicial",
     "ruta": "/Front/Cosas/reliquias-iniciales/baculo-del-archimago.png"
+=======
+    "nombre": "Escudo de Hierro",
+    "efecto": "Cada vez que termina el combate se cura 6 de vida",
+    "obtencion": "Inicial",
+    "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
+  },
+  {
+    "nombre": "Escudo de Hierro",
+    "efecto": "Cada vez que termina el combate se cura 6 de vida",
+    "obtencion": "Inicial",
+    "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
+  },
+  {
+    "nombre": "Escudo de Hierro",
+    "efecto": "Cada vez que termina el combate se cura 6 de vida",
+    "obtencion": "Inicial",
+    "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
+>>>>>>> 49ddbc7 (arreglos + cofre)
   },
   {
     "nombre": "Báculo del Archimago",
@@ -138,6 +164,21 @@
     "ruta": "/Front/Cosas/reliquias-iniciales/baculo-del-archimago.png"
   },
   {
+<<<<<<< HEAD
+=======
+    "nombre": "Trébol de Oro",
+    "efecto": "Cada vez que termina un combate consigues dos veces más oro. También cada 5 ataques consigues 10 de oro",
+    "obtencion": "Inicial",
+    "ruta": "/Front/Cosas/reliquias-iniciales/trebol-de-oro.png"
+  },
+  {
+    "nombre": "Escudo de Hierro",
+    "efecto": "Cada vez que termina el combate se cura 6 de vida",
+    "obtencion": "Inicial",
+    "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
+  },
+  {
+>>>>>>> 49ddbc7 (arreglos + cofre)
     "nombre": "Báculo del Archimago",
     "efecto": "Incrementa tu maná máximo en 1",
     "obtencion": "Inicial",

@@ -86,23 +86,37 @@
     "tipo": "ataque",
     "efecto": "Aplica 2 de vulnerabilidad al enemigo",
     "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
-<<<<<<< HEAD
   },
   {
-    "nombre": "Defensa en placas",
-    "bloqueo": 5,
-    "elixir": 2,
-    "tipo": "defensa",
-    "efecto": "Ganas 5 de escudo durante los siguientes 3 turnos",
-    "ruta": "/Front/Cosas/cartas/defensa/Defensa-en-placas.png"
+    "nombre": "Ira",
+    "daño": 8,
+    "elixir": 0,
+    "tipo": "ataque",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/ataque/Ira.png"
   },
   {
-    "nombre": "Copa",
-    "bloqueo": 3,
+    "nombre": "Golpe de cuerpo",
+    "elixir": 0,
+    "tipo": "apoyo",
+    "efecto": "Inflige daño igual al bloqueo que tienes",
+    "ruta": "/Front/Cosas/cartas/apoyo/Golpe-de-cuerpo.png"
+  },
+  {
+    "nombre": "Uppercut",
+    "daño": 20,
     "elixir": 2,
-    "tipo": "defensa",
-    "efecto": "Las próximas 4 cartas de escudo ganan un 25% más de escudo",
-    "ruta": "/Front/Cosas/cartas/defensa/Copa.png"
+    "tipo": "ataque",
+    "efecto": "El enemigo gana 3 de vulnerabilidad",
+    "ruta": "/Front/Cosas/cartas/ataque/Uppercut.png"
+  },
+  {
+    "nombre": "Chapiadora.com",
+    "daño": 32,
+    "elixir": 3,
+    "tipo": "ataque",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/ataque/Chapiadora.com.png"
   },
   {
     "nombre": "Auto-escudo",
@@ -113,50 +127,6 @@
     "ruta": "/Front/Cosas/cartas/defensa/Auto-escudo.png"
   },
   {
-    "nombre": "Protector",
-    "bloqueo": 11,
-    "elixir": 2,
-    "tipo": "defensa",
-    "efecto": "Roba una carta",
-    "ruta": "/Front/Cosas/cartas/defensa/Protector.png"
-  },
-  {
-    "nombre": "Espadas orbitantes",
-    "bloqueo": 10,
-    "elixir": 2,
-    "tipo": "defensa",
-    "efecto": "Suma 10 de defensa este y el próximo turno",
-    "ruta": "/Front/Cosas/cartas/defensa/Espadas-orbitantes.png"
-  },
-  {
-    "nombre": "Columna suertuda",
-    "elixir": 0,
-    "tipo": "apoyo",
-    "efecto": "Robas 3 cartas, pero no puedes robar más cartas este turno",
-    "ruta": "/Front/Cosas/cartas/apoyo/Columna-suertuda.png"
-  },
-  {
-    "nombre": "Ignorar",
-    "elixir": 1,
-    "tipo": "apoyo",
-    "efecto": "Ganas 8 de escudo y robas una carta",
-    "ruta": "/Front/Cosas/cartas/apoyo/Ignorar.png"
-  },
-  {
-    "nombre": "Debilidad",
-    "elixir": 0,
-    "tipo": "apoyo",
-    "efecto": "Aplica 2 de vulnerabilidad a un enemigo",
-    "ruta": "/Front/Cosas/cartas/apoyo/Debilidad.png"
-  },
-  {
-    "nombre": "Ritual",
-    "elixir": 0,
-    "tipo": "apoyo",
-    "efecto": "Pierdes 6 de vida y ganas 2 de elixir",
-    "ruta": "/Front/Cosas/cartas/apoyo/Ritual.png"
-  },
-  {
     "nombre": "Barricada",
     "elixir": 1,
     "tipo": "apoyo",
@@ -164,33 +134,19 @@
     "ruta": "/Front/Cosas/cartas/apoyo/Barricada.png"
   },
   {
-    "nombre": "Lamento penetrante",
+    "nombre": "Ataque rapido",
+    "daño": 9,
     "elixir": 1,
-    "tipo": "apoyo",
-    "efecto": "Reduce el daño de los enemigos en 6",
-    "ruta": "/Front/Cosas/cartas/apoyo/Lamento-penetrante.png"
+    "tipo": "ataque",
+    "efecto": "Roba una carta",
+    "ruta": "/Front/Cosas/cartas/ataque/Ataque-rápido.png"
   },
   {
-    "nombre": "Flexionar",
-    "elixir": 0,
-    "tipo": "apoyo",
-    "efecto": "Ganas 2 de fuerza por este turno",
-    "ruta": "/Front/Cosas/cartas/apoyo/Flexionar.png"
-  },
-  {
-    "nombre": "Golpe de cuerpo",
-    "elixir": 0,
-    "tipo": "apoyo",
-    "efecto": "Inflige daño igual al bloqueo que tienes",
-    "ruta": "/Front/Cosas/cartas/apoyo/Golpe-de-cuerpo.png"
-  },
-  {
-    "nombre": "Doble ataque",
-    "elixir": 1,
-    "tipo": "apoyo",
-    "efecto": "La próxima carta se juega dos veces",
-    "ruta": "/Front/Cosas/cartas/apoyo/Doble-ataque.png"
-=======
->>>>>>> refs/remotes/origin/main
+    "nombre": "Trinchera",
+    "bloqueo": null,
+    "elixir": 2,
+    "tipo": "defensa",
+    "efecto": "Duplica tu bloqueo",
+    "ruta": "/Front/Cosas/cartas/defensa/Trinchera.png"
   }
 ]

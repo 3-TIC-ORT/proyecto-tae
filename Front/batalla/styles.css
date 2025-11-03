@@ -495,10 +495,6 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: var(--pointer);
-}
-#recompensa3 {
-  cursor: var(--pointer);
 }
 .fira-sans-extrabold {
   font-family: "Fira Sans", sans-serif;
@@ -599,7 +595,7 @@ html {
 }
 
 .carta-espadasOrbitantes {
-  background-image: url("../Cosas/cartas/defensa/espadas orbitantes.png");
+  background-image: url("../Cosas/cartas/defensa/espadas-orbitantes.png");
 }
 
 .carta-escudo {

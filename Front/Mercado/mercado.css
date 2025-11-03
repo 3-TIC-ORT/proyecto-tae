@@ -256,7 +256,7 @@ html{
 .tooltip-floating {
   position: absolute;
   z-index: 99999;
-  background-color: #1f2428; /* fondo oscuro */
+  background-color: #1f2428;
   color: #ffffff;
   border: 1px solid #b6b6b6;
   padding: 8px 10px;
@@ -269,19 +269,19 @@ html{
   line-height: 1.3;
   opacity: 0;
   transition: opacity 0.12s ease;
-  pointer-events: none; /* evita interferir con el mouse */
+  pointer-events: none;
 }
 
-/* Título del tooltip (nombre de la reliquia) */
+
 .tooltip-floating .tooltip-title {
-  color: #d6c25b; /* amarillo dorado */
+  color: #d6c25b;
   font-weight: 700;
   font-size: 0.95rem;
   margin-bottom: 6px;
   text-align: center;
 }
 
-/* Descripción o efecto */
+
 .tooltip-floating .tooltip-body {
   color: #f0f0f0;
   font-size: 0.85rem;
@@ -289,7 +289,7 @@ html{
   text-align: left;
 }
 
-/* Línea extra (por ejemplo, info de ruta o rareza) */
+
 .tooltip-floating .tooltip-meta {
   color: #cccccc;
   font-size: 0.7rem;

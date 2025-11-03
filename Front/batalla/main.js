@@ -27,9 +27,16 @@ window.addEventListener("DOMContentLoaded", () => {
   let fotoP = document.getElementById("personaje");
   let fotoM = document.getElementById("monstruo");
   let contenedor = document.getElementById("caja");
+  let eleccionReliquias = document.getElementsByClassName("reliquia");
+  let reliquia1 = document.getElementById("elegirReliquia1");
+  let reliquia2 = document.getElementById("elegirReliquia2");
+  let reliquia3 = document.getElementById("elegirReliquia3");
+  let reliquia4 = document.getElementById("elegirReliquia4");
+  let reliquia5 = document.getElementById("elegirReliquia5");
   let escudoQueda = false;
   let cajaMonstruo = document.getElementById("caja-monstruo");
   let fuerza = 0;
+  let sangrado = 0;
   let lamentoPenetrante = false;
   let furiaActiva = false;
   let dobleSiguiente = false;
@@ -75,7 +82,7 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(`Monstruo ${tipoMonstruo} recibido:`, monstruo);
     mostrar();
     console.log(monstruo.vida);
-    monstruo.vida = 1;
+    //monstruo.vida = 1;
     gananciaInicial = monstruo.recompenzas;
     ganancia = gananciaInicial;
     console.log("Recompensa:", ganancia);
@@ -195,6 +202,47 @@ window.addEventListener("DOMContentLoaded", () => {
       nuevaReliquia.classList.add("todas");
       nuevaReliquia.id = "reliquia" + i;
       nuevaReliquia.innerHTML = `<p>${reliquia[i].nombre}</p>`;
+
+      if (reliquia[i].nombre === "Vajra") {
+        nuevaReliquia.classList.add("reliquia-vajra");
+      } else if (reliquia[i].nombre === "Anchor") {
+        nuevaReliquia.classList.add("reliquia-anchor");
+      } else if (reliquia[i].nombre === "Bag of Preparation") {
+        nuevaReliquia.classList.add("reliquia-bag-of-preparation");
+      } else if (reliquia[i].nombre === "Lantern") {
+        nuevaReliquia.classList.add("reliquia-lantern");
+      } else if (reliquia[i].nombre === "Regal Pillow") {
+        nuevaReliquia.classList.add("reliquia-regal-pillow");
+      } else if (reliquia[i].nombre === "Roca Rúnica") {
+        nuevaReliquia.classList.add("reliquia-roca-runica");
+      } else if (reliquia[i].nombre === "Piedra Filosofal") {
+        nuevaReliquia.classList.add("reliquia-piedra-filosofal");
+      } else if (reliquia[i].nombre === "Salvia") {
+        nuevaReliquia.classList.add("reliquia-salvia");
+      } else if (reliquia[i].nombre === "Red star") {
+        nuevaReliquia.classList.add("reliquia-red-star");
+      } else if (reliquia[i].nombre === "Sombrero mágico") {
+        nuevaReliquia.classList.add("reliquia-sombrero-magico");
+      } else if (reliquia[i].nombre === "Sombrero constructor") {
+        nuevaReliquia.classList.add("reliquia-sombrero-constructor");
+      } else if (reliquia[i].nombre === "Escudo Clásico") {
+        nuevaReliquia.classList.add("reliquia-escudo-clasico");
+      } else if (reliquia[i].nombre === "Black Star") {
+        nuevaReliquia.classList.add("reliquia-black-star");
+      } else if (reliquia[i].nombre === "Caja de Devolución") {
+        nuevaReliquia.classList.add("reliquia-caja-de-devolucion");
+      } else if (reliquia[i].nombre === "Fortaleza") {
+        nuevaReliquia.classList.add("reliquia-fortaleza");
+      } else if (reliquia[i].nombre === "Escudo de Hierro") {
+        nuevaReliquia.classList.add("reliquia-escudo-de-hierro");
+      } else if (reliquia[i].nombre === "Trébol de Oro") {
+        nuevaReliquia.classList.add("reliquia-trebol-de-oro");
+      } else if (reliquia[i].nombre === "Báculo del Archimago") {
+        nuevaReliquia.classList.add("reliquia-baculo-del-archimago");
+      } else if (reliquia[i].nombre === "Lanza de odin") {
+        nuevaReliquia.classList.add("reliquia-lanza-de-odin");
+      }
+
       cajaReliquias.appendChild(nuevaReliquia);
     }
     circReliquias.textContent = reliquia.length;
@@ -207,6 +255,111 @@ window.addEventListener("DOMContentLoaded", () => {
       nuevaCarta.classList.add("cartaGC");
       nuevaCarta.id = "carta" + i;
       nuevaCarta.innerHTML = `<p>${mazo[i].nombre}</p>`;
+      if (mazo[i].nombre === "Golpe") {
+        nuevaCarta.classList.add("carta-golpe");
+      }
+      if (mazo[i].nombre === "Escudo") {
+        nuevaCarta.classList.add("carta-escudo");
+      }
+      if (mazo[i].nombre === "Garrote") {
+        nuevaCarta.classList.add("carta-garrote");
+      }
+      if (mazo[i].nombre === "Espada pesada") {
+        nuevaCarta.classList.add("carta-espadaPesada");
+      }
+      if (mazo[i].nombre === "Ira") {
+        nuevaCarta.classList.add("carta-ira");
+      }
+      if (mazo[i].nombre === "Rafaga") {
+        nuevaCarta.classList.add("carta-rafaga");
+      }
+      if (mazo[i].nombre === "Festin") {
+        nuevaCarta.classList.add("carta-festin");
+      }
+      if (mazo[i].nombre === "Ataque rapido") {
+        nuevaCarta.classList.add("carta-ataqueRapido");
+      }
+      if (mazo[i].nombre === "Chapiadora.com") {
+        nuevaCarta.classList.add("carta-chapiadora");
+      }
+      if (mazo[i].nombre === "Promo 2027") {
+        nuevaCarta.classList.add("carta-promo");
+      }
+      if (mazo[i].nombre === "Choque") {
+        nuevaCarta.classList.add("carta-choque");
+      }
+      if (mazo[i].nombre === "Zip") {
+        nuevaCarta.classList.add("carta-zip");
+      }
+      if (mazo[i].nombre === "Uppercut") {
+        nuevaCarta.classList.add("carta-uppercut");
+      }
+      if (mazo[i].nombre === "Trinchera") {
+        nuevaCarta.classList.add("carta-trinchera");
+      }
+      if (mazo[i].nombre === "Protector") {
+        nuevaCarta.classList.add("carta-protector");
+      }
+      if (mazo[i].nombre === "Heroico") {
+        nuevaCarta.classList.add("carta-heroico");
+      }
+      if (mazo[i].nombre === "Verdadero Valor") {
+        nuevaCarta.classList.add("carta-verdaderoValor");
+      }
+      if (mazo[i].nombre === "Segundo Aliento") {
+        nuevaCarta.classList.add("carta-segundoAliento");
+      }
+      if (mazo[i].nombre === "Defensa en placas") {
+        nuevaCarta.classList.add("carta-defensaEnPlacas");
+      }
+      if (mazo[i].nombre === "Estrategia defensiva") {
+        nuevaCarta.classList.add("carta-estrategiaDefensiva");
+      }
+      if (mazo[i].nombre === "Copa") {
+        nuevaCarta.classList.add("carta-copa");
+      }
+      if (mazo[i].nombre === "Auto-escudo") {
+        nuevaCarta.classList.add("carta-autoEscudo");
+      }
+      if (mazo[i].nombre === "Mutacion") {
+        nuevaCarta.classList.add("carta-mutacion");
+      }
+      if (mazo[i].nombre === "Espadas orbitantes") {
+        nuevaCarta.classList.add("carta-espadasOrbitantes");
+      }
+      if (mazo[i].nombre === "Flexionar") {
+        nuevaCarta.classList.add("carta-flexionar");
+      }
+      if (mazo[i].nombre === "Ritual") {
+        nuevaCarta.classList.add("carta-ritual");
+      }
+      if (mazo[i].nombre === "Doble ataque") {
+        nuevaCarta.classList.add("carta-dobleAtaque");
+      }
+      if (mazo[i].nombre === "Furia") {
+        nuevaCarta.classList.add("carta-furia");
+      }
+      if (mazo[i].nombre === "Columna Suertuda") {
+        nuevaCarta.classList.add("carta-columnaSuertuda");
+      }
+      if (mazo[i].nombre === "Ataque ancestral") {
+        nuevaCarta.classList.add("carta-ataqueAncestral");
+      }
+      if (mazo[i].nombre === "Debilidad") {
+        nuevaCarta.classList.add("carta-debilidad");
+      }
+      if (mazo[i].nombre === "Barricada") {
+        nuevaCarta.classList.add("carta-barricada");
+      }
+      if (mazo[i].nombre === "Golpe de cuerpo") {
+        nuevaCarta.classList.add("carta-golpeDeCuerpo");
+      }
+      if (mazo[i].nombre === "Ignorar") {
+        nuevaCarta.classList.add("carta-ignorar");
+      }
+      if (mazo[i].nombre === "Lamento penetrante") {
+        nuevaCarta.classList.add("carta-lamentoPenetrante");
+      }
       cajaCartas.appendChild(nuevaCarta);
     }
     circCartas.textContent = mazo.length;
@@ -244,7 +397,8 @@ window.addEventListener("DOMContentLoaded", () => {
       mana = 4;
       console.log(mana);
       console.log(manaMax);
-    } else if (reliquiaInicial === "Lanza de Odin") {
+    } else if (reliquiaInicial === "Lanza de odin") {
+      console.log("Reliquia activa:" + reliquiaInicial);
     }
   }
   usoReliquia();
@@ -352,6 +506,10 @@ window.addEventListener("DOMContentLoaded", () => {
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
       vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
       if (defensaPlacasTurno === 0) siDefensaPlacas = false;
+      if (sangrado > 0) {
+        monstruo.vida -= 3;
+        sangrado--;
+      }
     }
     if (siEspadasOrbitantes && espadasOrbitantesTurno > 0) {
       siEscudo = true;
@@ -915,7 +1073,7 @@ window.addEventListener("DOMContentLoaded", () => {
     abajo.innerHTML = "";
     contadorCartas = 1;
     mana = manaMax;
-    cajaMana.textContent = `${mana} / ${manaMax}`;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     for (let i = 0; i < 5; i++) {
       sumarCarta();
     }
@@ -923,8 +1081,16 @@ window.addEventListener("DOMContentLoaded", () => {
   // CARTAS ATAQUE
   function golpe(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    if (reliquiaInicial === "Lanza de Odin") {
+      // if (Math.random() < 2) {
+      if (sangrado <= 0) {
+        sangrado = 2;
+        carta.daño += 3;
+      }
+      // }
+    }
     if (fuerza <= 0) {
-      carta.daño = 100;
+      // carta.daño = 100;
     } else if (fuerza === 1) {
       carta.daño *= 1.1;
     } else if (fuerza === 2) {
@@ -962,7 +1128,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else if (!dobleSiguiente) mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push(carta);
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
@@ -1009,7 +1175,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     //mazorobar.push(carta);
     vul = vul + 2;
     console.log(carta.nombre);
@@ -1057,7 +1223,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Espada pesada");
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
@@ -1104,7 +1270,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Ira");
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
@@ -1151,7 +1317,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Rafaga");
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
@@ -1201,7 +1367,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     //mazorobar.push("Festin");
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
@@ -1248,7 +1414,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Ataque rápido");
 
     if (!noRobarMas) {
@@ -1301,7 +1467,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     //mazorobar.push("Chapiadora.com");
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
@@ -1348,7 +1514,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Promo 2027");
     if (!noRobarMas) {
       sumarCarta();
@@ -1401,7 +1567,7 @@ window.addEventListener("DOMContentLoaded", () => {
         mana -= carta.elixir * 0.5;
       } else mana -= carta.elixir;
       //mana = Math.floor(mana);
-      cajaMana.textContent = mana + " / " + manaMax;
+      cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
       mazorobar.push("Coque");
     } else {
       alert("Tienes mas de la mitad de tu vida");
@@ -1453,7 +1619,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Zip");
     console.log("turno" + turno);
     if (monstruo.vida <= 0) {
@@ -1500,7 +1666,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Uppercut");
     vul = vul + 3;
     if (monstruo.vida <= 0) {
@@ -1526,7 +1692,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push(carta);
   }
   function cartaTrinchera(carta) {
@@ -1546,7 +1712,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Trinchera");
 
     if (monstruo.vida <= 0) {
@@ -1574,7 +1740,7 @@ window.addEventListener("DOMContentLoaded", () => {
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
     vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Auto-escudo");
 
     if (monstruo.vida <= 0) {
@@ -1599,7 +1765,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     if (!noRobarMas) {
       sumarCarta();
       noRobarMas = false;
@@ -1631,7 +1797,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Heroico");
 
     if (monstruo.vida <= 0) {
@@ -1651,7 +1817,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     //mazorobar.push("Mutación");
 
     if (monstruo.vida <= 0) {
@@ -1677,7 +1843,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else mana -= carta.elixir;
     siEstrategia = true;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Estrategia defensiva");
 
     if (monstruo.vida <= 0) {
@@ -1705,7 +1871,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     console.log(cantidadEscudo);
     mazorobar.push("Defensa en placas");
 
@@ -1732,7 +1898,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Copa");
 
     if (monstruo.vida <= 0) {
@@ -1759,7 +1925,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Espadas orbitantes");
 
     if (monstruo.vida <= 0) {
@@ -1776,7 +1942,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Flexionar");
 
     if (monstruo.vida <= 0) {
@@ -1794,7 +1960,7 @@ window.addEventListener("DOMContentLoaded", () => {
     mana += 2;
     vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Ritual");
 
     if (monstruo.vida <= 0) {
@@ -1809,7 +1975,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Doble ataque");
 
     if (monstruo.vida <= 0) {
@@ -1824,7 +1990,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Furia");
 
     if (monstruo.vida <= 0) {
@@ -1847,7 +2013,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Columna suertuda");
 
     if (monstruo.vida <= 0) {
@@ -1863,7 +2029,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Ataque ancestral");
 
     if (monstruo.vida <= 0) {
@@ -1879,7 +2045,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Debilidad");
 
     if (monstruo.vida <= 0) {
@@ -1895,7 +2061,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Barricada");
 
     if (monstruo.vida <= 0) {
@@ -1913,7 +2079,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Golpe de cuerpo");
 
     if (monstruo.vida <= 0) {
@@ -1940,7 +2106,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Ignorar");
 
     if (monstruo.vida <= 0) {
@@ -1956,7 +2122,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
-    cajaMana.textContent = mana + " / " + manaMax;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Lamento penetrante");
 
     if (monstruo.vida <= 0) {
@@ -2218,9 +2384,6 @@ window.addEventListener("DOMContentLoaded", () => {
       recompensa3.addEventListener("click", irSeleccion);
     }
   }
-  function abrirCofre() {
-    fotoM.style.backgroundImage = "url(../Cosas/cofre-abierto.png)";
-  }
   function cofre() {
     cajaMonstruo.style.height = "40vh";
     cajaMonstruo.style.aspectRatio = "1/1";
@@ -2235,8 +2398,10 @@ window.addEventListener("DOMContentLoaded", () => {
       cajaMonstruo.style.top = "6.5vh";
       cajaMonstruo.style.left = "5vh";
       fotoM.style.backgroundImage = "url(../Cosas/cofre-abierto.png)";
+      Array.from(eleccionReliquias).forEach((r) => {
+        r.style.display = "block";
+      });
     }, 800);
-    fotoM.addEventListener("click", abrirCofre);
   }
 
   function volverBatalla() {
@@ -2257,12 +2422,134 @@ window.addEventListener("DOMContentLoaded", () => {
   atras2.addEventListener("click", volverBatalla);
   omitir.addEventListener("click", irSeleccion);
   reliquias.addEventListener("click", mostrarReliquias);
+
+  /*
+  function mostrarReliquiasS(mercado) {
+    let reliquiasAMostrar = Object.entries(mercado)
+      .filter(([key]) => key.startsWith("reliquia"))
+      .slice(0, 4);
+
+    reliquiasAMostrar.forEach(([key, reliquia], index) => {
+      let divReliquia = document.querySelector(`#reliquia${index + 1}`);
+      if (divReliquia) {
+        divReliquia.innerHTML = `
+                    <div class="reliquia-contenedor" 
+                         data-nombre="${escapeHtml(reliquia.nombre || "")}" 
+                         data-efecto="${escapeHtml(reliquia.efecto || "")}">
+                        <img class="reliquia-img" src="${
+                          reliquia.ruta
+                        }" alt="${escapeHtml(reliquia.nombre)}">
+                        <div class="card-oro">
+                            <img class="foto-oro" src="../Cosas/image 43.png" alt="oro">
+                            <span class="oro-texto">: ${valorAleatorio()}</span>
+                        </div>
+                    </div>
+                `;
+
+        const cont = divReliquia.querySelector(".reliquia-contenedor");
+
+        cont.addEventListener("mouseenter", (e) => {
+          showFloatingTooltipFromElement(cont);
+        });
+        cont.addEventListener("mouseleave", (e) => {
+          hideFloatingTooltip();
+        });
+      }
+    });
+  }
+
+  let __floatingTooltip = null;
+
+  function showFloatingTooltipFromElement(el) {
+    hideFloatingTooltip();
+
+    const nombre = el.dataset.nombre || "";
+    const efecto = el.dataset.efecto || "";
+    const ruta = el.dataset.ruta || "";
+
+    __floatingTooltip = document.createElement("div");
+    __floatingTooltip.className = "tooltip-floating";
+    __floatingTooltip.innerHTML = `
+            <div class="tooltip-title">${nombre}</div>
+            <div class="tooltip-body">${efecto}</div>
+            <div class="tooltip-meta"><small>${ruta}</small></div>
+        `;
+    document.body.appendChild(__floatingTooltip);
+
+    const rect = el.getBoundingClientRect();
+    const tooltipRect = __floatingTooltip.getBoundingClientRect();
+
+    const cardOro = el.querySelector(".card-oro");
+    let margin = 8;
+    if (cardOro) {
+      margin += cardOro.offsetHeight;
+    }
+
+    const top = window.scrollY + rect.bottom + margin;
+    let left =
+      window.scrollX + rect.left + rect.width / 2 - tooltipRect.width / 2;
+
+    const minLeft = window.scrollX + 8;
+    const maxLeft =
+      window.scrollX +
+      document.documentElement.clientWidth -
+      tooltipRect.width -
+      8;
+    left = Math.max(minLeft, Math.min(left, maxLeft));
+
+    __floatingTooltip.style.left = `${left}px`;
+    __floatingTooltip.style.top = `${top}px`;
+
+    requestAnimationFrame(() => {
+      __floatingTooltip.style.opacity = "1";
+    });
+  }
+
+  function moveFloatingTooltip(clientX, clientY) {
+    if (!__floatingTooltip) return;
+    const tooltipRect = __floatingTooltip.getBoundingClientRect();
+    let left = clientX + 12;
+    let top = clientY + 12;
+    left = Math.min(
+      left,
+      window.scrollX +
+        document.documentElement.clientWidth -
+        tooltipRect.width -
+        8
+    );
+    top = Math.min(
+      top,
+      window.scrollY +
+        document.documentElement.clientHeight -
+        tooltipRect.height -
+        8
+    );
+    __floatingTooltip.style.left = `${left}px`;
+    __floatingTooltip.style.top = `${top}px`;
+  }
+
+  function hideFloatingTooltip() {
+    if (!__floatingTooltip) return;
+    __floatingTooltip.remove();
+    __floatingTooltip = null;
+  }
+
+  function escapeHtml(str) {
+    if (str === undefined || str === null) return "";
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+*/
 });
 
 /*
 function cartaVerdaderoValor() {
   mana -= 1;
-  cajaMana.textContent = mana + " / " + manaMax;
+  cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
   mazorobar.push("Verdadero valor");
 
   if (monstruo.vida <= 0) {
@@ -2275,7 +2562,7 @@ function cartaSegundoAliento() {
   let noAtaque = cartasmano.filter(c => c.tipo !== "ataque");
   mana += 5 * noAtaque.length;
   if (mana > manaMax) mana = manaMax;
-  cajaMana.textContent = mana + " / " + manaMax;
+  cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
   mazorobar.push("Segundo aliento");
 
   if (monstruo.vida <= 0) {

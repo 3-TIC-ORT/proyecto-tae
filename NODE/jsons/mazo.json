@@ -88,10 +88,18 @@
     "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
   },
   {
-    "nombre": "Flexionar",
+    "nombre": "Estrategia defensiva",
+    "bloqueo": 3,
+    "elixir": 2,
+    "tipo": "defensa",
+    "efecto": "El ataque de tu rival baja un 25%",
+    "ruta": "/Front/Cosas/cartas/defensa/Estrategia-defensiva.png"
+  },
+  {
+    "nombre": "Debilidad",
     "elixir": 0,
     "tipo": "apoyo",
-    "efecto": "Ganas 2 de fuerza por este turno",
-    "ruta": "/Front/Cosas/cartas/apoyo/Flexionar.png"
+    "efecto": "Aplica 2 de vulnerabilidad a un enemigo",
+    "ruta": "/Front/Cosas/cartas/apoyo/Debilidad.png"
   }
 ]

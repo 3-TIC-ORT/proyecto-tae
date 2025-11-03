@@ -460,7 +460,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (cartaRobada.nombre === "Defensa en placas") {
       carta.classList.add("carta-defensaEnPlacas");
     }
-    if (cartaRobada.nombre === "Estrategia Defensiva") {
+    if (cartaRobada.nombre === "Estrategia defensiva") {
       carta.classList.add("carta-estrategiaDefensiva");
     }
     if (cartaRobada.nombre === "Copa") {

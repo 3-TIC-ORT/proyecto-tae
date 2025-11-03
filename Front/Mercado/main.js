@@ -2,15 +2,17 @@ window.addEventListener("DOMContentLoaded", () => {
     connect2Server();
     let avanzar1 = document.getElementById("avanzar");
     let oro = document.getElementById("oro");
-    let vida = document.getElementById("vida");
-    let mapa = document.getElementById("mapa");
-    let reliquias = document.getElementById("reliquias");
-    let cartas = document.getElementById("cartas");
-    let circCartas = document.getElementById("circulo-cartas");
-    let circReliquias = document.getElementById("circulo-reliquias");
-    let lugarReliquias = document.getElementById("LugarReliquias");
-    let atras = document.getElementById("atras");
-    let atras2 = document.getElementById("atras2");
+  let vida = document.getElementById("vida");
+  let mapa = document.getElementById("mapa");
+  let reliquias = document.getElementById("reliquias");
+  let cartas = document.getElementById("cartas");
+  let titulo = document.getElementById("titulo");
+  let cajaBatalla = document.getElementById("batalla");
+  let lugarReliquias = document.getElementById("LugarReliquias");
+  let atras = document.getElementById("atras");
+  let atras2 = document.getElementById("atras2");
+  let circCartas = document.getElementById("circulo-cartas");
+  let circReliquias = document.getElementById("circulo-reliquias");
 
     let info = {};
     let mazo = [];
@@ -31,29 +33,29 @@ window.addEventListener("DOMContentLoaded", () => {
         oro.textContent = `Oro: ${info.oro}`;
     }
 
-function mostrarReliquia() {
-    cajaReliquias.innerHTML = "";
-    for (let i = 0; i < reliquia.length; i++) {
-      let nuevaReliquia = document.createElement("div");
-      nuevaReliquia.classList.add("todas");
-      nuevaReliquia.id = "reliquia" + i;
-      nuevaReliquia.innerHTML = `<p>${reliquia[i].nombre}</p>`;
-      cajaReliquias.appendChild(nuevaReliquia);
+    function mostrarReliquia() {
+        cajaReliquias.innerHTML = "";
+        for (let i = 0; i < reliquia.length; i++) {
+            let nuevaReliquia = document.createElement("div");
+            nuevaReliquia.classList.add("todas");
+            nuevaReliquia.id = "reliquia" + i;
+            nuevaReliquia.innerHTML = `<p>${reliquia[i].nombre}</p>`;
+            cajaReliquias.appendChild(nuevaReliquia);
+        }
+        circReliquias.textContent = reliquia.length;
     }
-    circReliquias.textContent = reliquia.length;
-  }
 
-  function mostrarMazo() {
-    cajaCartas.innerHTML = "";
-    for (let i = 0; i < mazo.length; i++) {
-      let nuevaCarta = document.createElement("div");
-      nuevaCarta.classList.add("cartaGC");
-      nuevaCarta.id = "carta" + i;
-      nuevaCarta.innerHTML = `<p>${mazo[i].nombre}</p>`;
-      cajaCartas.appendChild(nuevaCarta);
+    function mostrarMazo() {
+        cajaCartas.innerHTML = "";
+        for (let i = 0; i < mazo.length; i++) {
+            let nuevaCarta = document.createElement("div");
+            nuevaCarta.classList.add("cartaGC");
+            nuevaCarta.id = "carta" + i;
+            nuevaCarta.innerHTML = `<p>${mazo[i].nombre}</p>`;
+            cajaCartas.appendChild(nuevaCarta);
+        }
+        circCartas.textContent = mazo.length;
     }
-    circCartas.textContent = mazo.length;
-  }
 
     getEvent("reliquia", (data) => {
         reliquia = data;
@@ -79,29 +81,33 @@ function mostrarReliquia() {
     }
 
     function mostrarCartas() {
-    LugarCartas.style.display = "block";
-    LugarCartas.style.backgroundColor = "black";
-    cajaBatalla.style.display = "none";
-    lugarReliquias.style.display = "none";
-    lugarReliquias.style.background = "none";
-  }
-
-  function mostrarReliquias() {
-    lugarReliquias.style.display = "block";
-    lugarReliquias.style.backgroundColor = "black";
-    cajaBatalla.style.display = "none";
-    LugarCartas.style.display = "none";
-    LugarCartas.style.background = "none";
-  }
-
-  function volverMercado() {
-        window.location.href = "../Mercado/Mercado.html";
+        LugarCartas.style.display = "block";
+        LugarCartas.style.backgroundColor = "black";
+        cajaBatalla.style.display = "none";
+        lugarReliquias.style.display = "none";
+        lugarReliquias.style.background = "none";
     }
 
+    function mostrarReliquiasS() {
+        lugarReliquias.style.display = "block";
+        lugarReliquias.style.backgroundColor = "black";
+        cajaBatalla.style.display = "none";
+        LugarCartas.style.display = "none";
+        LugarCartas.style.background = "none";
+    }
+
+    function volverBatalla() {
+        cajaBatalla.style.display = "block";
+        LugarCartas.style.display = "none";
+        LugarCartas.style.background = "none";
+        lugarReliquias.style.display = "none";
+        lugarReliquias.style.backgroundColor = "none";
+        window.scrollTo(0, 0);
+      }
+
     cartas.addEventListener("click", mostrarCartas);
-    reliquias.addEventListener("click", mostrarReliquias);
-    if(atras) atras.addEventListener("click", volverMercado);
-    if(atras2) atras2.addEventListener("click", volverMercado);
+    reliquias.addEventListener("click", mostrarReliquiasS);
+
     function cargarMercado() {
         console.log("Iniciando carga del mercado...");
         getEvent("mercado", (cartasRecibidas) => {
@@ -111,7 +117,7 @@ function mostrarReliquia() {
                 return;
             }
             dibujarCartas(cartasRecibidas);
-            
+
             mostrarReliquias(cartasRecibidas);
         });
     }
@@ -123,14 +129,14 @@ function mostrarReliquia() {
     function dibujarCartas(cartas) {
         console.log("Cartas: ", cartas);
         let cartasAMostrar = Object.entries(cartas).slice(0, 6);
-        console.log (cartasAMostrar);
+        console.log(cartasAMostrar);
 
         cartasAMostrar.forEach((carta, index) => {
-            let idDiv = `#carta${index + 1}`; 
+            let idDiv = `#carta${index + 1}`;
             let divCarta = document.querySelector(idDiv);
 
             console.log(carta[1])
-            
+
             if (divCarta) {
                 divCarta.innerHTML = `
                     <img class="card-img" src="${carta[1].ruta}"> </img>
@@ -195,7 +201,7 @@ function mostrarReliquia() {
 
         const cardOro = el.querySelector('.card-oro');
         let margin = 8;
-        if(cardOro) {
+        if (cardOro) {
             margin += cardOro.offsetHeight;
         }
 
@@ -248,4 +254,9 @@ function mostrarReliquia() {
     // Iniciamos todo
     cargarMercado();
     avanzar1.addEventListener("click", avanzar);
+    cartas.addEventListener("click", mostrarCartas);
+    atras.addEventListener("click", volverBatalla);
+    atras2.addEventListener("click", volverBatalla);
+    omitir.addEventListener("click", irSeleccion);
+    reliquias.addEventListener("click", mostrarReliquiasS);
 });

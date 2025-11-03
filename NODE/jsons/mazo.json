@@ -88,65 +88,10 @@
     "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
   },
   {
-    "nombre": "Ira",
-    "daño": 8,
-    "elixir": 0,
-    "tipo": "ataque",
-    "efecto": null,
-    "ruta": "/Front/Cosas/cartas/ataque/Ira.png"
-  },
-  {
-    "nombre": "Golpe de cuerpo",
+    "nombre": "Flexionar",
     "elixir": 0,
     "tipo": "apoyo",
-    "efecto": "Inflige daño igual al bloqueo que tienes",
-    "ruta": "/Front/Cosas/cartas/apoyo/Golpe-de-cuerpo.png"
-  },
-  {
-    "nombre": "Uppercut",
-    "daño": 20,
-    "elixir": 2,
-    "tipo": "ataque",
-    "efecto": "El enemigo gana 3 de vulnerabilidad",
-    "ruta": "/Front/Cosas/cartas/ataque/Uppercut.png"
-  },
-  {
-    "nombre": "Chapiadora.com",
-    "daño": 32,
-    "elixir": 3,
-    "tipo": "ataque",
-    "efecto": null,
-    "ruta": "/Front/Cosas/cartas/ataque/Chapiadora.com.png"
-  },
-  {
-    "nombre": "Auto-escudo",
-    "bloqueo": 11,
-    "elixir": 1,
-    "tipo": "defensa",
-    "efecto": "Si no tienes escudo, te da 11 de escudo",
-    "ruta": "/Front/Cosas/cartas/defensa/Auto-escudo.png"
-  },
-  {
-    "nombre": "Barricada",
-    "elixir": 1,
-    "tipo": "apoyo",
-    "efecto": "Hace que tu bloqueo no se desvanezca al final del turno",
-    "ruta": "/Front/Cosas/cartas/apoyo/Barricada.png"
-  },
-  {
-    "nombre": "Ataque rapido",
-    "daño": 9,
-    "elixir": 1,
-    "tipo": "ataque",
-    "efecto": "Roba una carta",
-    "ruta": "/Front/Cosas/cartas/ataque/Ataque-rápido.png"
-  },
-  {
-    "nombre": "Trinchera",
-    "bloqueo": null,
-    "elixir": 2,
-    "tipo": "defensa",
-    "efecto": "Duplica tu bloqueo",
-    "ruta": "/Front/Cosas/cartas/defensa/Trinchera.png"
+    "efecto": "Ganas 2 de fuerza por este turno",
+    "ruta": "/Front/Cosas/cartas/apoyo/Flexionar.png"
   }
 ]

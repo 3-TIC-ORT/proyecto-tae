@@ -1,8 +1,115 @@
-let avanzar1 = document.getElementById ("avanzar");
-connect2Server(); 
+connect2Server();
+
+window.addEventListener("DOMContentLoaded", () => {
+    let oro = document.getElementById("oro");
+    let vida = document.getElementById("vida");
+    let mapa = document.getElementById("mapa");
+    let reliquias = document.getElementById("reliquias");
+    let cartas = document.getElementById("cartas");
+    let circCartas = document.getElementById("circulo-cartas");
+    let circReliquias = document.getElementById("circulo-reliquias");
+    let avanzar1 = document.getElementById("avanzar");
+    let lugarReliquias = document.getElementById("LugarReliquias");
+    let atras = document.getElementById("atras");
+    let atras2 = document.getElementById("atras2");
+
+    let info = {};
+    let mazo = [];
+    let reliquia = [];
+
+    // Para mostrar vida y oro
+    getEvent("fogata", (data) => {
+        info = {
+            oro: data.oro,
+            vida: data.vida,
+            vidamax: data.vidamax,
+        };
+        mostrar();
+    });
+
+    function mostrar() {
+        vida.textContent = `PV: ${info.vida}/${info.vidamax}`;
+        oro.textContent = `Oro: ${info.oro}`;
+    }
+
+function mostrarReliquia() {
+    cajaReliquias.innerHTML = "";
+    for (let i = 0; i < reliquia.length; i++) {
+      let nuevaReliquia = document.createElement("div");
+      nuevaReliquia.classList.add("todas");
+      nuevaReliquia.id = "reliquia" + i;
+      nuevaReliquia.innerHTML = `<p>${reliquia[i].nombre}</p>`;
+      cajaReliquias.appendChild(nuevaReliquia);
+    }
+    circReliquias.textContent = reliquia.length;
+  }
+
+  function mostrarMazo() {
+    cajaCartas.innerHTML = "";
+    for (let i = 0; i < mazo.length; i++) {
+      let nuevaCarta = document.createElement("div");
+      nuevaCarta.classList.add("cartaGC");
+      nuevaCarta.id = "carta" + i;
+      nuevaCarta.innerHTML = `<p>${mazo[i].nombre}</p>`;
+      cajaCartas.appendChild(nuevaCarta);
+    }
+    circCartas.textContent = mazo.length;
+  }
+
+    getEvent("reliquia", (data) => {
+        reliquia = data;
+        circReliquias.textContent = reliquia.length;
+    });
+
+    getEvent("mazo", (data) => {
+        mazo = data;
+        circCartas.textContent = mazo.length;
+    });
+
+    function mostrar() {
+        vida.textContent = `PV: ${info.vida}/${info.vidamax}`;
+        oro.textContent = `Oro: ${info.oro}`;
+    }
+
+    function irReliquia() {
+        window.location.href = "../menu-reliquias/reliquias.html";
+    }
+
+    function irCarta() {
+        window.location.href = "../cartas/index.html";
+    }
+
+    function mostrarCartas() {
+    LugarCartas.style.display = "block";
+    LugarCartas.style.backgroundColor = "black";
+    cajaBatalla.style.display = "none";
+    lugarReliquias.style.display = "none";
+    lugarReliquias.style.background = "none";
+  }
+
+  function mostrarReliquias() {
+    lugarReliquias.style.display = "block";
+    lugarReliquias.style.backgroundColor = "black";
+    cajaBatalla.style.display = "none";
+    LugarCartas.style.display = "none";
+    LugarCartas.style.background = "none";
+  }
+
+  function volverMercado() {
+        window.location.href = "../Mercado/Mercado.html";
+    }
+
+    cartas.addEventListener("click", mostrarCartas);
+    reliquias.addEventListener("click", mostrarReliquias);
+    if(atras) atras.addEventListener("click", volverMercado);
+    if(atras2) atras2.addEventListener("click", volverMercado);
+});
+cargarMercado();
 
 function cargarMercado() {
+    console.log("Iniciando carga del mercado...");
     getEvent("mercado", (cartasRecibidas) => {
+        console.log("Respuesta del servidor recibida:", cartasRecibidas);
         if (!cartasRecibidas || cartasRecibidas.length === 0) {
             console.error("No se recibieron cartas válidas del backend.");
             return;
@@ -46,14 +153,103 @@ function mostrarReliquias(mercado) {
   reliquiasAMostrar.forEach(([key, reliquia], index) => {
       let divReliquia = document.querySelector(`#reliquia${index + 1}`);
       if (divReliquia) {
+          // Generamos HTML con data-attributes para el tooltip
           divReliquia.innerHTML = `
-              <img class="reliquia-img" src="${reliquia.ruta}">
-              <div class= "card-oro"> <p> <img class = "foto-oro" src= "../Cosas/image 43.png">:</img> ${valorAleatorio()} </p> </div>
+              <div class="reliquia-contenedor" 
+                   data-nombre="${escapeHtml(reliquia.nombre || '')}" 
+                   data-efecto="${escapeHtml(reliquia.efecto || '')}">
+                <img class="reliquia-img" src="${reliquia.ruta}" alt="${escapeHtml(reliquia.nombre)}">
+                <div class="card-oro">
+                  <img class="foto-oro" src="../Cosas/image 43.png" alt="oro">
+                  <span class="oro-texto">: ${valorAleatorio()}</span>
+                </div>
+              </div>
           `;
+
+          const cont = divReliquia.querySelector('.reliquia-contenedor');
+
+          cont.addEventListener('mouseenter', (e) => {
+            showFloatingTooltipFromElement(cont);
+          });
+          cont.addEventListener('mouseleave', (e) => {
+            hideFloatingTooltip();
+          });
       }
   });
 }
 
+let __floatingTooltip = null;
+
+function showFloatingTooltipFromElement(el) {
+  hideFloatingTooltip();
+
+  const nombre = el.dataset.nombre || '';
+  const efecto = el.dataset.efecto || '';
+  const ruta = el.dataset.ruta || '';
+
+  __floatingTooltip = document.createElement('div');
+  __floatingTooltip.className = 'tooltip-floating';
+  __floatingTooltip.innerHTML = `
+    <div class="tooltip-title">${nombre}</div>
+    <div class="tooltip-body">${efecto}</div>
+    <div class="tooltip-meta"><small>${ruta}</small></div>
+  `;
+  document.body.appendChild(__floatingTooltip);
+
+  const rect = el.getBoundingClientRect();
+  const tooltipRect = __floatingTooltip.getBoundingClientRect();
+
+  // fuerza tooltip debajo de la carta/reliquia, dejando espacio para card-oro
+  const cardOro = el.querySelector('.card-oro');
+  let margin = 8; // margen extra
+  if(cardOro) {
+    margin += cardOro.offsetHeight; // añade la altura del card-oro
+  }
+
+  const top = window.scrollY + rect.bottom + margin; // posición debajo
+  let left = window.scrollX + rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+
+  // limitar para que no se salga por los lados
+  const minLeft = window.scrollX + 8;
+  const maxLeft = window.scrollX + document.documentElement.clientWidth - tooltipRect.width - 8;
+  left = Math.max(minLeft, Math.min(left, maxLeft));
+
+  __floatingTooltip.style.left = `${left}px`;
+  __floatingTooltip.style.top = `${top}px`;
+
+  requestAnimationFrame(() => {
+    __floatingTooltip.style.opacity = '1';
+  });
+}
+
+function moveFloatingTooltip(clientX, clientY) {
+  if (!__floatingTooltip) return;
+  const tooltipRect = __floatingTooltip.getBoundingClientRect();
+  let left = clientX + 12;
+  let top = clientY + 12;
+  // evitar overflow
+  left = Math.min(left, window.scrollX + document.documentElement.clientWidth - tooltipRect.width - 8);
+  top = Math.min(top, window.scrollY + document.documentElement.clientHeight - tooltipRect.height - 8);
+  __floatingTooltip.style.left = `${left}px`;
+  __floatingTooltip.style.top = `${top}px`;
+}
+
+function hideFloatingTooltip() {
+  if (!__floatingTooltip) return;
+  __floatingTooltip.remove();
+  __floatingTooltip = null;
+}
+
+// escape simple para insertar en data-attributes
+function escapeHtml(str) {
+  if (str === undefined || str === null) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
 document.addEventListener('DOMContentLoaded', () => {
     cargarMercado(); 
 });

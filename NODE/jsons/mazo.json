@@ -86,6 +86,7 @@
     "tipo": "ataque",
     "efecto": "Aplica 2 de vulnerabilidad al enemigo",
     "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
+<<<<<<< HEAD
   },
   {
     "nombre": "Defensa en placas",
@@ -189,5 +190,7 @@
     "tipo": "apoyo",
     "efecto": "La próxima carta se juega dos veces",
     "ruta": "/Front/Cosas/cartas/apoyo/Doble-ataque.png"
+=======
+>>>>>>> refs/remotes/origin/main
   }
 ]

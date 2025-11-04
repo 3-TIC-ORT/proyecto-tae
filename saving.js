@@ -29,6 +29,8 @@ subscribeGETEvent("mapa",(query) => {
   return mapa
 });
 
+subscribeGETEvent("reliquia-elite",reliquia_elite)
+
 subscribeGETEvent("personaje", () => {
   console.log("GET solicitado. Personaje actual: ", info.personaje.personaje);
   return info.personaje.personaje;
@@ -122,6 +124,18 @@ subscribePOSTEvent("vaciar-mazo",(data)=>{
   return mazo;
   }
 });
+
+subscribePOSTEvent("reiniciar",(data)=>{
+  if(data){
+    let reliquias = JSON.parse(fs.readFileSync("./NODE/jsons/reliquias.json","utf-8"))
+    let adquiridas = JSON.parse(fs.readFileSync("./NODE/jsons/reliquiauso.json","utf-8"))
+    reliquias = reliquias.concat(adquiridas)
+    adquiridas = []
+    fs.writeFileSync("./NODE/jsons/reliquias.json", JSON.stringify(reliquias, null, 2), "utf-8");
+    fs.writeFileSync("./NODE/jsons/reliquiauso.json", JSON.stringify(adquiridas, null, 2), "utf-8");
+
+  }
+})
 
 subscribeGETEvent("reliquia",() => {
     let reliquias = JSON.parse(fs.readFileSync("./NODE/jsons/reliquiauso.json","utf-8"))
@@ -234,7 +248,5 @@ subscribePOSTEvent("final-turno",(data) => {
   infoia.condicionhabilidad = data.habilidad
   infoia.cartasjugadas = data.cartasjugadas
 })
-
-subscribeGETEvent("reliquia-elite",reliquia_elite)
 
 startServer();

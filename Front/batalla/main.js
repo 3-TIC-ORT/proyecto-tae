@@ -69,6 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let gananciaInicial = 0;
   let reliquiaInicial = {};
   let cartaElegida = {};
+  let reliquiaElite = [];
   let dañoRival;
   let escudoRival;
 
@@ -82,7 +83,7 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(`Monstruo ${tipoMonstruo} recibido:`, monstruo);
     mostrar();
     console.log(monstruo.vida);
-    //monstruo.vida = 1;
+    monstruo.vida = 1;
     gananciaInicial = monstruo.recompenzas;
     ganancia = gananciaInicial;
     console.log("Recompensa:", ganancia);
@@ -135,14 +136,14 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log("Reliquias recibidas:", reliquia);
     mostrarReliquia();
     reliquiaInicial = reliquia[0].nombre;
-    console.log(reliquiaInicial);
+    console.log("Reliquia Inicial: " + reliquiaInicial);
     usoReliquia();
   });
-  /*
+  
   getEvent("reliquia-elite", (data) => {
     reliquiaElite = data;
     console.log("Reliquia de Elite ganada: " + reliquiaElite);
-  });*/
+  });
 
   getEvent("mazo", (data) => {
     mazo = data;
@@ -2303,6 +2304,8 @@ window.addEventListener("DOMContentLoaded", () => {
     fotoM.style.backgroundImage = `url(${monstruosNormal[random]})`;
     fotoM.style.backgroundSize = "contain";
     fotoM.style.backgroundRepeat = "no-repeat";
+    fotoM.style.width = "65%";
+    fotoM.style.height = "65%";
     cajaMonstruo.style.aspectRatio = "1";
     cajaMonstruo.style.width = "none";
     contenedor.style.top = "6vh";
@@ -2312,7 +2315,7 @@ window.addEventListener("DOMContentLoaded", () => {
     fotoM.style.backgroundImage = `url(${monstruosElite[random]})`;
     fotoM.style.backgroundSize = "contain";
     fotoM.style.backgroundRepeat = "no-repeat";
-    contenedor.style.top = "5.5vh";
+    contenedor.style.bottom = "2vh";
     console.log("monstruo N " + random);
     if (random === 1) {
       cajaMonstruo.style.aspectRatio = "none";
@@ -2391,7 +2394,7 @@ window.addEventListener("DOMContentLoaded", () => {
     cajaMonstruo.style.top = "15vh";
     fotoM.style.backgroundImage = "url(../Cosas/cofre.png)";
     fotoM.style.backgroundSize = "67%";
-    vidaP.style.display = "none";
+    // vidaP.style.display = "none";
     vidaM.style.display = "none";
     setTimeout(() => {
       fotoM.style.backgroundSize = "contain";

@@ -145,7 +145,7 @@ html {
   width: 100vw;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
 }
 
 .abajo {
@@ -178,7 +178,7 @@ html {
 
 .caja {
   display: flex;
-  align-items: end;
+  align-items: baseline;
   position: relative;
   justify-content: space-around;
   width: 80%;
@@ -297,38 +297,37 @@ html {
   background-position: center;
 }
 .reliquia {
-  border: 2px solid black;
+  border: 2px solid red;
   aspect-ratio: 1;
   height: 7vh;
-  background-color: beige;
   cursor: var(--pointer);
   display: none;
 }
 #elegirReliquia1 {
   position: relative;
-  left: 15vw;
+  left: 50%;
 }
+
 #elegirReliquia2 {
   position: relative;
-  left: 5vw;
+  left: 18%;
 }
 #elegirReliquia3 {
   position: relative;
-  left: 17vw;
-  bottom: 3vh;
+  left: 53%;
+  bottom: 5%;
 }
 #elegirReliquia4 {
   position: relative;
-  left: 8vw;
-  bottom: 3vh;
+  left: 30%;
+  bottom: 5%;
 }
 #elegirReliquia5 {
   position: relative;
-  left: 20vw;
-  bottom: 8vh;
+  left: 59%;
+  bottom: 13%;
 }
-
-.vida1 {
+*/ .vida1 {
   height: 1.35vh;
   width: 100%;
   border-radius: 5px;
@@ -460,13 +459,13 @@ html {
 }
 
 .todas {
-  width: 25%;
+  width: 18%;
   aspect-ratio: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   display: inline-block;
-  margin: 4% 1%;
+  margin: 6% 7%;
   vertical-align: top;
   background-size: contain;
   background-position: center;

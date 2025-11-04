@@ -146,7 +146,6 @@ subscribeGETEvent("reliquia",() => {
 
 subscribePOSTEvent("agregar-reliquia", (data) => {
   console.log("POST recibido:", data);
-
   let reliquiasuso = JSON.parse(fs.readFileSync("./NODE/jsons/reliquiauso.json", "utf-8"));
   let reliquias = JSON.parse(fs.readFileSync("./NODE/jsons/reliquias.json", "utf-8"));
 
@@ -178,27 +177,27 @@ subscribePOSTEvent("personaje",(data) => {
   console.log("POST recibido:", data);
   info.personaje.personaje = data
   let reliquiasuso = JSON.parse(fs.readFileSync("./NODE/jsons/reliquiauso.json", "utf-8"));
-  let reliquias = JSON.parse(fs.readFileSync("./NODE/jsons/reliquias.json", "utf-8"))
+  let reliquias = JSON.parse(fs.readFileSync("./NODE/jsons/reliquiasiniciales.json", "utf-8"))
   if(data === "bear"){
-    reliquiasuso.push(reliquias[15])
+    reliquiasuso.push(reliquias[0])
     info.personaje.vidamax = 80
     info.personaje.vida = 80
     info.personaje.oro = 99
 }
   else if(data === "pick"){
-    reliquiasuso.push(reliquias[16])
+    reliquiasuso.push(reliquias[1])
     info.personaje.vidamax = 75
     info.personaje.vida = 75
     info.personaje.oro = 50
   }
   else if(data === "mago"){
-    reliquiasuso.push(reliquias[17])
+    reliquiasuso.push(reliquias[2])
     info.personaje.vidamax = 70
     info.personaje.vida = 70
     info.personaje.oro = 150
   }
   else if(data === "jon"){
-    info.personaje.reliquia_inicial = "reliquia jon"
+    reliquiasuso.push(reliquias[3])
     info.personaje.vidamax = 80
     info.personaje.vida = 80
     info.personaje.oro = 125

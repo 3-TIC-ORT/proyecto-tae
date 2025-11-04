@@ -33,6 +33,11 @@ window.addEventListener("DOMContentLoaded", () => {
   let reliquia3 = document.getElementById("elegirReliquia3");
   let reliquia4 = document.getElementById("elegirReliquia4");
   let reliquia5 = document.getElementById("elegirReliquia5");
+  let reliquiaJefe1 = {};
+  let reliquiaJefe2 = {};
+  let reliquiaJefe3 = {};
+  let reliquiaJefe4 = {};
+  let reliquiaJefe5 = {};
   let escudoQueda = false;
   let cajaMonstruo = document.getElementById("caja-monstruo");
   let fuerza = 0;
@@ -69,7 +74,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let gananciaInicial = 0;
   let reliquiaInicial = {};
   let cartaElegida = {};
-  let reliquiaElite = [];
+  let reliquiaElite = {};
   let dañoRival;
   let escudoRival;
 
@@ -138,11 +143,6 @@ window.addEventListener("DOMContentLoaded", () => {
     reliquiaInicial = reliquia[0].nombre;
     console.log("Reliquia Inicial: " + reliquiaInicial);
     usoReliquia();
-  });
-  
-  getEvent("reliquia-elite", (data) => {
-    reliquiaElite = data;
-    console.log("Reliquia de Elite ganada: " + reliquiaElite);
   });
 
   getEvent("mazo", (data) => {
@@ -2369,19 +2369,27 @@ window.addEventListener("DOMContentLoaded", () => {
       recompensa2.style.cursor = "var(--pointer)";
       recompensa2.addEventListener("click", irSeleccion);
     } else if (monstruo.tipo === "elite") {
-      for (let i = 1; i <= 3; i++) {
-        let contenedorRecompensa = document.getElementById(
-          "contenedorRecompensas"
-        );
-        let nuevaRecompensa = document.createElement("div");
-        nuevaRecompensa.classList.add("recompensa");
-        nuevaRecompensa.id = `recompensa${i}`;
+      getEvent("reliquia-elite", (data) => {
+        reliquiaElite = data.reliquia;
+        console.log("Reliquia de Elite ganada: ", reliquiaElite);
+      });
+      setTimeout(() => {
+        for (let i = 1; i <= 3; i++) {
+          let contenedorRecompensa = document.getElementById(
+            "contenedorRecompensas"
+          );
+          let nuevaRecompensa = document.createElement("div");
+          nuevaRecompensa.classList.add("recompensa");
+          nuevaRecompensa.id = `recompensa${i}`;
 
-        if (i === 1) nuevaRecompensa.textContent = `Oro: ${ganancia}`;
-        else if (i === 2) nuevaRecompensa.textContent = `Reliquia`;
-        else nuevaRecompensa.textContent = `Escoge una carta`;
-        contenedorRecompensa.appendChild(nuevaRecompensa);
-      }
+          if (i === 1) nuevaRecompensa.textContent = `Oro: ${ganancia}`;
+          else if (i === 2)
+            nuevaRecompensa.textContent = `${reliquiaElite.nombre}`;
+          else nuevaRecompensa.textContent = `Escoge una carta`;
+          contenedorRecompensa.appendChild(nuevaRecompensa);
+        }
+      }, 100);
+
       let recompensa3 = document.getElementById("recompensa3");
       recompensa3.style.cursor = "var(--pointer)";
       recompensa3.addEventListener("click", irSeleccion);
@@ -2404,6 +2412,11 @@ window.addEventListener("DOMContentLoaded", () => {
       Array.from(eleccionReliquias).forEach((r) => {
         r.style.display = "block";
       });
+      reliquiaJefe1 =  
+      reliquiaJefe2;
+      reliquiaJefe3;
+      reliquiaJefe4;
+      reliquiaJefe5;
     }, 800);
   }
 
@@ -2426,6 +2439,102 @@ window.addEventListener("DOMContentLoaded", () => {
   omitir.addEventListener("click", irSeleccion);
   reliquias.addEventListener("click", mostrarReliquias);
 
+  // === TOOLTIP FLOTANTE PARA RELIQUIAS (versión completa) ===
+
+// Variable global del tooltip activo
+let __floatingTooltip = null;
+
+// Activa tooltips para todas las reliquias mostradas
+function activarTooltipsReliquias() {
+  const reliquiasDivs = document.querySelectorAll("#cajaReliquias .todas");
+
+  reliquiasDivs.forEach((div, i) => {
+    const data = reliquia[i];
+    if (!data) return;
+
+    div.dataset.nombre = data.nombre || "";
+    div.dataset.efecto = data.efecto || "";
+    div.dataset.ruta = data.ruta || "";
+
+    div.addEventListener("mouseenter", () => showFloatingTooltipFromElement(div));
+    div.addEventListener("mousemove", (e) => moveFloatingTooltip(e.clientX, e.clientY));
+    div.addEventListener("mouseleave", hideFloatingTooltip);
+  });
+}
+
+// Crear y mostrar el tooltip
+function showFloatingTooltipFromElement(el) {
+  hideFloatingTooltip();
+
+  const nombre = el.dataset.nombre || "";
+  const efecto = el.dataset.efecto || "";
+  const ruta = el.dataset.ruta || "";
+
+  __floatingTooltip = document.createElement("div");
+  __floatingTooltip.className = "tooltip-floating";
+  __floatingTooltip.innerHTML = `
+    <div class="tooltip-header">
+      <div class="tooltip-title">${escapeHtml(nombre)}</div>
+    </div>
+    <div class="tooltip-body">${escapeHtml(efecto)}</div>
+  `;
+
+  document.body.appendChild(__floatingTooltip);
+  __floatingTooltip.style.opacity = "0";
+
+  const rect = el.getBoundingClientRect();
+  const top = window.scrollY + rect.bottom + 12;
+  const left = window.scrollX + rect.left + rect.width / 2;
+
+  __floatingTooltip.style.left = `${left}px`;
+  __floatingTooltip.style.top = `${top}px`;
+
+  requestAnimationFrame(() => {
+    __floatingTooltip.style.opacity = "1";
+  });
+}
+
+// Mueve el tooltip con el mouse
+function moveFloatingTooltip(clientX, clientY) {
+  if (!__floatingTooltip) return;
+  const tooltipRect = __floatingTooltip.getBoundingClientRect();
+  let left = clientX + 16;
+  let top = clientY + 16;
+  const maxLeft =
+    window.scrollX + document.documentElement.clientWidth - tooltipRect.width - 8;
+  const maxTop =
+    window.scrollY + document.documentElement.clientHeight - tooltipRect.height - 8;
+  __floatingTooltip.style.left = `${Math.min(left, maxLeft)}px`;
+  __floatingTooltip.style.top = `${Math.min(top, maxTop)}px`;
+}
+
+// Oculta el tooltip
+function hideFloatingTooltip() {
+  if (!__floatingTooltip) return;
+  __floatingTooltip.remove();
+  __floatingTooltip = null;
+}
+
+// Escapar HTML para evitar errores o inyección
+function escapeHtml(str) {
+  if (str === undefined || str === null) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+// Llama automáticamente después de renderizar reliquias
+const oldMostrarReliquia = mostrarReliquia;
+mostrarReliquia = function () {
+  oldMostrarReliquia();
+  setTimeout(activarTooltipsReliquias, 100); // espera un instante a que se inserten en el DOM
+};
+
+
+
   /*
   function mostrarReliquiasS(mercado) {
     let reliquiasAMostrar = Object.entries(mercado)
@@ -2433,7 +2542,7 @@ window.addEventListener("DOMContentLoaded", () => {
       .slice(0, 4);
 
     reliquiasAMostrar.forEach(([key, reliquia], index) => {
-      let divReliquia = document.querySelector(`#reliquia${index + 1}`);
+      let divReliquia = document.querySelector(`#reliquia${}`);
       if (divReliquia) {
         divReliquia.innerHTML = `
                     <div class="reliquia-contenedor" 

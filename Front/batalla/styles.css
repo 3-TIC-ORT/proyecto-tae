@@ -805,3 +805,31 @@ html {
   opacity: 0.8;
   text-align: right;
 }
+.tooltip-floating {
+  position: absolute;
+  background: rgba(0,0,0,0.85);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  max-width: 240px;
+  font-family: "Inknut Antiqua", serif;
+  z-index: 9999;
+}
+
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.tooltip-img {
+  width: 36px;
+  height: 36px;
+  margin-right: 8px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+

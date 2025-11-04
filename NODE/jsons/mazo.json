@@ -88,18 +88,27 @@
     "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
   },
   {
-    "nombre": "Espada pesada",
-    "daño": 15,
-    "elixir": 2,
+    "nombre": "Promo 2027",
+    "daño": 10,
+    "elixir": 1,
     "tipo": "ataque",
-    "efecto": null,
-    "ruta": "/Front/Cosas/cartas/ataque/Espada-pesada.png"
+    "efecto": "Roba 2 cartas",
+    "ruta": "/Front/Cosas/cartas/ataque/Promo-2027.png"
   },
   {
-    "nombre": "Flexionar",
-    "elixir": 0,
-    "tipo": "apoyo",
-    "efecto": "Ganas 2 de fuerza por este turno",
-    "ruta": "/Front/Cosas/cartas/apoyo/Flexionar.png"
+    "nombre": "Uppercut",
+    "daño": 20,
+    "elixir": 2,
+    "tipo": "ataque",
+    "efecto": "El enemigo gana 3 de vulnerabilidad",
+    "ruta": "/Front/Cosas/cartas/ataque/Uppercut.png"
+  },
+  {
+    "nombre": "Escudo",
+    "bloqueo": 6,
+    "elixir": 1,
+    "tipo": "defensa",
+    "efecto": null,
+    "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
   }
 ]

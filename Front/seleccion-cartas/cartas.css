@@ -1,186 +1,232 @@
 :root {
-    --mouse: url("../Cosas/mouse.png") 16 16, auto;
-    --pointer: url("../Cosas/pointer.png") 16 16, pointer;
-  }
-.container{
-    display: flex;
-    gap: 5rem;
-    padding: 1rem ;
+  --mouse: url("../Cosas/mouse.png") 16 16, auto;
+  --pointer: url("../Cosas/pointer.png") 16 16, pointer;
 }
-.cartas{
-    border: 0.5vh black dashed;
-    width: 33%;
-    aspect-ratio: 1/1;
-    transition:   0.2s ease-out;
-    cursor: var(--pointer);
-    font-size: 0;
-    background-size: cover;
-    background-position-x: center;
-    background-position-y: top;
-    background-repeat: no-repeat;
-    
+.containerSeleccion {
+  display: flex;
+  justify-content: center;
+  margin-top: 7vh;
+  gap: 5rem;
+  padding: 1rem;
 }
-.arriba{
-    text-align: center;
-    font-size: 2rem;
+.cartasSeleccion {
+  width: 25%;
+  aspect-ratio: 1/1;
+  transition: 0.2s ease-out;
+  cursor: var(--pointer);
+  font-size: 0;
+  background-size: contain;
+  background-position-x: center;
+  background-position-y: top;
+  background-repeat: no-repeat;
 }
-.cartas:hover{
-    transform: scale(1.05);
-    transition:   1s ease;
-    
+.arribaSeleccion {
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.8rem;
+  background-image: url("../cosas/cartel.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.cartasSeleccion:hover {
+  transform: scale(1.05);
+  transition: 1s ease;
 }
 
-.cartas:active{
-    transform: scale(0.95);
-    transition:   0.5s ease;
-    
+.cartasSeleccion:active {
+  transform: scale(0.95);
+  transition: 0.5s ease;
 }
-body{
-    cursor: var(--mouse);
+body {
+  cursor: var(--mouse);
+}
+.abajo{
+  display: flex;
+  justify-content: center;
+}
+.boton{
+  color: white;
+  margin: 0;
+  font-family: "Dela Gothic One", sans-serif !important;
+  background-color: #1da6cc;
+  box-shadow: 0 5px 15px #A9AF00;
+  border-radius: 50px;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease;
+  margin-top: 1rem;
+  font-size: 10vh;
+  position: relative;
+  z-index: 2;
+  clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
+  font-size: 2.625rem;
+  width: 24.8898125rem;
+  height: 5.1875rem;
+  cursor: var(--pointer);
+}
+.boton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: gold;
+  clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
+  z-index: -1;
+}
+
+.boton::after {
+  content: "";
+  position: absolute;
+  inset: 10px; 
+  background: #1da6cc;
+  clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
+  z-index: -1;
 }
 /* CARTAS */
 
 /* --- ATAQUE --- */
 .carta-golpe {
-    background-image: url("../Cosas/cartas/ataque/golpe.png");
-  }
-  
-  .carta-garrote {
-    background-image: url("../Cosas/cartas/ataque/garrote.png");
-  }
-  
-  .carta-espadaPesada {
-    background-image: url("../Cosas/cartas/ataque/espada-pesada.png");
-  }
-  
-  .carta-ira {
-    background-image: url("../Cosas/cartas/ataque/ira.png");
-  }
-  
-  .carta-rafaga {
-    background-image: url("../Cosas/cartas/ataque/rafaga.png");
-  }
-  
-  .carta-festin {
-    background-image: url("../Cosas/cartas/ataque/festin.png");
-  }
-  
-  .carta-ataqueRapido {
-    background-image: url("../Cosas/cartas/ataque/ataque-rapido.png");
-  }
-  
-  .carta-chapiadora {
-    background-image: url("../Cosas/cartas/ataque/chipiadora.com.png");
-  }
-  
-  .carta-promo {
-    background-image: url("../Cosas/cartas/ataque/promo-2027.png");
-  }
-  
-  .carta-choque {
-    background-image: url("../Cosas/cartas/ataque/coque.png");
-  }
-  
-  .carta-zip {
-    background-image: url("../Cosas/cartas/ataque/zip.png");
-  }
-  
-  .carta-uppercut {
-    background-image: url("../Cosas/cartas/ataque/uppercut.png");
-  }
-  
-  /* --- DEFENSA --- */
-  .carta-trinchera {
-    background-image: url("../Cosas/cartas/defensa/trinchera.png");
-  }
-  
-  .carta-protector {
-    background-image: url("../Cosas/cartas/defensa/protector.png");
-  }
-  
-  .carta-heroico {
-    background-image: url("../Cosas/cartas/defensa/heroico.png");
-  }
-  
-  .carta-verdaderoValor {
-    background-image: url("../Cosas/cartas/defensa/verdadero-valor.png");
-  }
-  
-  .carta-segundoAliento {
-    background-image: url("../Cosas/cartas/defensa/segundo-aliento.png");
-  }
-  
-  .carta-defensaEnPlacas {
-    background-image: url("../Cosas/cartas/defensa/defensa-en-placas.png");
-  }
-  
-  .carta-estrategiaDefensiva {
-    background-image: url("../Cosas/cartas/defensa/estrategia-defensiva.png");
-  }
-  
-  .carta-copa {
-    background-image: url("../Cosas/cartas/defensa/5-de-copa.png");
-  }
-  
-  .carta-autoEscudo {
-    background-image: url("../Cosas/cartas/defensa/auto-escudo.png");
-  }
-  
-  .carta-mutacion {
-    background-image: url("../Cosas/cartas/defensa/mutacion.png");
-  }
-  
-  .carta-espadasOrbitantes {
-    background-image: url("../Cosas/cartas/defensa/espadas-orbitantes.png");
-  }
-  
-  .carta-escudo {
-    background-image: url("../Cosas/cartas/defensa/escudo.png");
-  }
-  
-  /* --- APOYO --- */
-  .carta-flexionar {
-    background-image: url("../Cosas/cartas/apoyo/flexionar.png");
-  }
-  
-  .carta-ritual {
-    background-image: url("../Cosas/cartas/apoyo/ritual.png");
-  }
-  
-  .carta-dobleAtaque {
-    background-image: url("../Cosas/cartas/apoyo/doble-ataque.png");
-  }
-  
-  .carta-furia {
-    background-image: url("../Cosas/cartas/apoyo/furia.png");
-  }
-  
-  .carta-columnaSuertuda {
-    background-image: url("../Cosas/cartas/apoyo/columna-suertuda.png");
-  }
-  
-  .carta-ataqueAncestral {
-    background-image: url("../Cosas/cartas/apoyo/ataque-ancestral.png");
-  }
-  
-  .carta-debilidad {
-    background-image: url("../Cosas/cartas/apoyo/debilidad.png");
-  }
-  
-  .carta-barricada {
-    background-image: url("../Cosas/cartas/apoyo/barricada.png");
-  }
-  
-  .carta-golpeDeCuerpo {
-    background-image: url("../Cosas/cartas/apoyo/golpe-doble.png");
-  }
-  
-  .carta-ignorar {
-    background-image: url("../Cosas/cartas/apoyo/ignorar.png");
-  }
-  
-  .carta-lamentoPenetrante {
-    background-image: url("../Cosas/cartas/apoyo/lamento-penetrable.png");
-  }
+  background-image: url("../Cosas/cartas/ataque/golpe.png");
+}
 
-  
+.carta-garrote {
+  background-image: url("../Cosas/cartas/ataque/garrote.png");
+}
+
+.carta-espadaPesada {
+  background-image: url("../Cosas/cartas/ataque/espada-pesada.png");
+}
+
+.carta-ira {
+  background-image: url("../Cosas/cartas/ataque/ira.png");
+}
+
+.carta-rafaga {
+  background-image: url("../Cosas/cartas/ataque/rafaga.png");
+}
+
+.carta-festin {
+  background-image: url("../Cosas/cartas/ataque/festin.png");
+}
+
+.carta-ataqueRapido {
+  background-image: url("../Cosas/cartas/ataque/ataque-rapido.png");
+}
+
+.carta-chapiadora {
+  background-image: url("../Cosas/cartas/ataque/chipiadora.com.png");
+}
+
+.carta-promo {
+  background-image: url("../Cosas/cartas/ataque/promo-2027.png");
+}
+
+.carta-choque {
+  background-image: url("../Cosas/cartas/ataque/coque.png");
+}
+
+.carta-zip {
+  background-image: url("../Cosas/cartas/ataque/zip.png");
+}
+
+.carta-uppercut {
+  background-image: url("../Cosas/cartas/ataque/uppercut.png");
+}
+
+/* --- DEFENSA --- */
+.carta-trinchera {
+  background-image: url("../Cosas/cartas/defensa/trinchera.png");
+}
+
+.carta-protector {
+  background-image: url("../Cosas/cartas/defensa/protector.png");
+}
+
+.carta-heroico {
+  background-image: url("../Cosas/cartas/defensa/heroico.png");
+}
+
+.carta-verdaderoValor {
+  background-image: url("../Cosas/cartas/defensa/verdadero-valor.png");
+}
+
+.carta-segundoAliento {
+  background-image: url("../Cosas/cartas/defensa/segundo-aliento.png");
+}
+
+.carta-defensaEnPlacas {
+  background-image: url("../Cosas/cartas/defensa/defensa-en-placas.png");
+}
+
+.carta-estrategiaDefensiva {
+  background-image: url("../Cosas/cartas/defensa/estrategia-defensiva.png");
+}
+
+.carta-copa {
+  background-image: url("../Cosas/cartas/defensa/5-de-copa.png");
+}
+
+.carta-autoEscudo {
+  background-image: url("../Cosas/cartas/defensa/auto-escudo.png");
+}
+
+.carta-mutacion {
+  background-image: url("../Cosas/cartas/defensa/mutacion.png");
+}
+
+.carta-espadasOrbitantes {
+  background-image: url("../Cosas/cartas/defensa/espadas-orbitantes.png");
+}
+
+.carta-escudo {
+  background-image: url("../Cosas/cartas/defensa/escudo.png");
+}
+
+/* --- APOYO --- */
+.carta-flexionar {
+  background-image: url("../Cosas/cartas/apoyo/flexionar.png");
+}
+
+.carta-ritual {
+  background-image: url("../Cosas/cartas/apoyo/ritual.png");
+}
+
+.carta-dobleAtaque {
+  background-image: url("../Cosas/cartas/apoyo/doble-ataque.png");
+}
+
+.carta-furia {
+  background-image: url("../Cosas/cartas/apoyo/furia.png");
+}
+
+.carta-columnaSuertuda {
+  background-image: url("../Cosas/cartas/apoyo/columna-suertuda.png");
+}
+
+.carta-ataqueAncestral {
+  background-image: url("../Cosas/cartas/apoyo/ataque-ancestral.png");
+}
+
+.carta-debilidad {
+  background-image: url("../Cosas/cartas/apoyo/debilidad.png");
+}
+
+.carta-barricada {
+  background-image: url("../Cosas/cartas/apoyo/barricada.png");
+}
+
+.carta-golpeDeCuerpo {
+  background-image: url("../Cosas/cartas/apoyo/golpe-doble.png");
+}
+
+.carta-ignorar {
+  background-image: url("../Cosas/cartas/apoyo/ignorar.png");
+}
+
+.carta-lamentoPenetrante {
+  background-image: url("../Cosas/cartas/apoyo/lamento-penetrable.png");
+}

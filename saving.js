@@ -131,10 +131,9 @@ subscribePOSTEvent("reiniciar",(data)=>{
   if(data){
     let reliquias = JSON.parse(fs.readFileSync("./NODE/jsons/reliquias.json","utf-8"))
     let adquiridas = JSON.parse(fs.readFileSync("./NODE/jsons/reliquiauso.json","utf-8"))
-    adquiridas.
+    adquiridas.splice(0, 1);
     reliquias = reliquias.concat(adquiridas)
     adquiridas = []
-    reliquias.splice(0, 1);
     fs.writeFileSync("./NODE/jsons/reliquias.json", JSON.stringify(reliquias, null, 2), "utf-8");
     fs.writeFileSync("./NODE/jsons/reliquiauso.json", JSON.stringify(adquiridas, null, 2), "utf-8");
 

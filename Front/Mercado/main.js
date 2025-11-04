@@ -129,23 +129,25 @@ window.addEventListener("DOMContentLoaded", () => {
     function dibujarCartas(cartas) {
         console.log("Cartas: ", cartas);
         let cartasAMostrar = Object.entries(cartas).slice(0, 6);
-        console.log(cartasAMostrar);
-
+    
         cartasAMostrar.forEach((carta, index) => {
             let idDiv = `#carta${index + 1}`;
             let divCarta = document.querySelector(idDiv);
-
-            console.log(carta[1])
-
+    
             if (divCarta) {
+                let costo = valorAleatorio();
+    
                 divCarta.innerHTML = `
-                    <img class="card-img" src="${carta[1].ruta}"> </img>
-                    <div class= "card-oro"> <p> <img class = "foto-oro" src= "../Cosas/image 43.png">:</img> ${valorAleatorio()} </p> </div>
+                    <img class="card-img" src="${carta[1].ruta}"></img>
+                    <div class="card-oro">
+                        <p>
+                            <img class="foto-oro" src="../Cosas/image 43.png">:</img> ${costo}
+                        </p>
+                    </div>
                 `;
             }
         });
     }
-
     function mostrarReliquias(mercado) {
         let reliquiasAMostrar = Object.entries(mercado)
             .filter(([key]) => key.startsWith("reliquia"))

@@ -42,6 +42,9 @@ window.addEventListener("DOMContentLoaded", () => {
   let cajaMonstruo = document.getElementById("caja-monstruo");
   let fuerza = 0;
   let sangrado = 0;
+  let siRegal = false;
+  let siRoca = false;
+  let siAnchor = false;
   let lamentoPenetrante = false;
   let furiaActiva = false;
   let dobleSiguiente = false;
@@ -379,27 +382,76 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function usoReliquia() {
+    // Reliquias Iniciales
     if (reliquiaInicial === "Escudo de Hierro") {
-      console.log("Reliquia activa:" + reliquiaInicial);
+      console.log("Reliquia Inicial activa:" + reliquiaInicial);
       if (info.vida < info.vidamax) {
         info.vida = Math.min(info.vida + 6, info.vidamax);
         mostrar();
       }
     } else if (reliquiaInicial === "Trébol de Oro") {
-      console.log("Reliquia activa:" + reliquiaInicial);
+      console.log("Reliquia Inicial activa:" + reliquiaInicial);
 
       if (ganancia < gananciaInicial * 2) {
         ganancia = ganancia * 2;
       } else return;
       console.log(ganancia);
     } else if (reliquiaInicial === "Báculo del Archimago") {
-      console.log("Reliquia activa:" + reliquiaInicial);
+      console.log("Reliquia Inicial activa:" + reliquiaInicial);
       manaMax = 4;
       mana = 4;
       console.log(mana);
       console.log(manaMax);
     } else if (reliquiaInicial === "Lanza de odin") {
-      console.log("Reliquia activa:" + reliquiaInicial);
+      console.log("Reliquia Inicial activa:" + reliquiaInicial);
+    }
+    //Reliquias otras
+    for (let i = 1; i < reliquia.length; i++) {
+      if (reliquia[i].nombre === "Vajra") {
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+        fuerza += 1;
+      } else if (reliquia[i].nombre === "Anchor") {
+        siAnchor = true;
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Bag of Preparation") {
+        sumarCarta();
+        sumarCarta();
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Lantern") {
+        mana += 1;
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Regal Pillow") {
+        siRegal = true;
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Roca Rúnica") {
+        siRoca = true;
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Piedra Filosofal") {
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Salvia") {
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Red star") {
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Sombrero mágico") {
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Sombrero constructor") {
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Escudo Clásico") {
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Black Star") {
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Caja de Devolución") {
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Fortaleza") {
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Escudo de Hierro") {
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Trébol de Oro") {
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      } else if (reliquia[i].nombre === "Báculo del Archimago") {
+      } else if (reliquia[i].nombre === "Lanza de odin") {
+        console.log("Reliquia Activa: " + reliquia[i].nombre);
+      }
     }
   }
   usoReliquia();
@@ -492,6 +544,13 @@ window.addEventListener("DOMContentLoaded", () => {
     iniciarTurnoJugador();
   }
   function iniciarTurnoJugador(carta) {
+    if (siAnchor) {
+      cantidadEscudo += 10;
+      siEscudo = true;
+    }
+    if(siRegal){
+      info.vida += 5;
+    }
     turno = turno + 1;
     abajo.style.display = "flex";
     if (siDefensaPlacas && defensaPlacasTurno > 0) {
@@ -526,6 +585,7 @@ window.addEventListener("DOMContentLoaded", () => {
       vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
       if (defensaPlacasTurno === 0) siDefensaPlacas = false;
     }
+    
     if (siEscudo === true) mostrarEscudoRestante();
     console.log(cantidadEscudo);
     iniciarCartas();
@@ -1133,6 +1193,9 @@ window.addEventListener("DOMContentLoaded", () => {
     mazorobar.push(carta);
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
+      if(siRoca){
+        info.vidamax += 2;
+      }
       ganar();
     }
   }
@@ -2412,8 +2475,7 @@ window.addEventListener("DOMContentLoaded", () => {
       Array.from(eleccionReliquias).forEach((r) => {
         r.style.display = "block";
       });
-      reliquiaJefe1 =  
-      reliquiaJefe2;
+      reliquiaJefe1 = reliquiaJefe2;
       reliquiaJefe3;
       reliquiaJefe4;
       reliquiaJefe5;
@@ -2441,99 +2503,107 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // === TOOLTIP FLOTANTE PARA RELIQUIAS (versión completa) ===
 
-// Variable global del tooltip activo
-let __floatingTooltip = null;
+  // Variable global del tooltip activo
+  let __floatingTooltip = null;
 
-// Activa tooltips para todas las reliquias mostradas
-function activarTooltipsReliquias() {
-  const reliquiasDivs = document.querySelectorAll("#cajaReliquias .todas");
+  // Activa tooltips para todas las reliquias mostradas
+  function activarTooltipsReliquias() {
+    const reliquiasDivs = document.querySelectorAll("#cajaReliquias .todas");
 
-  reliquiasDivs.forEach((div, i) => {
-    const data = reliquia[i];
-    if (!data) return;
+    reliquiasDivs.forEach((div, i) => {
+      const data = reliquia[i];
+      if (!data) return;
 
-    div.dataset.nombre = data.nombre || "";
-    div.dataset.efecto = data.efecto || "";
-    div.dataset.ruta = data.ruta || "";
+      div.dataset.nombre = data.nombre || "";
+      div.dataset.efecto = data.efecto || "";
+      div.dataset.ruta = data.ruta || "";
 
-    div.addEventListener("mouseenter", () => showFloatingTooltipFromElement(div));
-    div.addEventListener("mousemove", (e) => moveFloatingTooltip(e.clientX, e.clientY));
-    div.addEventListener("mouseleave", hideFloatingTooltip);
-  });
-}
+      div.addEventListener("mouseenter", () =>
+        showFloatingTooltipFromElement(div)
+      );
+      div.addEventListener("mousemove", (e) =>
+        moveFloatingTooltip(e.clientX, e.clientY)
+      );
+      div.addEventListener("mouseleave", hideFloatingTooltip);
+    });
+  }
 
-// Crear y mostrar el tooltip
-function showFloatingTooltipFromElement(el) {
-  hideFloatingTooltip();
+  // Crear y mostrar el tooltip
+  function showFloatingTooltipFromElement(el) {
+    hideFloatingTooltip();
 
-  const nombre = el.dataset.nombre || "";
-  const efecto = el.dataset.efecto || "";
-  const ruta = el.dataset.ruta || "";
+    const nombre = el.dataset.nombre || "";
+    const efecto = el.dataset.efecto || "";
+    const ruta = el.dataset.ruta || "";
 
-  __floatingTooltip = document.createElement("div");
-  __floatingTooltip.className = "tooltip-floating";
-  __floatingTooltip.innerHTML = `
+    __floatingTooltip = document.createElement("div");
+    __floatingTooltip.className = "tooltip-floating";
+    __floatingTooltip.innerHTML = `
     <div class="tooltip-header">
       <div class="tooltip-title">${escapeHtml(nombre)}</div>
     </div>
     <div class="tooltip-body">${escapeHtml(efecto)}</div>
   `;
 
-  document.body.appendChild(__floatingTooltip);
-  __floatingTooltip.style.opacity = "0";
+    document.body.appendChild(__floatingTooltip);
+    __floatingTooltip.style.opacity = "0";
 
-  const rect = el.getBoundingClientRect();
-  const top = window.scrollY + rect.bottom + 12;
-  const left = window.scrollX + rect.left + rect.width / 2;
+    const rect = el.getBoundingClientRect();
+    const top = window.scrollY + rect.bottom + 12;
+    const left = window.scrollX + rect.left + rect.width / 2;
 
-  __floatingTooltip.style.left = `${left}px`;
-  __floatingTooltip.style.top = `${top}px`;
+    __floatingTooltip.style.left = `${left}px`;
+    __floatingTooltip.style.top = `${top}px`;
 
-  requestAnimationFrame(() => {
-    __floatingTooltip.style.opacity = "1";
-  });
-}
+    requestAnimationFrame(() => {
+      __floatingTooltip.style.opacity = "1";
+    });
+  }
 
-// Mueve el tooltip con el mouse
-function moveFloatingTooltip(clientX, clientY) {
-  if (!__floatingTooltip) return;
-  const tooltipRect = __floatingTooltip.getBoundingClientRect();
-  let left = clientX + 16;
-  let top = clientY + 16;
-  const maxLeft =
-    window.scrollX + document.documentElement.clientWidth - tooltipRect.width - 8;
-  const maxTop =
-    window.scrollY + document.documentElement.clientHeight - tooltipRect.height - 8;
-  __floatingTooltip.style.left = `${Math.min(left, maxLeft)}px`;
-  __floatingTooltip.style.top = `${Math.min(top, maxTop)}px`;
-}
+  // Mueve el tooltip con el mouse
+  function moveFloatingTooltip(clientX, clientY) {
+    if (!__floatingTooltip) return;
+    const tooltipRect = __floatingTooltip.getBoundingClientRect();
+    let left = clientX + 16;
+    let top = clientY + 16;
+    const maxLeft =
+      window.scrollX +
+      document.documentElement.clientWidth -
+      tooltipRect.width -
+      8;
+    const maxTop =
+      window.scrollY +
+      document.documentElement.clientHeight -
+      tooltipRect.height -
+      8;
+    __floatingTooltip.style.left = `${Math.min(left, maxLeft)}px`;
+    __floatingTooltip.style.top = `${Math.min(top, maxTop)}px`;
+  }
 
-// Oculta el tooltip
-function hideFloatingTooltip() {
-  if (!__floatingTooltip) return;
-  __floatingTooltip.remove();
-  __floatingTooltip = null;
-}
+  // Oculta el tooltip
+  function hideFloatingTooltip() {
+    if (!__floatingTooltip) return;
+    __floatingTooltip.remove();
+    __floatingTooltip = null;
+  }
 
-// Escapar HTML para evitar errores o inyección
-function escapeHtml(str) {
-  if (str === undefined || str === null) return "";
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
-}
+  // Escapar HTML para evitar errores o inyección
+  function escapeHtml(str) {
+    if (str === undefined || str === null) return "";
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
 
-// Llama automáticamente después de renderizar reliquias
-const oldMostrarReliquia = mostrarReliquia;
-mostrarReliquia = function () {
-  oldMostrarReliquia();
-  setTimeout(activarTooltipsReliquias, 100); // espera un instante a que se inserten en el DOM
-};
-
-
+  // Llama automáticamente después de renderizar reliquias
+  const oldMostrarReliquia = mostrarReliquia;
+  mostrarReliquia = function () {
+    oldMostrarReliquia();
+    setTimeout(activarTooltipsReliquias, 100); // espera un instante a que se inserten en el DOM
+  };
 
   /*
   function mostrarReliquiasS(mercado) {

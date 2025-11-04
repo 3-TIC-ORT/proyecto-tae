@@ -3,7 +3,7 @@ import { generarmapa } from './NODE/mapa/generarmapa.js';
 import {cartas_mercado,cartas_eleccion} from "./NODE/mercado.js"
 import fs from "fs";
 import { verestado } from "./NODE/ia/ia.js";
-import { reliquia_elite } from "./NODE/funciondereliquia.js";
+import { reliquia_elite, reliquia_jefe } from "./NODE/funciondereliquia.js";
 let info = {
     personaje:{
       personaje:"",
@@ -125,10 +125,13 @@ subscribePOSTEvent("vaciar-mazo",(data)=>{
   }
 });
 
+subscribeGETEvent("reliquia-jefe",reliquia_jefe)
+
 subscribePOSTEvent("reiniciar",(data)=>{
   if(data){
     let reliquias = JSON.parse(fs.readFileSync("./NODE/jsons/reliquias.json","utf-8"))
     let adquiridas = JSON.parse(fs.readFileSync("./NODE/jsons/reliquiauso.json","utf-8"))
+    adquiridas.
     reliquias = reliquias.concat(adquiridas)
     adquiridas = []
     fs.writeFileSync("./NODE/jsons/reliquias.json", JSON.stringify(reliquias, null, 2), "utf-8");

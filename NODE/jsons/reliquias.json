@@ -112,5 +112,23 @@
     "efecto": "Tus ataques tienen un 20% de probabilidad de causar daño adicional de sangrado que hace 3 puntos de daño por turno durante 2 turnos",
     "obtencion": "Inicial",
     "ruta": "/Front/Cosas/reliquias-iniciales/lanza-de-odin.png"
+  },
+  {
+    "nombre": "Escudo de Hierro",
+    "efecto": "Cada vez que termina el combate se cura 6 de vida",
+    "obtencion": "Inicial",
+    "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
+  },
+  {
+    "nombre": "Báculo del Archimago",
+    "efecto": "Incrementa tu maná máximo en 1",
+    "obtencion": "Inicial",
+    "ruta": "/Front/Cosas/reliquias-iniciales/baculo-del-archimago.png"
+  },
+  {
+    "nombre": "Báculo del Archimago",
+    "efecto": "Incrementa tu maná máximo en 1",
+    "obtencion": "Inicial",
+    "ruta": "/Front/Cosas/reliquias-iniciales/baculo-del-archimago.png"
   }
 ]

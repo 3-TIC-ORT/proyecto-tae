@@ -207,7 +207,6 @@ avanzar.addEventListener("click", () => {
 window.addEventListener("DOMContentLoaded",() => {
     console.log("✅ Conectado a Soquetic correctamente.");
     setTimeout(() => {
-      postEvent("reinicio-reliquias",true)
       postEvent("vaciar-reliquias", true);
       postEvent("vaciar-mazo", true);
       console.log("🧹 Pedidos de vaciar enviados al servidor");

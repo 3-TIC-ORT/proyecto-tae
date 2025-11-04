@@ -29,15 +29,6 @@ subscribeGETEvent("mapa",(query) => {
   return mapa
 });
 
-subscribePOSTEvent("reinicio-reliquias",(data)=>{
-  if(data){
-let reliquias = JSON.parse(fs.readFileSync("./NODE/jsons/reliquias.json"))
-let adquiridas = JSON.parse(fs.readFileSync("./NODE/jsons/reliquiauso.json"))
-reliquias = reliquias.concat(adquiridas)
-fs.writeFileSync("./NODE/jsons/reliquias.json",JSON.stringify(reliquias,null,2),"utf-8")
-  }
-})
-
 subscribeGETEvent("personaje", () => {
   console.log("GET solicitado. Personaje actual: ", info.personaje.personaje);
   return info.personaje.personaje;

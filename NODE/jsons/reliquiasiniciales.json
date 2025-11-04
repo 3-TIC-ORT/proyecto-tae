@@ -1,0 +1,26 @@
+[
+    {
+        "nombre": "Escudo de Hierro",
+        "efecto": "Cada vez que termina el combate se cura 6 de vida",
+        "obtencion": "Inicial",
+        "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
+      },
+      {
+        "nombre": "Trébol de Oro",
+        "efecto": "Cada vez que termina un combate consigues dos veces más oro. También cada 5 ataques consigues 10 de oro",
+        "obtencion": "Inicial",
+        "ruta": "/Front/Cosas/reliquias-iniciales/trebol-de-oro.png"
+      },
+      {
+        "nombre": "Báculo del Archimago",
+        "efecto": "Incrementa tu maná máximo en 1",
+        "obtencion": "Inicial",
+        "ruta": "/Front/Cosas/reliquias-iniciales/baculo-del-archimago.png"
+      },
+      {
+        "nombre": "Lanza de odin",
+        "efecto": "Tus ataques tienen un 20% de probabilidad de causar daño adicional de sangrado que hace 3 puntos de daño por turno durante 2 turnos",
+        "obtencion": "Inicial",
+        "ruta": "/Front/Cosas/reliquias-iniciales/lanza-de-odin.png"
+      }
+]

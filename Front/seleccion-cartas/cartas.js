@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   connect2Server();
 
-  const contenedores = document.getElementsByClassName("cartas");
+  const contenedores = document.getElementsByClassName("cartasSeleccion");
 
   // 🔹 Función que devuelve N cartas aleatorias sin repetición
   function cartasRandomUnicas(cantidad) {
@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     contenedor.dataset.nombre = carta.nombre;
 
     contenedor.addEventListener("click", () => {
+      boton.disable = true;
       cartaElegida = carta.nombre;
       console.log("Carta elegida:", cartaElegida);
 
@@ -93,4 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "../mapa/index.html";
     });
   }
+  let boton = document.getElementById("boton");
+  function omitir(){
+    window.location.href = "../mapa/index.html"
+  }
+    boton.addEventListener("click", omitir);
 });

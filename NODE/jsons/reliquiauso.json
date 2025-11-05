@@ -1,12 +1,8 @@
-<<<<<<< HEAD
 [
   {
-    "nombre": "Báculo del Archimago",
-    "efecto": "Incrementa tu maná máximo en 1",
+    "nombre": "Escudo de Hierro",
+    "efecto": "Cada vez que termina el combate se cura 6 de vida",
     "obtencion": "Inicial",
-    "ruta": "/Front/Cosas/reliquias-iniciales/baculo-del-archimago.png"
+    "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
   }
 ]
-=======
-[]
->>>>>>> 08eb4a0497d04b258c184d6bd4e98aed737defe7

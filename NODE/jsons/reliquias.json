@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [
   {
     "nombre": "Vajra",
@@ -26,19 +25,19 @@
   },
   {
     "nombre": "Regal Pillow",
-    "efecto": "Cura 15 HP extra al descansar",
+    "efecto": "Cuando comienzaa un combate recuperas 5 PV.",
     "obtencion": "Cofres, tienda",
     "ruta": "/Front/Cosas/reliquias/regal-pillow.png"
   },
   {
     "nombre": "Roca Rúnica",
-    "efecto": "Cada vez que un enemigo muere, ganas uno de mana",
+    "efecto": "Cada vez que un enemigo muere, ganas 2 PV maximos.",
     "obtencion": "Elite",
     "ruta": "/Front/Cosas/reliquias/roca-runica.png"
   },
   {
     "nombre": "Piedra Filosofal",
-    "efecto": "Obtienes 1 de Energía al inicio de cada turno. Al inicio del combate, cada enemigo obtiene 1 de Fuerza",
+    "efecto": "Obtienes 1 de Fuerza al inicio de cada turno. Al inicio del combate, cada enemigo obtiene 1 de Vulnerabilidad",
     "obtencion": "Elite",
     "ruta": "/Front/Cosas/reliquias/piedra-filosofal.png"
   },
@@ -50,7 +49,7 @@
   },
   {
     "nombre": "Red star",
-    "efecto": "Al inicio de los combates contra jefes, recupera 25 PS",
+    "efecto": "Al inicio de los combates contra jefes, recupera 25 PV",
     "obtencion": "Elite",
     "ruta": "/Front/Cosas/reliquias/red-star.png"
   },
@@ -68,7 +67,7 @@
   },
   {
     "nombre": "Escudo Clásico",
-    "efecto": "En combates contra élites o jefes, obtienes 10 de escudo que bloquea un daño fijo durante 3 turnos",
+    "efecto": "En combates contra élites o jefes, obtienes 10 de escudo durante 3 turnos",
     "obtencion": "Jefe",
     "ruta": "/Front/Cosas/reliquias/escudo-clasico.png"
   },
@@ -80,148 +79,14 @@
   },
   {
     "nombre": "Caja de Devolución",
-    "efecto": "Al recogerla, retira 2 cartas de tu Deck",
+    "efecto": "Al recogerla, tu deck aumenta 2 cartas",
     "obtencion": "Jefe",
     "ruta": "/Front/Cosas/reliquias/caja-de-devolucion.png"
   },
   {
     "nombre": "Fortaleza",
-    "efecto": "Al comienzo de tu turno, gana 2 de Fuerza y TODOS los enemigos ganan 1 de debilidad",
+    "efecto": "Al comienzo de tu turno, gana 1 de Fuerza y todos los enemigos ganan 1 de debilidad",
     "obtencion": "Jefe",
     "ruta": "/Front/Cosas/reliquias/fortaleza.png"
-  },
-  {
-    "nombre": "Escudo de Hierro",
-    "efecto": "Cada vez que termina el combate se cura 6 de vida",
-    "obtencion": "Inicial",
-    "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
-  },
-  {
-    "nombre": "Trébol de Oro",
-    "efecto": "Cada vez que termina un combate consigues dos veces más oro. También cada 5 ataques consigues 10 de oro",
-    "obtencion": "Inicial",
-    "ruta": "/Front/Cosas/reliquias-iniciales/trebol-de-oro.png"
-  },
-  {
-    "nombre": "Báculo del Archimago",
-    "efecto": "Incrementa tu maná máximo en 1",
-    "obtencion": "Inicial",
-    "ruta": "/Front/Cosas/reliquias-iniciales/baculo-del-archimago.png"
-  },
-  {
-    "nombre": "Lanza de odin",
-    "efecto": "Tus ataques tienen un 20% de probabilidad de causar daño adicional de sangrado que hace 3 puntos de daño por turno durante 2 turnos",
-    "obtencion": "Inicial",
-    "ruta": "/Front/Cosas/reliquias-iniciales/lanza-de-odin.png"
-  },
-  {
-    "nombre": "Escudo de Hierro",
-    "efecto": "Cada vez que termina el combate se cura 6 de vida",
-    "obtencion": "Inicial",
-    "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
-  },
-  {
-    "nombre": "Báculo del Archimago",
-    "efecto": "Incrementa tu maná máximo en 1",
-    "obtencion": "Inicial",
-    "ruta": "/Front/Cosas/reliquias-iniciales/baculo-del-archimago.png"
-  },
-  {
-    "nombre": "Báculo del Archimago",
-    "efecto": "Incrementa tu maná máximo en 1",
-    "obtencion": "Inicial",
-    "ruta": "/Front/Cosas/reliquias-iniciales/baculo-del-archimago.png"
   }
-=======
-[{
-  "nombre": "Vajra",
-  "efecto": "+1 de Fuerza",
-  "obtencion": "Cofres, tienda",
-  "ruta": "/Front/Cosas/reliquias/vajra.png"
-},
-{
-  "nombre": "Anchor",
-  "efecto": "Empiezas el combate con 10 Bloqueo",
-  "obtencion": "Cofres, tienda",
-  "ruta": "/Front/Cosas/reliquias/anchor.png"
-},
-{
-  "nombre": "Bag of Preparation",
-  "efecto": "Robas 2 cartas adicionales al inicio de cada combate",
-  "obtencion": "Cofres, tienda",
-  "ruta": "/Front/Cosas/reliquias/bag-of-preparation.png"
-},
-{
-  "nombre": "Lantern",
-  "efecto": "Comienzas cada combate con +1 mana",
-  "obtencion": "Cofres, tienda",
-  "ruta": "/Front/Cosas/reliquias/lantern.png"
-},
-{
-  "nombre": "Regal Pillow",
-  "efecto": "Cura 15 HP extra al descansar",
-  "obtencion": "Cofres, tienda",
-  "ruta": "/Front/Cosas/reliquias/regal-pillow.png"
-},
-{
-  "nombre": "Roca Rúnica",
-  "efecto": "Cada vez que un enemigo muere, ganas uno de mana",
-  "obtencion": "Elite",
-  "ruta": "/Front/Cosas/reliquias/roca-runica.png"
-},
-{
-  "nombre": "Piedra Filosofal",
-  "efecto": "Obtienes 1 de Energía al inicio de cada turno. Al inicio del combate, cada enemigo obtiene 1 de Fuerza",
-  "obtencion": "Elite",
-  "ruta": "/Front/Cosas/reliquias/piedra-filosofal.png"
-},
-{
-  "nombre": "Salvia",
-  "efecto": "Al final de tu turno, ya no descartas tu mano",
-  "obtencion": "Elite",
-  "ruta": "/Front/Cosas/reliquias/salvia.png"
-},
-{
-  "nombre": "Red star",
-  "efecto": "Al inicio de los combates contra jefes, recupera 25 PS",
-  "obtencion": "Elite",
-  "ruta": "/Front/Cosas/reliquias/red-star.png"
-},
-{
-  "nombre": "Sombrero mágico",
-  "efecto": "50% de descuento en todos los productos de la tienda",
-  "obtencion": "Elite",
-  "ruta": "/Front/Cosas/reliquias/sombrero-magico.png"
-},
-{
-  "nombre": "Sombrero constructor",
-  "efecto": "Reduce el daño recibido de elites y jefes en un 15%",
-  "obtencion": "Jefe",
-  "ruta": "/Front/Cosas/reliquias/sombrero-constructor.png"
-},
-{
-  "nombre": "Escudo Clásico",
-  "efecto": "En combates contra élites o jefes, obtienes 10 de escudo que bloquea un daño fijo durante 3 turnos",
-  "obtencion": "Jefe",
-  "ruta": "/Front/Cosas/reliquias/escudo-clasico.png"
-},
-{
-  "nombre": "Black Star",
-  "efecto": "Hace que los élites suelten dos reliquias en lugar de solo una",
-  "obtencion": "Jefe",
-  "ruta": "/Front/Cosas/reliquias/black-star.png"
-},
-{
-  "nombre": "Caja de Devolución",
-  "efecto": "Al recogerla, retira 2 cartas de tu Deck",
-  "obtencion": "Jefe",
-  "ruta": "/Front/Cosas/reliquias/caja-de-devolucion.png"
-},
-{
-  "nombre": "Fortaleza",
-  "efecto": "Al comienzo de tu turno, gana 2 de Fuerza y TODOS los enemigos ganan 1 de debilidad",
-  "obtencion": "Jefe",
-  "ruta": "/Front/Cosas/reliquias/fortaleza.png"
-}
->>>>>>> 08eb4a0497d04b258c184d6bd4e98aed737defe7
 ]

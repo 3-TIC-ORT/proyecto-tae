@@ -42,7 +42,14 @@ window.addEventListener("DOMContentLoaded", () => {
   let cajaMonstruo = document.getElementById("caja-monstruo");
   let fuerza = 0;
   let sangrado = 0;
+  let siBlack = false;
+  let siCaja = false;
+  let siFortaleza = false;
   let siRegal = false;
+  let siPiedra = false;
+  let siClasico = false;
+  let clasicoTurnos = 0;
+  let siConstru = false;
   let siRoca = false;
   let siAnchor = false;
   let lamentoPenetrante = false;
@@ -77,7 +84,9 @@ window.addEventListener("DOMContentLoaded", () => {
   let gananciaInicial = 0;
   let reliquiaInicial = {};
   let cartaElegida = {};
-  let reliquiaElite = {};
+  let reliquiaElite1 = {};
+  let reliquiaElite2 = {};
+
   let dañoRival;
   let escudoRival;
 
@@ -427,22 +436,35 @@ window.addEventListener("DOMContentLoaded", () => {
         siRoca = true;
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Piedra Filosofal") {
+        siPiedra = true;
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Salvia") {
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Red star") {
+        if (monstruo.tipo === "jefe") {
+          console.log(monstruo.tipo + "red star");
+          info.vida += 25;
+        }
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Sombrero mágico") {
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Sombrero constructor") {
+        siConstru = true;
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Escudo Clásico") {
+        if (monstruo.tipo === "elite" || monstruo.tipo === "jefe") {
+          siClasico = true;
+          clasicoTurnos = 3;
+        }
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Black Star") {
+        siBlack = true;
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Caja de Devolución") {
+        siCaja = true;
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Fortaleza") {
+        siFortaleza = true;
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Escudo de Hierro") {
         console.log("Reliquia Activa: " + reliquia[i].nombre);
@@ -482,6 +504,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (lamentoPenetrante) {
         dañoRival -= 6;
       }
+
       if (vul === 1) {
         dañoRival = dañoRival * 0.9;
       } else if (vul === 2) {
@@ -501,6 +524,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
       if (siEstrategia) {
         dañoRival = dañoRival * 0.75;
+      }
+      if (siConstru) {
+        if (monstruo.tipo === "elite" || monstruo.tipo === "jefe") {
+          dañoRival *= 0.85;
+        }
       }
       dañoRival = Math.floor(dañoRival);
       console.log("Daño del rival en este turno: " + dañoRival);
@@ -544,12 +572,25 @@ window.addEventListener("DOMContentLoaded", () => {
     iniciarTurnoJugador();
   }
   function iniciarTurnoJugador(carta) {
+    if (siFortaleza) {
+      vul += 1;
+      fuerza += 1;
+    }
+    if (siPiedra) {
+      fuerza += 1;
+      vul += 1;
+    }
     if (siAnchor) {
       cantidadEscudo += 10;
       siEscudo = true;
     }
-    if(siRegal){
+    if (siRegal) {
       info.vida += 5;
+    }
+    if (siClasico && clasicoTurnos > 0) {
+      cantidadEscudo += 10;
+      siEscudo = true;
+      clasicoTurnos--;
     }
     turno = turno + 1;
     abajo.style.display = "flex";
@@ -585,7 +626,7 @@ window.addEventListener("DOMContentLoaded", () => {
       vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
       if (defensaPlacasTurno === 0) siDefensaPlacas = false;
     }
-    
+
     if (siEscudo === true) mostrarEscudoRestante();
     console.log(cantidadEscudo);
     iniciarCartas();
@@ -1135,8 +1176,14 @@ window.addEventListener("DOMContentLoaded", () => {
     contadorCartas = 1;
     mana = manaMax;
     cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
-    for (let i = 0; i < 5; i++) {
-      sumarCarta();
+    if (!siCaja) {
+      for (let i = 0; i < 5; i++) {
+        sumarCarta();
+      }
+    } else {
+      for (let i = 0; i < 7; i++) {
+        sumarCarta();
+      }
     }
   }
   // CARTAS ATAQUE
@@ -1193,7 +1240,7 @@ window.addEventListener("DOMContentLoaded", () => {
     mazorobar.push(carta);
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
-      if(siRoca){
+      if (siRoca) {
         info.vidamax += 2;
       }
       ganar();
@@ -2433,25 +2480,51 @@ window.addEventListener("DOMContentLoaded", () => {
       recompensa2.addEventListener("click", irSeleccion);
     } else if (monstruo.tipo === "elite") {
       getEvent("reliquia-elite", (data) => {
-        reliquiaElite = data.reliquia;
-        console.log("Reliquia de Elite ganada: ", reliquiaElite);
+        reliquiaElite1 = data.reliquia;
+        console.log("Reliquia de Elite ganada: ", reliquiaElite1);
       });
-      setTimeout(() => {
-        for (let i = 1; i <= 3; i++) {
-          let contenedorRecompensa = document.getElementById(
-            "contenedorRecompensas"
-          );
-          let nuevaRecompensa = document.createElement("div");
-          nuevaRecompensa.classList.add("recompensa");
-          nuevaRecompensa.id = `recompensa${i}`;
 
-          if (i === 1) nuevaRecompensa.textContent = `Oro: ${ganancia}`;
-          else if (i === 2)
-            nuevaRecompensa.textContent = `${reliquiaElite.nombre}`;
-          else nuevaRecompensa.textContent = `Escoge una carta`;
-          contenedorRecompensa.appendChild(nuevaRecompensa);
-        }
-      }, 100);
+      if (!siBlack) {
+        setTimeout(() => {
+          for (let i = 1; i <= 3; i++) {
+            let contenedorRecompensa = document.getElementById(
+              "contenedorRecompensas"
+            );
+            let nuevaRecompensa = document.createElement("div");
+            nuevaRecompensa.classList.add("recompensa");
+            nuevaRecompensa.id = `recompensa${i}`;
+
+            if (i === 1) nuevaRecompensa.textContent = `Oro: ${ganancia}`;
+            else if (i === 2)
+              nuevaRecompensa.textContent = `${reliquiaElite1.nombre}`;
+            else nuevaRecompensa.textContent = `Escoge una carta`;
+            contenedorRecompensa.appendChild(nuevaRecompensa);
+          }
+        }, 100);
+      } else {
+        getEvent("reliquia-elite", (data) => {
+          reliquiaElite2 = data.reliquia;
+          console.log("Reliquia de Elite ganada: ", reliquiaElite2);
+        });
+        setTimeout(() => {
+          for (let i = 1; i <= 4; i++) {
+            let contenedorRecompensa = document.getElementById(
+              "contenedorRecompensas"
+            );
+            let nuevaRecompensa = document.createElement("div");
+            nuevaRecompensa.classList.add("recompensa");
+            nuevaRecompensa.id = `recompensa${i}`;
+
+            if (i === 1) nuevaRecompensa.textContent = `Oro: ${ganancia}`;
+            else if (i === 2) {
+              nuevaRecompensa.textContent = `${reliquiaElite1.nombre}`;
+            } else if (i === 3) {
+              nuevaRecompensa.textContent = `${reliquiaElite2.nombre}`;
+            } else nuevaRecompensa.textContent = `Escoge una carta`;
+            contenedorRecompensa.appendChild(nuevaRecompensa);
+          }
+        }, 100);
+      }
 
       let recompensa3 = document.getElementById("recompensa3");
       recompensa3.style.cursor = "var(--pointer)";

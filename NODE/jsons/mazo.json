@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [
   {
     "nombre": "Golpe",
@@ -89,30 +88,11 @@
     "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
   },
   {
-    "nombre": "Zip",
-    "daño": 5,
-    "elixir": 2,
-    "tipo": "ataque",
-    "efecto": "Saltea el turno del contrincante",
-    "ruta": "/Front/Cosas/cartas/ataque/Zip.png"
-  },
-  {
     "nombre": "Golpe",
     "daño": 7,
     "elixir": 1,
     "tipo": "ataque",
     "efecto": null,
     "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
-  },
-  {
-    "nombre": "Trinchera",
-    "bloqueo": null,
-    "elixir": 2,
-    "tipo": "defensa",
-    "efecto": "Duplica tu bloqueo",
-    "ruta": "/Front/Cosas/cartas/defensa/Trinchera.png"
   }
 ]
-=======
-[]
->>>>>>> 08eb4a0497d04b258c184d6bd4e98aed737defe7

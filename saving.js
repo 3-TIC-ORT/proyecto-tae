@@ -342,4 +342,13 @@ subscribePOSTEvent("final-turno",(data) => {
   infoia.cartasjugadas = data.cartasjugadas
 })
 
+subscribePOSTEvent("devolver-reliquias",(data)=>{
+  let reliquias = JSON.parse(fs.readFileSync("./NODE/jsons/reliquias.json", "utf-8"));
+  for(let i = 0; i<data.length;i++){
+    reliquias.push(data[i])
+  }
+  fs.writeFileSync("./NODE/jsons/reliquias.json", JSON.stringify(reliquias, null, 2));
+  return "se devolvieron y guardaron las reliquias"
+})
+
 startServer();

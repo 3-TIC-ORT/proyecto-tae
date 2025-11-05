@@ -297,7 +297,6 @@ html {
   background-position: center;
 }
 .reliquia {
-  border: 2px solid red;
   aspect-ratio: 1;
   height: 7vh;
   cursor: var(--pointer);
@@ -409,7 +408,7 @@ html {
 .omitir {
   position: fixed;
   right: 0;
-  height: 13vh;
+  height: 2vh;
   aspect-ratio: 4/3;
   cursor: var(--pointer);
   padding: 1rem;
@@ -418,7 +417,6 @@ html {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 130%;
-  display: flex;
   align-items: center;
 }
 
@@ -582,9 +580,8 @@ html {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 0 auto;
   height: 50vh;
-  width: 20vw;
+  width: 22vw;
   border: solid black 2px;
 }
 .lugarRecompensas {

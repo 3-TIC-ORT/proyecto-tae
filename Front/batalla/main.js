@@ -42,8 +42,11 @@ window.addEventListener("DOMContentLoaded", () => {
   let cajaMonstruo = document.getElementById("caja-monstruo");
   let fuerza = 0;
   let sangrado = 0;
+  let siLantern = 0;
+  let siBag = false;
+  let siSalvia = false;
   let siBlack = false;
-  let siCaja = false;
+  let siCaja = 0;
   let siFortaleza = false;
   let siRegal = false;
   let siPiedra = false;
@@ -207,6 +210,15 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 200);
   }
 
+  function escudoClasico() {
+    cantidadEscudo += 10;
+    siEscudo = true;
+    cantidadEscudo = Math.floor(cantidadEscudo);
+    lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    console.log("Cantidad Escudo: " + cantidadEscudo);
+    clasicoTurnos--;
+  }
   function mostrarReliquia() {
     if (!cajaReliquias) return console.warn("No se encontró cajaReliquias");
     cajaReliquias.innerHTML = "";
@@ -419,15 +431,15 @@ window.addEventListener("DOMContentLoaded", () => {
       if (reliquia[i].nombre === "Vajra") {
         console.log("Reliquia Activa: " + reliquia[i].nombre);
         fuerza += 1;
+        console.log("Fuerza (vajra): " + fuerza);
       } else if (reliquia[i].nombre === "Anchor") {
         siAnchor = true;
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Bag of Preparation") {
-        sumarCarta();
-        sumarCarta();
+        siBag = true;
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Lantern") {
-        mana += 1;
+        siLantern = 1;
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Regal Pillow") {
         siRegal = true;
@@ -437,8 +449,11 @@ window.addEventListener("DOMContentLoaded", () => {
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Piedra Filosofal") {
         siPiedra = true;
+        vul += 1;
+        console.log("Piedra filosofal:" + vul);
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Salvia") {
+        siSalvia = true;
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Red star") {
         if (monstruo.tipo === "jefe") {
@@ -448,30 +463,28 @@ window.addEventListener("DOMContentLoaded", () => {
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Sombrero mágico") {
         console.log("Reliquia Activa: " + reliquia[i].nombre);
-      } else if (reliquia[i].nombre === "Sombrero constructor") {
+      } else if (
+        reliquia[i].nombre === "Sombrero constructor (se usa en la tienda)"
+      ) {
         siConstru = true;
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Escudo Clásico") {
         if (monstruo.tipo === "elite" || monstruo.tipo === "jefe") {
           siClasico = true;
           clasicoTurnos = 3;
+          if (siClasico && clasicoTurnos > 0) {
+            escudoClasico();
+          }
         }
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Black Star") {
         siBlack = true;
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Caja de Devolución") {
-        siCaja = true;
+        siCaja = 3;
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Fortaleza") {
         siFortaleza = true;
-        console.log("Reliquia Activa: " + reliquia[i].nombre);
-      } else if (reliquia[i].nombre === "Escudo de Hierro") {
-        console.log("Reliquia Activa: " + reliquia[i].nombre);
-      } else if (reliquia[i].nombre === "Trébol de Oro") {
-        console.log("Reliquia Activa: " + reliquia[i].nombre);
-      } else if (reliquia[i].nombre === "Báculo del Archimago") {
-      } else if (reliquia[i].nombre === "Lanza de odin") {
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       }
     }
@@ -556,6 +569,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
       }
+      console.log(dañoRival);
 
       if (info.vida < 0) info.vida = 0;
       mostrar();
@@ -578,7 +592,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     if (siPiedra) {
       fuerza += 1;
-      vul += 1;
+      console.log("Piedra filosofal:" + vul, fuerza);
     }
     if (siAnchor) {
       cantidadEscudo += 10;
@@ -588,9 +602,7 @@ window.addEventListener("DOMContentLoaded", () => {
       info.vida += 5;
     }
     if (siClasico && clasicoTurnos > 0) {
-      cantidadEscudo += 10;
-      siEscudo = true;
-      clasicoTurnos--;
+      escudoClasico();
     }
     turno = turno + 1;
     abajo.style.display = "flex";
@@ -1174,18 +1186,31 @@ window.addEventListener("DOMContentLoaded", () => {
   function iniciarCartas() {
     abajo.innerHTML = "";
     contadorCartas = 1;
-    mana = manaMax;
-    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
-    if (!siCaja) {
-      for (let i = 0; i < 5; i++) {
-        sumarCarta();
-      }
+    if (siLantern > 0) {
+      mana = manaMax + 1;
+      siLantern--;
     } else {
-      for (let i = 0; i < 7; i++) {
-        sumarCarta();
-      }
+      mana = manaMax;
+    }
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
+
+    let cantidadInicial = 5; // valor base
+
+    if (siCaja > 0) {
+      cantidadInicial = 7;
+      siCaja--;
+      console.log(siCaja);
+    }
+
+    if (siBag && siCaja <= 0) {
+      cantidadInicial = 6;
+    }
+
+    for (let i = 0; i < cantidadInicial; i++) {
+      sumarCarta();
     }
   }
+
   // CARTAS ATAQUE
   function golpe(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
@@ -1220,7 +1245,10 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if (fuerza >= 10) {
       carta.daño *= 2;
     }
-
+    if (siSalvia && turno > 1) {
+      console.log(dañoRival);
+      carta.daño += dañoRival * 0.3;
+    }
     monstruo.vida -= carta.daño;
     monstruo.vida = Math.floor(monstruo.vida);
     if (monstruo.vida < 0) monstruo.vida = 0;
@@ -1272,6 +1300,9 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if (fuerza >= 10) {
       carta.daño *= 2;
     }
+    if (siSalvia && turno > 1) {
+      carta.daño += dañoRival * 0.3;
+    }
     monstruo.vida -= carta.daño;
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
@@ -1320,6 +1351,9 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if (fuerza >= 10) {
       carta.daño *= 2;
     }
+    if (siSalvia && turno > 1) {
+      carta.daño += dañoRival * 0.3;
+    }
     monstruo.vida -= carta.daño;
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
@@ -1366,6 +1400,9 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño *= 1.9;
     } else if (fuerza >= 10) {
       carta.daño *= 2;
+    }
+    if (siSalvia && turno > 1) {
+      carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
     if (monstruo.vida < 0) monstruo.vida = 0;
@@ -1414,6 +1451,9 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if (fuerza >= 10) {
       carta.daño *= 2;
     }
+    if (siSalvia && turno > 1) {
+      carta.daño += dañoRival * 0.3;
+    }
     monstruo.vida -= carta.daño;
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
@@ -1460,6 +1500,9 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño *= 1.9;
     } else if (fuerza >= 10) {
       carta.daño *= 2;
+    }
+    if (siSalvia && turno > 1) {
+      carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
     if (monstruo.vida <= 0) info.vidamax += 3;
@@ -1510,6 +1553,9 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño *= 1.9;
     } else if (fuerza >= 10) {
       carta.daño *= 2;
+    }
+    if (siSalvia && turno > 1) {
+      carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
     if (monstruo.vida < 0) monstruo.vida = 0;
@@ -1564,6 +1610,9 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if (fuerza >= 10) {
       carta.daño *= 2;
     }
+    if (siSalvia && turno > 1) {
+      carta.daño += dañoRival * 0.3;
+    }
     monstruo.vida -= carta.daño;
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
@@ -1610,6 +1659,9 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño *= 1.9;
     } else if (fuerza >= 10) {
       carta.daño *= 2;
+    }
+    if (siSalvia && turno > 1) {
+      carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
     if (monstruo.vida < 0) monstruo.vida = 0;
@@ -1664,6 +1716,9 @@ window.addEventListener("DOMContentLoaded", () => {
       } else if (fuerza >= 10) {
         carta.daño *= 2;
       }
+      if (siSalvia && turno > 1) {
+        carta.daño += dañoRival * 0.3;
+      }
       monstruo.vida -= carta.daño;
       if (monstruo.vida < 0) monstruo.vida = 0;
       vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
@@ -1715,6 +1770,9 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if (fuerza >= 10) {
       carta.daño *= 2;
     }
+    if (siSalvia && turno > 1) {
+      carta.daño += dañoRival * 0.3;
+    }
     monstruo.vida -= carta.daño;
     saltearTurnoRival = true;
     if (monstruo.vida < 0) monstruo.vida = 0;
@@ -1762,6 +1820,9 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño *= 1.9;
     } else if (fuerza >= 10) {
       carta.daño *= 2;
+    }
+    if (siSalvia && turno > 1) {
+      carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
     if (monstruo.vida < 0) monstruo.vida = 0;
@@ -2456,13 +2517,16 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function mostrarRecompensas() {
     lugarRecompensas.style.display = "block";
-    lugarRecompensas.style.backgroundColor = "white";
+    /*lugarRecompensas.style.backgroundColor = "white";
     cajaBatalla.style.display = "none";
     LugarCartas.style.display = "none";
     LugarCartas.style.background = "none";
     lugarReliquias.style.display = "none";
     lugarReliquias.style.background = "none";
-    document.body.style.background = "none";
+    document.body.style.background = "none";*/
+    omitir.style.display = "flex";
+    const modal = document.querySelector("[data-modal]")
+    modal.showModal();
     if (monstruo.tipo === "normal") {
       for (let i = 1; i < 3; i++) {
         let contenedorRecompensa = document.getElementById(
@@ -2548,10 +2612,65 @@ window.addEventListener("DOMContentLoaded", () => {
       Array.from(eleccionReliquias).forEach((r) => {
         r.style.display = "block";
       });
-      reliquiaJefe1 = reliquiaJefe2;
-      reliquiaJefe3;
-      reliquiaJefe4;
-      reliquiaJefe5;
+      getEvent("reliquia-jefe", (data) => {
+        reliquiaJefe1 = data.reliquia1;
+        reliquiaJefe2 = data.reliquia2;
+        reliquiaJefe3 = data.reliquia3;
+        reliquiaJefe4 = data.reliquia4;
+        reliquiaJefe5 = data.reliquia5;
+      
+        console.log(reliquiaJefe1);
+        console.log(reliquiaJefe2);
+        console.log(reliquiaJefe3);
+        console.log(reliquiaJefe4);
+        console.log(reliquiaJefe5);
+      
+        // Aplica fondo + tooltip flotante + click de selección
+        const slotsJefe = [
+          { el: reliquia1, data: reliquiaJefe1 },
+          { el: reliquia2, data: reliquiaJefe2 },
+          { el: reliquia3, data: reliquiaJefe3 },
+          { el: reliquia4, data: reliquiaJefe4 },
+          { el: reliquia5, data: reliquiaJefe5 },
+        ];
+      
+        slotsJefe.forEach(({ el, data }) => {
+          if (!el || !data) return;
+      
+          // Fondo con la imagen de la reliquia
+          el.style.backgroundImage = `url('${data.ruta}')`;
+          el.style.backgroundSize = "contain";
+          el.style.backgroundRepeat = "no-repeat";
+          el.style.backgroundPosition = "center";
+          el.style.cursor = "var(--pointer, pointer)";
+      
+          // Datos del tooltip
+          el.dataset.nombre = data.nombre || "";
+          el.dataset.efecto = data.efecto || "";
+          el.dataset.ruta = data.ruta || "";
+      
+          // Eventos del tooltip flotante
+          el.addEventListener("mouseenter", () =>
+            showFloatingTooltipFromElement(el)
+          );
+          el.addEventListener("mousemove", (e) =>
+            moveFloatingTooltip(e.clientX, e.clientY)
+          );
+          el.addEventListener("mouseleave", hideFloatingTooltip);
+      
+          // Evento de click → POST al backend
+          el.addEventListener("click", () => {
+            hideFloatingTooltip();
+            console.log(`Reliquia elegida: ${data.nombre}`);
+            postEvent("devolver-reliquias", { reliquia: data.nombre });
+      
+            // 🔹 Feedback visual (opcional)
+            el.style.outline = "4px solid gold";
+            setTimeout(() => (el.style.outline = ""), 500);
+          });
+        });
+      });
+      
     }, 800);
   }
 
@@ -2574,6 +2693,105 @@ window.addEventListener("DOMContentLoaded", () => {
   omitir.addEventListener("click", irSeleccion);
   reliquias.addEventListener("click", mostrarReliquias);
 
+  const cartasDisponibles = [
+    // --- ATAQUE ---
+    { nombre: "Golpe", clase: "carta-golpe", tipo: "ataque" },
+    { nombre: "Espada pesada", clase: "carta-espadaPesada", tipo: "ataque" },
+    { nombre: "Ira", clase: "carta-ira", tipo: "ataque" },
+    { nombre: "Rafaga", clase: "carta-rafaga", tipo: "ataque" },
+    { nombre: "Festin", clase: "carta-festin", tipo: "ataque" },
+    { nombre: "Ataque rapido", clase: "carta-ataqueRapido", tipo: "ataque" },
+    { nombre: "Chapiadora.com", clase: "carta-chapiadora", tipo: "ataque" },
+    { nombre: "Promo 2027", clase: "carta-promo", tipo: "ataque" },
+    { nombre: "Choque", clase: "carta-choque", tipo: "ataque" },
+    { nombre: "Garrote", clase: "carta-garrote", tipo: "ataque" },
+    { nombre: "Zip", clase: "carta-zip", tipo: "ataque" },
+    { nombre: "Uppercut", clase: "carta-uppercut", tipo: "ataque" },
+  
+    // --- DEFENSA ---
+    { nombre: "Escudo", clase: "carta-escudo", tipo: "defensa" },
+    { nombre: "Trinchera", clase: "carta-trinchera", tipo: "defensa" },
+    { nombre: "Protector", clase: "carta-protector", tipo: "defensa" },
+    { nombre: "Heroico", clase: "carta-heroico", tipo: "defensa" },
+    { nombre: "Verdadero valor", clase: "carta-verdaderoValor", tipo: "defensa" },
+    { nombre: "Segundo aliento", clase: "carta-segundoAliento", tipo: "defensa" },
+    { nombre: "Defensa en placas", clase: "carta-defensaEnPlacas", tipo: "defensa" },
+    { nombre: "Estrategia defensiva", clase: "carta-estrategiaDefensiva", tipo: "defensa" },
+    { nombre: "Copa", clase: "carta-copa", tipo: "defensa" },
+    { nombre: "Auto-escudo", clase: "carta-autoEscudo", tipo: "defensa" },
+    { nombre: "Mutacion", clase: "carta-mutacion", tipo: "defensa" },
+    { nombre: "Espadas orbitantes", clase: "carta-espadasOrbitantes", tipo: "defensa" },
+  
+    // --- APOYO ---
+    { nombre: "Flexionar", clase: "carta-flexionar", tipo: "apoyo" },
+    { nombre: "Ritual", clase: "carta-ritual", tipo: "apoyo" },
+    { nombre: "Doble ataque", clase: "carta-dobleAtaque", tipo: "apoyo" },
+    { nombre: "Furia", clase: "carta-furia", tipo: "apoyo" },
+    { nombre: "Columna suertuda", clase: "carta-columnaSuertuda", tipo: "apoyo" },
+    { nombre: "Ataque ancestral", clase: "carta-ataqueAncestral", tipo: "apoyo" },
+    { nombre: "Debilidad", clase: "carta-debilidad", tipo: "apoyo" },
+    { nombre: "Barricada", clase: "carta-barricada", tipo: "apoyo" },
+    { nombre: "Golpe de cuerpo", clase: "carta-golpeDeCuerpo", tipo: "apoyo" },
+    { nombre: "Ignorar", clase: "carta-ignorar", tipo: "apoyo" },
+    { nombre: "Lamento penetrante", clase: "carta-lamentoPenetrante", tipo: "apoyo" },
+  ];
+  
+
+
+  const contenedores = document.getElementsByClassName("cartasSeleccion");
+
+  // 🔹 Función que devuelve N cartas aleatorias sin repetición
+  function cartasRandomUnicas(cantidad) {
+    const copia = [...cartasDisponibles]; // clonamos el array
+    const seleccionadas = [];
+
+    for (let i = 0; i < cantidad && copia.length > 0; i++) {
+      const indice = Math.floor(Math.random() * copia.length);
+      seleccionadas.push(copia.splice(indice, 1)[0]); // extrae una carta sin repetir
+    }
+    return seleccionadas;
+  }
+
+  // 🔹 Mostrar cartas únicas al cargar
+  const cartasIniciales = cartasRandomUnicas(contenedores.length);
+
+  for (let i = 0; i < contenedores.length; i++) {
+    const contenedor = contenedores[i];
+    const carta = cartasIniciales[i];
+
+    contenedor.classList.add(carta.clase);
+    console.log(`Carta inicial ${i + 1}: ${carta.nombre}`);
+  }
+  let cartaElegida = null; // Variable para guardar la carta seleccionada
+
+  for (let i = 0; i < contenedores.length; i++) {
+    const contenedor = contenedores[i];
+    const carta = cartasIniciales[i];
+
+    contenedor.classList.add(carta.clase);
+    contenedor.dataset.nombre = carta.nombre;
+
+    contenedor.addEventListener("click", () => {
+      boton.disable = true;
+      cartaElegida = carta.nombre;
+      console.log("Carta elegida:", cartaElegida);
+
+      const nodoActual = sessionStorage.getItem("nodoGanado");
+      if (nodoActual) {
+        sessionStorage.setItem("nodoGanado", nodoActual);
+      }
+      postEvent("modificar-mazo", {
+        accion: "agregar",
+        carta: cartaElegida,
+      });
+      window.location.href = "../mapa/index.html";
+    });
+  }
+  let boton = document.getElementById("botonO");
+  function omitirA(){
+    window.location.href = "../mapa/index.html"
+  }
+    boton.addEventListener("click", omitirA);
   // === TOOLTIP FLOTANTE PARA RELIQUIAS (versión completa) ===
 
   // Variable global del tooltip activo
@@ -2677,128 +2895,6 @@ window.addEventListener("DOMContentLoaded", () => {
     oldMostrarReliquia();
     setTimeout(activarTooltipsReliquias, 100); // espera un instante a que se inserten en el DOM
   };
-
-  /*
-  function mostrarReliquiasS(mercado) {
-    let reliquiasAMostrar = Object.entries(mercado)
-      .filter(([key]) => key.startsWith("reliquia"))
-      .slice(0, 4);
-
-    reliquiasAMostrar.forEach(([key, reliquia], index) => {
-      let divReliquia = document.querySelector(`#reliquia${}`);
-      if (divReliquia) {
-        divReliquia.innerHTML = `
-                    <div class="reliquia-contenedor" 
-                         data-nombre="${escapeHtml(reliquia.nombre || "")}" 
-                         data-efecto="${escapeHtml(reliquia.efecto || "")}">
-                        <img class="reliquia-img" src="${
-                          reliquia.ruta
-                        }" alt="${escapeHtml(reliquia.nombre)}">
-                        <div class="card-oro">
-                            <img class="foto-oro" src="../Cosas/image 43.png" alt="oro">
-                            <span class="oro-texto">: ${valorAleatorio()}</span>
-                        </div>
-                    </div>
-                `;
-
-        const cont = divReliquia.querySelector(".reliquia-contenedor");
-
-        cont.addEventListener("mouseenter", (e) => {
-          showFloatingTooltipFromElement(cont);
-        });
-        cont.addEventListener("mouseleave", (e) => {
-          hideFloatingTooltip();
-        });
-      }
-    });
-  }
-
-  let __floatingTooltip = null;
-
-  function showFloatingTooltipFromElement(el) {
-    hideFloatingTooltip();
-
-    const nombre = el.dataset.nombre || "";
-    const efecto = el.dataset.efecto || "";
-    const ruta = el.dataset.ruta || "";
-
-    __floatingTooltip = document.createElement("div");
-    __floatingTooltip.className = "tooltip-floating";
-    __floatingTooltip.innerHTML = `
-            <div class="tooltip-title">${nombre}</div>
-            <div class="tooltip-body">${efecto}</div>
-            <div class="tooltip-meta"><small>${ruta}</small></div>
-        `;
-    document.body.appendChild(__floatingTooltip);
-
-    const rect = el.getBoundingClientRect();
-    const tooltipRect = __floatingTooltip.getBoundingClientRect();
-
-    const cardOro = el.querySelector(".card-oro");
-    let margin = 8;
-    if (cardOro) {
-      margin += cardOro.offsetHeight;
-    }
-
-    const top = window.scrollY + rect.bottom + margin;
-    let left =
-      window.scrollX + rect.left + rect.width / 2 - tooltipRect.width / 2;
-
-    const minLeft = window.scrollX + 8;
-    const maxLeft =
-      window.scrollX +
-      document.documentElement.clientWidth -
-      tooltipRect.width -
-      8;
-    left = Math.max(minLeft, Math.min(left, maxLeft));
-
-    __floatingTooltip.style.left = `${left}px`;
-    __floatingTooltip.style.top = `${top}px`;
-
-    requestAnimationFrame(() => {
-      __floatingTooltip.style.opacity = "1";
-    });
-  }
-
-  function moveFloatingTooltip(clientX, clientY) {
-    if (!__floatingTooltip) return;
-    const tooltipRect = __floatingTooltip.getBoundingClientRect();
-    let left = clientX + 12;
-    let top = clientY + 12;
-    left = Math.min(
-      left,
-      window.scrollX +
-        document.documentElement.clientWidth -
-        tooltipRect.width -
-        8
-    );
-    top = Math.min(
-      top,
-      window.scrollY +
-        document.documentElement.clientHeight -
-        tooltipRect.height -
-        8
-    );
-    __floatingTooltip.style.left = `${left}px`;
-    __floatingTooltip.style.top = `${top}px`;
-  }
-
-  function hideFloatingTooltip() {
-    if (!__floatingTooltip) return;
-    __floatingTooltip.remove();
-    __floatingTooltip = null;
-  }
-
-  function escapeHtml(str) {
-    if (str === undefined || str === null) return "";
-    return String(str)
-      .replace(/&/g, "&amp;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#39;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
-  }
-*/
 });
 
 /*

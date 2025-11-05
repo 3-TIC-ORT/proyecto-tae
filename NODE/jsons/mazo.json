@@ -86,13 +86,5 @@
     "tipo": "ataque",
     "efecto": "Aplica 2 de vulnerabilidad al enemigo",
     "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
-  },
-  {
-    "nombre": "Golpe",
-    "daño": 7,
-    "elixir": 1,
-    "tipo": "ataque",
-    "efecto": null,
-    "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
   }
 ]

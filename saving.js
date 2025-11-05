@@ -146,7 +146,7 @@ subscribePOSTEvent("reiniciar",(data)=>{
       },
       {
         "nombre": "Bag of Preparation",
-        "efecto": "Robas 2 cartas adicionales al inicio de cada combate",
+        "efecto": "Robas 1 carta adicional al inicio de cada turno",
         "obtencion": "Cofres, tienda",
         "ruta": "/Front/Cosas/reliquias/bag-of-preparation.png"
       },
@@ -176,7 +176,7 @@ subscribePOSTEvent("reiniciar",(data)=>{
       },
       {
         "nombre": "Salvia",
-        "efecto": "Al final de tu turno, ya no descartas tu mano",
+        "efecto": "Tu carta hace su daño sumado al 30% del daño del rival.",
         "obtencion": "Elite",
         "ruta": "/Front/Cosas/reliquias/salvia.png"
       },
@@ -212,7 +212,7 @@ subscribePOSTEvent("reiniciar",(data)=>{
       },
       {
         "nombre": "Caja de Devolución",
-        "efecto": "Al recogerla, tu deck aumenta 2 cartas",
+        "efecto": "Al recogerla, tu deck inicial y el siguiente aumentan en 2 cartas",
         "obtencion": "Jefe",
         "ruta": "/Front/Cosas/reliquias/caja-de-devolucion.png"
       },

@@ -4,5 +4,35 @@
     "efecto": "Cada vez que termina el combate se cura 6 de vida",
     "obtencion": "Inicial",
     "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
+  },
+  {
+    "nombre": "Caja de Devolución",
+    "efecto": "Al recogerla, tu deck aumenta 2 cartas",
+    "obtencion": "Jefe",
+    "ruta": "/Front/Cosas/reliquias/caja-de-devolucion.png"
+  },
+  {
+    "nombre": "Fortaleza",
+    "efecto": "Al comienzo de tu turno, gana 1 de Fuerza y todos los enemigos ganan 1 de debilidad",
+    "obtencion": "Jefe",
+    "ruta": "/Front/Cosas/reliquias/fortaleza.png"
+  },
+  {
+    "nombre": "Bag of Preparation",
+    "efecto": "Robas 1 carta adicional al inicio de cada turno",
+    "obtencion": "Cofres, tienda",
+    "ruta": "/Front/Cosas/reliquias/bag-of-preparation.png"
+  },
+  {
+    "nombre": "Sombrero constructor",
+    "efecto": "Reduce el daño recibido de elites y jefes en un 15%",
+    "obtencion": "Jefe",
+    "ruta": "/Front/Cosas/reliquias/sombrero-constructor.png"
+  },
+  {
+    "nombre": "Salvia",
+    "efecto": "Tu carta hace su daño sumado al 30% del daño del rival.",
+    "obtencion": "Elite",
+    "ruta": "/Front/Cosas/reliquias/salvia.png"
   }
 ]

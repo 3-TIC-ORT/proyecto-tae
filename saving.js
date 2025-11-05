@@ -78,9 +78,9 @@ subscribePOSTEvent("fogata",(data) => {
 
 subscribePOSTEvent("guardar",(data) => {
   if(data === true){
-  let saving = JSON.parse(fs.readFileSync("./jsons/saving.json"))
+  let saving = JSON.parse(fs.readFileSync("./NODE/jsons/saving.json"))
   saving = info
-  fs.writeFileSync("./jsons/saving.json",JSON.stringify(saving,null,2))
+  fs.writeFileSync("./NODE/jsons/saving.json",JSON.stringify(saving,null,2))
 }
 });
 

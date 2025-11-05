@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let LugarCartas = document.getElementById("LugarCartas");
   let atras = document.getElementById("atras");
   let atras2 = document.getElementById("atras2");
-  let omitir = document.getElementById("omitir");
+  //let omitir = document.getElementById("omitir");
   let cajaBatalla = document.getElementById("batalla");
   let lugarReliquias = document.getElementById("LugarReliquias");
   let lugarEscudo = document.getElementById("escudo");
@@ -86,7 +86,6 @@ window.addEventListener("DOMContentLoaded", () => {
   let ganancia = 0;
   let gananciaInicial = 0;
   let reliquiaInicial = {};
-  let cartaElegida = {};
   let reliquiaElite1 = {};
   let reliquiaElite2 = {};
 
@@ -669,7 +668,7 @@ window.addEventListener("DOMContentLoaded", () => {
     cartasmano.push(cartaRobada);
 
     carta = document.createElement("div");
-    carta.classList.add(`carta${contadorCartas}`, "cartaG");
+    carta.classList.add(`carta${contadorCartas}B`, "cartaG");
     carta.id = `C${contadorCartas}`;
     carta.innerHTML = `<p>${cartaRobada.nombre}</p>`;
     abajo.appendChild(carta);
@@ -2307,138 +2306,138 @@ window.addEventListener("DOMContentLoaded", () => {
     if (tengoEscudo === false) {
       let cartaEliminar = event.target;
       console.log(cartaEliminar.classList[0]);
-      if (cartaEliminar.classList[0] === "carta1") {
-        let carta2 = document.getElementsByClassName("carta2");
-        let carta3 = document.getElementsByClassName("carta3");
-        let carta4 = document.getElementsByClassName("carta4");
-        let carta5 = document.getElementsByClassName("carta5");
-        let carta6 = document.getElementsByClassName("carta6");
-        let carta7 = document.getElementsByClassName("carta7");
-        let carta8 = document.getElementsByClassName("carta8");
-        let carta9 = document.getElementsByClassName("carta9");
+      if (cartaEliminar.classList[0] === "carta1B") {
+        let carta2 = document.getElementsByClassName("carta2B");
+        let carta3 = document.getElementsByClassName("carta3B");
+        let carta4 = document.getElementsByClassName("carta4B");
+        let carta5 = document.getElementsByClassName("carta5B");
+        let carta6 = document.getElementsByClassName("carta6B");
+        let carta7 = document.getElementsByClassName("carta7B");
+        let carta8 = document.getElementsByClassName("carta8B");
+        let carta9 = document.getElementsByClassName("carta9B");
         Array.from(carta2).forEach((element) => {
-          element.classList.remove("carta2");
-          element.classList.add("carta1");
+          element.classList.remove("carta2B");
+          element.classList.add("carta1B");
         });
         Array.from(carta4).forEach((element) => {
-          element.classList.remove("carta4");
-          element.classList.add("carta2");
+          element.classList.remove("carta4B");
+          element.classList.add("carta2B");
         });
         Array.from(carta6).forEach((element) => {
-          element.classList.remove("carta6");
-          element.classList.add("carta4");
+          element.classList.remove("carta6B");
+          element.classList.add("carta4B");
         });
         Array.from(carta8).forEach((element) => {
-          element.classList.remove("carta8");
-          element.classList.add("carta6");
+          element.classList.remove("carta8B");
+          element.classList.add("carta6B");
         });
       }
       if (cartaEliminar.classList[0] === "carta2") {
-        let carta1 = document.getElementsByClassName("carta1");
-        let carta3 = document.getElementsByClassName("carta3");
-        let carta4 = document.getElementsByClassName("carta4");
-        let carta5 = document.getElementsByClassName("carta5");
-        let carta6 = document.getElementsByClassName("carta6");
-        let carta7 = document.getElementsByClassName("carta7");
-        let carta8 = document.getElementsByClassName("carta8");
-        let carta9 = document.getElementsByClassName("carta9");
+        let carta1 = document.getElementsByClassName("carta1B");
+        let carta3 = document.getElementsByClassName("carta3B");
+        let carta4 = document.getElementsByClassName("carta4B");
+        let carta5 = document.getElementsByClassName("carta5B");
+        let carta6 = document.getElementsByClassName("carta6B");
+        let carta7 = document.getElementsByClassName("carta7B");
+        let carta8 = document.getElementsByClassName("carta8B");
+        let carta9 = document.getElementsByClassName("carta9B");
         Array.from(carta4).forEach((element) => {
-          element.classList.remove("carta4");
-          element.classList.add("carta2");
+          element.classList.remove("carta4B");
+          element.classList.add("carta2B");
         });
         Array.from(carta6).forEach((element) => {
-          element.classList.remove("carta6");
-          element.classList.add("carta4");
+          element.classList.remove("carta6B");
+          element.classList.add("carta4B");
         });
         Array.from(carta8).forEach((element) => {
-          element.classList.remove("carta8");
-          element.classList.add("carta6");
+          element.classList.remove("carta8B");
+          element.classList.add("carta6B");
         });
       }
-      if (cartaEliminar.classList[0] === "carta3") {
-        let carta1 = document.getElementsByClassName("carta1");
-        let carta2 = document.getElementsByClassName("carta2");
-        let carta4 = document.getElementsByClassName("carta4");
-        let carta5 = document.getElementsByClassName("carta5");
-        let carta6 = document.getElementsByClassName("carta6");
-        let carta7 = document.getElementsByClassName("carta7");
-        let carta8 = document.getElementsByClassName("carta8");
-        let carta9 = document.getElementsByClassName("carta9");
+      if (cartaEliminar.classList[0] === "carta3B") {
+        let carta1 = document.getElementsByClassName("carta1B");
+        let carta2 = document.getElementsByClassName("carta2B");
+        let carta4 = document.getElementsByClassName("carta4B");
+        let carta5 = document.getElementsByClassName("carta5B");
+        let carta6 = document.getElementsByClassName("carta6B");
+        let carta7 = document.getElementsByClassName("carta7B");
+        let carta8 = document.getElementsByClassName("carta8B");
+        let carta9 = document.getElementsByClassName("carta9B");
         Array.from(carta5).forEach((element) => {
-          element.classList.remove("carta5");
-          element.classList.add("carta3");
+          element.classList.remove("carta5B");
+          element.classList.add("carta3B");
         });
         Array.from(carta7).forEach((element) => {
-          element.classList.remove("carta7");
-          element.classList.add("carta5");
+          element.classList.remove("carta7B");
+          element.classList.add("carta5B");
         });
         Array.from(carta9).forEach((element) => {
-          element.classList.remove("carta9");
-          element.classList.add("carta7");
+          element.classList.remove("carta9B");
+          element.classList.add("carta7B");
         });
       }
       if (cartaEliminar.classList[0] === "carta4") {
-        let carta1 = document.getElementsByClassName("carta1");
-        let carta2 = document.getElementsByClassName("carta2");
-        let carta3 = document.getElementsByClassName("carta3");
-        let carta5 = document.getElementsByClassName("carta5");
-        let carta6 = document.getElementsByClassName("carta6");
-        let carta7 = document.getElementsByClassName("carta7");
-        let carta8 = document.getElementsByClassName("carta8");
-        let carta9 = document.getElementsByClassName("carta9");
+        let carta1 = document.getElementsByClassName("carta1B");
+        let carta2 = document.getElementsByClassName("carta2B");
+        let carta3 = document.getElementsByClassName("carta3B");
+        let carta5 = document.getElementsByClassName("carta5B");
+        let carta6 = document.getElementsByClassName("carta6B");
+        let carta7 = document.getElementsByClassName("carta7B");
+        let carta8 = document.getElementsByClassName("carta8B");
+        let carta9 = document.getElementsByClassName("carta9B");
         Array.from(carta6).forEach((element) => {
-          element.classList.remove("carta6");
-          element.classList.add("carta4");
+          element.classList.remove("carta6B");
+          element.classList.add("carta4B");
         });
         Array.from(carta8).forEach((element) => {
-          element.classList.remove("carta8");
-          element.classList.add("carta6");
+          element.classList.remove("carta8B");
+          element.classList.add("carta6B");
         });
       }
-      if (cartaEliminar.classList[0] === "carta5") {
-        let carta1 = document.getElementsByClassName("carta1");
-        let carta2 = document.getElementsByClassName("carta2");
-        let carta3 = document.getElementsByClassName("carta3");
-        let carta4 = document.getElementsByClassName("carta4");
-        let carta6 = document.getElementsByClassName("carta6");
-        let carta7 = document.getElementsByClassName("carta7");
-        let carta8 = document.getElementsByClassName("carta8");
-        let carta9 = document.getElementsByClassName("carta9");
+      if (cartaEliminar.classList[0] === "carta5B") {
+        let carta1 = document.getElementsByClassName("carta1B");
+        let carta2 = document.getElementsByClassName("carta2B");
+        let carta3 = document.getElementsByClassName("carta3B");
+        let carta4 = document.getElementsByClassName("carta4B");
+        let carta6 = document.getElementsByClassName("carta6B");
+        let carta7 = document.getElementsByClassName("carta7B");
+        let carta8 = document.getElementsByClassName("carta8B");
+        let carta9 = document.getElementsByClassName("carta9B");
         Array.from(carta7).forEach((element) => {
-          element.classList.remove("carta7");
-          element.classList.add("carta5");
+          element.classList.remove("carta7B");
+          element.classList.add("carta5B");
         });
         Array.from(carta6).forEach((element) => {
-          element.classList.remove("carta9");
-          element.classList.add("carta7");
+          element.classList.remove("carta9B");
+          element.classList.add("carta7B");
         });
       }
-      if (cartaEliminar.classList[0] === "carta6") {
-        let carta1 = document.getElementsByClassName("carta1");
-        let carta2 = document.getElementsByClassName("carta2");
-        let carta3 = document.getElementsByClassName("carta3");
-        let carta4 = document.getElementsByClassName("carta4");
-        let carta5 = document.getElementsByClassName("carta5");
-        let carta7 = document.getElementsByClassName("carta7");
-        let carta8 = document.getElementsByClassName("carta8");
-        let carta9 = document.getElementsByClassName("carta9");
+      if (cartaEliminar.classList[0] === "carta6B") {
+        let carta1 = document.getElementsByClassName("carta1B");
+        let carta2 = document.getElementsByClassName("carta2B");
+        let carta3 = document.getElementsByClassName("carta3B");
+        let carta4 = document.getElementsByClassName("carta4B");
+        let carta5 = document.getElementsByClassName("carta5B");
+        let carta7 = document.getElementsByClassName("carta7B");
+        let carta8 = document.getElementsByClassName("carta8B");
+        let carta9 = document.getElementsByClassName("carta9B");
         Array.from(carta8).forEach((element) => {
-          element.classList.remove("carta8");
-          element.classList.add("carta6");
+          element.classList.remove("carta8B");
+          element.classList.add("carta6B");
         });
       }
       if (cartaEliminar.classList[0] === "carta7") {
-        let carta1 = document.getElementsByClassName("carta1");
-        let carta2 = document.getElementsByClassName("carta2");
-        let carta3 = document.getElementsByClassName("carta3");
-        let carta4 = document.getElementsByClassName("carta4");
-        let carta5 = document.getElementsByClassName("carta5");
-        let carta6 = document.getElementsByClassName("carta6");
-        let carta8 = document.getElementsByClassName("carta8");
-        let carta9 = document.getElementsByClassName("carta9");
+        let carta1 = document.getElementsByClassName("carta1B");
+        let carta2 = document.getElementsByClassName("carta2B");
+        let carta3 = document.getElementsByClassName("carta3B");
+        let carta4 = document.getElementsByClassName("carta4B");
+        let carta5 = document.getElementsByClassName("carta5B");
+        let carta6 = document.getElementsByClassName("carta6B");
+        let carta8 = document.getElementsByClassName("carta8B");
+        let carta9 = document.getElementsByClassName("carta9B");
         Array.from(carta9).forEach((element) => {
-          element.classList.remove("carta9");
-          element.classList.add("carta7");
+          element.classList.remove("carta9B");
+          element.classList.add("carta7B");
         });
       }
 
@@ -2524,7 +2523,7 @@ window.addEventListener("DOMContentLoaded", () => {
     lugarReliquias.style.display = "none";
     lugarReliquias.style.background = "none";
     document.body.style.background = "none";*/
-    omitir.style.display = "flex";
+    //omitir.style.display = "flex";
     const modal = document.querySelector("[data-modal]")
     modal.showModal();
     if (monstruo.tipo === "normal") {
@@ -2562,8 +2561,11 @@ window.addEventListener("DOMContentLoaded", () => {
             else if (i === 2)
               nuevaRecompensa.textContent = `${reliquiaElite1.nombre}`;
             else nuevaRecompensa.textContent = `Escoge una carta`;
-            contenedorRecompensa.appendChild(nuevaRecompensa);
+            contenedorRecompensa.appendChild(nuevaRecompensa); 
           }
+          let recompensa3 = document.getElementById("recompensa3");
+          recompensa3.style.cursor = "var(--pointer)";
+          recompensa3.addEventListener("click", irSeleccion);
         }, 100);
       } else {
         getEvent("reliquia-elite", (data) => {
@@ -2587,6 +2589,9 @@ window.addEventListener("DOMContentLoaded", () => {
             } else nuevaRecompensa.textContent = `Escoge una carta`;
             contenedorRecompensa.appendChild(nuevaRecompensa);
           }
+          let recompensa4 = document.getElementById("recompensa4");
+          recompensa4.style.cursor = "var(--pointer)";
+          recompensa4.addEventListener("click", irSeleccion);
         }, 100);
       }
 
@@ -2685,113 +2690,17 @@ window.addEventListener("DOMContentLoaded", () => {
     window.scrollTo(0, 0);
   }
   function irSeleccion() {
-    window.location.href = "../seleccion-cartas/index.html";
+    /*const modal2 = document.querySelector("[data-modal2]");
+    modal2.showModal();*/
+    const modal = document.querySelector("[data-modal]")
+    modal.close();
   }
   cartas.addEventListener("click", mostrarCartas);
   atras.addEventListener("click", volverBatalla);
   atras2.addEventListener("click", volverBatalla);
-  omitir.addEventListener("click", irSeleccion);
+  //omitir.addEventListener("click", irSeleccion);
   reliquias.addEventListener("click", mostrarReliquias);
 
-  const cartasDisponibles = [
-    // --- ATAQUE ---
-    { nombre: "Golpe", clase: "carta-golpe", tipo: "ataque" },
-    { nombre: "Espada pesada", clase: "carta-espadaPesada", tipo: "ataque" },
-    { nombre: "Ira", clase: "carta-ira", tipo: "ataque" },
-    { nombre: "Rafaga", clase: "carta-rafaga", tipo: "ataque" },
-    { nombre: "Festin", clase: "carta-festin", tipo: "ataque" },
-    { nombre: "Ataque rapido", clase: "carta-ataqueRapido", tipo: "ataque" },
-    { nombre: "Chapiadora.com", clase: "carta-chapiadora", tipo: "ataque" },
-    { nombre: "Promo 2027", clase: "carta-promo", tipo: "ataque" },
-    { nombre: "Choque", clase: "carta-choque", tipo: "ataque" },
-    { nombre: "Garrote", clase: "carta-garrote", tipo: "ataque" },
-    { nombre: "Zip", clase: "carta-zip", tipo: "ataque" },
-    { nombre: "Uppercut", clase: "carta-uppercut", tipo: "ataque" },
-  
-    // --- DEFENSA ---
-    { nombre: "Escudo", clase: "carta-escudo", tipo: "defensa" },
-    { nombre: "Trinchera", clase: "carta-trinchera", tipo: "defensa" },
-    { nombre: "Protector", clase: "carta-protector", tipo: "defensa" },
-    { nombre: "Heroico", clase: "carta-heroico", tipo: "defensa" },
-    { nombre: "Verdadero valor", clase: "carta-verdaderoValor", tipo: "defensa" },
-    { nombre: "Segundo aliento", clase: "carta-segundoAliento", tipo: "defensa" },
-    { nombre: "Defensa en placas", clase: "carta-defensaEnPlacas", tipo: "defensa" },
-    { nombre: "Estrategia defensiva", clase: "carta-estrategiaDefensiva", tipo: "defensa" },
-    { nombre: "Copa", clase: "carta-copa", tipo: "defensa" },
-    { nombre: "Auto-escudo", clase: "carta-autoEscudo", tipo: "defensa" },
-    { nombre: "Mutacion", clase: "carta-mutacion", tipo: "defensa" },
-    { nombre: "Espadas orbitantes", clase: "carta-espadasOrbitantes", tipo: "defensa" },
-  
-    // --- APOYO ---
-    { nombre: "Flexionar", clase: "carta-flexionar", tipo: "apoyo" },
-    { nombre: "Ritual", clase: "carta-ritual", tipo: "apoyo" },
-    { nombre: "Doble ataque", clase: "carta-dobleAtaque", tipo: "apoyo" },
-    { nombre: "Furia", clase: "carta-furia", tipo: "apoyo" },
-    { nombre: "Columna suertuda", clase: "carta-columnaSuertuda", tipo: "apoyo" },
-    { nombre: "Ataque ancestral", clase: "carta-ataqueAncestral", tipo: "apoyo" },
-    { nombre: "Debilidad", clase: "carta-debilidad", tipo: "apoyo" },
-    { nombre: "Barricada", clase: "carta-barricada", tipo: "apoyo" },
-    { nombre: "Golpe de cuerpo", clase: "carta-golpeDeCuerpo", tipo: "apoyo" },
-    { nombre: "Ignorar", clase: "carta-ignorar", tipo: "apoyo" },
-    { nombre: "Lamento penetrante", clase: "carta-lamentoPenetrante", tipo: "apoyo" },
-  ];
-  
-
-
-  const contenedores = document.getElementsByClassName("cartasSeleccion");
-
-  // 🔹 Función que devuelve N cartas aleatorias sin repetición
-  function cartasRandomUnicas(cantidad) {
-    const copia = [...cartasDisponibles]; // clonamos el array
-    const seleccionadas = [];
-
-    for (let i = 0; i < cantidad && copia.length > 0; i++) {
-      const indice = Math.floor(Math.random() * copia.length);
-      seleccionadas.push(copia.splice(indice, 1)[0]); // extrae una carta sin repetir
-    }
-    return seleccionadas;
-  }
-
-  // 🔹 Mostrar cartas únicas al cargar
-  const cartasIniciales = cartasRandomUnicas(contenedores.length);
-
-  for (let i = 0; i < contenedores.length; i++) {
-    const contenedor = contenedores[i];
-    const carta = cartasIniciales[i];
-
-    contenedor.classList.add(carta.clase);
-    console.log(`Carta inicial ${i + 1}: ${carta.nombre}`);
-  }
-  let cartaElegida = null; // Variable para guardar la carta seleccionada
-
-  for (let i = 0; i < contenedores.length; i++) {
-    const contenedor = contenedores[i];
-    const carta = cartasIniciales[i];
-
-    contenedor.classList.add(carta.clase);
-    contenedor.dataset.nombre = carta.nombre;
-
-    contenedor.addEventListener("click", () => {
-      boton.disable = true;
-      cartaElegida = carta.nombre;
-      console.log("Carta elegida:", cartaElegida);
-
-      const nodoActual = sessionStorage.getItem("nodoGanado");
-      if (nodoActual) {
-        sessionStorage.setItem("nodoGanado", nodoActual);
-      }
-      postEvent("modificar-mazo", {
-        accion: "agregar",
-        carta: cartaElegida,
-      });
-      window.location.href = "../mapa/index.html";
-    });
-  }
-  let boton = document.getElementById("botonO");
-  function omitirA(){
-    window.location.href = "../mapa/index.html"
-  }
-    boton.addEventListener("click", omitirA);
   // === TOOLTIP FLOTANTE PARA RELIQUIAS (versión completa) ===
 
   // Variable global del tooltip activo

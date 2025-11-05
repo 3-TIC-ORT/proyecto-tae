@@ -40,14 +40,12 @@
   transform: scale(0.95);
   transition: 0.5s ease;
 }
-body {
-  cursor: var(--mouse);
-}
-.abajo{
+
+.abajoSeleccion{
   display: flex;
   justify-content: center;
 }
-.boton{
+.botonSeleccion{
   color: white;
   margin: 0;
   font-family: "Dela Gothic One", sans-serif !important;
@@ -69,7 +67,7 @@ body {
   height: 5.1875rem;
   cursor: var(--pointer);
 }
-.boton::before {
+.botonSeleccion::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -78,7 +76,7 @@ body {
   z-index: -1;
 }
 
-.boton::after {
+.botonSeleccion::after {
   content: "";
   position: absolute;
   inset: 10px; 

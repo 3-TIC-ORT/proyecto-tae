@@ -1,17 +1,5 @@
 [
   {
-    "nombre": "Vajra",
-    "efecto": "+1 de Fuerza",
-    "obtencion": "Cofres, tienda",
-    "ruta": "/Front/Cosas/reliquias/vajra.png"
-  },
-  {
-    "nombre": "Anchor",
-    "efecto": "Empiezas el combate con 10 Bloqueo",
-    "obtencion": "Cofres, tienda",
-    "ruta": "/Front/Cosas/reliquias/anchor.png"
-  },
-  {
     "nombre": "Lantern",
     "efecto": "Comienzas cada combate con +1 mana",
     "obtencion": "Cofres, tienda",
@@ -24,28 +12,16 @@
     "ruta": "/Front/Cosas/reliquias/regal-pillow.png"
   },
   {
-    "nombre": "Roca Rúnica",
-    "efecto": "Cada vez que un enemigo muere, ganas 2 PV maximos.",
-    "obtencion": "Elite",
-    "ruta": "/Front/Cosas/reliquias/roca-runica.png"
-  },
-  {
-    "nombre": "Piedra Filosofal",
-    "efecto": "Obtienes 1 de Fuerza al inicio de cada turno. Al inicio del combate, cada enemigo obtiene 1 de Vulnerabilidad",
-    "obtencion": "Elite",
-    "ruta": "/Front/Cosas/reliquias/piedra-filosofal.png"
-  },
-  {
     "nombre": "Red star",
     "efecto": "Al inicio de los combates contra jefes, recupera 25 PV",
     "obtencion": "Elite",
     "ruta": "/Front/Cosas/reliquias/red-star.png"
   },
   {
-    "nombre": "Sombrero mágico",
-    "efecto": "50% de descuento en todos los productos de la tienda",
-    "obtencion": "Elite",
-    "ruta": "/Front/Cosas/reliquias/sombrero-magico.png"
+    "nombre": "Sombrero constructor",
+    "efecto": "Reduce el daño recibido de elites y jefes en un 15%",
+    "obtencion": "Jefe",
+    "ruta": "/Front/Cosas/reliquias/sombrero-constructor.png"
   },
   {
     "nombre": "Escudo Clásico",
@@ -58,5 +34,11 @@
     "efecto": "Hace que los élites suelten dos reliquias en lugar de solo una",
     "obtencion": "Jefe",
     "ruta": "/Front/Cosas/reliquias/black-star.png"
+  },
+  {
+    "nombre": "Fortaleza",
+    "efecto": "Al comienzo de tu turno, gana 1 de Fuerza y todos los enemigos ganan 1 de debilidad",
+    "obtencion": "Jefe",
+    "ruta": "/Front/Cosas/reliquias/fortaleza.png"
   }
 ]

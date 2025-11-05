@@ -195,7 +195,7 @@ html {
   background-repeat: no-repeat;
 }
 
-.carta1 {
+.carta1B {
   transform: translateX(-50%) rotate(0deg);
   transition: transform 1s ease, bottom 1s ease;
   position: absolute;
@@ -204,7 +204,7 @@ html {
   z-index: 100;
 }
 
-.carta2 {
+.carta2B {
   transform: translateX(-50%) rotate(3.5deg);
   transition: transform 1s ease, bottom 1s ease;
   position: absolute;
@@ -213,7 +213,7 @@ html {
   z-index: 90;
 }
 
-.carta3 {
+.carta3B {
   transform: translateX(-50%) rotate(-3.5deg);
   transition: transform 1s ease, bottom 1s ease;
   position: absolute;
@@ -222,7 +222,7 @@ html {
   z-index: 90;
 }
 
-.carta4 {
+.carta4B {
   transform: translateX(-50%) rotate(7deg);
   transition: transform 1s ease, bottom 1s ease;
   position: absolute;
@@ -231,7 +231,7 @@ html {
   z-index: 80;
 }
 
-.carta5 {
+.carta5B {
   transform: translateX(-50%) rotate(-7deg);
   transition: transform 1s ease, bottom 1s ease;
   position: absolute;
@@ -240,7 +240,7 @@ html {
   z-index: 80;
 }
 
-.carta6 {
+.carta6B {
   transform: translateX(-50%) rotate(10.5deg);
   transition: transform 1s ease, bottom 1s ease;
   position: absolute;
@@ -249,7 +249,7 @@ html {
   z-index: 70;
 }
 
-.carta7 {
+.carta7B {
   transform: translateX(-50%) rotate(-10.5deg);
   transition: transform 1s ease, bottom 1s ease;
   position: absolute;
@@ -258,7 +258,7 @@ html {
   z-index: 70;
 }
 
-.carta8 {
+.carta8B {
   transform: translateX(-50%) rotate(14deg);
   transition: transform 1s ease, bottom 1s ease;
   position: absolute;
@@ -267,7 +267,7 @@ html {
   z-index: 60;
 }
 
-.carta9 {
+.carta9B {
   transform: translateX(-50%) rotate(-14deg);
   transition: transform 1s ease, bottom 1s ease;
   position: absolute;
@@ -828,5 +828,89 @@ html {
   margin-right: 8px;
   border-radius: 6px;
   object-fit: contain;
+}
+
+/* Seleccion cartas*/
+.containerSeleccion {
+  display: flex;
+  justify-content: center;
+  margin-top: 7vh;
+  gap: 5rem;
+  padding: 1rem;
+}
+.cartasSeleccion {
+  width: 25%;
+  aspect-ratio: 1/1;
+  transition: 0.2s ease-out;
+  cursor: var(--pointer);
+  font-size: 0;
+  background-size: contain;
+  background-position-x: center;
+  background-position-y: top;
+  background-repeat: no-repeat;
+}
+.arribaSeleccion {
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.8rem;
+  background-image: url("../cosas/cartel.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.cartasSeleccion:hover {
+  transform: scale(1.05);
+  transition: 1s ease;
+}
+
+.cartasSeleccion:active {
+  transform: scale(0.95);
+  transition: 0.5s ease;
+}
+
+.abajoSeleccion{
+  display: flex;
+  justify-content: center;
+}
+.botonSeleccion{
+  color: white;
+  margin: 0;
+  font-family: "Dela Gothic One", sans-serif !important;
+  background-color: #1da6cc;
+  box-shadow: 0 5px 15px #A9AF00;
+  border-radius: 50px;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease;
+  margin-top: 1rem;
+  font-size: 10vh;
+  position: relative;
+  z-index: 2;
+  clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
+  font-size: 2.625rem;
+  width: 24.8898125rem;
+  height: 5.1875rem;
+  cursor: var(--pointer);
+}
+.botonSeleccion::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: gold;
+  clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
+  z-index: -1;
+}
+
+.botonSeleccion::after {
+  content: "";
+  position: absolute;
+  inset: 10px; 
+  background: #1da6cc;
+  clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
+  z-index: -1;
 }
 

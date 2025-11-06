@@ -1970,6 +1970,7 @@ window.addEventListener("DOMContentLoaded", () => {
     //mana = Math.floor(mana);
     cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Heroico");
+    mostrar();
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Heroico"}`);
@@ -2524,7 +2525,7 @@ window.addEventListener("DOMContentLoaded", () => {
     lugarReliquias.style.background = "none";
     document.body.style.background = "none";*/
     //omitir.style.display = "flex";
-    const modal = document.querySelector("[data-modal]")
+    const modal = document.querySelector("[data-modal]");
     modal.showModal();
     if (monstruo.tipo === "normal") {
       for (let i = 1; i < 3; i++) {
@@ -2561,7 +2562,7 @@ window.addEventListener("DOMContentLoaded", () => {
             else if (i === 2)
               nuevaRecompensa.textContent = `${reliquiaElite1.nombre}`;
             else nuevaRecompensa.textContent = `Escoge una carta`;
-            contenedorRecompensa.appendChild(nuevaRecompensa); 
+            contenedorRecompensa.appendChild(nuevaRecompensa);
           }
           let recompensa3 = document.getElementById("recompensa3");
           recompensa3.style.cursor = "var(--pointer)";
@@ -2618,19 +2619,18 @@ window.addEventListener("DOMContentLoaded", () => {
         r.style.display = "block";
       });
       getEvent("reliquia-jefe", (data) => {
-        reliquiaJefe1 = data.reliquia1;
-        reliquiaJefe2 = data.reliquia2;
-        reliquiaJefe3 = data.reliquia3;
-        reliquiaJefe4 = data.reliquia4;
-        reliquiaJefe5 = data.reliquia5;
-      
+        const reliquiaJefe1 = data.reliquia1;
+        const reliquiaJefe2 = data.reliquia2;
+        const reliquiaJefe3 = data.reliquia3;
+        const reliquiaJefe4 = data.reliquia4;
+        const reliquiaJefe5 = data.reliquia5;
+
         console.log(reliquiaJefe1);
         console.log(reliquiaJefe2);
         console.log(reliquiaJefe3);
         console.log(reliquiaJefe4);
         console.log(reliquiaJefe5);
-      
-        // Aplica fondo + tooltip flotante + click de selección
+
         const slotsJefe = [
           { el: reliquia1, data: reliquiaJefe1 },
           { el: reliquia2, data: reliquiaJefe2 },
@@ -2638,23 +2638,31 @@ window.addEventListener("DOMContentLoaded", () => {
           { el: reliquia4, data: reliquiaJefe4 },
           { el: reliquia5, data: reliquiaJefe5 },
         ];
-      
+
+        // Array completo de reliquias disponibles
+        const todasReliquias = [
+          reliquiaJefe1,
+          reliquiaJefe2,
+          reliquiaJefe3,
+          reliquiaJefe4,
+          reliquiaJefe5,
+        ];
+
         slotsJefe.forEach(({ el, data }) => {
           if (!el || !data) return;
-      
-          // Fondo con la imagen de la reliquia
+
+          // Fondo con imagen
           el.style.backgroundImage = `url('${data.ruta}')`;
           el.style.backgroundSize = "contain";
           el.style.backgroundRepeat = "no-repeat";
           el.style.backgroundPosition = "center";
           el.style.cursor = "var(--pointer, pointer)";
-      
-          // Datos del tooltip
+
+          // Tooltip
           el.dataset.nombre = data.nombre || "";
           el.dataset.efecto = data.efecto || "";
           el.dataset.ruta = data.ruta || "";
-      
-          // Eventos del tooltip flotante
+
           el.addEventListener("mouseenter", () =>
             showFloatingTooltipFromElement(el)
           );
@@ -2662,20 +2670,22 @@ window.addEventListener("DOMContentLoaded", () => {
             moveFloatingTooltip(e.clientX, e.clientY)
           );
           el.addEventListener("mouseleave", hideFloatingTooltip);
-      
-          // Evento de click → POST al backend
+
+          // Evento de click → devolver las NO elegidas
           el.addEventListener("click", () => {
             hideFloatingTooltip();
             console.log(`Reliquia elegida: ${data.nombre}`);
-            postEvent("devolver-reliquias", { reliquia: data.nombre });
-      
-            // 🔹 Feedback visual (opcional)
-            el.style.outline = "4px solid gold";
+
+            postEvent("devolver-reliquias", { reliquias: data.nombre });
+            console.log("Reliquia elegida: " + data.nombre);
+
+            el.style.outline = "4px dotted gold";
+            el.style.borderRadius = "50%";
             setTimeout(() => (el.style.outline = ""), 500);
+            //window.location.href = "../2/index2.html";
           });
         });
       });
-      
     }, 800);
   }
 
@@ -2691,9 +2701,10 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function irSeleccion() {
     /*const modal2 = document.querySelector("[data-modal2]");
-    modal2.showModal();*/
+    modal2.showModal();
     const modal = document.querySelector("[data-modal]")
-    modal.close();
+    modal.close();*/
+    window.location.href = "../seleccion-cartas/index.html";
   }
   cartas.addEventListener("click", mostrarCartas);
   atras.addEventListener("click", volverBatalla);

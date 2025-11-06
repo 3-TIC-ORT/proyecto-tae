@@ -137,19 +137,19 @@ function mostrarJon() {
   body.style.backgroundColor = "#81171B";
   imagen.style.height = "90vh";
   h1.textContent = "The Lawyer";
-    h1.style.fontFamily = "Galdeano, sans-serif";
-    h1.style.color = "white";
-    h1.style.fontSize = "15vh";
-    oro.textContent = "Oro: 150";
-    oro.style.color = "white";
-    vida.textContent = "70 PV"
-    poder.textContent = "Lanza de Odin";
-    poder.style.color = "white";
-    descpoder.textContent = "Tus ataques tienen un 20% de probabilidad de causar daño adicional de “Sangrado” que hace 3 puntos de daño por turno durante 2 turnos.";
+  h1.style.fontFamily = "Galdeano, sans-serif";
+  h1.style.color = "white";
+  h1.style.fontSize = "15vh";
+  oro.textContent = "Oro: 150";
+  oro.style.color = "white";
+  vida.textContent = "70 PV";
+  poder.textContent = "Lanza de Odin";
+  poder.style.color = "white";
+  descpoder.textContent =
+    "Tus ataques tienen un 20% de probabilidad de causar daño adicional de “Sangrado” que hace 3 puntos de daño por turno durante 2 turnos.";
   parrafo.textContent =
     "Queria arreglar el mundo de la buena forma, pero se dio cuenta que armar un vaso roto es imposible.";
-  imagen.src =
-    "../Cosas/lawyer.png";
+  imagen.src = "../Cosas/lawyer.png";
   imagen.alt = "foto jon";
   imagen.style.height = "100vh";
   imagen.style.marginTop = "0";
@@ -203,14 +203,22 @@ avanzar.addEventListener("click", () => {
   postEvent("modificar-mazo", { accion: "agregar", carta: "escudo" });
   postEvent("modificar-mazo", { accion: "agregar", carta: "escudo" });
   postEvent("modificar-mazo", { accion: "agregar", carta: "Garrote" });
+
+  getEvent("reliquia-jefe", (data) => {
+    if (data === undefined) {
+      return;
+    } else {
+      postEvent("agregar-reliquia", data);
+    }
+  });
 });
-window.addEventListener("DOMContentLoaded",() => {
-    console.log("✅ Conectado a Soquetic correctamente.");
-    setTimeout(() => {
-      postEvent("reiniciar",true);
-      postEvent("vaciar-reliquias", true);
-      postEvent("vaciar-mazo", true);
-      console.log("🧹 Pedidos de vaciar enviados al servidor");
-    }, 500);
+window.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ Conectado a Soquetic correctamente.");
+  setTimeout(() => {
+    postEvent("reiniciar", true);
+    postEvent("vaciar-reliquias", true);
+    postEvent("vaciar-mazo", true);
+    console.log("🧹 Pedidos de vaciar enviados al servidor");
+  }, 500);
 });
 connect2Server();

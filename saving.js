@@ -13,7 +13,8 @@ let info = {
     },
     mazo:null,
     mapa:null,
-    reliquias:null
+    reliquias:null,
+    reliquiaJefe: null
 }
 let infoia = {
   monstruo: null,
@@ -343,12 +344,10 @@ subscribePOSTEvent("final-turno",(data) => {
 })
 
 subscribePOSTEvent("devolver-reliquias",(data)=>{
-  let reliquias = JSON.parse(fs.readFileSync("./NODE/jsons/reliquias.json", "utf-8"));
-  for(let i = 0; i<data.length;i++){
-    reliquias.push(data[i])
-  }
-  fs.writeFileSync("./NODE/jsons/reliquias.json", JSON.stringify(reliquias, null, 2));
-  return "se devolvieron y guardaron las reliquias"
+  info.reliquiaJefe = data
+  console.log("se actualizo reliquiaJefe por: "+ data)
 })
+
+subscribeGETEvent("reliquia-jefe",info.reliquiaJefe)
 
 startServer();

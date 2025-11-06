@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   connect2Server();
 
-  const contenedores = document.getElementsByClassName("cartasSeleccion");
+  const contenedores = document.getElementsByClassName("cartas");
 
   // 🔹 Función que devuelve N cartas aleatorias sin repetición
   function cartasRandomUnicas(cantidad) {

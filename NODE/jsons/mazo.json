@@ -88,27 +88,18 @@
     "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
   },
   {
-    "nombre": "Trinchera",
+    "nombre": "Heroico",
     "bloqueo": null,
     "elixir": 2,
     "tipo": "defensa",
-    "efecto": "Duplica tu bloqueo",
-    "ruta": "/Front/Cosas/cartas/defensa/Trinchera.png"
+    "efecto": "Pierdes 6 puntos de vida y ganas 30 de escudo",
+    "ruta": "/Front/Cosas/cartas/defensa/Heroico.png"
   },
   {
-    "nombre": "Chapiadora.com",
-    "daño": 32,
-    "elixir": 3,
-    "tipo": "ataque",
-    "efecto": null,
-    "ruta": "/Front/Cosas/cartas/ataque/Chapiadora.com.png"
-  },
-  {
-    "nombre": "Choque",
-    "daño": 14,
+    "nombre": "Flexionar",
     "elixir": 0,
-    "tipo": "ataque",
-    "efecto": "Si solo tienes cartas de ataque en tu mano, ataca con 14 de daño",
-    "ruta": "/Front/Cosas/cartas/ataque/Choque.png"
+    "tipo": "apoyo",
+    "efecto": "Ganas 2 de fuerza por este turno",
+    "ruta": "/Front/Cosas/cartas/apoyo/Flexionar.png"
   }
 ]

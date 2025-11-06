@@ -2,14 +2,14 @@
   --mouse: url("../Cosas/mouse.png") 16 16, auto;
   --pointer: url("../Cosas/pointer.png") 16 16, pointer;
 }
-.containerSeleccion {
+.container {
   display: flex;
   justify-content: center;
   margin-top: 7vh;
   gap: 5rem;
   padding: 1rem;
 }
-.cartasSeleccion {
+.cartas {
   width: 25%;
   aspect-ratio: 1/1;
   transition: 0.2s ease-out;
@@ -20,7 +20,7 @@
   background-position-y: top;
   background-repeat: no-repeat;
 }
-.arribaSeleccion {
+.arriba {
   margin-top: 5vh;
   display: flex;
   justify-content: center;
@@ -31,21 +31,21 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-.cartasSeleccion:hover {
+.cartas:hover {
   transform: scale(1.05);
   transition: 1s ease;
 }
 
-.cartasSeleccion:active {
+.cartas:active {
   transform: scale(0.95);
   transition: 0.5s ease;
 }
 
-.abajoSeleccion{
+.abajo{
   display: flex;
   justify-content: center;
 }
-.botonSeleccion{
+.boton{
   color: white;
   margin: 0;
   font-family: "Dela Gothic One", sans-serif !important;
@@ -67,7 +67,7 @@
   height: 5.1875rem;
   cursor: var(--pointer);
 }
-.botonSeleccion::before {
+.boton::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -76,7 +76,7 @@
   z-index: -1;
 }
 
-.botonSeleccion::after {
+.boton::after {
   content: "";
   position: absolute;
   inset: 10px; 

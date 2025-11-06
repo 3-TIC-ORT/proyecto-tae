@@ -87,7 +87,18 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   
     function valorAleatorio() {
-      return Math.floor(Math.random() * (150 - 120 + 1)) + 120;
+      let tienesombrero = false;
+      for (let i = 0; i < reliquia.length; i++) {
+        if (reliquia[i].nombre === "Sombrero mágico") {
+          tienesombrero = true;
+          break;
+        }
+      }
+      let valor = Math.floor(Math.random() * (150 - 120 + 1)) + 120;
+      if (tienesombrero) {
+        valor = Math.floor(valor/2)
+      }
+      return valor
     }
   
     // DIBUJAR CARTAS
@@ -171,7 +182,7 @@ window.addEventListener("DOMContentLoaded", () => {
             postEvent("fogata", { oro: oroactual, vida: info.vida, vidamax: info.vidamax });
             postEvent("guardar", true);
           } else {
-            alert("No tenés suficiente oro 😞");
+            alert("No tenés suficiente oro");
           }
         });
       });

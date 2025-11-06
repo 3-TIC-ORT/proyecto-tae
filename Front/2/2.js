@@ -204,7 +204,7 @@ avanzar.addEventListener("click", () => {
   postEvent("modificar-mazo", { accion: "agregar", carta: "escudo" });
   postEvent("modificar-mazo", { accion: "agregar", carta: "Garrote" });
 
-  getEvent("reliquia-jefe", (data) => {
+  getEvent("jefe-reliquia", (data) => {
     if (data === undefined) {
       return;
     } else {

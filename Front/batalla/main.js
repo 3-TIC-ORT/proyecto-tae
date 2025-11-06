@@ -2682,7 +2682,7 @@ window.addEventListener("DOMContentLoaded", () => {
             el.style.outline = "4px dotted gold";
             el.style.borderRadius = "50%";
             setTimeout(() => (el.style.outline = ""), 500);
-            //window.location.href = "../2/index2.html";
+            window.location.href = "../2/index2.html";
           });
         });
       });

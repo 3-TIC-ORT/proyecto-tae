@@ -57,6 +57,11 @@ window.addEventListener("DOMContentLoaded", () => {
         desbloquearConectados(nodoFogata);
         sessionStorage.removeItem("nodoFogata");
       }
+      let nodoMercado = sessionStorage.getItem("nodoMercado");
+      if (nodoMercado) {
+        desbloquearConectados(nodoMercado);
+        sessionStorage.removeItem("nodoMercado");
+      }
     } catch (e) {
       console.warn("Error parseando mapaGuardado, se pedirá al servidor:", e);
       sessionStorage.removeItem("mapData");
@@ -158,6 +163,7 @@ window.addEventListener("DOMContentLoaded", () => {
               tipo.toLowerCase() === "mercado" ||
               tipo.toLowerCase() === "tienda"
             ) {
+              sessionStorage.setItem("nodoMercado", nodo);
               window.location.href = "../Mercado/Mercado.html";
               return;
             }
@@ -272,14 +278,15 @@ window.addEventListener("DOMContentLoaded", () => {
       h1.textContent = "The Magician";
       h1.style.color = "black";
       h1.style.fontSize = "12rem";
-      h1.style.backgroundImage = "url('../Cosas/meteorite-or-fire-ball-illustration-png_1-removebg-preview.png')";
+      h1.style.backgroundImage =
+        "url('../Cosas/meteorite-or-fire-ball-illustration-png_1-removebg-preview.png')";
 
       document
         .querySelectorAll(".nodo")
         .forEach((n) => n.classList.add("nodoMago"));
-         document.body.classList.add("mago-background-global");
-        let containerMapa = document.getElementById("container-mapa");
-    containerMapa.classList.add("mago-imagen-container");
+      document.body.classList.add("mago-background-global");
+      let containerMapa = document.getElementById("container-mapa");
+      containerMapa.classList.add("mago-imagen-container");
     } else if (personaje === "jon") {
       h1.textContent = "The Lawyer";
       h1.style.fontSize = "13rem";
@@ -301,9 +308,9 @@ window.addEventListener("DOMContentLoaded", () => {
       document
         .querySelectorAll(".nodo")
         .forEach((n) => n.classList.add("nodoPick"));
-        document.body.classList.add("pick-background-global");
-        let containerMapa = document.getElementById("container-mapa");
-    containerMapa.classList.add("pick-imagen-container");
+      document.body.classList.add("pick-background-global");
+      let containerMapa = document.getElementById("container-mapa");
+      containerMapa.classList.add("pick-imagen-container");
     } else {
       h1.textContent = personaje;
     }

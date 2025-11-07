@@ -44,8 +44,10 @@ window.addEventListener("DOMContentLoaded", () => {
   let sangrado = 0;
   let siLantern = 0;
   let siBag = false;
+  let siSegundoAliento = false;
   let siSalvia = false;
   let siBlack = false;
+  let siCoque = false;
   let siCaja = 0;
   let siFortaleza = false;
   let siRegal = false;
@@ -363,7 +365,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (mazo[i].nombre === "Furia") {
         nuevaCarta.classList.add("carta-furia");
       }
-      if (mazo[i].nombre === "Columna Suertuda") {
+      if (mazo[i].nombre === "Columna suertuda") {
         nuevaCarta.classList.add("carta-columnaSuertuda");
       }
       if (mazo[i].nombre === "Ataque ancestral") {
@@ -758,7 +760,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (cartaRobada.nombre === "Furia") {
       carta.classList.add("carta-furia");
     }
-    if (cartaRobada.nombre === "Columna Suertuda") {
+    if (cartaRobada.nombre === "Columna suertuda") {
       carta.classList.add("carta-columnaSuertuda");
     }
     if (cartaRobada.nombre === "Ataque ancestral") {
@@ -1213,6 +1215,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // CARTAS ATAQUE
   function golpe(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     if (reliquiaInicial === "Lanza de Odin") {
       // if (Math.random() < 2) {
       if (sangrado <= 0) {
@@ -1276,6 +1279,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function garrote(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     if (fuerza <= 0) {
       carta.daño = carta.daño;
     } else if (fuerza === 1) {
@@ -1327,6 +1331,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cartaEspadaPesada(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     if (fuerza <= 0) {
       carta.daño = carta.daño;
     } else if (fuerza === 1) {
@@ -1377,6 +1382,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function cartaIra(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     if (fuerza <= 0) {
       carta.daño = carta.daño;
     } else if (fuerza === 1) {
@@ -1427,6 +1433,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function cartaRafaga(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     if (fuerza <= 0) {
       carta.daño = carta.daño;
     } else if (fuerza === 1) {
@@ -1477,6 +1484,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function cartaFestin(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     if (fuerza <= 0) {
       carta.daño = carta.daño;
     } else if (fuerza === 1) {
@@ -1529,6 +1537,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function cartaAtaqueRapido(carta) {
+    tengoEscudo = false;
     console.log(`Se usó la carta: ${carta.nombre}`);
     if (fuerza <= 0) {
       carta.daño = carta.daño;
@@ -1586,6 +1595,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function cartaChapiadora(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     if (fuerza <= 0) {
       carta.daño = carta.daño;
     } else if (fuerza === 1) {
@@ -1636,6 +1646,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function cartaPromo2027(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     if (fuerza <= 0) {
       carta.daño = carta.daño;
     } else if (fuerza === 1) {
@@ -1683,6 +1694,7 @@ window.addEventListener("DOMContentLoaded", () => {
       sumarCarta();
       noRobarMas = false;
     }
+    console.log("info dentro de promo:", info);
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
       ganar();
@@ -1691,6 +1703,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function cartaCoque(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    console.log("info dentro de Coque:", info);
+
+    tengoEscudo = false;
     if (info.vida < info.vidamax / 2) {
       if (fuerza <= 0) {
         carta.daño = carta.daño;
@@ -1735,8 +1750,8 @@ window.addEventListener("DOMContentLoaded", () => {
       cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
       mazorobar.push("Coque");
     } else {
+      tengoEscudo = true;
       alert("Tienes mas de la mitad de tu vida");
-      return;
     }
 
     if (monstruo.vida <= 0) {
@@ -1746,6 +1761,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cartaZip(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     if (fuerza <= 0) {
       carta.daño = carta.daño;
     } else if (fuerza === 1) {
@@ -1774,6 +1790,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     monstruo.vida -= carta.daño;
     saltearTurnoRival = true;
+    console.log(info.vidamax);
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     if (furiaActiva) {
@@ -1797,6 +1814,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cartaUppercut(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     if (fuerza <= 0) {
       carta.daño = carta.daño;
     } else if (fuerza === 1) {
@@ -1845,9 +1863,10 @@ window.addEventListener("DOMContentLoaded", () => {
       ganar();
     }
   }
-  //CARTAS DEFENSA
+  // CARTAS DEFENSA
   function escudo(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     siEscudo = true;
     if (CincoCopa <= 0) {
       cantidadEscudo += 5;
@@ -1868,6 +1887,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cartaTrinchera(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     siEscudo = true;
     if (CincoCopa <= 0) {
       cantidadEscudo *= 2;
@@ -1893,6 +1913,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cartaAutoEscudo(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     if (cantidadEscudo === 0 && CincoCopa <= 0) {
       cantidadEscudo += 11;
       CincoCopa = 0;
@@ -1921,6 +1942,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cartaProtector(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     siEscudo = true;
     if (CincoCopa <= 0) {
       cantidadEscudo += 11;
@@ -1951,6 +1973,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function cartaHeroico(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     siEscudo = true;
     if (CincoCopa <= 0) {
       cantidadEscudo += 30;
@@ -1979,6 +2002,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cartaMutacion(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     cantidadEscudo += 1;
     siEscudo = true;
     siMutacion = true;
@@ -1999,6 +2023,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cartaEstrategiaDefensiva(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     siEscudo = true;
     if (CincoCopa <= 0) {
       cantidadEscudo += 3;
@@ -2025,6 +2050,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cartaDefensaEnPlacas(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     siEscudo = true;
     siDefensaPlacas = true;
     defensaPlacasTurno = 3;
@@ -2054,6 +2080,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cartaCopa(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     siEscudo = true;
     CincoCopa = 4;
     if (CincoCopa <= 0) {
@@ -2080,6 +2107,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cartaEspadasOrbitantes(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     siEscudo = true;
     siEspadasOrbitantes = true;
     espadasOrbitantesTurno = 1;
@@ -2105,10 +2133,25 @@ window.addEventListener("DOMContentLoaded", () => {
       ganar();
     }
   }
+  function cartaSegundoAliento(carta) {
+    let noAtaque = cartasmano.filter((c) => c.tipo !== "ataque");
+    tengoEscudo = false;
+    siSegundoAliento = true;
+    console.log(noAtaque);
+    mana += 5 * noAtaque.length;
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
+    mazorobar.push("Segundo aliento");
+
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${"Segundo aliento"}`);
+      ganar();
+    }
+  }
 
   // CARTAS APOYO
   function cartaFlexionar(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     fuerza += 2;
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -2124,6 +2167,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cartaRitual(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     info.vida -= 6;
     if (info.vida < 0) info.vida = 0;
     if (dobleSiguiente) {
@@ -2142,6 +2186,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cartaDobleAtaque(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     dobleSiguiente = true;
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -2157,6 +2202,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cartaFuria(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     furiaActiva = true;
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -2173,6 +2219,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function cartaColumnaSuertuda(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     if (!noRobarMas) {
       sumarCarta();
       sumarCarta();
@@ -2196,6 +2243,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function cartaAtaqueAncestral(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     agregarAtaqueGratis();
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -2212,6 +2260,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function cartaDebilidad(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     vul += 2;
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -2228,6 +2277,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function cartaBarricada(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     escudoQueda = true;
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -2244,6 +2294,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function cartaGolpeDeCuerpo(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     monstruo.vida -= cantidadEscudo;
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
@@ -2262,6 +2313,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function cartaIgnorar(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     siEscudo = true;
     if (CincoCopa <= 0) {
       cantidadEscudo += 8;
@@ -2289,6 +2341,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function cartaLamentoPenetrante(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     lamentoPenetrante = true;
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -2302,8 +2355,9 @@ window.addEventListener("DOMContentLoaded", () => {
       ganar();
     }
   }
-  function cartaVerdaderoValor() {
+  function cartaVerdaderoValor(carta) {
     console.log(`Se usó la carta: ${carta.nombre}`);
+    tengoEscudo = false;
     siEscudo = true;
     if (CincoCopa <= 0) {
       cantidadEscudo += 7;
@@ -2322,6 +2376,7 @@ window.addEventListener("DOMContentLoaded", () => {
     cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push(carta);
 
+    sacarCartaRandom();
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Verdadero valor"}`);
       ganar();
@@ -2329,9 +2384,155 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function sacarCarta() {
-    if (tengoEscudo === false) {
+    if (!tengoEscudo) {
       let cartaEliminar = event.target;
       console.log(cartaEliminar.classList[0]);
+      if (cartaEliminar.classList[0] === "carta1B") {
+        let carta2 = document.getElementsByClassName("carta2B");
+        let carta3 = document.getElementsByClassName("carta3B");
+        let carta4 = document.getElementsByClassName("carta4B");
+        let carta5 = document.getElementsByClassName("carta5B");
+        let carta6 = document.getElementsByClassName("carta6B");
+        let carta7 = document.getElementsByClassName("carta7B");
+        let carta8 = document.getElementsByClassName("carta8B");
+        let carta9 = document.getElementsByClassName("carta9B");
+        Array.from(carta2).forEach((element) => {
+          element.classList.remove("carta2B");
+          element.classList.add("carta1B");
+        });
+        Array.from(carta4).forEach((element) => {
+          element.classList.remove("carta4B");
+          element.classList.add("carta2B");
+        });
+        Array.from(carta6).forEach((element) => {
+          element.classList.remove("carta6B");
+          element.classList.add("carta4B");
+        });
+        Array.from(carta8).forEach((element) => {
+          element.classList.remove("carta8B");
+          element.classList.add("carta6B");
+        });
+      }
+      if (cartaEliminar.classList[0] === "carta2") {
+        let carta1 = document.getElementsByClassName("carta1B");
+        let carta3 = document.getElementsByClassName("carta3B");
+        let carta4 = document.getElementsByClassName("carta4B");
+        let carta5 = document.getElementsByClassName("carta5B");
+        let carta6 = document.getElementsByClassName("carta6B");
+        let carta7 = document.getElementsByClassName("carta7B");
+        let carta8 = document.getElementsByClassName("carta8B");
+        let carta9 = document.getElementsByClassName("carta9B");
+        Array.from(carta4).forEach((element) => {
+          element.classList.remove("carta4B");
+          element.classList.add("carta2B");
+        });
+        Array.from(carta6).forEach((element) => {
+          element.classList.remove("carta6B");
+          element.classList.add("carta4B");
+        });
+        Array.from(carta8).forEach((element) => {
+          element.classList.remove("carta8B");
+          element.classList.add("carta6B");
+        });
+      }
+      if (cartaEliminar.classList[0] === "carta3B") {
+        let carta1 = document.getElementsByClassName("carta1B");
+        let carta2 = document.getElementsByClassName("carta2B");
+        let carta4 = document.getElementsByClassName("carta4B");
+        let carta5 = document.getElementsByClassName("carta5B");
+        let carta6 = document.getElementsByClassName("carta6B");
+        let carta7 = document.getElementsByClassName("carta7B");
+        let carta8 = document.getElementsByClassName("carta8B");
+        let carta9 = document.getElementsByClassName("carta9B");
+        Array.from(carta5).forEach((element) => {
+          element.classList.remove("carta5B");
+          element.classList.add("carta3B");
+        });
+        Array.from(carta7).forEach((element) => {
+          element.classList.remove("carta7B");
+          element.classList.add("carta5B");
+        });
+        Array.from(carta9).forEach((element) => {
+          element.classList.remove("carta9B");
+          element.classList.add("carta7B");
+        });
+      }
+      if (cartaEliminar.classList[0] === "carta4") {
+        let carta1 = document.getElementsByClassName("carta1B");
+        let carta2 = document.getElementsByClassName("carta2B");
+        let carta3 = document.getElementsByClassName("carta3B");
+        let carta5 = document.getElementsByClassName("carta5B");
+        let carta6 = document.getElementsByClassName("carta6B");
+        let carta7 = document.getElementsByClassName("carta7B");
+        let carta8 = document.getElementsByClassName("carta8B");
+        let carta9 = document.getElementsByClassName("carta9B");
+        Array.from(carta6).forEach((element) => {
+          element.classList.remove("carta6B");
+          element.classList.add("carta4B");
+        });
+        Array.from(carta8).forEach((element) => {
+          element.classList.remove("carta8B");
+          element.classList.add("carta6B");
+        });
+      }
+      if (cartaEliminar.classList[0] === "carta5B") {
+        let carta1 = document.getElementsByClassName("carta1B");
+        let carta2 = document.getElementsByClassName("carta2B");
+        let carta3 = document.getElementsByClassName("carta3B");
+        let carta4 = document.getElementsByClassName("carta4B");
+        let carta6 = document.getElementsByClassName("carta6B");
+        let carta7 = document.getElementsByClassName("carta7B");
+        let carta8 = document.getElementsByClassName("carta8B");
+        let carta9 = document.getElementsByClassName("carta9B");
+        Array.from(carta7).forEach((element) => {
+          element.classList.remove("carta7B");
+          element.classList.add("carta5B");
+        });
+        Array.from(carta6).forEach((element) => {
+          element.classList.remove("carta9B");
+          element.classList.add("carta7B");
+        });
+      }
+      if (cartaEliminar.classList[0] === "carta6B") {
+        let carta1 = document.getElementsByClassName("carta1B");
+        let carta2 = document.getElementsByClassName("carta2B");
+        let carta3 = document.getElementsByClassName("carta3B");
+        let carta4 = document.getElementsByClassName("carta4B");
+        let carta5 = document.getElementsByClassName("carta5B");
+        let carta7 = document.getElementsByClassName("carta7B");
+        let carta8 = document.getElementsByClassName("carta8B");
+        let carta9 = document.getElementsByClassName("carta9B");
+        Array.from(carta8).forEach((element) => {
+          element.classList.remove("carta8B");
+          element.classList.add("carta6B");
+        });
+      }
+      if (cartaEliminar.classList[0] === "carta7") {
+        let carta1 = document.getElementsByClassName("carta1B");
+        let carta2 = document.getElementsByClassName("carta2B");
+        let carta3 = document.getElementsByClassName("carta3B");
+        let carta4 = document.getElementsByClassName("carta4B");
+        let carta5 = document.getElementsByClassName("carta5B");
+        let carta6 = document.getElementsByClassName("carta6B");
+        let carta8 = document.getElementsByClassName("carta8B");
+        let carta9 = document.getElementsByClassName("carta9B");
+        Array.from(carta9).forEach((element) => {
+          element.classList.remove("carta9B");
+          element.classList.add("carta7B");
+        });
+      }
+      cartaEliminar.remove();
+    }
+  }
+  function sacarCartaRandom() {
+    if (!tengoEscudo) {
+      let cartas = document.querySelectorAll('[class*="carta"][class*="B"]');
+
+      let indiceRandom = Math.floor(Math.random() * cartas.length);
+      let cartaEliminar = cartas[indiceRandom];
+
+      console.log(`Carta random eliminada: ${cartaEliminar.classList[0]}`);
+
       if (cartaEliminar.classList[0] === "carta1B") {
         let carta2 = document.getElementsByClassName("carta2B");
         let carta3 = document.getElementsByClassName("carta3B");
@@ -2470,6 +2671,7 @@ window.addEventListener("DOMContentLoaded", () => {
       cartaEliminar.remove();
     }
   }
+
   console.log(boton);
 
   boton.addEventListener("click", finalizarTurno);
@@ -2628,7 +2830,8 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   function cofre() {
     cajaMonstruo.style.height = "40vh";
-    cajaMonstruo.style.aspectRatio = "1/1";
+      abajo.style.display = "none";
+      cajaMonstruo.style.aspectRatio = "1/1";
     cajaMonstruo.style.position = "relative";
     cajaMonstruo.style.top = "15vh";
     fotoM.style.backgroundImage = "url(../Cosas/cofre.png)";
@@ -2637,6 +2840,7 @@ window.addEventListener("DOMContentLoaded", () => {
     vidaM.style.display = "none";
     setTimeout(() => {
       fotoM.style.backgroundSize = "contain";
+      turno += 1;
       cajaMonstruo.style.top = "6.5vh";
       cajaMonstruo.style.left = "5vh";
       fotoM.style.backgroundImage = "url(../Cosas/cofre-abierto.png)";
@@ -2841,19 +3045,3 @@ window.addEventListener("DOMContentLoaded", () => {
     setTimeout(activarTooltipsReliquias, 100); // espera un instante a que se inserten en el DOM
   };
 });
-
-/*
-
-
-function cartaSegundoAliento() {
-  let noAtaque = cartasmano.filter(c => c.tipo !== "ataque");
-  mana += 5 * noAtaque.length;
-  if (mana > manaMax) mana = manaMax;
-  cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
-  mazorobar.push("Segundo aliento");
-
-  if (monstruo.vida <= 0) {
-    console.log(`Rival matado por ${"Segundo aliento"}`);
-    ganar();
-  }
-}*/

@@ -348,6 +348,6 @@ subscribePOSTEvent("devolver-reliquias",(data)=>{
   console.log("se actualizo reliquiaJefe por: "+ data)
 })
 
-subscribeGETEvent("jefe-reliquia",info.reliquiaJefe)
+subscribeGETEvent("jefe-reliquia",()=>{return info.reliquiaJefe})
 
 startServer();

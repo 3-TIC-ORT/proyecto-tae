@@ -327,10 +327,10 @@ window.addEventListener("DOMContentLoaded", () => {
       if (mazo[i].nombre === "Heroico") {
         nuevaCarta.classList.add("carta-heroico");
       }
-      if (mazo[i].nombre === "Verdadero Valor") {
+      if (mazo[i].nombre === "Verdadero valor") {
         nuevaCarta.classList.add("carta-verdaderoValor");
       }
-      if (mazo[i].nombre === "Segundo Aliento") {
+      if (mazo[i].nombre === "Segundo aliento") {
         nuevaCarta.classList.add("carta-segundoAliento");
       }
       if (mazo[i].nombre === "Defensa en placas") {
@@ -722,10 +722,10 @@ window.addEventListener("DOMContentLoaded", () => {
     if (cartaRobada.nombre === "Heroico") {
       carta.classList.add("carta-heroico");
     }
-    if (cartaRobada.nombre === "Verdadero Valor") {
+    if (cartaRobada.nombre === "Verdadero valor") {
       carta.classList.add("carta-verdaderoValor");
     }
-    if (cartaRobada.nombre === "Segundo Aliento") {
+    if (cartaRobada.nombre === "Segundo aliento") {
       carta.classList.add("carta-segundoAliento");
     }
     if (cartaRobada.nombre === "Defensa en placas") {
@@ -2302,6 +2302,31 @@ window.addEventListener("DOMContentLoaded", () => {
       ganar();
     }
   }
+  function cartaVerdaderoValor() {
+    console.log(`Se usó la carta: ${carta.nombre}`);
+    siEscudo = true;
+    if (CincoCopa <= 0) {
+      cantidadEscudo += 7;
+      CincoCopa = 0;
+    } else if (CincoCopa > 0) {
+      cantidadEscudo += 7 * 1.25;
+      CincoCopa--;
+    }
+    cantidadEscudo = Math.floor(cantidadEscudo);
+    lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
+    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    if (dobleSiguiente) {
+      mana -= carta.elixir * 0.5;
+    } else mana -= carta.elixir;
+    //mana = Math.floor(mana);
+    cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
+    mazorobar.push(carta);
+
+    if (monstruo.vida <= 0) {
+      console.log(`Rival matado por ${"Verdadero valor"}`);
+      ganar();
+    }
+  }
 
   function sacarCarta() {
     if (tengoEscudo === false) {
@@ -2818,16 +2843,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 /*
-function cartaVerdaderoValor() {
-  mana -= 1;
-  cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
-  mazorobar.push("Verdadero valor");
 
-  if (monstruo.vida <= 0) {
-    console.log(`Rival matado por ${"Verdadero valor"}`);
-    ganar();
-  }
-}
 
 function cartaSegundoAliento() {
   let noAtaque = cartasmano.filter(c => c.tipo !== "ataque");

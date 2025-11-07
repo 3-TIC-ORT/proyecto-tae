@@ -577,15 +577,31 @@ html {
 .contenedor-recompensas {
   padding: 1.25rem;
   border-radius: 0.625rem;
+  margin-top: -2%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 50vh;
-  width: 22vw;
-  border: solid black 2px;
+  height: 85vh;
+  width: 40vw;
+  background-image: url("../Cosas/fondor.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent;
 }
+dialog {
+  border: none !important;
+  padding: 0 !important;
+  color: inherit !important;
+}
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.65); /* ajustá la opacidad */
+  /* backdrop-filter: blur(2px);  opcional, da un leve desenfoque */
+}
+
 .lugarRecompensas {
   display: flex;
   align-items: center;
@@ -593,7 +609,7 @@ html {
   display: none;
 }
 .titel {
-  font-size: 2rem;
+  font-size: 6vh;
   font-family: "Fira Sans", sans-serif;
   color: #333;
   text-align: center;
@@ -605,10 +621,10 @@ html {
 .recompensa {
   background-color: black;
   color: white;
-  height: 2.375rem;
+  height: 3.375rem;
   margin: 1.25rem 0;
-  border: 0.125rem solid white;
-  width: 15rem;
+  width: 16rem;
+  font-size: 3vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -806,11 +822,11 @@ html {
 }
 .tooltip-floating {
   position: absolute;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 0, 0, 0.85);
   color: white;
   padding: 10px 14px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   pointer-events: none;
   transition: opacity 0.15s ease;
   max-width: 240px;
@@ -832,7 +848,7 @@ html {
   object-fit: contain;
 }
 
-/* Seleccion cartas*//*
+/* Seleccion cartas*/ /*
 .containerSeleccion {
   display: flex;
   justify-content: center;
@@ -924,4 +940,16 @@ html {
 
 #floatingTooltip[style*="display: block"] {
   opacity: 1;
+}
+dialog,
+#contenedorRecompensas {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  background-clip: padding-box !important;
+  color: inherit !important;
+}
+dialog:focus-visible {
+  outline: none !important;
 }

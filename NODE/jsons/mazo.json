@@ -101,5 +101,29 @@
     "tipo": "apoyo",
     "efecto": "Ganas 2 de fuerza por este turno",
     "ruta": "/Front/Cosas/cartas/apoyo/Flexionar.png"
+  },
+  {
+    "nombre": "Segundo aliento",
+    "bloqueo": null,
+    "elixir": 2,
+    "tipo": "defensa",
+    "efecto": "Agota todas las cartas no-ataque y te da 5 de elixir por cada una de estas",
+    "ruta": "/Front/Cosas/cartas/defensa/Segundo-aliento.png"
+  },
+  {
+    "nombre": "Promo 2027",
+    "daño": 10,
+    "elixir": 1,
+    "tipo": "ataque",
+    "efecto": "Roba 2 cartas",
+    "ruta": "/Front/Cosas/cartas/ataque/Promo-2027.png"
+  },
+  {
+    "nombre": "Verdadero valor",
+    "bloqueo": 7,
+    "elixir": 1,
+    "tipo": "defensa",
+    "efecto": "Agota una carta de tu mano",
+    "ruta": "/Front/Cosas/cartas/defensa/Verdadero-valor.png"
   }
 ]

@@ -11,10 +11,9 @@ function abajo() {
 window.onload = abajo;
 
 window.addEventListener("DOMContentLoaded", () => {
+  
   let h1 = document.querySelector("h1");
   if (!h1) return console.error("No se encontró el elemento <h1>");
-
-  connect2Server();
 
   let salida = document.getElementById("salida");
   let pisosContainer = document.getElementById("pisos-container");
@@ -316,3 +315,12 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+  connect2Server();
+  getEvent("jefe-reliquia", (data) => {
+    if (data === undefined) {
+      return;
+    } else {
+      postEvent("agregar-reliquia", data);
+    }
+  });

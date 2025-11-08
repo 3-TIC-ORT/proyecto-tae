@@ -156,7 +156,7 @@ window.addEventListener("DOMContentLoaded", () => {
     reliquia = data;
     console.log("Reliquias recibidas:", reliquia);
     mostrarReliquia();
-    reliquiaInicial = reliquia[0].nombre;
+    reliquiaInicial = reliquia[1].nombre;
     console.log("Reliquia Inicial: " + reliquiaInicial);
     usoReliquia();
   });
@@ -2905,7 +2905,7 @@ window.addEventListener("DOMContentLoaded", () => {
             hideFloatingTooltip();
             console.log(`Reliquia elegida: ${data.nombre}`);
 
-            postEvent("devolver-reliquias", { reliquias: data.nombre });
+            postEvent("devolver-reliquias", data.nombre);
             console.log("Reliquia elegida: " + data.nombre);
 
             el.style.outline = "4px dotted gold";

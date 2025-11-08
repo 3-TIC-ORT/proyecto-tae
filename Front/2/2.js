@@ -204,21 +204,11 @@ avanzar.addEventListener("click", () => {
   postEvent("modificar-mazo", { accion: "agregar", carta: "escudo" });
   postEvent("modificar-mazo", { accion: "agregar", carta: "Garrote" });
 
-  getEvent("jefe-reliquia", (data) => {
-    if (data === undefined) {
-      return;
-    } else {
-      postEvent("agregar-reliquia", data);
-    }
-  });
 });
 window.addEventListener("DOMContentLoaded", () => {
   console.log("✅ Conectado a Soquetic correctamente.");
   setTimeout(() => {
     postEvent("reiniciar", true);
-    postEvent("vaciar-reliquias", true);
-    postEvent("vaciar-mazo", true);
-    console.log("🧹 Pedidos de vaciar enviados al servidor");
   }, 500);
 });
 connect2Server();

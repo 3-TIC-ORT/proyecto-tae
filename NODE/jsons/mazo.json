@@ -5,7 +5,7 @@
     "elixir": 1,
     "tipo": "ataque",
     "efecto": null,
-    "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
+    "ruta": "/Front/Cosas/cartas/ataque/golpe.png"
   },
   {
     "nombre": "Golpe",
@@ -13,7 +13,7 @@
     "elixir": 1,
     "tipo": "ataque",
     "efecto": null,
-    "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
+    "ruta": "/Front/Cosas/cartas/ataque/golpe.png"
   },
   {
     "nombre": "Golpe",
@@ -21,7 +21,7 @@
     "elixir": 1,
     "tipo": "ataque",
     "efecto": null,
-    "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
+    "ruta": "/Front/Cosas/cartas/ataque/golpe.png"
   },
   {
     "nombre": "Golpe",
@@ -29,7 +29,7 @@
     "elixir": 1,
     "tipo": "ataque",
     "efecto": null,
-    "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
+    "ruta": "/Front/Cosas/cartas/ataque/golpe.png"
   },
   {
     "nombre": "Golpe",
@@ -37,7 +37,7 @@
     "elixir": 1,
     "tipo": "ataque",
     "efecto": null,
-    "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
+    "ruta": "/Front/Cosas/cartas/ataque/golpe.png"
   },
   {
     "nombre": "Escudo",
@@ -45,7 +45,7 @@
     "elixir": 1,
     "tipo": "defensa",
     "efecto": null,
-    "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
+    "ruta": "/Front/Cosas/cartas/defensa/escudo.png"
   },
   {
     "nombre": "Escudo",
@@ -53,7 +53,7 @@
     "elixir": 1,
     "tipo": "defensa",
     "efecto": null,
-    "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
+    "ruta": "/Front/Cosas/cartas/defensa/escudo.png"
   },
   {
     "nombre": "Escudo",
@@ -61,7 +61,7 @@
     "elixir": 1,
     "tipo": "defensa",
     "efecto": null,
-    "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
+    "ruta": "/Front/Cosas/cartas/defensa/escudo.png"
   },
   {
     "nombre": "Escudo",
@@ -69,7 +69,7 @@
     "elixir": 1,
     "tipo": "defensa",
     "efecto": null,
-    "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
+    "ruta": "/Front/Cosas/cartas/defensa/escudo.png"
   },
   {
     "nombre": "Escudo",
@@ -77,7 +77,7 @@
     "elixir": 1,
     "tipo": "defensa",
     "efecto": null,
-    "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
+    "ruta": "/Front/Cosas/cartas/defensa/escudo.png"
   },
   {
     "nombre": "Garrote",
@@ -85,29 +85,6 @@
     "elixir": 2,
     "tipo": "ataque",
     "efecto": "Aplica 2 de vulnerabilidad al enemigo",
-    "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
-  },
-  {
-    "nombre": "Mutacion",
-    "bloqueo": 1,
-    "elixir": 1,
-    "tipo": "defensa",
-    "efecto": "Cada vez que la juegas, mejora +1 de bloqueo",
-    "ruta": "/Front/Cosas/cartas/defensa/Mutacion.png"
-  },
-  {
-    "nombre": "Barricada",
-    "elixir": 1,
-    "tipo": "apoyo",
-    "efecto": "Hace que tu bloqueo no se desvanezca al final del turno",
-    "ruta": "/Front/Cosas/cartas/apoyo/barricada.png"
-  },
-  {
-    "nombre": "Auto-escudo",
-    "bloqueo": 11,
-    "elixir": 1,
-    "tipo": "defensa",
-    "efecto": "Si no tienes escudo, te da 11 de escudo",
-    "ruta": "/Front/Cosas/cartas/defensa/auto-escudo.png"
+    "ruta": "/Front/Cosas/cartas/ataque/garrote.png"
   }
 ]

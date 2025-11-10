@@ -6,12 +6,6 @@
     "ruta": "/Front/Cosas/reliquias/vajra.png"
   },
   {
-    "nombre": "Anchor",
-    "efecto": "Empiezas el combate con 10 Bloqueo",
-    "obtencion": "Cofres, tienda",
-    "ruta": "/Front/Cosas/reliquias/anchor.png"
-  },
-  {
     "nombre": "Bag of Preparation",
     "efecto": "Robas 1 carta adicional al inicio de cada turno",
     "obtencion": "Cofres, tienda",
@@ -22,6 +16,12 @@
     "efecto": "Comienzas cada combate con +1 mana",
     "obtencion": "Cofres, tienda",
     "ruta": "/Front/Cosas/reliquias/lantern.png"
+  },
+  {
+    "nombre": "Regal Pillow",
+    "efecto": "Cuando comienzaa un combate recuperas 5 PV.",
+    "obtencion": "Cofres, tienda",
+    "ruta": "/Front/Cosas/reliquias/regal-pillow.png"
   },
   {
     "nombre": "Roca Rúnica",
@@ -52,6 +52,30 @@
     "efecto": "50% de descuento en todos los productos de la tienda",
     "obtencion": "Elite",
     "ruta": "/Front/Cosas/reliquias/sombrero-magico.png"
+  },
+  {
+    "nombre": "Sombrero constructor",
+    "efecto": "Reduce el daño recibido de elites y jefes en un 15%",
+    "obtencion": "Jefe",
+    "ruta": "/Front/Cosas/reliquias/sombrero-constructor.png"
+  },
+  {
+    "nombre": "Escudo Clásico",
+    "efecto": "En combates contra élites o jefes, obtienes 10 de escudo durante 3 turnos",
+    "obtencion": "Jefe",
+    "ruta": "/Front/Cosas/reliquias/escudo-clasico.png"
+  },
+  {
+    "nombre": "Black Star",
+    "efecto": "Hace que los élites suelten dos reliquias en lugar de solo una",
+    "obtencion": "Jefe",
+    "ruta": "/Front/Cosas/reliquias/black-star.png"
+  },
+  {
+    "nombre": "Caja de Devolución",
+    "efecto": "Al recogerla, tu deck inicial y el siguiente aumentan en 2 cartas",
+    "obtencion": "Jefe",
+    "ruta": "/Front/Cosas/reliquias/caja-de-devolucion.png"
   },
   {
     "nombre": "Fortaleza",

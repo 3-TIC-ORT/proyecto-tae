@@ -498,6 +498,7 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(monstruo.tipo);
     console.log("escudo personaje: " + cantidadEscudo);
     console.log(saltearTurnoRival);
+   
     if (!saltearTurnoRival) {
       if (monstruo.tipo === "normal") {
         const minNormal = 5;
@@ -650,7 +651,11 @@ window.addEventListener("DOMContentLoaded", () => {
   function finalizarTurno() {
     console.log("finalizar turno");
     abajo.style.display = "none";
-    alert("TURNO RIVAL");
+    const modalTurnoR = document.getElementById("turnoRival");
+    modalTurnoR.showModal();
+    setTimeout(() => {
+      modalTurnoR.close();
+    }, 2000);
     turno = turno + 1;
     console.log("Turno numero " + turno / 2);
     mazo = mazo.concat(mazorobar);

@@ -91,7 +91,20 @@ html {
   display: flex;
   align-items: end;
 }
-
+.todas {
+  width: 18%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  margin: 6% 7%;
+  vertical-align: top;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
 .cartas {
   background-image: url("../Cosas/cartasicon.png");
   background-repeat: no-repeat;
@@ -191,32 +204,7 @@ h2 {
 .reliqias {
   display: none;
 }
-.container-reliquias {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.fondo {
-  background-image: url(../Cosas/Fondo.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
-  width: 50vw;
-}
-.caja-reliquias {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 3vh;
-  justify-items: center;
-  padding-top: 10vh;
-  min-height: 100%;
-  overflow-y: auto;
-}
 .todas {
-  background-color: blue;
   width: 50%;
   height: 20vh;
   display: flex;
@@ -226,10 +214,17 @@ h2 {
 .cartaGC {
   width: 12vw;
   height: 28vh;
-  border: 0.2rem solid white;
-  cursor: var(--pointer);
   border-radius: 10px;
-  background-color: gray;
+  color: red;
+  font-size: 0;
+  background-size: 26.5vh;
+  background-position-x: center;
+  background-position-y: top;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 25%;
+  margin: 4% 1%;
+  vertical-align: top;
 }
 .atras {
   height: 13vh;
@@ -295,10 +290,8 @@ html {
 .cartaGC {
   width: 12vw;
   height: 28vh;
-  border: 0.2rem solid white;
   cursor: var(--pointer);
   border-radius: 10px;
-  background-color: gray;
 }
 .atras {
   height: 13vh;
@@ -320,7 +313,8 @@ html {
   display: none;
 }
 .container-reliquias {
-  height: 100vh;
+  min-height: 100vh;
+  height: max-content;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -328,38 +322,34 @@ html {
 }
 .fondo {
   background-image: url(../Cosas/Fondo.png);
-  background-position: center;
-  background-size: cover;
+  background-position: top;
+  background-size: 100% 110%;
   background-repeat: no-repeat;
-  height: 100vh;
-  width: 50vw;
 }
+
 .caja-reliquias {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 3vh;
-  justify-items: center;
-  padding-top: 10vh;
-  min-height: 100%;
+  text-align: center;
+  padding-top: 15vh;
+  min-height: 80vh;
+  height: max-content;
   overflow-y: auto;
+  width: 55%;
 }
 .todas {
-  background-color: blue;
-  width: 50%;
-  height: 20vh;
+  width: 18%;
+  aspect-ratio: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  display: inline-block;
+  margin: 6% 7%;
+  vertical-align: top;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
 }
-.carta-golpe {
-  background-color: red;
-}
-.carta-escudo {
-  background-color: lightblue;
-}
-.carta-garrote {
-  background-color: orange;
-}
+
 .escudo {
   font-size: 1.2vh;
 }
@@ -375,4 +365,273 @@ html {
   position: absolute;
   bottom: 20vh;
   left: 15vw;
+}
+.reliquia-vajra {
+  background-image: url("/Front/Cosas/reliquias/vajra.png");
+}
+.reliquia-anchor {
+  background-image: url("/Front/Cosas/reliquias/anchor.png");
+}
+.reliquia-bag-of-preparation {
+  background-image: url("/Front/Cosas/reliquias/bag-of-preparation.png");
+}
+.reliquia-lantern {
+  background-image: url("/Front/Cosas/reliquias/lantern.png");
+}
+.reliquia-regal-pillow {
+  background-image: url("/Front/Cosas/reliquias/regal-pillow.png");
+}
+.reliquia-roca-runica {
+  background-image: url("/Front/Cosas/reliquias/roca-runica.png");
+}
+.reliquia-piedra-filosofal {
+  background-image: url("/Front/Cosas/reliquias/piedra-filosofal.png");
+}
+.reliquia-salvia {
+  background-image: url("/Front/Cosas/reliquias/salvia.png");
+}
+.reliquia-red-star {
+  background-image: url("/Front/Cosas/reliquias/red-star.png");
+}
+.reliquia-sombrero-magico {
+  background-image: url("/Front/Cosas/reliquias/sombrero-magico.png");
+}
+.reliquia-sombrero-constructor {
+  background-image: url("/Front/Cosas/reliquias/sombrero-constructor.png");
+}
+.reliquia-escudo-clasico {
+  background-image: url("/Front/Cosas/reliquias/escudo-clasico.png");
+}
+.reliquia-black-star {
+  background-image: url("/Front/Cosas/reliquias/black-star.png");
+}
+.reliquia-caja-de-devolucion {
+  background-image: url("/Front/Cosas/reliquias/caja-de-devolucion.png");
+}
+.reliquia-fortaleza {
+  background-image: url("/Front/Cosas/reliquias/fortaleza.png");
+}
+.reliquia-escudo-de-hierro {
+  background-image: url("/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png");
+}
+.reliquia-trebol-de-oro {
+  background-image: url("/Front/Cosas/reliquias-iniciales/trebol-de-oro.png");
+}
+.reliquia-baculo-del-archimago {
+  background-image: url("/Front/Cosas/reliquias-iniciales/baculo-del-archimago.png");
+}
+.reliquia-lanza-de-odin {
+  background-image: url("/Front/Cosas/reliquias-iniciales/lanza-de-odin.png");
+}
+/* CARTAS */
+
+/* --- ATAQUE --- */
+.carta-golpe {
+  background-image: url("../Cosas/cartas/ataque/golpe.png");
+}
+
+.carta-garrote {
+  background-image: url("../Cosas/cartas/ataque/garrote.png");
+}
+
+.carta-espadaPesada {
+  background-image: url("../Cosas/cartas/ataque/espada-pesada.png");
+}
+
+.carta-ira {
+  background-image: url("../Cosas/cartas/ataque/ira.png");
+}
+
+.carta-rafaga {
+  background-image: url("../Cosas/cartas/ataque/rafaga.png");
+}
+
+.carta-festin {
+  background-image: url("../Cosas/cartas/ataque/festin.png");
+}
+
+.carta-ataqueRapido {
+  background-image: url("../Cosas/cartas/ataque/ataque-rapido.png");
+}
+
+.carta-chapiadora {
+  background-image: url("../Cosas/cartas/ataque/chipiadora.com.png");
+}
+
+.carta-promo {
+  background-image: url("../Cosas/cartas/ataque/promo-2027.png");
+}
+
+.carta-choque {
+  background-image: url("../Cosas/cartas/ataque/coque.png");
+}
+
+.carta-zip {
+  background-image: url("../Cosas/cartas/ataque/zip.png");
+}
+
+.carta-uppercut {
+  background-image: url("../Cosas/cartas/ataque/uppercut.png");
+}
+
+/* --- DEFENSA --- */
+.carta-trinchera {
+  background-image: url("../Cosas/cartas/defensa/trinchera.png");
+}
+
+.carta-protector {
+  background-image: url("../Cosas/cartas/defensa/protector.png");
+}
+
+.carta-heroico {
+  background-image: url("../Cosas/cartas/defensa/heroico.png");
+}
+
+.carta-verdaderoValor {
+  background-image: url("../Cosas/cartas/defensa/verdadero-valor.png");
+}
+
+.carta-segundoAliento {
+  background-image: url("../Cosas/cartas/defensa/segundo-aliento.png");
+}
+
+.carta-defensaEnPlacas {
+  background-image: url("../Cosas/cartas/defensa/defensa-en-placas.png");
+}
+
+.carta-estrategiaDefensiva {
+  background-image: url("../Cosas/cartas/defensa/estrategia-defensiva.png");
+}
+
+.carta-copa {
+  background-image: url("../Cosas/cartas/defensa/5-de-copa.png");
+}
+
+.carta-autoEscudo {
+  background-image: url("../Cosas/cartas/defensa/auto-escudo.png");
+}
+
+.carta-mutacion {
+  background-image: url("../Cosas/cartas/defensa/mutacion.png");
+}
+
+.carta-espadasOrbitantes {
+  background-image: url("../Cosas/cartas/defensa/espadas-orbitantes.png");
+}
+
+.carta-escudo {
+  background-image: url("../Cosas/cartas/defensa/escudo.png");
+}
+
+/* --- APOYO --- */
+.carta-flexionar {
+  background-image: url("../Cosas/cartas/apoyo/flexionar.png");
+}
+
+.carta-ritual {
+  background-image: url("../Cosas/cartas/apoyo/ritual.png");
+}
+
+.carta-dobleAtaque {
+  background-image: url("../Cosas/cartas/apoyo/doble-ataque.png");
+}
+
+.carta-furia {
+  background-image: url("../Cosas/cartas/apoyo/furia.png");
+}
+
+.carta-columnaSuertuda {
+  background-image: url("../Cosas/cartas/apoyo/columna-suertuda.png");
+}
+
+.carta-ataqueAncestral {
+  background-image: url("../Cosas/cartas/apoyo/ataque-ancestal.png");
+}
+
+.carta-debilidad {
+  background-image: url("../Cosas/cartas/apoyo/debilidad.png");
+}
+
+.carta-barricada {
+  background-image: url("../Cosas/cartas/apoyo/barricada.png");
+}
+
+.carta-golpeDeCuerpo {
+  background-image: url("../Cosas/cartas/apoyo/golpe-doble.png");
+}
+
+.carta-ignorar {
+  background-image: url("../Cosas/cartas/apoyo/ignorar.png");
+}
+
+.carta-lamentoPenetrante {
+  background-image: url("../Cosas/cartas/apoyo/lamento-penetrable.png");
+}
+
+.tooltip-floating {
+  position: absolute;
+  z-index: 99999;
+  background-color: #1f2428;
+  color: #ffffff;
+  border: 1px solid #b6b6b6;
+  padding: 8px 10px;
+  border-radius: 8px;
+  width: 220px;
+  max-width: 260px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  font-family: "Inknut Antiqua", serif;
+  font-size: 0.88rem;
+  line-height: 1.3;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+  pointer-events: none;
+}
+
+.tooltip-floating .tooltip-title {
+  color: #d6c25b;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.tooltip-floating .tooltip-body {
+  color: #f0f0f0;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.tooltip-floating .tooltip-meta {
+  color: #cccccc;
+  font-size: 0.7rem;
+  opacity: 0.8;
+  text-align: right;
+}
+.tooltip-floating {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  max-width: 240px;
+  font-family: "Inknut Antiqua", serif;
+  z-index: 9999;
+}
+
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.tooltip-img {
+  width: 36px;
+  height: 36px;
+  margin-right: 8px;
+  border-radius: 6px;
+  object-fit: contain;
 }

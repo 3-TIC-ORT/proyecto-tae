@@ -3,98 +3,14 @@
     "personaje": "bear",
     "vida": 80,
     "vidamax": 80,
-    "oro": 131
-  },
-  "mazo": [
-    {
-      "nombre": "Golpe",
-      "daño": 7,
-      "elixir": 1,
-      "tipo": "ataque",
-      "efecto": null,
-      "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
-    },
-    {
-      "nombre": "Golpe",
-      "daño": 7,
-      "elixir": 1,
-      "tipo": "ataque",
-      "efecto": null,
-      "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
-    },
-    {
-      "nombre": "Golpe",
-      "daño": 7,
-      "elixir": 1,
-      "tipo": "ataque",
-      "efecto": null,
-      "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
-    },
-    {
-      "nombre": "Golpe",
-      "daño": 7,
-      "elixir": 1,
-      "tipo": "ataque",
-      "efecto": null,
-      "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
-    },
-    {
-      "nombre": "Golpe",
-      "daño": 7,
-      "elixir": 1,
-      "tipo": "ataque",
-      "efecto": null,
-      "ruta": "/Front/Cosas/cartas/ataque/Golpe.png"
-    },
-    {
-      "nombre": "Escudo",
-      "bloqueo": 6,
-      "elixir": 1,
-      "tipo": "defensa",
-      "efecto": null,
-      "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
-    },
-    {
-      "nombre": "Escudo",
-      "bloqueo": 6,
-      "elixir": 1,
-      "tipo": "defensa",
-      "efecto": null,
-      "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
-    },
-    {
-      "nombre": "Escudo",
-      "bloqueo": 6,
-      "elixir": 1,
-      "tipo": "defensa",
-      "efecto": null,
-      "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
-    },
-    {
-      "nombre": "Escudo",
-      "bloqueo": 6,
-      "elixir": 1,
-      "tipo": "defensa",
-      "efecto": null,
-      "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
-    },
-    {
-      "nombre": "Escudo",
-      "bloqueo": 6,
-      "elixir": 1,
-      "tipo": "defensa",
-      "efecto": null,
-      "ruta": "/Front/Cosas/cartas/defensa/Escudo.png"
-    },
-    {
-      "nombre": "Garrote",
-      "daño": 14,
-      "elixir": 2,
-      "tipo": "ataque",
-      "efecto": "Aplica 2 de vulnerabilidad al enemigo",
-      "ruta": "/Front/Cosas/cartas/ataque/Garrote.png"
+    "oro": 93,
+    "reliquia": {
+      "nombre": "Escudo de Hierro",
+      "efecto": "Cada vez que termina el combate se cura 6 de vida",
+      "obtencion": "Inicial",
+      "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
     }
-  ],
+  },
   "mapa": {
     "grafo": [
       [
@@ -104,33 +20,35 @@
         "0-4 M"
       ],
       [
-        "1-1 E",
-        "1-2 E",
-        "1-3 E"
+        "1-1 T",
+        "1-2 M",
+        "1-3 M"
       ],
       [
         "2-1 F",
-        "2-2 M",
+        "2-2 E",
         "2-3 M",
         "2-4 M",
         "2-5 M"
       ],
       [
-        "3-1 F",
-        "3-2 M",
-        "3-3 T"
+        "3-1 E",
+        "3-2 E",
+        "3-3 M",
+        "3-4 E",
+        "3-5 E"
       ],
       [
-        "4-1 M",
+        "4-1 T",
         "4-2 E",
-        "4-3 E"
+        "4-3 F",
+        "4-4 E"
       ],
       [
         "5-1 F",
         "5-2 F",
         "5-3 F",
-        "5-4 F",
-        "5-5 F"
+        "5-4 F"
       ],
       [
         "Final Boss"
@@ -139,91 +57,107 @@
     "conexiones": [
       [
         "0-1 M",
-        "1-3 E"
-      ],
-      [
-        "0-1 M",
-        "1-2 E"
+        "1-1 T"
       ],
       [
         "0-2 M",
-        "1-3 E"
+        "1-3 M"
       ],
       [
         "0-3 M",
-        "1-3 E"
+        "1-3 M"
       ],
       [
         "0-4 M",
-        "1-3 E"
+        "1-3 M"
       ],
       [
-        "1-1 E",
-        "2-3 M"
+        "1-1 T",
+        "2-2 E"
       ],
       [
-        "1-2 E",
+        "1-1 T",
+        "2-1 F"
+      ],
+      [
+        "1-2 M",
+        "2-2 E"
+      ],
+      [
+        "1-3 M",
         "2-4 M"
       ],
       [
-        "1-2 E",
-        "2-3 M"
-      ],
-      [
-        "1-3 E",
+        "1-3 M",
         "2-3 M"
       ],
       [
         "2-1 F",
-        "3-1 F"
+        "3-2 E"
       ],
       [
-        "2-2 M",
-        "3-3 T"
+        "2-2 E",
+        "3-2 E"
+      ],
+      [
+        "2-2 E",
+        "3-3 M"
       ],
       [
         "2-3 M",
-        "3-3 T"
+        "3-4 E"
       ],
       [
         "2-4 M",
-        "3-3 T"
+        "3-4 E"
+      ],
+      [
+        "2-4 M",
+        "3-5 E"
       ],
       [
         "2-5 M",
-        "3-3 T"
+        "3-5 E"
       ],
       [
-        "3-1 F",
-        "4-1 M"
-      ],
-      [
-        "3-1 F",
-        "4-3 E"
-      ],
-      [
-        "3-2 M",
+        "3-1 E",
         "4-2 E"
       ],
       [
-        "3-3 T",
-        "4-3 E"
+        "3-2 E",
+        "4-4 E"
       ],
       [
-        "4-1 M",
-        "5-1 F"
+        "3-3 M",
+        "4-4 E"
       ],
       [
-        "4-2 E",
-        "5-4 F"
+        "3-4 E",
+        "4-4 E"
+      ],
+      [
+        "3-5 E",
+        "4-4 E"
+      ],
+      [
+        "4-1 T",
+        "5-2 F"
       ],
       [
         "4-2 E",
         "5-2 F"
       ],
       [
-        "4-3 E",
+        "4-3 F",
         "5-3 F"
+      ],
+      [
+        "4-3 F",
+        "5-4 F"
+      ],
+      [
+        "4-4 E",
+        "5-4 F"
       ],
       [
         "5-1 F",
@@ -242,32 +176,28 @@
         "Final Boss"
       ],
       [
-        "5-5 F",
-        "Final Boss"
+        "0-3 M",
+        "1-2 M"
       ],
       [
-        "0-2 M",
-        "1-1 E"
-      ],
-      [
-        "1-2 E",
-        "2-1 F"
-      ],
-      [
-        "1-3 E",
-        "2-2 M"
-      ],
-      [
-        "1-3 E",
+        "1-3 M",
         "2-5 M"
       ],
       [
-        "2-3 M",
-        "3-2 M"
+        "2-2 E",
+        "3-1 E"
       ],
       [
-        "4-3 E",
-        "5-5 F"
+        "3-2 E",
+        "4-1 T"
+      ],
+      [
+        "3-4 E",
+        "4-3 F"
+      ],
+      [
+        "4-2 E",
+        "5-1 F"
       ]
     ]
   },
@@ -279,16 +209,35 @@
       "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
     },
     {
-      "nombre": "Bag of Preparation",
-      "efecto": "Robas 1 carta adicional al inicio de cada turno",
-      "obtencion": "Cofres, tienda",
-      "ruta": "/Front/Cosas/reliquias/bag-of-preparation.png"
+      "nombre": "Escudo Clásico",
+      "efecto": "En combates contra élites o jefes, obtienes 10 de escudo durante 3 turnos",
+      "obtencion": "Jefe",
+      "ruta": "/Front/Cosas/reliquias/escudo-clasico.png"
     },
     {
-      "nombre": "Roca Rúnica",
-      "efecto": "Cada vez que un enemigo muere, ganas 2 PV maximos.",
-      "obtencion": "Elite",
-      "ruta": "/Front/Cosas/reliquias/roca-runica.png"
+      "nombre": "Regal Pillow",
+      "efecto": "Cuando comienzaa un combate recuperas 5 PV.",
+      "obtencion": "Cofres, tienda",
+      "ruta": "/Front/Cosas/reliquias/regal-pillow.png"
+    },
+    {
+      "nombre": "Black Star",
+      "efecto": "Hace que los élites suelten dos reliquias en lugar de solo una",
+      "obtencion": "Jefe",
+      "ruta": "/Front/Cosas/reliquias/black-star.png"
+    },
+    {
+      "nombre": "Caja de Devolución",
+      "efecto": "Al recogerla, tu deck inicial y el siguiente aumentan en 2 cartas",
+      "obtencion": "Jefe",
+      "ruta": "/Front/Cosas/reliquias/caja-de-devolucion.png"
+    },
+    {
+      "nombre": "Sombrero constructor",
+      "efecto": "Reduce el daño recibido de elites y jefes en un 15%",
+      "obtencion": "Jefe",
+      "ruta": "/Front/Cosas/reliquias/sombrero-constructor.png"
     }
-  ]
+  ],
+  "reliquiaJefe": "Escudo Clásico"
 }

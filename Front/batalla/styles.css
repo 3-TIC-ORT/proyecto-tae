@@ -622,7 +622,9 @@ dialog::backdrop {
   background-color: black;
   color: white;
   height: 3.375rem;
-  margin: 1.25rem 0;
+  position: relative;
+  bottom: 0;
+  margin: .7rem 0;
   width: 16rem;
   font-size: 3vh;
   display: flex;

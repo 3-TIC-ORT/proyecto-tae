@@ -6,9 +6,33 @@
     "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
   },
   {
-    "nombre": "Vajra",
-    "efecto": "+1 de Fuerza",
+    "nombre": "Escudo Clásico",
+    "efecto": "En combates contra élites o jefes, obtienes 10 de escudo durante 3 turnos",
+    "obtencion": "Jefe",
+    "ruta": "/Front/Cosas/reliquias/escudo-clasico.png"
+  },
+  {
+    "nombre": "Regal Pillow",
+    "efecto": "Cuando comienzaa un combate recuperas 5 PV.",
     "obtencion": "Cofres, tienda",
-    "ruta": "/Front/Cosas/reliquias/vajra.png"
+    "ruta": "/Front/Cosas/reliquias/regal-pillow.png"
+  },
+  {
+    "nombre": "Black Star",
+    "efecto": "Hace que los élites suelten dos reliquias en lugar de solo una",
+    "obtencion": "Jefe",
+    "ruta": "/Front/Cosas/reliquias/black-star.png"
+  },
+  {
+    "nombre": "Caja de Devolución",
+    "efecto": "Al recogerla, tu deck inicial y el siguiente aumentan en 2 cartas",
+    "obtencion": "Jefe",
+    "ruta": "/Front/Cosas/reliquias/caja-de-devolucion.png"
+  },
+  {
+    "nombre": "Sombrero constructor",
+    "efecto": "Reduce el daño recibido de elites y jefes en un 15%",
+    "obtencion": "Jefe",
+    "ruta": "/Front/Cosas/reliquias/sombrero-constructor.png"
   }
 ]

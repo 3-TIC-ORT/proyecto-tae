@@ -66,8 +66,11 @@ subscribeGETEvent("estado-basico", () => {
 
 // Obtener mazo
 subscribeGETEvent("mazo", () => {
-  info.mazo = JSON.parse(fs.readFileSync("./NODE/jsons/mazo.json", "utf-8"));
-  return info.mazo;
+  let mazo = JSON.parse(fs.readFileSync("./NODE/jsons/mazo.json", "utf-8"));
+  if(mazo === info.mazo){
+    info.mazo = mazo
+  }
+  return mazo;
 });
 
 // Reliquia del jefe
@@ -129,6 +132,7 @@ subscribePOSTEvent("fogata", (data) => {
   info.personaje.oro = data.oro;
   info.personaje.vida = data.vida;
   info.personaje.vidamax = data.vidamax;
+  info.mazo = data.mazo;
 });
 
 // Guardar progreso

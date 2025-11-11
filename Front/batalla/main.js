@@ -276,6 +276,15 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function mostrarMazo() {
+    if (siAnchor) {
+      cantidadEscudo += 10;
+      siEscudo = true;
+      mostrarEscudoRestante();
+    }
+    if (siRegal) {
+      info.vida += 5;
+    }
+    console.log(cantidadEscudo);
     cajaCartas.innerHTML = "";
     for (let i = 0; i < mazo.length; i++) {
       let nuevaCarta = document.createElement("div");
@@ -498,7 +507,7 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(monstruo.tipo);
     console.log("escudo personaje: " + cantidadEscudo);
     console.log(saltearTurnoRival);
-   
+
     if (!saltearTurnoRival) {
       if (monstruo.tipo === "normal") {
         const minNormal = 5;
@@ -597,13 +606,7 @@ window.addEventListener("DOMContentLoaded", () => {
       fuerza += 1;
       console.log("Piedra filosofal:" + vul, fuerza);
     }
-    if (siAnchor) {
-      cantidadEscudo += 10;
-      siEscudo = true;
-    }
-    if (siRegal) {
-      info.vida += 5;
-    }
+
     if (siClasico && clasicoTurnos > 0) {
       escudoClasico();
     }

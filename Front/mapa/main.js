@@ -290,6 +290,7 @@ window.addEventListener("DOMContentLoaded", () => {
       h1.textContent = "The Lawyer";
       h1.style.fontSize = "13rem";
       h1.style.fontFamily = "Galdeano, sans-serif";
+      h1.style.backgroundImage = "url ('../Cosas/image_72-removebg-preview.png')";
     } else if (personaje === "bear") {
       h1.textContent = "The Bear";
       h1.style.fontFamily = "Sedgwick Ave Display, cursive";

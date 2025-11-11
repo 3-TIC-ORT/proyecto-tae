@@ -56,8 +56,8 @@
         "reliquia":"elite",
         "tipo":"elite",
         "cartas":1,
-        "vida":120,
-        "vidamax":120     
+        "vida":100,
+        "vidamax":100     
     },
     {
         "nombre":"el guardian de hueso",
@@ -66,8 +66,8 @@
         "reliquia":"elite",
         "tipo":"elite",
         "cartas":1,
-        "vida":140,
-        "vidamax":140    
+        "vida":90,
+        "vidamax":90    
     },
     {
         "nombre":"el idolo maldito",
@@ -76,8 +76,8 @@
         "reliquia":"elite",
         "tipo":"elite",
         "cartas":1,
-        "vida":160,
-        "vidamax":160
+        "vida":110,
+        "vidamax":110
     },
     {
         "nombre":"el devorador eterno",
@@ -86,7 +86,7 @@
         "reliquia":"jefe",
         "tipo":"jefe",
         "cartas":3,
-        "vida":400,
-        "vidamax":400 
+        "vida":200,
+        "vidamax":200 
     }
 ]

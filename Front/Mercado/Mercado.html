@@ -1,65 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Adventure of Emptiness</title>
+    <link rel="stylesheet" href="mercado.css" />
+    <script src="main.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.2/soquetic-client.js"></script>
+    <link rel="icon" href="../Cosas/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Adventure of Emptiness</title>
-  <link rel="stylesheet" href="mercado.css" />
-  <script src="main.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/JZylber/SoqueTIC-Client@v1.4.2/soquetic-client.js"></script>
-  <link rel="icon" href="../Cosas/Screenshot 2025-08-14 131918.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet" />
-</head>
-
-<body>
-  <header class="arriba">
-    <div class="izq">
-      <h1 class="titulo" id="titulo">TAE</h1>
-      <h4 class="vida" id="vida"></h4>
-      <h4 class="oro" id="oro"></h4>
-    </div>
-    <div class="der">
-      <div class="icon reliquias" id="reliquias">
-        <div class="circulo-reliquias" id="circulo-reliquias"></div>
-      </div>
-      <div class="icon mapa" id="mapa"></div>
-      <div class="icon cartas" id="cartas">
-        <div class="circulo-cartas" id="circulo-cartas"></div>
-      </div>
-    </div>
-  </header>
-  <section id="batalla">
-    <main class="container">
-      <div class="mercader">
-        <div id="carta1"></div>
-        <div id="carta2"></div>
-        <div id="carta3"></div>
-        <div id="carta4"></div>
-        <div id="carta5"></div>
-        <div id="carta6"></div>
-        <div class="reliquias-mercader">
-          <div id="reliquia1"></div>
-          <div id="reliquia2"></div>
-          <div id="reliquia3"></div>
-          <div id="reliquia4"></div>
+  <body>
+    <section id="section">
+      <header class="arriba">
+        <div class="izq">
+          <h1 class="titulo" id="titulo">TAE</h1>
+          <h4 class="vida" id="vida"></h4>
+          <h4 class="oro" id="oro"></h4>
         </div>
-      </div>
-      <h4 id="avanzar">Atras</h4>
-    </main>
-  </section>
-  <section class="cartasS" id="LugarCartas">
-    <main class="container-cartas">
-      <div class="cajaCartas" id="cajaCartas">
-        <!--div class="cartaGC" id="carta1"></div>
+        <div class="der">
+          <div class="icon reliquias" id="reliquias">
+            <div class="circulo-reliquias" id="circulo-reliquias">X</div>
+          </div>
+          <div class="icon cartas" id="cartas">
+            <div class="circulo-cartas" id="circulo-cartas">X</div>
+          </div>
+        </div>
+      </header>
+      <section id="batalla">
+      <main class="container">
+        <div class="mercader">
+          <div id="carta1"></div>
+          <div id="carta2"></div>
+          <div id="carta3"></div>
+          <div id="carta4"></div>
+          <div id="carta5"></div>
+          <div id="carta6"></div>
+          <div class="reliquias-mercader">
+            <div id="reliquia1"></div>
+            <div id="reliquia2"></div>
+            <div id="reliquia3"></div>
+            <div id="reliquia4"></div>
+          </div>
+        </div>
+        <h4 id="avanzar">Atras</h4>
+      </main>
+    </section>
+    <section class="cartasS" id="LugarCartas">
+      <main class="container-cartas">
+        <div class="cajaCartas" id="cajaCartas">
+          <!--div class="cartaGC" id="carta1"></div>
           <div class="cartaGC" id="carta2"></div>
           <div class="cartaGC" id="carta3"></div>
           <div class="cartaGC" id="carta4"></div>
@@ -72,17 +76,16 @@
           <div class="cartaGC" id="carta11"></div>
           <div class="cartaGC" id="carta12"></div>
           <div class="cartaGC" id="carta13"></div!-->
-      </div>
-    </main>
-    <footer class="abajo-cartas">
-      <div class="atras" id="atras">Atras</div>
-    </footer>
-  </section>
-  <!--SECCION PANTALLA RELIQUIAS-->
-  <section class="reliqias" id="LugarReliquias">
-    <main class="container-reliquias">
-      <div class="fondo">
-        <div id="cajaReliquias" class="caja-reliquias">
+        </div>
+      </main>
+      <footer class="abajo-cartas">
+        <div class="atras" id="atras">Atras</div>
+      </footer>
+    </section>
+    <!--SECCION PANTALLA RELIQUIAS-->
+    <section class="reliqias" id="LugarReliquias">
+      <main class="container-reliquias">
+        <div id="cajaReliquias" class="caja-reliquias fondo">
           <!--div id="reliquia1" class="todas"></!--div>
           <div id="reliquia2" class="todas"></div>
           <div id="reliquia3" class="todas"></div>
@@ -93,12 +96,10 @@
           <div id="reliquia8" class="todas"></div>
           <div!-- id="reliquia9" class="todas"></div!-->
         </div>
-      </div>
-    </main>
-    <footer class="abajo-cartas">
-      <h4 id="atras2" class="atras">Atras</h4>
-    </footer>
-  </section>
-</body>
-
+      </main>
+      <footer class="abajo-cartas">
+        <h4 id="atras2" class="atras">Atras</h4>
+      </footer>
+    </section>
+  </body>
 </html>

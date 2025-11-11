@@ -86,5 +86,13 @@
     "tipo": "ataque",
     "efecto": "Aplica 2 de vulnerabilidad al enemigo",
     "ruta": "/Front/Cosas/cartas/ataque/garrote.png"
+  },
+  {
+    "nombre": "Zip",
+    "daño": 5,
+    "elixir": 2,
+    "tipo": "ataque",
+    "efecto": "Saltea el turno del contrincante",
+    "ruta": "/Front/Cosas/cartas/ataque/zip.png"
   }
 ]

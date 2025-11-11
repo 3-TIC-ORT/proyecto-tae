@@ -150,3 +150,14 @@ body {
   flex-direction: column;
   background-blend-mode: multiply;
 }
+
+.subtitulo {
+color: #FFF;
+font-family: "Dela Gothic One";
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+position: relative;
+bottom: 20px;
+}

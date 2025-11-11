@@ -1,14 +1,8 @@
 [
   {
-    "nombre": "Trébol de Oro",
-    "efecto": "Cada vez que termina un combate consigues dos veces más oro. También cada 5 ataques consigues 10 de oro",
+    "nombre": "Báculo del Archimago",
+    "efecto": "Incrementa tu maná máximo en 1",
     "obtencion": "Inicial",
-    "ruta": "/Front/Cosas/reliquias-iniciales/trebol-de-oro.png"
-  },
-  {
-    "nombre": "Anchor",
-    "efecto": "Empiezas el combate con 10 Bloqueo",
-    "obtencion": "Cofres, tienda",
-    "ruta": "/Front/Cosas/reliquias/anchor.png"
+    "ruta": "/Front/Cosas/reliquias-iniciales/baculo-del-archimago.png"
   }
 ]

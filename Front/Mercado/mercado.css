@@ -6,20 +6,20 @@
   box-sizing: border-box;
 }
 body {
-    margin: 0;
-    padding: 0;
-    width: 110vw;
-    height: 100vh;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
-.letra{
-      font-family: "Inknut Antiqua", serif;
+.letra {
+  font-family: "Inknut Antiqua", serif;
 }
-html{
-    cursor: var(--mouse);
+html {
+  cursor: var(--mouse);
 }
 
-#avanzar{
+#avanzar {
   height: 13vh;
   aspect-ratio: 4/3;
   position: fixed;
@@ -35,13 +35,12 @@ html{
   display: flex;
   align-items: center;
 }
-#avanzar:hover{
-    
-    transform: scale(1.05);
-    cursor: pointer;
+#avanzar:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
-#avanzar:active{
-    transform: scale(0.95);
+#avanzar:active {
+  transform: scale(0.95);
 }
 .arriba {
   min-height: 15%;
@@ -60,7 +59,6 @@ html{
   font-style: normal;
   margin: 0;
   font-size: 6vh;
-  cursor: var(--pointer);
 }
 
 .izq {
@@ -101,14 +99,13 @@ html{
   gap: 5vh;
   width: 40%;
   justify-content: flex-end;
-  padding-right: 10%;
+  padding-right: 5%;
   align-items: center;
 }
 
 .icon {
   height: 6vh;
   aspect-ratio: 1/1;
-  cursor: var(--pointer);
 }
 
 .mapa {
@@ -122,7 +119,20 @@ html{
   display: flex;
   align-items: end;
 }
-
+.todas {
+  width: 18%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  margin: 6% 7%;
+  vertical-align: top;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
 .cartas {
   background-image: url("../Cosas/cartasicon.png");
   background-repeat: no-repeat;
@@ -155,32 +165,32 @@ html{
   justify-content: center;
 }
 
-.container{
+.container {
   background-image: url("../Cosas/eb223c4034a1c48c8bc140e0a14ae7ecd0cbf9de.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 125% 138%;
   width: 100vw;
-  height: calc(100vh - 15vh);
+  height: 100vh;
   padding-top: 2rem;
-  }
+}
 
-  .card-img {
-    width: 12vw;
-    height: auto;
-    object-fit: contain;
-    margin: 0 auto;
-    cursor: var(--pointer);
-    position: relative;
-    bottom: 0;
-    transition: transform 1s ease, bottom 1s ease;
-  }
-  .card-img:hover{
-    transform: scale(1.2);
-    bottom: 2vh;
-  }
+.card-img {
+  width: 12vw;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  cursor: var(--pointer);
+  position: relative;
+  bottom: 0;
+  transition: transform 1s ease, bottom 1s ease;
+}
+.card-img:hover {
+  transform: scale(1.2);
+  bottom: 2vh;
+}
 
-  .mercader {
+.mercader {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
   grid-auto-rows: auto !important;
@@ -192,15 +202,32 @@ html{
   padding-top: 2rem;
 }
 
+#carta1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+#carta2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+#carta3 {
+  grid-column: 3;
+  grid-row: 1;
+}
+#carta4 {
+  grid-column: 4;
+  grid-row: 1;
+}
+#carta5 {
+  grid-column: 1;
+  grid-row: 2;
+}
+#carta6 {
+  grid-column: 2;
+  grid-row: 2;
+}
 
-#carta1 { grid-column: 1; grid-row: 1; }
-#carta2 { grid-column: 2; grid-row: 1; }
-#carta3 { grid-column: 3; grid-row: 1; }
-#carta4 { grid-column: 4; grid-row: 1; }
-#carta5 { grid-column: 1; grid-row: 2; }
-#carta6 { grid-column: 2; grid-row: 2; }
-
-.card-costo{
+.card-costo {
   text-align: center;
   order: 3;
   margin-top: 0.3vh;
@@ -208,8 +235,8 @@ html{
 }
 
 .reliquias-mercader {
-  grid-column: 3 / span 2;  /* las pone al costado derecho del grid */
-  grid-row: 2;              /* debajo de las cartas */
+  grid-column: 3 / span 2; /* las pone al costado derecho del grid */
+  grid-row: 2; /* debajo de las cartas */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -272,7 +299,6 @@ html{
   pointer-events: none;
 }
 
-
 .tooltip-floating .tooltip-title {
   color: #d6c25b;
   font-weight: 700;
@@ -281,7 +307,6 @@ html{
   text-align: center;
 }
 
-
 .tooltip-floating .tooltip-body {
   color: #f0f0f0;
   font-size: 0.85rem;
@@ -289,11 +314,9 @@ html{
   text-align: left;
 }
 
-
 .tooltip-floating .tooltip-meta {
   color: #cccccc;
   font-size: 0.7rem;
   opacity: 0.8;
   text-align: right;
 }
-

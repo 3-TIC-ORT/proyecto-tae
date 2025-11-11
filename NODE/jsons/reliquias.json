@@ -6,6 +6,12 @@
     "ruta": "/Front/Cosas/reliquias/vajra.png"
   },
   {
+    "nombre": "Anchor",
+    "efecto": "Empiezas el combate con 10 Bloqueo",
+    "obtencion": "Cofres, tienda",
+    "ruta": "/Front/Cosas/reliquias/anchor.png"
+  },
+  {
     "nombre": "Bag of Preparation",
     "efecto": "Robas 1 carta adicional al inicio de cada turno",
     "obtencion": "Cofres, tienda",

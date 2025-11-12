@@ -88,11 +88,19 @@
     "ruta": "/Front/Cosas/cartas/ataque/garrote.png"
   },
   {
-    "nombre": "Zip",
-    "daño": 5,
+    "nombre": "Espadas orbitantes",
+    "bloqueo": 10,
     "elixir": 2,
-    "tipo": "ataque",
-    "efecto": "Saltea el turno del contrincante",
-    "ruta": "/Front/Cosas/cartas/ataque/zip.png"
+    "tipo": "defensa",
+    "efecto": "Suma 10 de defensa este y el próximo turno",
+    "ruta": "/Front/Cosas/cartas/defensa/espadas-orbitantes.png"
+  },
+  {
+    "nombre": "Auto-escudo",
+    "bloqueo": 11,
+    "elixir": 1,
+    "tipo": "defensa",
+    "efecto": "Si no tienes escudo, te da 11 de escudo",
+    "ruta": "/Front/Cosas/cartas/defensa/auto-escudo.png"
   }
 ]

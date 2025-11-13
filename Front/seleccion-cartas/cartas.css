@@ -45,6 +45,9 @@
   display: flex;
   justify-content: center;
 }
+body {
+  background-color: black;
+}
 .boton{
   color: white;
   margin: 0;

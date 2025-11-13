@@ -114,6 +114,18 @@ body.mago-background-global {
     background-size: contain;
     background-position: center;
 }
+
+body.jon-background-global {
+    background-image: url("../Cosas/image\ 23.png");
+}
+
+.nodoJon {
+  background-image: url("../Cosas/Group\ 8.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
 /* Tipos de nodo */
 .nodo.M {
 

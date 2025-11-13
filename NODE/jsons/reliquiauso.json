@@ -4,5 +4,11 @@
     "efecto": "Cada vez que termina el combate se cura 6 de vida",
     "obtencion": "Inicial",
     "ruta": "/Front/Cosas/reliquias-iniciales/escudo-de-hierro.png"
+  },
+  {
+    "nombre": "Caja de Devolución",
+    "efecto": "Al recogerla, tu deck inicial y el siguiente aumentan en 2 cartas",
+    "obtencion": "Jefe",
+    "ruta": "/Front/Cosas/reliquias/caja-de-devolucion.png"
   }
 ]

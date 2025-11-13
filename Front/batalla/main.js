@@ -106,7 +106,7 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(`Monstruo ${tipoMonstruo} recibido:`, monstruo);
     mostrar();
     console.log(monstruo.vida);
-    monstruo.vida = 1;
+    //monstruo.vida = 1;
     gananciaInicial = monstruo.recompenzas;
     ganancia = gananciaInicial;
     console.log("Recompensa:", ganancia);
@@ -131,13 +131,14 @@ window.addEventListener("DOMContentLoaded", () => {
     let personaje = data;
 
     if (personaje === "mago") {
-      fotoP.style.backgroundImage = "Url(../Cosas/mago.png)";
+      fotoP.style.backgroundImage = "Url(../Cosas/mago-ataque.png)";
+      fotoP.style.backgroundSize = "110%";
     } else if (personaje === "jon") {
-      fotoP.style.backgroundImage = "Url(../Cosas/lawyer.png)";
+      fotoP.style.backgroundImage = "Url(../Cosas/lawyer-ataque.png)";
     } else if (personaje === "bear") {
-      fotoP.style.backgroundImage = "Url(../Cosas/bear.png)";
+      fotoP.style.backgroundImage = "Url(../Cosas/oso-ataque.png)";
     } else if (personaje === "pick") {
-      fotoP.style.backgroundImage = "Url(../Cosas/pick.png)";
+      fotoP.style.backgroundImage = "Url(../Cosas/pick-ataque.png)";
     } else {
       fotoP.style.backgroundColor = "blue";
     }
@@ -2030,14 +2031,15 @@ window.addEventListener("DOMContentLoaded", () => {
     info.vida -= 6;
     if (info.vida < 0) info.vida = 0;
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    mostrarEscudoRestante();
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Heroico");
+    console.log(cantidadEscudo)
     mostrar();
+    mostrarEscudoRestante();
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Heroico"}`);

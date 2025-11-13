@@ -78,12 +78,6 @@
     "ruta": "/Front/Cosas/reliquias/black-star.png"
   },
   {
-    "nombre": "Caja de Devolución",
-    "efecto": "Al recogerla, tu deck inicial y el siguiente aumentan en 2 cartas",
-    "obtencion": "Jefe",
-    "ruta": "/Front/Cosas/reliquias/caja-de-devolucion.png"
-  },
-  {
     "nombre": "Fortaleza",
     "efecto": "Al comienzo de tu turno, gana 1 de Fuerza y todos los enemigos ganan 1 de debilidad",
     "obtencion": "Jefe",

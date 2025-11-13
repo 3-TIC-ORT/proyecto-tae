@@ -88,19 +88,11 @@
     "ruta": "/Front/Cosas/cartas/ataque/garrote.png"
   },
   {
-    "nombre": "Espadas orbitantes",
-    "bloqueo": 10,
-    "elixir": 2,
-    "tipo": "defensa",
-    "efecto": "Suma 10 de defensa este y el próximo turno",
-    "ruta": "/Front/Cosas/cartas/defensa/espadas-orbitantes.png"
-  },
-  {
-    "nombre": "Auto-escudo",
-    "bloqueo": 11,
+    "nombre": "Verdadero valor",
+    "bloqueo": 7,
     "elixir": 1,
     "tipo": "defensa",
-    "efecto": "Si no tienes escudo, te da 11 de escudo",
-    "ruta": "/Front/Cosas/cartas/defensa/auto-escudo.png"
+    "efecto": "Agota una carta de tu mano",
+    "ruta": "/Front/Cosas/cartas/defensa/verdadero-valor.png"
   }
 ]

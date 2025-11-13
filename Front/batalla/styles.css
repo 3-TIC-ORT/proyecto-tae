@@ -362,10 +362,11 @@ html {
 }
 
 .b {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   background-color: beige;
   width: 20vw;
   height: 10vh;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;

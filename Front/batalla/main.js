@@ -106,7 +106,7 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(`Monstruo ${tipoMonstruo} recibido:`, monstruo);
     mostrar();
     console.log(monstruo.vida);
-    //monstruo.vida = 1;
+    monstruo.vida = 1;
     gananciaInicial = monstruo.recompenzas;
     ganancia = gananciaInicial;
     console.log("Recompensa:", ganancia);
@@ -411,6 +411,9 @@ window.addEventListener("DOMContentLoaded", () => {
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     oro.textContent = `Oro: ${info.oro}`;
     vidaP.style.backgroundColor = "#bb090e";
+    if(monstruo.tipo === "jefe"){
+      lugarFuerza.style.top = "30%";
+    }
   }
   function mostrarEscudoRestante() {
     vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
@@ -449,7 +452,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (fuerza > 0) {
           lugarFuerza.style.display = "block";
         }
-    
+
         console.log("Fuerza (vajra): " + fuerza);
       } else if (reliquia[i].nombre === "Anchor") {
         siAnchor = true;
@@ -609,14 +612,13 @@ window.addEventListener("DOMContentLoaded", () => {
     iniciarTurnoJugador();
   }
   function iniciarTurnoJugador(carta) {
-
     if (siFortaleza) {
       vul += 1;
       fuerza += 1;
       if (fuerza > 0) {
         lugarFuerza.style.display = "block";
       }
-  
+
       if (vul > 0) {
         lugarVul.style.display = "block";
       }
@@ -626,7 +628,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (fuerza > 0) {
         lugarFuerza.style.display = "block";
       }
-  
+
       console.log("Piedra filosofal:" + vul, fuerza);
     }
 
@@ -2885,6 +2887,8 @@ window.addEventListener("DOMContentLoaded", () => {
     cajaMonstruo.style.aspectRatio = "1/1";
     cajaMonstruo.style.position = "relative";
     cajaMonstruo.style.top = "15vh";
+    lugarFuerza.style.display = "none";
+    lugarVul.style.display = "none";
     fotoM.style.backgroundImage = "url(../Cosas/cofre.png)";
     fotoM.style.backgroundSize = "67%";
     // vidaP.style.display = "none";

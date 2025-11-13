@@ -77,7 +77,7 @@ h1{
 }
 .nodoPick{
   background-image: url("../Cosas/image\ 50.png");
-   background-position: center;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   color: white;
@@ -114,6 +114,7 @@ body.mago-background-global {
     background-size: contain;
     background-position: center;
 }
+<<<<<<< HEAD
 
 body.jon-background-global {
     background-image: url("../Cosas/image\ 23.png");
@@ -125,6 +126,16 @@ body.jon-background-global {
   background-repeat: no-repeat;
   background-size: contain;
 
+=======
+body.Jon-background-global {
+    background-image: url("../Cosas/image\ 23\ \(1\).png");
+}
+.nodoJon{
+  background-image: url("../Cosas/image\ 64.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+>>>>>>> 576b1e79d0154f464d23e95338d51e090fbe8f58
 }
 /* Tipos de nodo */
 .nodo.M {

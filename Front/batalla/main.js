@@ -15,6 +15,8 @@ window.addEventListener("DOMContentLoaded", () => {
   let cajaReliquias = document.getElementById("cajaReliquias");
   let cajaCartas = document.getElementById("cajaCartas");
   let LugarCartas = document.getElementById("LugarCartas");
+  let lugarFuerza = document.getElementById("fuerza");
+  let lugarVul = document.getElementById("vulne");
   let atras = document.getElementById("atras");
   let atras2 = document.getElementById("atras2");
   //let omitir = document.getElementById("omitir");
@@ -104,7 +106,7 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(`Monstruo ${tipoMonstruo} recibido:`, monstruo);
     mostrar();
     console.log(monstruo.vida);
-    monstruo.vida = 1;
+    //monstruo.vida = 1;
     gananciaInicial = monstruo.recompenzas;
     ganancia = gananciaInicial;
     console.log("Recompensa:", ganancia);
@@ -129,13 +131,14 @@ window.addEventListener("DOMContentLoaded", () => {
     let personaje = data;
 
     if (personaje === "mago") {
-      fotoP.style.backgroundImage = "Url(../Cosas/mago.png)";
+      fotoP.style.backgroundImage = "Url(../Cosas/mago-ataque.png)";
+      fotoP.style.backgroundSize = "110%";
     } else if (personaje === "jon") {
-      fotoP.style.backgroundImage = "Url(../Cosas/lawyer.png)";
+      fotoP.style.backgroundImage = "Url(../Cosas/lawyer-ataque.png)";
     } else if (personaje === "bear") {
-      fotoP.style.backgroundImage = "Url(../Cosas/bear.png)";
+      fotoP.style.backgroundImage = "Url(../Cosas/oso-ataque.png)";
     } else if (personaje === "pick") {
-      fotoP.style.backgroundImage = "Url(../Cosas/pick.png)";
+      fotoP.style.backgroundImage = "Url(../Cosas/pick-ataque.png)";
     } else {
       fotoP.style.backgroundColor = "blue";
     }
@@ -217,7 +220,7 @@ window.addEventListener("DOMContentLoaded", () => {
     siEscudo = true;
     cantidadEscudo = Math.floor(cantidadEscudo);
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mostrarEscudoRestante();
     console.log("Cantidad Escudo: " + cantidadEscudo);
     clasicoTurnos--;
   }
@@ -408,9 +411,14 @@ window.addEventListener("DOMContentLoaded", () => {
     vidaP.textContent = `PV: ${info.vida}/${info.vidamax}`;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     oro.textContent = `Oro: ${info.oro}`;
+    vidaP.style.backgroundColor = "#bb090e";
+    if(monstruo.tipo === "jefe"){
+      lugarFuerza.style.top = "30%";
+    }
   }
   function mostrarEscudoRestante() {
     vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    vidaP.style.backgroundColor = "#0C6B7C";
   }
 
   function usoReliquia() {
@@ -442,6 +450,10 @@ window.addEventListener("DOMContentLoaded", () => {
       if (reliquia[i].nombre === "Vajra") {
         console.log("Reliquia Activa: " + reliquia[i].nombre);
         fuerza += 1;
+        if (fuerza > 0) {
+          lugarFuerza.style.display = "block";
+        }
+
         console.log("Fuerza (vajra): " + fuerza);
       } else if (reliquia[i].nombre === "Anchor") {
         siAnchor = true;
@@ -461,6 +473,9 @@ window.addEventListener("DOMContentLoaded", () => {
       } else if (reliquia[i].nombre === "Piedra Filosofal") {
         siPiedra = true;
         vul += 1;
+        if (vul > 0) {
+          lugarVul.style.display = "block";
+        }
         console.log("Piedra filosofal:" + vul);
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Salvia") {
@@ -557,7 +572,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
       dañoRival = Math.floor(dañoRival);
       console.log("Daño del rival en este turno: " + dañoRival);
-      alert(`El monstruo ataca por ${dañoRival} de daño!`);
+      //alert(`El monstruo ataca por ${dañoRival} de daño!`);
 
       if (siEscudo && cantidadEscudo > 0) {
         if (cantidadEscudo >= dañoRival) {
@@ -601,9 +616,20 @@ window.addEventListener("DOMContentLoaded", () => {
     if (siFortaleza) {
       vul += 1;
       fuerza += 1;
+      if (fuerza > 0) {
+        lugarFuerza.style.display = "block";
+      }
+
+      if (vul > 0) {
+        lugarVul.style.display = "block";
+      }
     }
     if (siPiedra) {
       fuerza += 1;
+      if (fuerza > 0) {
+        lugarFuerza.style.display = "block";
+      }
+
       console.log("Piedra filosofal:" + vul, fuerza);
     }
 
@@ -624,7 +650,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
       defensaPlacasTurno--;
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
       if (defensaPlacasTurno === 0) siDefensaPlacas = false;
       if (sangrado > 0) {
         monstruo.vida -= 3;
@@ -642,7 +668,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
       espadasOrbitantesTurno--;
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
       if (defensaPlacasTurno === 0) siDefensaPlacas = false;
     }
 
@@ -686,6 +712,9 @@ window.addEventListener("DOMContentLoaded", () => {
     abajo.appendChild(carta);
 
     contadorCartas++;
+    if (!cartaRobada.nombre) {
+      sumarCarta();
+    }
     if (cartaRobada.nombre === "Golpe") {
       carta.classList.add("carta-golpe");
     }
@@ -797,7 +826,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!cartaDiv) return;
 
     if (turno % 2 === 0) {
-      alert("No es tu turno");
+      //alert("No es tu turno");
       return;
     }
 
@@ -810,7 +839,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     if (mana < cartaActual.elixir) {
-      alert("No tienes suficiente mana");
+      //alert("No tienes suficiente mana");
       return;
     }
 
@@ -823,7 +852,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Escudo") {
       if (dobleSiguiente) {
@@ -834,7 +863,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Garrote") {
       if (dobleSiguiente) {
@@ -845,7 +874,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Espada pesada") {
       if (dobleSiguiente) {
@@ -856,7 +885,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Ira") {
       if (dobleSiguiente) {
@@ -867,7 +896,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Rafaga") {
       if (dobleSiguiente) {
@@ -878,7 +907,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Festin") {
       if (dobleSiguiente) {
@@ -889,7 +918,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Ataque rapido") {
       if (dobleSiguiente) {
@@ -900,7 +929,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Chapiadora.com") {
       if (dobleSiguiente) {
@@ -911,7 +940,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Promo 2027") {
       if (dobleSiguiente) {
@@ -922,7 +951,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Coque") {
       if (dobleSiguiente) {
@@ -933,7 +962,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Zip") {
       if (dobleSiguiente) {
@@ -944,7 +973,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Uppercut") {
       if (dobleSiguiente) {
@@ -955,7 +984,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Trinchera") {
       if (dobleSiguiente) {
@@ -966,7 +995,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Protector") {
       if (dobleSiguiente) {
@@ -977,7 +1006,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Heroico") {
       if (dobleSiguiente) {
@@ -988,7 +1017,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Auto-escudo") {
       if (dobleSiguiente) {
@@ -999,7 +1028,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Mutacion") {
       cartaMutacion(cartaActual);
@@ -1012,7 +1041,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Defensa en placas") {
       if (dobleSiguiente) {
@@ -1023,7 +1052,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Copa") {
       if (dobleSiguiente) {
@@ -1034,7 +1063,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Espadas orbitantes") {
       if (dobleSiguiente) {
@@ -1045,7 +1074,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Flexionar") {
       if (dobleSiguiente) {
@@ -1056,7 +1085,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Verdadero valor") {
       if (dobleSiguiente) {
@@ -1067,7 +1096,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Segundo aliento") {
       if (dobleSiguiente) {
@@ -1078,7 +1107,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Ritual") {
       if (dobleSiguiente) {
@@ -1089,7 +1118,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Furia") {
       if (dobleSiguiente) {
@@ -1100,7 +1129,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Columna suertuda") {
       if (dobleSiguiente) {
@@ -1111,7 +1140,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Ataque ancestral") {
       if (dobleSiguiente) {
@@ -1122,7 +1151,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Debilidad") {
       if (dobleSiguiente) {
@@ -1133,7 +1162,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Barricada") {
       if (dobleSiguiente) {
@@ -1144,11 +1173,11 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
       siEscudo = true;
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
     } else if (nombreCarta === "Golpe de cuerpo") {
       if (dobleSiguiente) {
         cartaGolpeDeCuerpo(cartaActual);
@@ -1158,7 +1187,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Ignorar") {
       if (dobleSiguiente) {
@@ -1169,7 +1198,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Lamento penetrante") {
       if (dobleSiguiente) {
@@ -1180,14 +1209,14 @@ window.addEventListener("DOMContentLoaded", () => {
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     } else if (nombreCarta === "Doble ataque") {
       cartaDobleAtaque(cartaActual);
       if (siMutacion === true) {
         cantidadEscudo += 1;
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
     }
 
@@ -1270,7 +1299,7 @@ window.addEventListener("DOMContentLoaded", () => {
       cantidadEscudo += 3;
       cantidadEscudo = Math.floor(cantidadEscudo);
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
     }
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -1324,15 +1353,18 @@ window.addEventListener("DOMContentLoaded", () => {
       cantidadEscudo += 3;
       cantidadEscudo = Math.floor(cantidadEscudo);
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
     }
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
-    //mazorobar.push(carta);
+    mazorobar.push(carta);
     vul = vul + 2;
+    if (vul > 0) {
+      lugarVul.style.display = "block";
+    }
     console.log(carta.nombre);
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
@@ -1376,7 +1408,7 @@ window.addEventListener("DOMContentLoaded", () => {
       cantidadEscudo += 3;
       cantidadEscudo = Math.floor(cantidadEscudo);
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
     }
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -1427,7 +1459,7 @@ window.addEventListener("DOMContentLoaded", () => {
       cantidadEscudo += 3;
       cantidadEscudo = Math.floor(cantidadEscudo);
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
     }
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -1478,7 +1510,7 @@ window.addEventListener("DOMContentLoaded", () => {
       cantidadEscudo += 3;
       cantidadEscudo = Math.floor(cantidadEscudo);
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
     }
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -1532,14 +1564,14 @@ window.addEventListener("DOMContentLoaded", () => {
       cantidadEscudo += 3;
       cantidadEscudo = Math.floor(cantidadEscudo);
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
     }
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
-    //mazorobar.push("Festin");
+    mazorobar.push("Festin");
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
       ganar();
@@ -1583,7 +1615,7 @@ window.addEventListener("DOMContentLoaded", () => {
       cantidadEscudo += 3;
       cantidadEscudo = Math.floor(cantidadEscudo);
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
     }
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -1640,14 +1672,14 @@ window.addEventListener("DOMContentLoaded", () => {
       cantidadEscudo += 3;
       cantidadEscudo = Math.floor(cantidadEscudo);
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
     }
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
-    //mazorobar.push("Chapiadora.com");
+    mazorobar.push("Chapiadora.com");
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${carta.nombre}`);
       ganar();
@@ -1691,7 +1723,7 @@ window.addEventListener("DOMContentLoaded", () => {
       cantidadEscudo += 3;
       cantidadEscudo = Math.floor(cantidadEscudo);
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
     }
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -1751,7 +1783,7 @@ window.addEventListener("DOMContentLoaded", () => {
         cantidadEscudo += 3;
         cantidadEscudo = Math.floor(cantidadEscudo);
         lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-        vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+        mostrarEscudoRestante();
       }
       if (dobleSiguiente) {
         mana -= carta.elixir * 0.5;
@@ -1808,7 +1840,7 @@ window.addEventListener("DOMContentLoaded", () => {
       cantidadEscudo += 3;
       cantidadEscudo = Math.floor(cantidadEscudo);
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
     }
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -1859,7 +1891,7 @@ window.addEventListener("DOMContentLoaded", () => {
       cantidadEscudo += 3;
       cantidadEscudo = Math.floor(cantidadEscudo);
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-      vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+      mostrarEscudoRestante();
     }
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
@@ -1868,6 +1900,9 @@ window.addEventListener("DOMContentLoaded", () => {
     cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Uppercut");
     vul = vul + 3;
+    if (vul > 0) {
+      lugarVul.style.display = "block";
+    }
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Uppercut"}`);
       ganar();
@@ -1887,7 +1922,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     cantidadEscudo = Math.floor(cantidadEscudo);
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mostrarEscudoRestante();
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
@@ -1908,7 +1943,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     cantidadEscudo = Math.floor(cantidadEscudo);
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mostrarEscudoRestante();
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
@@ -1940,7 +1975,7 @@ window.addEventListener("DOMContentLoaded", () => {
     siEscudo = true;
     cantidadEscudo = Math.floor(cantidadEscudo);
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mostrarEscudoRestante();
     //mana = Math.floor(mana);
     cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Auto-escudo");
@@ -1963,7 +1998,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     cantidadEscudo = Math.floor(cantidadEscudo);
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mostrarEscudoRestante();
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
@@ -1996,14 +2031,15 @@ window.addEventListener("DOMContentLoaded", () => {
     info.vida -= 6;
     if (info.vida < 0) info.vida = 0;
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Heroico");
+    console.log(cantidadEscudo)
     mostrar();
+    mostrarEscudoRestante();
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Heroico"}`);
@@ -2018,13 +2054,13 @@ window.addEventListener("DOMContentLoaded", () => {
     siMutacion = true;
     cantidadEscudo = Math.floor(cantidadEscudo);
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mostrarEscudoRestante();
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
     //mana = Math.floor(mana);
     cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
-    //mazorobar.push("Mutación");
+    mazorobar.push("Mutación");
 
     if (monstruo.vida <= 0) {
       console.log(`Rival matado por ${"Mutación"}`);
@@ -2044,7 +2080,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     cantidadEscudo = Math.floor(cantidadEscudo);
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mostrarEscudoRestante();
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
@@ -2074,7 +2110,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     cantidadEscudo = Math.floor(cantidadEscudo);
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mostrarEscudoRestante();
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
@@ -2102,7 +2138,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     cantidadEscudo = Math.floor(cantidadEscudo);
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mostrarEscudoRestante();
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
@@ -2130,7 +2166,7 @@ window.addEventListener("DOMContentLoaded", () => {
       CincoCopa--;
     }
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mostrarEscudoRestante();
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
@@ -2163,6 +2199,10 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(`Se usó la carta: ${carta.nombre}`);
     tengoEscudo = false;
     fuerza += 2;
+    if (fuerza > 0) {
+      lugarFuerza.style.display = "block";
+    }
+
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
@@ -2271,6 +2311,9 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(`Se usó la carta: ${carta.nombre}`);
     tengoEscudo = false;
     vul += 2;
+    if (vul > 0) {
+      lugarVul.style.display = "block";
+    }
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
@@ -2333,7 +2376,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     cantidadEscudo = Math.floor(cantidadEscudo);
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mostrarEscudoRestante();
 
     if (!noRobarMas) {
       sumarCarta();
@@ -2380,7 +2423,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     cantidadEscudo = Math.floor(cantidadEscudo);
     lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
-    vidaP.textContent = `E: ${cantidadEscudo}  PV: ${info.vida}/${info.vidamax}`;
+    mostrarEscudoRestante();
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;
@@ -2846,6 +2889,8 @@ window.addEventListener("DOMContentLoaded", () => {
     cajaMonstruo.style.aspectRatio = "1/1";
     cajaMonstruo.style.position = "relative";
     cajaMonstruo.style.top = "15vh";
+    lugarFuerza.style.display = "none";
+    lugarVul.style.display = "none";
     fotoM.style.backgroundImage = "url(../Cosas/cofre.png)";
     fotoM.style.backgroundSize = "67%";
     // vidaP.style.display = "none";

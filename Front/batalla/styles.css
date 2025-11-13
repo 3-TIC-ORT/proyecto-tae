@@ -362,8 +362,13 @@ html {
 }
 
 .b {
-  font-size: 1.8rem;
-  background-color: beige;
+  border: none;
+  font-size: 0;
+  background-color: transparent;
+  background-image: url("../Cosas/Boton-finalizar.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 20vw;
   height: 10vh;
   color: white;
@@ -374,27 +379,7 @@ html {
   right: 3.5vw;
   bottom: 18vh;
   z-index: 110;
-  outline: none;
-  margin: 0;
-  clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
-}
-
-.b::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #A9AF00;
-  clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
-  z-index: -1;
-}
-
-.b::after {
-  content: "";
-  position: absolute;
-  inset: 10px;
-  background: #0A90B5;
-  clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
-  z-index: -1;
+  
 }
 
 .b:hover {

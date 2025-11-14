@@ -412,7 +412,7 @@ window.addEventListener("DOMContentLoaded", () => {
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     oro.textContent = `Oro: ${info.oro}`;
     vidaP.style.backgroundColor = "#bb090e";
-    if(monstruo.tipo === "jefe"){
+    if (monstruo.tipo === "jefe") {
       lugarFuerza.style.top = "30%";
     }
   }
@@ -484,7 +484,10 @@ window.addEventListener("DOMContentLoaded", () => {
       } else if (reliquia[i].nombre === "Red star") {
         if (monstruo.tipo === "jefe") {
           console.log(monstruo.tipo + "red star");
+          console.log(info.vida);
           info.vida += 25;
+          console.log(info.vida);
+          mostrar();
         }
         console.log("Reliquia Activa: " + reliquia[i].nombre);
       } else if (reliquia[i].nombre === "Sombrero mágico") {
@@ -1221,6 +1224,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     cartasmano = cartasmano.filter((c) => c !== cartaActual);
+    monstruo.vida = Math.floor(monstruo.vida);
     sacarCarta();
   });
   function iniciarCartas() {
@@ -2037,7 +2041,7 @@ window.addEventListener("DOMContentLoaded", () => {
     //mana = Math.floor(mana);
     cajaMana.innerHTML = `<h1>${mana}/${manaMax}</h1>`;
     mazorobar.push("Heroico");
-    console.log(cantidadEscudo)
+    console.log(cantidadEscudo);
     mostrar();
     mostrarEscudoRestante();
 

@@ -122,7 +122,6 @@ window.addEventListener("DOMContentLoaded", () => {
         if (ahora >= costo) {
           oroactual = ahora - costo;
           oro.textContent = `Oro: ${oroactual}`;
-          alert(`Compraste la carta ${cartaObj.nombre} por ${costo} de oro`);
 
           let nueva = document.createElement("div");
           nueva.textContent = cartaObj.nombre;
@@ -140,7 +139,7 @@ window.addEventListener("DOMContentLoaded", () => {
             vidamax: info.vidamax,
           });
         } else {
-          alert("No tenés suficiente oro 😞");
+          alert("No tenés suficiente oro");
         }
       });
     });
@@ -177,12 +176,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
       cont.addEventListener("click", () => {
         let ahora = Number(oroactual || 0);
+        if (reliquia.some(r=> r.nombre === reliquiaObj.nombre)) {
+          alert ("Ya tenes esta reliquia");
+          return;
+        }
         if (ahora >= costo) {
           oroactual = ahora - costo;
           oro.textContent = `Oro: ${oroactual}`;
-          alert(
-            `Compraste la reliquia ${reliquiaObj.nombre} por ${costo} de oro`
-          );
+
 
           let nueva = document.createElement("div");
           nueva.textContent = reliquiaObj.nombre;

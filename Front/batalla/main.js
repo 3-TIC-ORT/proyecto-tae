@@ -106,7 +106,7 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(`Monstruo ${tipoMonstruo} recibido:`, monstruo);
     mostrar();
     console.log(monstruo.vida);
-    //monstruo.vida = 1;
+    monstruo.vida = 15;
     gananciaInicial = monstruo.recompenzas;
     ganancia = gananciaInicial;
     console.log("Recompensa:", ganancia);

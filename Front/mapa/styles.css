@@ -114,7 +114,6 @@ body.mago-background-global {
     background-size: contain;
     background-position: center;
 }
-<<<<<<< HEAD
 
 body.jon-background-global {
     background-image: url("../Cosas/image\ 23.png");
@@ -125,8 +124,8 @@ body.jon-background-global {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+}
 
-=======
 body.Jon-background-global {
     background-image: url("../Cosas/image\ 23\ \(1\).png");
 }
@@ -135,7 +134,6 @@ body.Jon-background-global {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
->>>>>>> 576b1e79d0154f464d23e95338d51e090fbe8f58
 }
 /* Tipos de nodo */
 .nodo.M {

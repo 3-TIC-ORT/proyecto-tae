@@ -290,7 +290,12 @@ window.addEventListener("DOMContentLoaded", () => {
       h1.textContent = "The Lawyer";
       h1.style.fontSize = "10rem";
       h1.style.fontFamily = "Galdeano, sans-serif";
-      h1.style.backgroundImage = "url ('../Cosas/image_72-removebg-preview.png')";
+      h1.style.backgroundImage = "url('../Cosas/image 72.png')";
+      h1.style.color = "white";
+      document.body.classList.add("Jon-background-global");
+      document
+        .querySelectorAll(".nodo")
+        .forEach((n) => n.classList.add("nodoJon"));
     } else if (personaje === "bear") {
       h1.textContent = "The Bear";
       h1.style.fontFamily = "Sedgwick Ave Display, cursive";

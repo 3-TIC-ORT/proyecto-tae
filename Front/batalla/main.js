@@ -106,7 +106,7 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(`Monstruo ${tipoMonstruo} recibido:`, monstruo);
     mostrar();
     console.log(monstruo.vida);
-    monstruo.vida = 15;
+    //monstruo.vida = 15;
     gananciaInicial = monstruo.recompenzas;
     ganancia = gananciaInicial;
     console.log("Recompensa:", ganancia);
@@ -279,13 +279,15 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function mostrarMazo() {
+    if (siRegal) {
+      info.vida += 5;
+      mostrar();
+    }
+
     if (siAnchor) {
       cantidadEscudo += 10;
       siEscudo = true;
       mostrarEscudoRestante();
-    }
-    if (siRegal) {
-      info.vida += 5;
     }
     console.log(cantidadEscudo);
     cajaCartas.innerHTML = "";
@@ -1290,6 +1292,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if (fuerza >= 10) {
       carta.daño *= 2;
     }
+    
     if (siSalvia && turno > 1) {
       console.log(dañoRival);
       carta.daño += dañoRival * 0.3;
@@ -1350,6 +1353,7 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
+    monstruo.vida = Math.floor(monstruo.vida);
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     if (furiaActiva) {
@@ -1405,6 +1409,7 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
+    monstruo.vida = Math.floor(monstruo.vida);
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     if (furiaActiva) {
@@ -1456,6 +1461,7 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
+    monstruo.vida = Math.floor(monstruo.vida);
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     if (furiaActiva) {
@@ -1507,6 +1513,7 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
+    monstruo.vida = Math.floor(monstruo.vida);
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     if (furiaActiva) {
@@ -1558,6 +1565,7 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
+    monstruo.vida = Math.floor(monstruo.vida);
     if (monstruo.vida <= 0) info.vidamax += 3;
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
@@ -1612,6 +1620,7 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
+    monstruo.vida = Math.floor(monstruo.vida);
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     if (furiaActiva) {
@@ -1669,6 +1678,7 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
+    monstruo.vida = Math.floor(monstruo.vida);
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     if (furiaActiva) {
@@ -1720,6 +1730,7 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
+    monstruo.vida = Math.floor(monstruo.vida);
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     if (furiaActiva) {
@@ -1780,6 +1791,7 @@ window.addEventListener("DOMContentLoaded", () => {
         carta.daño += dañoRival * 0.3;
       }
       monstruo.vida -= carta.daño;
+      monstruo.vida = Math.floor(monstruo.vida);
       if (monstruo.vida < 0) monstruo.vida = 0;
       vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
       if (furiaActiva) {
@@ -1835,6 +1847,7 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
+    monstruo.vida = Math.floor(monstruo.vida);
     saltearTurnoRival = true;
     console.log(info.vidamax);
     if (monstruo.vida < 0) monstruo.vida = 0;
@@ -1888,6 +1901,7 @@ window.addEventListener("DOMContentLoaded", () => {
       carta.daño += dañoRival * 0.3;
     }
     monstruo.vida -= carta.daño;
+    monstruo.vida = Math.floor(monstruo.vida);
     if (monstruo.vida < 0) monstruo.vida = 0;
     vidaM.textContent = "PV:" + monstruo.vida + "/" + monstruo.vidamax;
     if (furiaActiva) {

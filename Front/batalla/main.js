@@ -279,14 +279,17 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function mostrarMazo() {
-    if (siRegal) {
-      info.vida += 5;
-      mostrar();
-    }
-
     if (siAnchor) {
       cantidadEscudo += 10;
       siEscudo = true;
+      mostrarEscudoRestante();
+    }
+    if (siRegal) {
+      info.vida += 5;
+      if (info.vida >= info.vidamax) {
+        info.vida = info.vidamax;
+      }
+      mostrar();
       mostrarEscudoRestante();
     }
     console.log(cantidadEscudo);
@@ -488,6 +491,9 @@ window.addEventListener("DOMContentLoaded", () => {
           console.log(monstruo.tipo + "red star");
           console.log(info.vida);
           info.vida += 25;
+          if (info.vida >= info.vidamax) {
+            info.vida = info.vidamax;
+          }
           console.log(info.vida);
           mostrar();
         }
@@ -1224,7 +1230,6 @@ window.addEventListener("DOMContentLoaded", () => {
         mostrarEscudoRestante();
       }
     }
-
     cartasmano = cartasmano.filter((c) => c !== cartaActual);
     monstruo.vida = Math.floor(monstruo.vida);
     sacarCarta();
@@ -1292,7 +1297,6 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if (fuerza >= 10) {
       carta.daño *= 2;
     }
-    
     if (siSalvia && turno > 1) {
       console.log(dañoRival);
       carta.daño += dañoRival * 0.3;
@@ -1419,6 +1423,7 @@ window.addEventListener("DOMContentLoaded", () => {
       lugarEscudo.textContent = "Escudo:" + cantidadEscudo;
       mostrarEscudoRestante();
     }
+    
     if (dobleSiguiente) {
       mana -= carta.elixir * 0.5;
     } else mana -= carta.elixir;

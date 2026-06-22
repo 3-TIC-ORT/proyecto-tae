@@ -665,6 +665,11 @@ dialog::backdrop {
 
 #recompensa2{
     border: solid .5vh #d6c25b;
+    transition: all ease 0.5s;
+}
+#recompensa2:hover{
+  transform: scale(1.1);
+  
 }
 .recompensa {
   background-color: black;

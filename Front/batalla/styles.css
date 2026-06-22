@@ -663,6 +663,9 @@ dialog::backdrop {
   align-items: center;
 }
 
+#recompensa2{
+    border: solid .5vh #d6c25b;
+}
 .recompensa {
   background-color: black;
   color: white;

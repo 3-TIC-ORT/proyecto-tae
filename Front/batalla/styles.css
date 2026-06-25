@@ -663,14 +663,14 @@ dialog::backdrop {
   align-items: center;
 }
 
-#recompensa2{
+/*#recompensa2{
     border: solid .5vh #d6c25b;
     transition: all ease 0.5s;
 }
 #recompensa2:hover{
   transform: scale(1.1);
   
-}
+}*/
 .recompensa {
   background-color: black;
   color: white;
@@ -852,7 +852,7 @@ dialog::backdrop {
   line-height: 1.3;
   opacity: 0;
   transition: opacity 0.12s ease;
-  pointer-events: none;
+  pointer-events: none; 
 }
 
 .tooltip-floating .tooltip-title {

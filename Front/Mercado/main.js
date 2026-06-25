@@ -101,6 +101,27 @@ window.addEventListener("DOMContentLoaded", () => {
     return valor;
   }
 
+  // FUNCIÓN PARA EL POP-UP TEMPORAL
+  function mostrarPopUp(mensaje) {
+    let popup = document.createElement("div");
+    popup.className = "notificacion-mercado";
+    popup.textContent = mensaje;
+    document.body.appendChild(popup);
+
+    // Animación de entrada básica
+    setTimeout(() => {
+      popup.classList.add("mostrar");
+    }, 10);
+
+    // Se va solo a los 1.5 segundos
+    setTimeout(() => {
+      popup.classList.remove("mostrar");
+      setTimeout(() => {
+        popup.remove();
+      }, 300);
+    }, 1500);
+  }
+
   // DIBUJAR CARTAS
   function dibujarCartas(cartas) {
     let cartasAMostrar = Object.entries(cartas).slice(0, 6);
@@ -121,7 +142,7 @@ window.addEventListener("DOMContentLoaded", () => {
         let ahora = Number(oroactual || 0);
         if (ahora >= costo) {
           oroactual = ahora - costo;
-          oro.textContent = `Oro: ${oroactual}`;
+          mostrar(); // Actualiza los textos de oro arriba
 
           let nueva = document.createElement("div");
           nueva.textContent = cartaObj.nombre;
@@ -138,8 +159,12 @@ window.addEventListener("DOMContentLoaded", () => {
             vida: info.vida,
             vidamax: info.vidamax,
           });
+
+          // Poner gris y desactivar
+          divCarta.classList.add("comprado");
+          mostrarPopUp(`¡Compraste ${cartaObj.nombre}!`);
         } else {
-          alert("No tenés suficiente oro");
+          mostrarPopUp("No tenés suficiente oro");
         }
       });
     });
@@ -176,14 +201,24 @@ window.addEventListener("DOMContentLoaded", () => {
 
       cont.addEventListener("click", () => {
         let ahora = Number(oroactual || 0);
-        if (reliquia.some(r=> r.nombre === reliquiaObj.nombre)) {
-          alert ("Ya tenes esta reliquia");
+        
+        // Verificar si ya existe la reliquia con un bucle for clásico
+        let yaTiene = false;
+        for (let i = 0; i < reliquia.length; i++) {
+          if (reliquia[i].nombre === reliquiaObj.nombre) {
+            yaTiene = true;
+            break;
+          }
+        }
+
+        if (yaTiene) {
+          mostrarPopUp("Ya tenés esta reliquia");
           return;
         }
+
         if (ahora >= costo) {
           oroactual = ahora - costo;
-          oro.textContent = `Oro: ${oroactual}`;
-
+          mostrar(); // Actualiza los textos de oro arriba
 
           let nueva = document.createElement("div");
           nueva.textContent = reliquiaObj.nombre;
@@ -198,8 +233,13 @@ window.addEventListener("DOMContentLoaded", () => {
             vidamax: info.vidamax,
           });
           postEvent("guardar", true);
+
+          // Ocultar tooltip, poner gris y desactivar todo el bloque
+          hideFloatingTooltip();
+          divReliquia.classList.add("comprado");
+          mostrarPopUp(`¡Obtuviste ${reliquiaObj.nombre}!`);
         } else {
-          alert("No tenés suficiente oro");
+          mostrarPopUp("No tenés suficiente oro");
         }
       });
     });
@@ -230,8 +270,9 @@ window.addEventListener("DOMContentLoaded", () => {
     if (cardOro) margin += cardOro.offsetHeight;
 
     let top = window.scrollY + rect.bottom + margin;
-    let left =
-      window.scrollX + rect.left + rect.width / 2 - tooltipRect.width / 2;
+    let left = window.scrollX + rect.left + rect.width / 2 - tooltipRect.width / 2;
+    
+    // CORREGIDO: Solucionado el error de asignación 'bit =' por 'left ='
     left = Math.max(
       window.scrollX + 8,
       Math.min(
@@ -245,7 +286,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     __floatingTooltip.style.left = `${left}px`;
     __floatingTooltip.style.top = `${top}px`;
-    requestAnimationFrame(() => (__floatingTooltip.style.opacity = "1"));
+    
+    setTimeout(() => {
+      if (__floatingTooltip) __floatingTooltip.style.opacity = "1";
+    }, 10);
   }
 
   function hideFloatingTooltip() {

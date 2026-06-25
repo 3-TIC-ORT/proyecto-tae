@@ -320,3 +320,37 @@ html {
   opacity: 0.8;
   text-align: right;
 }
+
+/* --- NOTIFICACIÓN FLOTANTE (POP-UP TEMPORAL) --- */
+.notificacion-mercado {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(31, 36, 40, 0.95);
+  color: #ffffff;
+  border: 2px solid #d6c25b;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-family: "Inknut Antiqua", serif;
+  font-size: 1rem;
+  z-index: 100000;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.notificacion-mercado.mostrar {
+  opacity: 1;
+  transform: translate(-50%, -45%);
+}
+
+/* --- ESTADO COMPRADO (GRISADO Y BLOQUEADO) --- */
+.comprado {
+  filter: grayscale(100%) brightness(0.6);
+  pointer-events: none; /* Evita que se pueda volver a hacer click o mouseenter */
+  opacity: 0.7;
+  transition: filter 0.5s ease;
+}
